@@ -1,0 +1,6 @@
+name: stactools-sentinel2
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - gdal

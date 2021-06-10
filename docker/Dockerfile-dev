@@ -1,0 +1,7 @@
+FROM stactools-sentinel2:latest
+
+RUN conda install -c conda-forge pandoc
+
+COPY . /src/stactools-sentinel2
+RUN pip install -r /src/stactools-sentinel2/requirements-dev.txt
+WORKDIR /src/stactools-sentinel2
