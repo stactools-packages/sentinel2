@@ -7,13 +7,13 @@ from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.granule_metadata import GranuleMetadata
 
-from tests.utils import TestData
+from tests import test_data
 
 
 class Sentinel2MetadataTest(unittest.TestCase):
     def test_parses_product_metadata_properties(self):
-        manifest_path = TestData.get_path(
-            'data-files/sentinel2/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
+        manifest_path = test_data.get_path(
+            'data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
         )
 
         manifest = SafeManifest(manifest_path)
@@ -65,11 +65,11 @@ class Sentinel2MetadataTest(unittest.TestCase):
         self.assertEqual(granule_metadata.cloudiness_percentage, 51.580326)
 
     def test_footprint_containing_geom_with_z_dimension(self):
-        product_md_path = TestData.get_path(
-            'data-files/sentinel2/S2A_MSIL2A_20150826T185436_N0212_R070'
+        product_md_path = test_data.get_path(
+            'data-files/S2A_MSIL2A_20150826T185436_N0212_R070'
             '_T11SLT_20210412T023147/MTD_MSIL2A.xml')
-        granule_md_path = TestData.get_path(
-            'data-files/sentinel2/S2A_MSIL2A_20150826T185436_N0212_R070'
+        granule_md_path = test_data.get_path(
+            'data-files/S2A_MSIL2A_20150826T185436_N0212_R070'
             '_T11SLT_20210412T023147/MTD_TL.xml')
         product_metadata = ProductMetadata(product_md_path)
         granule_metadata = GranuleMetadata(granule_md_path)
