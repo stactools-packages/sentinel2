@@ -9,7 +9,9 @@ from shapely.geometry import box, shape, mapping
 from stactools.core.projection import reproject_geom
 from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import BANDS_TO_RESOLUTIONS, SENTINEL_BANDS
-from tests.utils import (TestData, CliTestCase)
+from stactools.testing import CliTestCase
+
+from tests import test_data
 
 
 class CreateItemTest(CliTestCase):
@@ -18,7 +20,7 @@ class CreateItemTest(CliTestCase):
 
     def test_create_item(self):
         granule_hrefs = [
-            TestData.get_path(f'data-files/sentinel2/{x}') for x in [
+            test_data.get_path(f'data-files/{x}') for x in [
                 'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE',
                 'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE',
                 'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
