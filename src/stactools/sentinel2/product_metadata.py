@@ -16,6 +16,22 @@ class ProductMetadataError(Exception):
     pass
 
 
+def fix_z_values(coord_values: List[str]) -> List[float]:
+    """Some geometries have a '0' value in the z position
+    of the coordinates. This method detects and removes z
+    postion coordinates. This assumes that in cases where
+    the z value is included, it is included for all coordinates.
+    """
+    if len(coord_values) % 3 == 0:
+        # Check if all of the 3rd position values are '0'
+        if not any(
+            [x
+             for i, x in enumerate(coord_values) if i % 3 == 2 and x != '0']):
+            return [float(c) for c in coord_values if c and c != '0']
+
+    return [float(c) for c in coord_values if c]
+
+
 class ProductMetadata:
     def __init__(
             self,
@@ -70,11 +86,7 @@ class ProductMetadata:
                     f'Cannot parse footprint from product metadata at {self.href}'
                 )
 
-            # Some coordinates contain a 0 z dimension for some reason;
-            # filter those out
-            footprint_coords = [
-                float(c) for c in footprint_text.split(' ') if c and c != '0'
-            ]
+            footprint_coords = fix_z_values(footprint_text.split(' '))
             footprint_points = [
                 p[::-1] for p in list(zip(*[iter(footprint_coords)] * 2))
             ]

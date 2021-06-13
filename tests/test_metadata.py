@@ -88,3 +88,13 @@ class Sentinel2MetadataTest(unittest.TestCase):
         self.assertTrue(
             footprint.envelope.difference(ll_proj_box).area < (
                 ll_proj_box.area * 0.05))
+
+    def test_footprint_containing_geom_with_0_parses(self):
+        product_md_path = test_data.get_path(
+            'data-files/S2A_MSIL2A_20180721T053721'
+            '_N0212_R062_T43MDV_20201011T181419.SAFE/MTD_MSIL2a.xml')
+        product_metadata = ProductMetadata(product_md_path)
+
+        footprint = shape(product_metadata.geometry)
+
+        self.assertTrue(footprint.is_valid)
