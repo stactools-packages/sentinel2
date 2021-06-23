@@ -24,10 +24,15 @@ def fix_z_values(coord_values: List[str]) -> List[float]:
     """
     if len(coord_values) % 3 == 0:
         # Check if all of the 3rd position values are '0'
-        if not any(
-            [x
-             for i, x in enumerate(coord_values) if i % 3 == 2 and x != '0']):
-            return [float(c) for c in coord_values if c and c != '0']
+        # Ignore any blank values
+        third_position_is_zero = [
+            x == '0' for i, x in enumerate(coord_values) if i % 3 == 2 and x
+        ]
+
+        if all(third_position_is_zero):
+            # Assuming that all 3rd position coordinates are z values
+            # Remove them.
+            return [float(c) for i, c in enumerate(coord_values) if i % 3 != 2]
 
     return [float(c) for c in coord_values if c]
 
@@ -184,3 +189,6 @@ class ProductMetadata:
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])
         return (PRODUCT_METADATA_ASSET_KEY, asset)
+
+
+# foo
