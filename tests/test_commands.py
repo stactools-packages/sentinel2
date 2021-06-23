@@ -21,13 +21,19 @@ class CreateItemTest(CliTestCase):
         return [create_sentinel2_command]
 
     def test_create_item(self):
-        granule_hrefs = [
-            test_data.get_path(f'data-files/{x}') for x in [
-                'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE',
-                'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE',
-                'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
-            ]
-        ]
+        granule_hrefs = {
+            k: test_data.get_path(f'data-files/{v}')
+            for (k, v) in
+            [('S2A_MSIL2A_20190212T192651_R013_T07HFE',
+              'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
+              ),
+             ('S2B_MSIL2A_20191228T210519_R071_T01CCV',
+              'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE'
+              ),
+             ('S2B_MSIL2A_20210122T133229_R081_T22HBD',
+              'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
+              )]
+        }
 
         def check_proj_bbox(item):
             projection = ProjectionExtension.ext(item)
@@ -47,7 +53,7 @@ class CreateItemTest(CliTestCase):
             # and due to reprojection.
             self.assertLess(difference_area / raster_area, 0.005)
 
-        for granule_href in granule_hrefs:
+        for item_id, granule_href in granule_hrefs.items():
             with self.subTest(granule_href):
                 with TemporaryDirectory() as tmp_dir:
                     cmd = ['sentinel2', 'create-item', granule_href, tmp_dir]
@@ -62,6 +68,8 @@ class CreateItemTest(CliTestCase):
                     item = pystac.read_file(os.path.join(tmp_dir, fname))
 
                     item.validate()
+
+                    self.assertEqual(item.id, item_id)
 
                     bands_seen = set()
                     bands_to_assets = defaultdict(list)

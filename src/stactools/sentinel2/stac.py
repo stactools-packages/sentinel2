@@ -47,7 +47,16 @@ def create_item(
     granule_metadata = GranuleMetadata(safe_manifest.granule_metadata_href,
                                        read_href_modifier)
 
-    item = pystac.Item(id=product_metadata.product_id,
+    # Remove the processing number and SAFE Product Discriminator
+    # See https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
+    id_parts = product_metadata.product_id.split('_')
+    # Remove <Product Discriminator>.SAFE
+    id_parts = id_parts[:-1]
+    # Remove PDGS Processing Baseline number
+    id_parts = [part for part in id_parts if not part.startswith('N')]
+    item_id = '_'.join(id_parts)
+
+    item = pystac.Item(id=item_id,
                        geometry=product_metadata.geometry,
                        bbox=product_metadata.bbox,
                        datetime=product_metadata.datetime,
