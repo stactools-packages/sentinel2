@@ -3,6 +3,8 @@ import os
 from tempfile import TemporaryDirectory
 
 import pystac
+from pystac.extensions.eo import EOExtension
+from pystac.extensions.projection import ProjectionExtension
 from pystac.utils import is_absolute_href
 from shapely.geometry import box, shape, mapping
 
@@ -28,11 +30,12 @@ class CreateItemTest(CliTestCase):
         ]
 
         def check_proj_bbox(item):
-            pb = mapping(
-                box(*item.ext.projection.get_bbox(item.assets['visual-10m'])))
+            projection = ProjectionExtension.ext(item)
+            asset_projection = ProjectionExtension.ext(
+                item.assets["visual-10m"])
+            pb = mapping(box(*asset_projection.bbox))
             proj_geom = shape(
-                reproject_geom(f'epsg:{item.ext.projection.epsg}', 'epsg:4326',
-                               pb))
+                reproject_geom(f'epsg:{projection.epsg}', 'epsg:4326', pb))
 
             item_geom = shape(item.geometry)
 
@@ -69,7 +72,8 @@ class CreateItemTest(CliTestCase):
                         self.assertTrue('/./' not in asset.href)
 
                         self.assertTrue(is_absolute_href(asset.href))
-                        bands = item.ext.eo.get_bands(asset)
+                        asset_eo = EOExtension.ext(asset)
+                        bands = asset_eo.bands
                         if bands is not None:
                             bands_seen |= set(b.name for b in bands)
                             if key.split('_')[0] in SENTINEL_BANDS:
