@@ -15,7 +15,7 @@ Launches a Jupyter notebook in a docker container with all prerequisites install
 
 if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     docker run --rm -it \
-        -v `pwd`:/opt/src \
+        -v `pwd`:/src/stactools-sentinel2 \
         -v ${HOME}/.planet.json:/root/.planet.json:ro \
         --entrypoint jupyter \
         -p 8888:8888 \
