@@ -189,6 +189,3 @@ class ProductMetadata:
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])
         return (PRODUCT_METADATA_ASSET_KEY, asset)
-
-
-# foo
