@@ -87,6 +87,34 @@ class ProductMetadata:
         self.bbox, self.geometry = _get_geometries()
 
     @property
+    def scene_id(self) -> str:
+        """ Returns the string to be used for a STAC Item id.
+
+        Removes the processing number and SAFE Product Discriminator
+        from the product_id defined below.
+
+        Parsed based on the naming convention found here:
+        https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
+        """
+        product_id = self.product_id
+        # Ensure the product id (PRODUCT_URI) is as expected.
+        if not product_id.endswith('.SAFE'):
+            raise ValueError("Unexpected value found at "
+                             f"General_Info/Product_Info: {product_id}. "
+                             "This was expected to follow the sentinel 2 "
+                             "naming convention, including "
+                             "ending in .SAFE")
+        id_parts = self.product_id.split('_')
+
+        # Remove <Product Discriminator>.SAFE
+        id_parts = id_parts[:-1]
+
+        # Remove PDGS Processing Baseline number
+        id_parts = [part for part in id_parts if not part.startswith('N')]
+
+        return '_'.join(id_parts)
+
+    @property
     def product_id(self) -> str:
         result = self.product_info_node.find_text('PRODUCT_URI')
         if result is None:
