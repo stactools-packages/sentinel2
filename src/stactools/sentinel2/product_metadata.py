@@ -107,7 +107,7 @@ class ProductMetadata:
     def scene_id(self) -> str:
         """ Returns the string to be used for a STAC Item id.
 
-        Removes the processing number and SAFE Product Discriminator
+        Removes the processing number and .SAFE extension
         from the product_id defined below.
 
         Parsed based on the naming convention found here:
@@ -123,8 +123,8 @@ class ProductMetadata:
                              "ending in .SAFE")
         id_parts = self.product_id.split('_')
 
-        # Remove <Product Discriminator>.SAFE
-        id_parts = id_parts[:-1]
+        # Remove .SAFE
+        id_parts[-1] = id_parts[-1].replace('.SAFE', '')
 
         # Remove PDGS Processing Baseline number
         id_parts = [part for part in id_parts if not part.startswith('N')]
