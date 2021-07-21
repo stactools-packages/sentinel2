@@ -178,7 +178,7 @@ def image_asset_from_href(
     def set_asset_properties(asset: pystac.Asset,
                              band_gsd: Optional[int] = None):
         if band_gsd:
-            item.common_metadata.set_gsd(band_gsd, asset)
+            pystac.CommonMetadata(asset).gsd = band_gsd
         asset_projection = ProjectionExtension.ext(asset)
         asset_projection.shape = shape
         asset_projection.bbox = proj_bbox
