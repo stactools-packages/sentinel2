@@ -49,6 +49,7 @@ class SafeManifest:
     @property
     def product_metadata_href(self) -> Optional[str]:
         return self._find_href([
+            'dataObject[@ID="S2_Level-1C_Product_Metadata"]/byteStream/fileLocation',
             'dataObject[@ID="S2_Level-2A_Product_Metadata"]/byteStream/fileLocation'
         ])
 
@@ -60,6 +61,7 @@ class SafeManifest:
     @property
     def datastrip_metadata_href(self) -> Optional[str]:
         return self._find_href([
+            'dataObject[@ID="S2_Level-1C_Datastrip1_Metadata"]/byteStream/fileLocation',
             'dataObject[@ID="S2_Level-2A_Datastrip1_Metadata"]/byteStream/fileLocation'
         ])
 
@@ -67,6 +69,7 @@ class SafeManifest:
     def granule_metadata_href(self) -> Optional[str]:
         return self._find_href([
             'dataObject[@ID="S2_Level-2A_Tile1_Data"]/byteStream/fileLocation',
+            'dataObject[@ID="S2_Level-1C_Tile1_Metadata"]/byteStream/fileLocation',
             'dataObject[@ID="S2_Level-2A_Tile1_Metadata"]/byteStream/fileLocation'
         ])
 

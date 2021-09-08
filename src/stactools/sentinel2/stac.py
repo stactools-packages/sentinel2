@@ -171,8 +171,19 @@ def image_asset_from_href(
         return ('preview', asset)
 
     # Extract gsd and proj info
-    filename_gsd = extract_gsd(asset_href)
-    shape = list(resolution_to_shape[int(filename_gsd)])
+    try:
+        # extracting GSD from filename is only possible for Level 2
+        resolution = extract_gsd(asset_href)
+    except ValueError:
+        # in Level-1C we can deduct the spatial resolution from the band ID or
+        # asset name
+        band_id_search = re.search(r'_(B\w{2})', asset_href)
+        if band_id_search is not None:
+            resolution = BANDS_TO_RESOLUTIONS[band_id_search.groups()[0]][0]
+        elif '_TCI' in asset_href:
+            resolution = 10.0
+
+    shape = list(resolution_to_shape[int(resolution)])
     transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(asset: pystac.Asset,
@@ -188,8 +199,14 @@ def image_asset_from_href(
 
     band_id_search = re.search(r'_(B\w{2})', asset_href)
     if band_id_search is not None:
-        band_id, href_res = os.path.splitext(asset_href)[0].split('_')[-2:]
-        band = SENTINEL_BANDS[band_id]
+        try:
+            band_id, href_res = os.path.splitext(asset_href)[0].split('_')[-2:]
+            band = SENTINEL_BANDS[band_id]
+        except KeyError:
+            # Level-1C have different names
+            band_id = os.path.splitext(asset_href)[0].split('_')[-1]
+            band = SENTINEL_BANDS[band_id]
+            href_res = f'{BANDS_TO_RESOLUTIONS[band_id_search.groups()[0]][0]}m'
 
         # Get the asset resolution from the file name.
         # If the asset resolution is the band GSD, then
@@ -222,7 +239,7 @@ def image_asset_from_href(
 
     # Handle auxiliary images
 
-    if '_TCI_' in asset_href:
+    if '_TCI' in asset_href:
         # True color
         asset = pystac.Asset(href=asset_href,
                              media_type=asset_media_type,

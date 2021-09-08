@@ -80,6 +80,12 @@ SENTINEL_BANDS = {
                 description='Band 9 - Water vapor',
                 center_wavelength=0.945,
                 full_width_half_max=0.026),
+
+    'B10':
+    Band.create(name='B10',
+                description='Band 10 - SWIR - Cirrus',
+                center_wavelength=1.3735,
+                full_width_half_max=0.026),  # TODO: find out fwhm
     'B11':
     Band.create(name='B11',
                 common_name='swir16',
@@ -138,6 +144,7 @@ BANDS_TO_RESOLUTIONS = {
         60,
     ],
     'B09': [60],
+    'B10': [60],
     'B11': [
         20,
         60,
