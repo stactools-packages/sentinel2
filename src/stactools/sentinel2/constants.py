@@ -80,7 +80,6 @@ SENTINEL_BANDS = {
                 description='Band 9 - Water vapor',
                 center_wavelength=0.945,
                 full_width_half_max=0.026),
-
     'B10':
     Band.create(name='B10',
                 description='Band 10 - SWIR - Cirrus',
