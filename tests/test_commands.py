@@ -89,7 +89,9 @@ class CreateItemTest(CliTestCase):
                                     bands_to_assets[b.name].append(
                                         (key, asset))
 
-                    self.assertEqual(bands_seen, set(SENTINEL_BANDS.keys()))
+                    level_2A_bands = dict(SENTINEL_BANDS)
+                    level_2A_bands.pop('B10')
+                    self.assertEqual(bands_seen, set(level_2A_bands.keys()))
 
                     # Check that multiple resolutions exist for assets that
                     # have them, and that they are named such that the highest
@@ -119,8 +121,10 @@ class CreateItemTest(CliTestCase):
                                 self.assertNotIn('gsd', asset.extra_fields)
                                 resolutions_seen[band_name].append(asset_res)
 
+                    level_2A_resolutions = dict(BANDS_TO_RESOLUTIONS)
+                    level_2A_resolutions.pop('B10')
                     self.assertEqual(set(resolutions_seen.keys()),
-                                     set(BANDS_TO_RESOLUTIONS.keys()))
+                                     set(level_2A_resolutions.keys()))
                     for band in resolutions_seen:
                         self.assertEqual(set(resolutions_seen[band]),
                                          set(BANDS_TO_RESOLUTIONS[band]))
