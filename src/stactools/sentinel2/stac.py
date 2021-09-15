@@ -250,7 +250,12 @@ def image_asset_from_href(
             SENTINEL_BANDS['B04'], SENTINEL_BANDS['B03'], SENTINEL_BANDS['B02']
         ]
         set_asset_properties(asset)
-        return (f'visual-{asset_href[-7:-4]}', asset)
+
+        maybe_res = asset_href[-7:-4]
+        if re.match(r'(\w{2}m)', maybe_res):
+            return (f'visual-{maybe_res}', asset)
+        else:
+            return ('visual', asset)
 
     if '_AOT_' in asset_href:
         # Aerosol
