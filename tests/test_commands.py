@@ -24,7 +24,10 @@ class CreateItemTest(CliTestCase):
         granule_hrefs = {
             k: test_data.get_path(f'data-files/{v}')
             for (k, v) in
-            [('S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857',
+            [('S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248',
+              'S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE'
+              ),
+             ('S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857',
               'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
               ),
              ('S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658',
@@ -37,8 +40,9 @@ class CreateItemTest(CliTestCase):
 
         def check_proj_bbox(item):
             projection = ProjectionExtension.ext(item)
-            asset_projection = ProjectionExtension.ext(
-                item.assets["visual-10m"])
+            visual_asset = item.assets.get('visual-10m') or \
+                item.assets.get('visual')
+            asset_projection = ProjectionExtension.ext(visual_asset)
             pb = mapping(box(*asset_projection.bbox))
             proj_geom = shape(
                 reproject_geom(f'epsg:{projection.epsg}', 'epsg:4326', pb))
@@ -89,9 +93,13 @@ class CreateItemTest(CliTestCase):
                                     bands_to_assets[b.name].append(
                                         (key, asset))
 
-                    level_2A_bands = dict(SENTINEL_BANDS)
-                    level_2A_bands.pop('B10')
-                    self.assertEqual(bands_seen, set(level_2A_bands.keys()))
+                    if item.properties['s2:product_type'] == 'S2MSI1C':
+                        used_bands = SENTINEL_BANDS
+                    elif item.properties['s2:product_type'] == 'S2MSI2A':
+                        used_bands = dict(SENTINEL_BANDS)
+                        used_bands.pop('B10')
+
+                    self.assertEqual(bands_seen, set(used_bands.keys()))
 
                     # Check that multiple resolutions exist for assets that
                     # have them, and that they are named such that the highest
@@ -100,33 +108,53 @@ class CreateItemTest(CliTestCase):
 
                     resolutions_seen = defaultdict(list)
 
-                    for band_name, assets in bands_to_assets.items():
-                        for (asset_key, asset) in assets:
-                            resolutions = BANDS_TO_RESOLUTIONS[band_name]
+                    # Level 1C does not have the same layout as Level 2A. So the
+                    # whole resolution
+                    if item.properties['s2:product_type'] == 'S2MSI1C':
+                        for band_name, assets in bands_to_assets.items():
+                            for (asset_key, asset) in assets:
+                                resolutions_seen[band_name].append(
+                                    asset.extra_fields['gsd'])
 
-                            asset_split = asset_key.split('_')
-                            self.assertLessEqual(len(asset_split), 2)
+                        # Level 1C only has highest resolution version of each band
+                        used_resolutions = {
+                            band: [resolutions[0]]
+                            for band, resolutions in
+                            BANDS_TO_RESOLUTIONS.items()
+                        }
+                    elif item.properties['s2:product_type'] == 'S2MSI2A':
+                        for band_name, assets in bands_to_assets.items():
+                            for (asset_key, asset) in assets:
+                                resolutions = BANDS_TO_RESOLUTIONS[band_name]
 
-                            href_band, href_res = os.path.splitext(
-                                asset.href)[0].split('_')[-2:]
-                            asset_res = int(href_res.replace('m', ''))
-                            self.assertEqual(href_band, band_name)
-                            if len(asset_split) == 1:
-                                self.assertEqual(asset_res, resolutions[0])
-                                self.assertIn('gsd', asset.extra_fields)
-                                resolutions_seen[band_name].append(asset_res)
-                            else:
-                                self.assertNotEqual(asset_res, resolutions[0])
-                                self.assertIn(asset_res, resolutions)
-                                self.assertNotIn('gsd', asset.extra_fields)
-                                resolutions_seen[band_name].append(asset_res)
+                                asset_split = asset_key.split('_')
+                                self.assertLessEqual(len(asset_split), 2)
 
-                    level_2A_resolutions = dict(BANDS_TO_RESOLUTIONS)
-                    level_2A_resolutions.pop('B10')
+                                href_band, href_res = os.path.splitext(
+                                    asset.href)[0].split('_')[-2:]
+                                asset_res = int(href_res.replace('m', ''))
+                                self.assertEqual(href_band, band_name)
+                                if len(asset_split) == 1:
+                                    self.assertEqual(asset_res, resolutions[0])
+                                    self.assertIn('gsd', asset.extra_fields)
+                                    resolutions_seen[band_name].append(
+                                        asset_res)
+                                else:
+                                    self.assertNotEqual(
+                                        asset_res, resolutions[0])
+                                    self.assertIn(asset_res, resolutions)
+                                    self.assertNotIn('gsd', asset.extra_fields)
+                                    resolutions_seen[band_name].append(
+                                        asset_res)
+
+                        # Level 2A does not have Band 10
+                        used_resolutions = dict(BANDS_TO_RESOLUTIONS)
+                        used_resolutions.pop('B10')
+
                     self.assertEqual(set(resolutions_seen.keys()),
-                                     set(level_2A_resolutions.keys()))
+                                     set(used_resolutions.keys()))
                     for band in resolutions_seen:
                         self.assertEqual(set(resolutions_seen[band]),
-                                         set(BANDS_TO_RESOLUTIONS[band]))
+                                         set(used_resolutions[band]))
 
                     check_proj_bbox(item)
