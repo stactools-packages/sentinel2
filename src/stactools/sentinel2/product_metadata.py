@@ -38,6 +38,7 @@ def fix_z_values(coord_values: List[str]) -> List[float]:
 
 
 class ProductMetadata:
+
     def __init__(
             self,
             href,

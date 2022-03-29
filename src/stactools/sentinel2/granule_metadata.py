@@ -13,6 +13,7 @@ class GranuleMetadataError(Exception):
 
 
 class GranuleMetadata:
+
     def __init__(self,
                  href,
                  read_href_modifier: Optional[ReadHrefModifier] = None):
