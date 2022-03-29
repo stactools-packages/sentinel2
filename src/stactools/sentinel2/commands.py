@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 def create_sentinel2_command(cli):
+
     @cli.group('sentinel2',
                short_help=("Commands for working with sentinel2 data"))
     def sentinel2():

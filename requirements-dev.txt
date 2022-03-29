@@ -8,3 +8,4 @@ sphinx-click
 sphinxcontrib-fulltoc
 sphinxcontrib-napoleon
 yapf
+toml

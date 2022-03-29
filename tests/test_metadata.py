@@ -11,6 +11,7 @@ from tests import test_data
 
 
 class Sentinel2MetadataTest(unittest.TestCase):
+
     def test_parses_product_metadata_properties(self):
         manifest_path = test_data.get_path(
             'data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'

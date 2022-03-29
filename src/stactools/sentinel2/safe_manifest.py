@@ -13,6 +13,7 @@ class ManifestError(Exception):
 
 
 class SafeManifest:
+
     def __init__(self,
                  granule_href: str,
                  read_href_modifier: Optional[ReadHrefModifier] = None):
