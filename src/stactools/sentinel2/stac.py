@@ -89,13 +89,16 @@ def create_item(
         )
 
     # mgrs
-    mgrs = MgrsExtension.ext(item, add_if_missing=True)
-
     mgrs_match = MGRS_PATTERN.search(product_metadata.scene_id)
-
-    mgrs.utm_zone = int(mgrs_match.group(1))
-    mgrs.latitude_band = mgrs_match.group(2)
-    mgrs.grid_square = mgrs_match.group(3)
+    if mgrs_match and len(groups := mgrs_match.groups()) == 3:
+        mgrs = MgrsExtension.ext(item, add_if_missing=True)
+        mgrs.utm_zone = int(groups[0])
+        mgrs.latitude_band = groups[1]
+        mgrs.grid_square = groups[2]
+    else:
+        logger.error(
+            f'Error populating MGRS Extension fields from ID: {product_metadata.scene_id}'
+        )
 
     # s2 properties
     item.properties.update({
