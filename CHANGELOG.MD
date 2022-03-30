@@ -10,6 +10,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Populate MGRS Extension fields
 
+## 0.3.0
+
+## Changed
+
+- updated stactools dependency to version 0.3.0
+
+## Added
+
+- Adding support for Level-1C products
+
 ## 0.2.0
 
 ### Changed
