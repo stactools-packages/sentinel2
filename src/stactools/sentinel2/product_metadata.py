@@ -100,7 +100,7 @@ class ProductMetadata:
             geometry = mapping(footprint_polygon)
             bbox = footprint_polygon.bounds
 
-            return (bbox, geometry)
+            return bbox, geometry
 
         self.bbox, self.geometry = _get_geometries()
 
@@ -217,4 +217,4 @@ class ProductMetadata:
         asset = pystac.Asset(href=self.href,
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])
-        return (PRODUCT_METADATA_ASSET_KEY, asset)
+        return PRODUCT_METADATA_ASSET_KEY, asset
