@@ -9,9 +9,6 @@ from pystac.extensions.base import (
     ExtensionManagementMixin,
     PropertiesExtension,
 )
-# from pystac.extensions.base import (
-#     SummariesExtension,
-# )
 from pystac.extensions.hooks import ExtensionHooks
 
 SCHEMA_URI: str = "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json"
@@ -172,32 +169,6 @@ class MgrsExtension(
             raise pystac.ExtensionTypeError(
                 f"MGRS Extension does not apply to type '{type(obj).__name__}'"
             )
-
-    # @classmethod
-    # def summaries(
-    #         cls, obj: pystac.Collection, add_if_missing: bool = False
-    # ) -> "SummariesProjectionExtension":
-    #     """Returns the extended summaries object for the given collection."""
-    #     cls.validate_has_extension(obj, add_if_missing)
-    #     return SummariesProjectionExtension(obj)
-
-
-# class SummariesProjectionExtension(SummariesExtension):
-#     """A concrete implementation of :class:`~SummariesExtension` that extends
-#     the ``summaries`` field of a :class:`~pystac.Collection` to include properties
-#     defined in the :stac-ext:`Projection Extension <projection>`.
-#     """
-#
-#     @property
-#     def epsg(self) -> Optional[List[int]]:
-#         """Get or sets the summary of :attr:`ProjectionExtension.epsg` values
-#         for this Collection.
-#         """
-#         return self.summaries.get_list(EPSG_PROP)
-#
-#     @epsg.setter
-#     def epsg(self, v: Optional[List[int]]) -> None:
-#         self._set_summary(EPSG_PROP, v)
 
 
 class MgrsExtensionHooks(ExtensionHooks):
