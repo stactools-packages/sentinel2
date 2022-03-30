@@ -1,7 +1,7 @@
 import logging
 import os
 import re
-from typing import Dict, List, Optional, Tuple, Final, Pattern
+from typing import Dict, List, Optional, Tuple, Pattern
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -22,7 +22,7 @@ from stactools.sentinel2.constants import (
 
 logger = logging.getLogger(__name__)
 
-MGRS_PATTERN: Final[Pattern[str]] = re.compile(
+MGRS_PATTERN: Pattern[str] = re.compile(
     r"_T(\d{1,2})([CDEFGHJKLMNPQRSTUVWX])([ABCDEFGHJKLMNPQRSTUVWXYZ][ABCDEFGHJKLMNPQRSTUV])_"
 )
 
@@ -90,11 +90,12 @@ def create_item(
 
     # mgrs
     mgrs_match = MGRS_PATTERN.search(product_metadata.scene_id)
-    if mgrs_match and len(groups := mgrs_match.groups()) == 3:
+    if mgrs_match and len(mgrs_match.groups()) == 3:
+        mgrs_groups = mgrs_match.groups()
         mgrs = MgrsExtension.ext(item, add_if_missing=True)
-        mgrs.utm_zone = int(groups[0])
-        mgrs.latitude_band = groups[1]
-        mgrs.grid_square = groups[2]
+        mgrs.utm_zone = int(mgrs_groups[0])
+        mgrs.latitude_band = mgrs_groups[1]
+        mgrs.grid_square = mgrs_groups[2]
     else:
         logger.error(
             f'Error populating MGRS Extension fields from ID: {product_metadata.scene_id}'
