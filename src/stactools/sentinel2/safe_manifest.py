@@ -78,4 +78,4 @@ class SafeManifest:
         asset = pystac.Asset(href=self.href,
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])
-        return (SAFE_MANIFEST_ASSET_KEY, asset)
+        return SAFE_MANIFEST_ASSET_KEY, asset

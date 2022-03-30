@@ -1,12 +1,13 @@
 import logging
 import os
 import re
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Final, Pattern
 
 import pystac
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.sat import OrbitState, SatExtension
+from stactools.sentinel2.mgrs import MgrsExtension
 
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import transform_from_bbox
@@ -20,6 +21,10 @@ from stactools.sentinel2.constants import (
     SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY)
 
 logger = logging.getLogger(__name__)
+
+MGRS_PATTERN: Final[Pattern[str]] = re.compile(
+    r"_T(\d{1,2})([CDEFGHJKLMNPQRSTUVWX])([ABCDEFGHJKLMNPQRSTUVWXYZ][ABCDEFGHJKLMNPQRSTUV])_"
+)
 
 
 def create_item(
@@ -38,7 +43,7 @@ def create_item(
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
-    """ # noqa
+    """  # noqa
 
     safe_manifest = SafeManifest(granule_href, read_href_modifier)
 
@@ -83,6 +88,15 @@ def create_item(
             f'Could not determine EPSG code for {granule_href}; which is required.'
         )
 
+    # mgrs
+    mgrs = MgrsExtension.ext(item, add_if_missing=True)
+
+    mgrs_match = MGRS_PATTERN.search(product_metadata.scene_id)
+
+    mgrs.utm_zone = int(mgrs_match.group(1))
+    mgrs.latitude_band = mgrs_match.group(2)
+    mgrs.grid_square = mgrs_match.group(3)
+
     # s2 properties
     item.properties.update({
         **product_metadata.metadata_dict,
@@ -93,25 +107,27 @@ def create_item(
 
     # Metadata
 
-    item.add_asset(*safe_manifest.create_asset())
+    if safe_manifest is not None:
+        item.add_asset(*safe_manifest.create_asset())
+        item.add_asset(
+            INSPIRE_METADATA_ASSET_KEY,
+            pystac.Asset(href=safe_manifest.inspire_metadata_href,
+                         media_type=pystac.MediaType.XML,
+                         roles=['metadata']))
+        item.add_asset(
+            DATASTRIP_METADATA_ASSET_KEY,
+            pystac.Asset(href=safe_manifest.datastrip_metadata_href,
+                         media_type=pystac.MediaType.XML,
+                         roles=['metadata']))
+
     item.add_asset(*product_metadata.create_asset())
     item.add_asset(*granule_metadata.create_asset())
-    item.add_asset(
-        INSPIRE_METADATA_ASSET_KEY,
-        pystac.Asset(href=safe_manifest.inspire_metadata_href,
-                     media_type=pystac.MediaType.XML,
-                     roles=['metadata']))
-    item.add_asset(
-        DATASTRIP_METADATA_ASSET_KEY,
-        pystac.Asset(href=safe_manifest.datastrip_metadata_href,
-                     media_type=pystac.MediaType.XML,
-                     roles=['metadata']))
 
     # Image assets
     proj_bbox = granule_metadata.proj_bbox
 
     image_assets = dict([
-        image_asset_from_href(os.path.join(granule_href, image_path), item,
+        image_asset_from_href(os.path.join(granule_href, image_path),
                               granule_metadata.resolution_to_shape, proj_bbox,
                               product_metadata.image_media_type)
         for image_path in product_metadata.image_paths
@@ -123,7 +139,7 @@ def create_item(
 
     # Thumbnail
 
-    if safe_manifest.thumbnail_href is not None:
+    if safe_manifest is not None and safe_manifest.thumbnail_href is not None:
         item.add_asset(
             "preview",
             pystac.Asset(href=safe_manifest.thumbnail_href,
@@ -139,7 +155,6 @@ def create_item(
 
 def image_asset_from_href(
         asset_href: str,
-        item: pystac.Item,
         resolution_to_shape: Dict[int, Tuple[int, int]],
         proj_bbox: List[float],
         media_type: Optional[str] = None) -> Tuple[str, pystac.Asset]:
@@ -168,9 +183,10 @@ def image_asset_from_href(
         asset_eo.bands = [
             SENTINEL_BANDS['B04'], SENTINEL_BANDS['B03'], SENTINEL_BANDS['B02']
         ]
-        return ('preview', asset)
+        return 'preview', asset
 
     # Extract gsd and proj info
+    resolution = 0
     try:
         # extracting GSD from filename is only possible for Level 2
         resolution = extract_gsd(asset_href)
@@ -186,11 +202,11 @@ def image_asset_from_href(
     shape = list(resolution_to_shape[int(resolution)])
     transform = transform_from_bbox(proj_bbox, shape)
 
-    def set_asset_properties(asset: pystac.Asset,
-                             band_gsd: Optional[int] = None):
-        if band_gsd:
-            pystac.CommonMetadata(asset).gsd = band_gsd
-        asset_projection = ProjectionExtension.ext(asset)
+    def set_asset_properties(_asset: pystac.Asset,
+                             _band_gsd: Optional[int] = None):
+        if _band_gsd:
+            pystac.CommonMetadata(_asset).gsd = _band_gsd
+        asset_projection = ProjectionExtension.ext(_asset)
         asset_projection.shape = shape
         asset_projection.bbox = proj_bbox
         asset_projection.transform = transform
@@ -234,8 +250,8 @@ def image_asset_from_href(
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [SENTINEL_BANDS[band_id]]
-        set_asset_properties(asset, band_gsd=band_gsd)
-        return (asset_key, asset)
+        set_asset_properties(asset, band_gsd)
+        return asset_key, asset
 
     # Handle auxiliary images
 

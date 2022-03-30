@@ -1,6 +1,7 @@
 from collections import defaultdict
 import os
 from tempfile import TemporaryDirectory
+from stactools.sentinel2.mgrs import MgrsExtension
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -42,7 +43,7 @@ class CreateItemTest(CliTestCase):
         def check_proj_bbox(item):
             projection = ProjectionExtension.ext(item)
             visual_asset = item.assets.get('visual-10m') or \
-                item.assets.get('visual')
+                           item.assets.get('visual')
             asset_projection = ProjectionExtension.ext(visual_asset)
             pb = mapping(box(*asset_projection.bbox))
             proj_geom = shape(
@@ -62,7 +63,7 @@ class CreateItemTest(CliTestCase):
             with self.subTest(granule_href):
                 with TemporaryDirectory() as tmp_dir:
                     cmd = ['sentinel2', 'create-item', granule_href, tmp_dir]
-                    self.run_command(cmd)
+                    self.run_command(cmd)  # type: ignore
 
                     jsons = [
                         p for p in os.listdir(tmp_dir) if p.endswith('.json')
@@ -159,3 +160,12 @@ class CreateItemTest(CliTestCase):
                                          set(used_resolutions[band]))
 
                     check_proj_bbox(item)
+
+                    self.assertTrue(item.properties.get("mgrs:latitude_band"))
+                    self.assertTrue(item.properties.get("mgrs:utm_zone"))
+                    self.assertTrue(item.properties.get("mgrs:grid_square"))
+
+                    mgrs = MgrsExtension.ext(item)
+                    self.assertIn(
+                        f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}_",
+                        item.id)
