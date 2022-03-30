@@ -1,26 +1,32 @@
 import pystac
 from pystac.link import Link
 from pystac.extensions.eo import Band
+from typing import Final, List, Dict
+from pystac.provider import ProviderRole
 
-SENTINEL_LICENSE = Link(rel='license',
-                        target='https://sentinel.esa.int/documents/' +
-                        '247904/690755/Sentinel_Data_Legal_Notice')
+SENTINEL_LICENSE: Final[Link] = Link(
+    rel='license',
+    target=
+    'https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice'
+)
 
-SENTINEL_INSTRUMENTS = ['msi']
-SENTINEL_CONSTELLATION = 'Sentinel 2'
+SENTINEL_INSTRUMENTS: Final[List[str]] = ['msi']
+SENTINEL_CONSTELLATION: Final[str] = 'Sentinel 2'
 
-SENTINEL_PROVIDER = pystac.Provider(
+SENTINEL_PROVIDER: Final[pystac.Provider] = pystac.Provider(
     name='ESA',
-    roles=['producer', 'processor', 'licensor'],
+    roles=[
+        ProviderRole.PRODUCER, ProviderRole.PROCESSOR, ProviderRole.LICENSOR
+    ],
     url='https://earth.esa.int/web/guest/home')
 
-SAFE_MANIFEST_ASSET_KEY = "safe-manifest"
-INSPIRE_METADATA_ASSET_KEY = "inspire-metadata"
-PRODUCT_METADATA_ASSET_KEY = "product-metadata"
-GRANULE_METADATA_ASSET_KEY = "granule-metadata"
-DATASTRIP_METADATA_ASSET_KEY = "datastrip-metadata"
+SAFE_MANIFEST_ASSET_KEY: Final[str] = "safe-manifest"
+INSPIRE_METADATA_ASSET_KEY: Final[str] = "inspire-metadata"
+PRODUCT_METADATA_ASSET_KEY: Final[str] = "product-metadata"
+GRANULE_METADATA_ASSET_KEY: Final[str] = "granule-metadata"
+DATASTRIP_METADATA_ASSET_KEY: Final[str] = "datastrip-metadata"
 
-SENTINEL_BANDS = {
+SENTINEL_BANDS: Final[Dict[str, Band]] = {
     'B01':
     Band.create(name='B01',
                 common_name='coastal',
@@ -103,7 +109,7 @@ SENTINEL_BANDS = {
 # available for each band as separate assets.
 # The first resolution is the sensor gsd; others
 # are downscaled versions.
-BANDS_TO_RESOLUTIONS = {
+BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
     'B01': [
         60,
     ],

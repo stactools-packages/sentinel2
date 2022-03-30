@@ -1,7 +1,9 @@
 import logging
 import os
 import re
-from typing import Dict, List, Optional, Tuple, Pattern
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple, Pattern, Final, Any
+from datetime import datetime
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -22,9 +24,28 @@ from stactools.sentinel2.constants import (
 
 logger = logging.getLogger(__name__)
 
-MGRS_PATTERN: Pattern[str] = re.compile(
+MGRS_PATTERN: Final[Pattern[str]] = re.compile(
     r"_T(\d{1,2})([CDEFGHJKLMNPQRSTUVWX])([ABCDEFGHJKLMNPQRSTUVWXYZ][ABCDEFGHJKLMNPQRSTUV])_"
 )
+
+
+@dataclass
+class Metadata:
+    scene_id: str
+    cloudiness_percentage: Optional[float]
+    extra_assets: Dict[str, pystac.Asset]
+    geometry: Dict[str, Any]
+    bbox: List[float]
+    datetime: datetime
+    platform: str
+    orbit_state: str
+    relative_orbit: int
+    metadata_dict: Dict[str, Any]
+    image_media_type: str
+    image_paths: List[str]
+    epsg: int
+    proj_bbox: List[float]
+    resolution_to_shape: Dict[int, Tuple[int, int]]
 
 
 def create_item(
@@ -35,7 +56,8 @@ def create_item(
 
     Arguments:
         granule_href: The HREF to the granule. This is expected to be a path
-            to a SAFE archive, e.g. : https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/01/C/CV/2016/03/27/S2A_MSIL2A_20160327T204522_N0212_R128_T01CCV_20210214T042702.SAFE
+            to a SAFE archive, e.g. https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/01/C/CV/2016/03/27/S2A_MSIL2A_20160327T204522_N0212_R128_T01CCV_20210214T042702.SAFE,
+            or a partial S3 object path, e.g. s3://sentinel-s2-l2a/tiles/10/S/DG/2018/12/31/0/
         additional_providers: Optional list of additional providers to set into the Item
         read_href_modifier: A function that takes an HREF and returns a modified HREF.
             This can be used to modify a HREF to make it readable, e.g. appending
@@ -45,17 +67,15 @@ def create_item(
         pystac.Item: An item representing the Sentinel 2 scene
     """  # noqa
 
-    safe_manifest = SafeManifest(granule_href, read_href_modifier)
+    metadata: Optional[Metadata] = None
+    if granule_href.lower().endswith(".safe"):
+        metadata = metadata_from_safe_manifest(granule_href,
+                                               read_href_modifier)
 
-    product_metadata = ProductMetadata(safe_manifest.product_metadata_href,
-                                       read_href_modifier)
-    granule_metadata = GranuleMetadata(safe_manifest.granule_metadata_href,
-                                       read_href_modifier)
-
-    item = pystac.Item(id=product_metadata.scene_id,
-                       geometry=product_metadata.geometry,
-                       bbox=product_metadata.bbox,
-                       datetime=product_metadata.datetime,
+    item = pystac.Item(id=metadata.scene_id,
+                       geometry=metadata.geometry,
+                       bbox=metadata.bbox,
+                       datetime=metadata.datetime,
                        properties={})
 
     # --Common metadata--
@@ -65,7 +85,7 @@ def create_item(
     if additional_providers is not None:
         item.common_metadata.providers.extend(additional_providers)
 
-    item.common_metadata.platform = product_metadata.platform
+    item.common_metadata.platform = metadata.platform
     item.common_metadata.constellation = SENTINEL_CONSTELLATION
     item.common_metadata.instruments = SENTINEL_INSTRUMENTS
 
@@ -73,23 +93,23 @@ def create_item(
 
     # eo
     eo = EOExtension.ext(item, add_if_missing=True)
-    eo.cloud_cover = granule_metadata.cloudiness_percentage
+    eo.cloud_cover = metadata.cloudiness_percentage
 
     # sat
     sat = SatExtension.ext(item, add_if_missing=True)
-    sat.orbit_state = OrbitState(product_metadata.orbit_state.lower())
-    sat.relative_orbit = product_metadata.relative_orbit
+    sat.orbit_state = OrbitState(metadata.orbit_state.lower())
+    sat.relative_orbit = metadata.relative_orbit
 
     # proj
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = granule_metadata.epsg
+    projection.epsg = metadata.epsg
     if projection.epsg is None:
         raise ValueError(
             f'Could not determine EPSG code for {granule_href}; which is required.'
         )
 
     # mgrs
-    mgrs_match = MGRS_PATTERN.search(product_metadata.scene_id)
+    mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
     if mgrs_match and len(mgrs_match.groups()) == 3:
         mgrs_groups = mgrs_match.groups()
         mgrs = MgrsExtension.ext(item, add_if_missing=True)
@@ -98,57 +118,24 @@ def create_item(
         mgrs.grid_square = mgrs_groups[2]
     else:
         logger.error(
-            f'Error populating MGRS Extension fields from ID: {product_metadata.scene_id}'
+            f'Error populating MGRS Extension fields from ID: {metadata.scene_id}'
         )
 
     # s2 properties
-    item.properties.update({
-        **product_metadata.metadata_dict,
-        **granule_metadata.metadata_dict
-    })
+    item.properties.update(metadata.metadata_dict)
 
     # --Assets--
 
-    # Metadata
-
-    if safe_manifest is not None:
-        item.add_asset(*safe_manifest.create_asset())
-        item.add_asset(
-            INSPIRE_METADATA_ASSET_KEY,
-            pystac.Asset(href=safe_manifest.inspire_metadata_href,
-                         media_type=pystac.MediaType.XML,
-                         roles=['metadata']))
-        item.add_asset(
-            DATASTRIP_METADATA_ASSET_KEY,
-            pystac.Asset(href=safe_manifest.datastrip_metadata_href,
-                         media_type=pystac.MediaType.XML,
-                         roles=['metadata']))
-
-    item.add_asset(*product_metadata.create_asset())
-    item.add_asset(*granule_metadata.create_asset())
-
-    # Image assets
-    proj_bbox = granule_metadata.proj_bbox
-
     image_assets = dict([
         image_asset_from_href(os.path.join(granule_href, image_path),
-                              granule_metadata.resolution_to_shape, proj_bbox,
-                              product_metadata.image_media_type)
-        for image_path in product_metadata.image_paths
+                              metadata.resolution_to_shape, metadata.proj_bbox,
+                              metadata.image_media_type)
+        for image_path in metadata.image_paths
     ])
 
     for key, asset in image_assets.items():
         assert key not in item.assets
         item.add_asset(key, asset)
-
-    # Thumbnail
-
-    if safe_manifest is not None and safe_manifest.thumbnail_href is not None:
-        item.add_asset(
-            "preview",
-            pystac.Asset(href=safe_manifest.thumbnail_href,
-                         media_type=pystac.MediaType.COG,
-                         roles=['thumbnail']))
 
     # --Links--
 
@@ -273,9 +260,9 @@ def image_asset_from_href(
 
         maybe_res = asset_href[-7:-4]
         if re.match(r'(\w{2}m)', maybe_res):
-            return (f'visual-{maybe_res}', asset)
+            return f'visual-{maybe_res}', asset
         else:
-            return ('visual', asset)
+            return 'visual', asset
 
     if '_AOT_' in asset_href:
         # Aerosol
@@ -284,7 +271,7 @@ def image_asset_from_href(
                              title='Aerosol optical thickness (AOT)',
                              roles=['data'])
         set_asset_properties(asset)
-        return (f'AOT-{asset_href[-7:-4]}', asset)
+        return f'AOT-{asset_href[-7:-4]}', asset
 
     if '_WVP_' in asset_href:
         # Water vapor
@@ -293,7 +280,7 @@ def image_asset_from_href(
                              title='Water vapour (WVP)',
                              roles=['data'])
         set_asset_properties(asset)
-        return (f'WVP-{asset_href[-7:-4]}', asset)
+        return f'WVP-{asset_href[-7:-4]}', asset
 
     if '_SCL_' in asset_href:
         # Classification map
@@ -302,6 +289,54 @@ def image_asset_from_href(
                              title='Scene classfication map (SCL)',
                              roles=['data'])
         set_asset_properties(asset)
-        return (f'SCL-{asset_href[-7:-4]}', asset)
+        return f'SCL-{asset_href[-7:-4]}', asset
 
     raise ValueError(f'Unexpected asset: {asset_href}')
+
+
+def metadata_from_safe_manifest(
+        granule_href: str, read_href_modifier: Optional[ReadHrefModifier]):
+    safe_manifest = SafeManifest(granule_href, read_href_modifier)
+    product_metadata = ProductMetadata(safe_manifest.product_metadata_href,
+                                       read_href_modifier)
+    granule_metadata = GranuleMetadata(safe_manifest.granule_metadata_href,
+                                       read_href_modifier)
+    extra_assets = dict([
+        safe_manifest.create_asset(),
+        product_metadata.create_asset(),
+        granule_metadata.create_asset(),
+        (INSPIRE_METADATA_ASSET_KEY,
+         pystac.Asset(href=safe_manifest.inspire_metadata_href,
+                      media_type=pystac.MediaType.XML,
+                      roles=['metadata'])),
+        (DATASTRIP_METADATA_ASSET_KEY,
+         pystac.Asset(href=safe_manifest.datastrip_metadata_href,
+                      media_type=pystac.MediaType.XML,
+                      roles=['metadata'])),
+    ])
+
+    if safe_manifest.thumbnail_href is not None:
+        extra_assets["preview"] = pystac.Asset(
+            href=safe_manifest.thumbnail_href,
+            media_type=pystac.MediaType.COG,
+            roles=['thumbnail'])
+
+    return Metadata(
+        scene_id=product_metadata.scene_id,
+        cloudiness_percentage=granule_metadata.cloudiness_percentage,
+        extra_assets=extra_assets,
+        geometry=product_metadata.geometry,
+        bbox=product_metadata.bbox,
+        datetime=product_metadata.datetime,
+        platform=product_metadata.platform,
+        orbit_state=product_metadata.orbit_state,
+        relative_orbit=product_metadata.relative_orbit,
+        metadata_dict={
+            **product_metadata.metadata_dict,
+            **granule_metadata.metadata_dict
+        },
+        image_media_type=product_metadata.image_media_type,
+        image_paths=product_metadata.image_paths,
+        epsg=granule_metadata.epsg,
+        proj_bbox=granule_metadata.proj_bbox,
+        resolution_to_shape=granule_metadata.resolution_to_shape)
