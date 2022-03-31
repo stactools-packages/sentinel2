@@ -2,6 +2,7 @@ from collections import defaultdict
 import os
 from tempfile import TemporaryDirectory
 from stactools.sentinel2.mgrs import MgrsExtension
+from stactools.sentinel2.grid import GridExtension
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -169,3 +170,11 @@ class CreateItemTest(CliTestCase):
                     self.assertIn(
                         f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}_",
                         item.id)
+
+                    self.assertTrue(item.properties.get("grid:code"))
+
+                    grid = GridExtension.ext(item)
+                    grid_id = grid.code.split('-')[1]
+                    if len(grid_id) == 4:
+                        grid_id = f"0{grid_id}"  # add zero pad
+                    self.assertIn(f"_T{grid_id}_", item.id)
