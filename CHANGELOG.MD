@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add support for AWS S3 Open Data format (produced by Sinergise)
 - change platform and constellation to use best practices (lowercase, no spaces)
 - change asset names to use underscore instead of dash
+- Band 9 now has common name nir09 and Band 10 has common name cirrus
+
+### Fixed
+
+- Band 8A corrected to have common name nir08 instead of rededge
 
 ## 0.3.0
 

@@ -198,9 +198,9 @@ class GranuleMetadata:
     @property
     def platform(self) -> Optional[str]:
         if self.tile_id.startswith("S2A"):
-            return "Sentinel-2A"
+            return "sentinel-2a"
         elif self.tile_id.startswith("S2B"):
-            return "Sentinel-2B"
+            return "sentinel-2b"
         else:
             return None
 
