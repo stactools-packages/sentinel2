@@ -10,6 +10,7 @@ from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from stactools.sentinel2.mgrs import MgrsExtension
+from stactools.sentinel2.grid import GridExtension
 
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import transform_from_bbox
@@ -108,7 +109,7 @@ def create_item(
             f'Could not determine EPSG code for {granule_href}; which is required.'
         )
 
-    # mgrs
+    # MGRS and Grid Extension
     mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
     if mgrs_match and len(mgrs_match.groups()) == 3:
         mgrs_groups = mgrs_match.groups()
@@ -116,9 +117,11 @@ def create_item(
         mgrs.utm_zone = int(mgrs_groups[0])
         mgrs.latitude_band = mgrs_groups[1]
         mgrs.grid_square = mgrs_groups[2]
+        grid = GridExtension.ext(item, add_if_missing=True)
+        grid.code = f"MGRS-{mgrs.utm_zone}{mgrs.latitude_band}{mgrs.grid_square}"
     else:
         logger.error(
-            f'Error populating MGRS Extension fields from ID: {metadata.scene_id}'
+            f'Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}'
         )
 
     # s2 properties
