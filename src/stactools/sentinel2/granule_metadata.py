@@ -21,6 +21,12 @@ class GranuleMetadata:
 
         self._root = XmlElement.from_file(href, read_href_modifier)
 
+        tile_id = self._root.find_text('n1:General_Info/TILE_ID')
+        if tile_id is None:
+            raise GranuleMetadataError(
+                f"Cannot find granule tile_id granule metadata at {self.href}")
+        self.tile_id = tile_id
+
         geocoding_node = self._root.find('n1:Geometric_Info/Tile_Geocoding')
         if geocoding_node is None:
             raise GranuleMetadataError(
@@ -167,8 +173,39 @@ class GranuleMetadata:
 
         return {k: v for k, v in result.items() if v is not None}
 
+    @property
+    def product_id(self) -> str:
+        return self.tile_id
+
+    @property
+    def scene_id(self) -> str:
+        """ Returns the string to be used for a STAC Item id.
+
+        Removes the processing number and .SAFE extension
+        from the product_id defined below.
+
+        Parsed based on the naming convention found here:
+        https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
+        """
+        # Ensure the product id (PRODUCT_URI) is as expected.
+        id_parts = self.product_id.split('_')
+
+        # Remove PDGS Processing Baseline number
+        id_parts = [part for part in id_parts if not part.startswith('N')]
+
+        return '_'.join(id_parts)
+
+    @property
+    def platform(self) -> Optional[str]:
+        if self.tile_id.startswith("S2A"):
+            return "sentinel-2a"
+        elif self.tile_id.startswith("S2B"):
+            return "sentinel-2b"
+        else:
+            return None
+
     def create_asset(self):
         asset = pystac.Asset(href=self.href,
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])
-        return (GRANULE_METADATA_ASSET_KEY, asset)
+        return GRANULE_METADATA_ASSET_KEY, asset

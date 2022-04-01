@@ -1,5 +1,5 @@
 import os
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import pystac
 
@@ -74,7 +74,7 @@ class SafeManifest:
             'dataObject[@ID="S2_Level-2A_Tile1_Metadata"]/byteStream/fileLocation'
         ])
 
-    def create_asset(self):
+    def create_asset(self) -> Tuple[str, pystac.Asset]:
         asset = pystac.Asset(href=self.href,
                              media_type=pystac.MediaType.XML,
                              roles=['metadata'])

@@ -4,6 +4,8 @@ from tempfile import TemporaryDirectory
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.grid import GridExtension
 
+from stactools.sentinel2.utils import extract_gsd
+import re
 import pystac
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -18,6 +20,26 @@ from stactools.testing import CliTestCase
 from tests import test_data
 
 
+def proj_bbox_area_difference(item):
+    projection = ProjectionExtension.ext(item)
+    visual_asset = item.assets.get('visual_10m') or \
+                   item.assets.get('visual')
+    asset_projection = ProjectionExtension.ext(visual_asset)
+    pb = mapping(box(*asset_projection.bbox))
+    proj_geom = shape(
+        reproject_geom(f'epsg:{projection.epsg}', 'epsg:4326', pb))
+
+    item_geom = shape(item.geometry)
+
+    difference_area = item_geom.difference(proj_geom).area
+    raster_area = proj_geom.area
+
+    # We expect the footprint to be in the raster
+    # bounds, so any difference should be relatively very low
+    # and due to reprojection.
+    return difference_area / raster_area
+
+
 class CreateItemTest(CliTestCase):
 
     def create_subcommand_functions(self):
@@ -26,39 +48,25 @@ class CreateItemTest(CliTestCase):
     def test_create_item(self):
         granule_hrefs = {
             k: test_data.get_path(f'data-files/{v}')
-            for (k, v) in
-            [('S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248',
-              'S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE'
-              ),
-             ('S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857',
-              'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
-              ),
-             ('S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658',
-              'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE'
-              ),
-             ('S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500',
-              'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
-              )]
+            for (k, v) in [
+                ('S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248',
+                 'S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE'
+                 ),
+                ('S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857',
+                 'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
+                 ),
+                ('S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658',
+                 'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE'
+                 ),
+                ('S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500',
+                 'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
+                 ),
+                ('S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG',
+                 'S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG'),
+                ('S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG',
+                 'S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG'),
+            ]
         }
-
-        def check_proj_bbox(item):
-            projection = ProjectionExtension.ext(item)
-            visual_asset = item.assets.get('visual-10m') or \
-                           item.assets.get('visual')
-            asset_projection = ProjectionExtension.ext(visual_asset)
-            pb = mapping(box(*asset_projection.bbox))
-            proj_geom = shape(
-                reproject_geom(f'epsg:{projection.epsg}', 'epsg:4326', pb))
-
-            item_geom = shape(item.geometry)
-
-            difference_area = item_geom.difference(proj_geom).area
-            raster_area = proj_geom.area
-
-            # We expect the footprint to be in the raster
-            # bounds, so any difference should be relatively very low
-            # and due to reprojection.
-            self.assertLess(difference_area / raster_area, 0.005)
 
         for item_id, granule_href in granule_hrefs.items():
             with self.subTest(granule_href):
@@ -119,7 +127,7 @@ class CreateItemTest(CliTestCase):
                                 resolutions_seen[band_name].append(
                                     asset.extra_fields['gsd'])
 
-                        # Level 1C only has highest resolution version of each band
+                        # Level 1C only has the highest resolution version of each band
                         used_resolutions = {
                             band: [resolutions[0]]
                             for band, resolutions in
@@ -133,9 +141,9 @@ class CreateItemTest(CliTestCase):
                                 asset_split = asset_key.split('_')
                                 self.assertLessEqual(len(asset_split), 2)
 
-                                href_band, href_res = os.path.splitext(
-                                    asset.href)[0].split('_')[-2:]
-                                asset_res = int(href_res.replace('m', ''))
+                                href_band = re.search(r'[_/](B\d[A\d])',
+                                                      asset.href).group(1)
+                                asset_res = extract_gsd(asset.href)
                                 self.assertEqual(href_band, band_name)
                                 if len(asset_split) == 1:
                                     self.assertEqual(asset_res, resolutions[0])
@@ -157,10 +165,20 @@ class CreateItemTest(CliTestCase):
                     self.assertEqual(set(resolutions_seen.keys()),
                                      set(used_resolutions.keys()))
                     for band in resolutions_seen:
-                        self.assertEqual(set(resolutions_seen[band]),
-                                         set(used_resolutions[band]))
+                        # B08 has only 10m resolution in SAFE archive
+                        # but 20m and 60m in S3 sinergise data
+                        if band == 'B08':
+                            if len(resolutions_seen[band]) == 1:
+                                self.assertEqual(set(resolutions_seen[band]),
+                                                 {used_resolutions[band][0]})
+                            else:
+                                self.assertEqual(set(resolutions_seen[band]),
+                                                 set(used_resolutions[band]))
+                        else:
+                            self.assertEqual(set(resolutions_seen[band]),
+                                             set(used_resolutions[band]))
 
-                    check_proj_bbox(item)
+                    self.assertLess(proj_bbox_area_difference(item), 0.005)
 
                     self.assertTrue(item.properties.get("mgrs:latitude_band"))
                     self.assertTrue(item.properties.get("mgrs:utm_zone"))
@@ -168,7 +186,7 @@ class CreateItemTest(CliTestCase):
 
                     mgrs = MgrsExtension.ext(item)
                     self.assertIn(
-                        f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}_",
+                        f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}",
                         item.id)
 
                     self.assertTrue(item.properties.get("grid:code"))
@@ -177,4 +195,4 @@ class CreateItemTest(CliTestCase):
                     grid_id = grid.code.split('-')[1]
                     if len(grid_id) == 4:
                         grid_id = f"0{grid_id}"  # add zero pad
-                    self.assertIn(f"_T{grid_id}_", item.id)
+                    self.assertIn(f"_T{grid_id}", item.id)

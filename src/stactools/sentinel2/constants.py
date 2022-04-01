@@ -1,26 +1,33 @@
 import pystac
 from pystac.link import Link
 from pystac.extensions.eo import Band
+from typing import Final, List, Dict
+from pystac.provider import ProviderRole
 
-SENTINEL_LICENSE = Link(rel='license',
-                        target='https://sentinel.esa.int/documents/' +
-                        '247904/690755/Sentinel_Data_Legal_Notice')
+SENTINEL_LICENSE: Final[Link] = Link(
+    rel='license',
+    target=
+    'https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice'
+)
 
-SENTINEL_INSTRUMENTS = ['msi']
-SENTINEL_CONSTELLATION = 'Sentinel 2'
+SENTINEL_INSTRUMENTS: Final[List[str]] = ['msi']
+SENTINEL_CONSTELLATION: Final[str] = 'sentinel-2'
 
-SENTINEL_PROVIDER = pystac.Provider(
+SENTINEL_PROVIDER: Final[pystac.Provider] = pystac.Provider(
     name='ESA',
-    roles=['producer', 'processor', 'licensor'],
+    roles=[
+        ProviderRole.PRODUCER, ProviderRole.PROCESSOR, ProviderRole.LICENSOR
+    ],
     url='https://earth.esa.int/web/guest/home')
 
-SAFE_MANIFEST_ASSET_KEY = "safe-manifest"
-INSPIRE_METADATA_ASSET_KEY = "inspire-metadata"
-PRODUCT_METADATA_ASSET_KEY = "product-metadata"
-GRANULE_METADATA_ASSET_KEY = "granule-metadata"
-DATASTRIP_METADATA_ASSET_KEY = "datastrip-metadata"
+SAFE_MANIFEST_ASSET_KEY: Final[str] = "safe_manifest"
+INSPIRE_METADATA_ASSET_KEY: Final[str] = "inspire_metadata"
+PRODUCT_METADATA_ASSET_KEY: Final[str] = "product_metadata"
+GRANULE_METADATA_ASSET_KEY: Final[str] = "granule_metadata"
+DATASTRIP_METADATA_ASSET_KEY: Final[str] = "datastrip_metadata"
+TILEINFO_METADATA_ASSET_KEY: Final[str] = "tileinfo_metadata"
 
-SENTINEL_BANDS = {
+SENTINEL_BANDS: Final[Dict[str, Band]] = {
     'B01':
     Band.create(name='B01',
                 common_name='coastal',
@@ -71,17 +78,19 @@ SENTINEL_BANDS = {
                 full_width_half_max=0.145),
     'B8A':
     Band.create(name='B8A',
-                common_name='rededge',
+                common_name='nir08',
                 description='Band 8A - Vegetation red edge 4',
                 center_wavelength=0.865,
                 full_width_half_max=0.033),
     'B09':
     Band.create(name='B09',
+                common_name='nir09',
                 description='Band 9 - Water vapor',
                 center_wavelength=0.945,
                 full_width_half_max=0.026),
     'B10':
     Band.create(name='B10',
+                common_name='cirrus',
                 description='Band 10 - SWIR - Cirrus',
                 center_wavelength=1.3735,
                 full_width_half_max=0.075),
@@ -103,52 +112,75 @@ SENTINEL_BANDS = {
 # available for each band as separate assets.
 # The first resolution is the sensor gsd; others
 # are downscaled versions.
-BANDS_TO_RESOLUTIONS = {
-    'B01': [
-        60,
-    ],
-    'B02': [
-        10,
-        20,
-        60,
-    ],
-    'B03': [
-        10,
-        20,
-        60,
-    ],
-    'B04': [
-        10,
-        20,
-        60,
-    ],
-    'B05': [
-        20,
-        60,
-    ],
-    'B06': [
-        20,
-        60,
-    ],
-    'B07': [
-        20,
-        60,
-    ],
-    'B08': [
-        10,
-    ],
-    'B8A': [
-        20,
-        60,
-    ],
+BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
+    'B01': [60],
+    'B02': [10, 20, 60],
+    'B03': [10, 20, 60],
+    'B04': [10, 20, 60],
+    'B05': [20, 60],
+    'B06': [20, 60],
+    'B07': [20, 60],
+    'B08': [10, 20, 60],
+    'B8A': [20, 60],
     'B09': [60],
     'B10': [60],
-    'B11': [
-        20,
-        60,
-    ],
-    'B12': [
-        20,
-        60,
-    ],
+    'B11': [20, 60],
+    'B12': [20, 60],
 }
+
+L2A_IMAGE_PATHS: Final[List[str]] = [
+    "R10m/B04.jp2",
+    "R10m/B03.jp2",
+    "R10m/B02.jp2",
+    "R10m/WVP.jp2",
+    "R10m/AOT.jp2",
+    "R10m/TCI.jp2",
+    "R10m/B08.jp2",
+    "R20m/B12.jp2",
+    "R20m/B06.jp2",
+    "R20m/B07.jp2",
+    "R20m/B05.jp2",
+    "R20m/B11.jp2",
+    "R20m/B04.jp2",
+    "R20m/B03.jp2",
+    "R20m/B02.jp2",
+    "R20m/WVP.jp2",
+    "R20m/B8A.jp2",
+    "R20m/SCL.jp2",
+    "R20m/AOT.jp2",
+    "R20m/TCI.jp2",
+    "R20m/B08.jp2",
+    "R60m/B12.jp2",
+    "R60m/B06.jp2",
+    "R60m/B07.jp2",
+    "R60m/B05.jp2",
+    "R60m/B11.jp2",
+    "R60m/B04.jp2",
+    "R60m/B01.jp2",
+    "R60m/B03.jp2",
+    "R60m/B02.jp2",
+    "R60m/WVP.jp2",
+    "R60m/B8A.jp2",
+    "R60m/SCL.jp2",
+    "R60m/AOT.jp2",
+    "R60m/B09.jp2",
+    "R60m/TCI.jp2",
+    "R60m/B08.jp2",
+]
+
+L1C_IMAGE_PATHS: Final[List[str]] = [
+    "B01.jp2",
+    "B02.jp2",
+    "B03.jp2",
+    "B04.jp2",
+    "B05.jp2",
+    "B06.jp2",
+    "B07.jp2",
+    "B08.jp2",
+    "B8A.jp2",
+    "B09.jp2",
+    "B10.jp2",
+    "B11.jp2",
+    "B12.jp2",
+    "TCI.jp2",
+]
