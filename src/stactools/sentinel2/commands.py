@@ -2,7 +2,7 @@ import logging
 import click
 import json
 import os
-
+from typing import Optional
 from stactools.sentinel2.stac import create_item
 
 logger = logging.getLogger(__name__)
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def create_sentinel2_command(cli):
 
     @cli.group('sentinel2',
-               short_help=("Commands for working with sentinel2 data"))
+               short_help="Commands for working with sentinel2 data")
     def sentinel2():
         pass
 
@@ -24,7 +24,17 @@ def create_sentinel2_command(cli):
         '-p',
         '--providers',
         help='Path to JSON file containing array of additional providers')
-    def create_item_command(src, dst, providers):
+    @click.option('--tolerance',
+                  type=float,
+                  default=0.0001,
+                  help='Item geometry simplification tolerance, e.g., 0.0001')
+    @click.option(
+        '--asset-href-prefix',
+        help='Prefix for all Asset hrefs instead of default of the "src" value'
+    )
+    def create_item_command(src: str, dst: str, providers: Optional[str],
+                            tolerance: float,
+                            asset_href_prefix: Optional[str]):
         """Creates a STAC Item for a given Sentinel 2 granule
 
         SRC is the path to the granule
@@ -37,7 +47,10 @@ def create_sentinel2_command(cli):
             with open(providers) as f:
                 additional_providers = json.load(f)
 
-        item = create_item(src, additional_providers=additional_providers)
+        item = create_item(granule_href=src,
+                           additional_providers=additional_providers,
+                           tolerance=tolerance,
+                           asset_href_prefix=asset_href_prefix)
 
         item_path = os.path.join(dst, '{}.json'.format(item.id))
         item.set_self_href(item_path)

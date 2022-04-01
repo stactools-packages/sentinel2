@@ -45,7 +45,7 @@ def create_cog_asset(key, asset, path):
                          roles=['data'],
                          title=f'{asset.title} (COG)',
                          properties=asset.properties)
-    return (f'{key}-cog', asset)
+    return f'{key}-cog', asset
 
 
 def is_non_cog_image(asset):
