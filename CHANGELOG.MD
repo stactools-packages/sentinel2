@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Populate MGRS Extension fields
+- Populate Grid Extension fields
+- Add support for AWS S3 Open Data format (produced by Sinergise)
+- change platform and constellation to use best practices (lowercase, no spaces)
+- change asset names to use underscore instead of dash
 
 ## 0.3.0
 
