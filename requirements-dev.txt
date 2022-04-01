@@ -9,4 +9,3 @@ sphinxcontrib-fulltoc
 sphinxcontrib-napoleon
 yapf
 toml
-mypy
