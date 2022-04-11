@@ -411,7 +411,8 @@ def metadata_from_granule_metadata(
         extra_assets=extra_assets,
         metadata_dict={
             **granule_metadata.metadata_dict,
-            **tileinfo_metadata.metadata_dict,
+            **tileinfo_metadata.metadata_dict, f"{s2_prefix}:processing_baseline":
+            granule_metadata.processing_baseline
         },
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,

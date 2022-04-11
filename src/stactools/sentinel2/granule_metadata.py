@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Pattern, Final
 
 import pystac
 
@@ -8,6 +8,9 @@ from stactools.core.utils import map_opt
 from stactools.sentinel2.constants import (GRANULE_METADATA_ASSET_KEY,
                                            SENTINEL2_PROPERTY_PREFIX as
                                            s2_prefix)
+import re
+
+BASELINE_PROCESSING: Final[Pattern[str]] = re.compile(r"_N(\d\d\.\d\d)")
 
 
 class GranuleMetadataError(Exception):
@@ -205,6 +208,18 @@ class GranuleMetadata:
             return "sentinel-2b"
         else:
             return None
+
+    @property
+    def processing_baseline(self) -> Optional[str]:
+        """ Returns the string to be used for the baseline_processing property
+
+        Parsed based on the naming convention found here:
+        https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
+        """
+        mgrs_match = BASELINE_PROCESSING.search(self.product_id)
+        if mgrs_match:
+            return mgrs_match.group(1)
+        return None
 
     def create_asset(self):
         asset = pystac.Asset(href=self.href,
