@@ -5,7 +5,9 @@ from pystac.utils import str_to_datetime
 
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io import read_text
-from stactools.sentinel2.constants import TILEINFO_METADATA_ASSET_KEY
+from stactools.sentinel2.constants import (TILEINFO_METADATA_ASSET_KEY,
+                                           SENTINEL2_PROPERTY_PREFIX as
+                                           s2_prefix)
 import json
 from shapely.geometry import shape
 
@@ -47,7 +49,7 @@ class TileInfoMetadata:
         elif product_name and "_MSIL1C_" in product_name:
             product_type = "S2MSI1C"
 
-        result = {'sentinel2:product_type': product_type}
+        result = {f'{s2_prefix}:product_type': product_type}
 
         return {k: v for k, v in result.items() if v is not None}
 

@@ -26,7 +26,7 @@ from stactools.sentinel2.constants import (
     BANDS_TO_RESOLUTIONS, DATASTRIP_METADATA_ASSET_KEY, SENTINEL_PROVIDER,
     SENTINEL_LICENSE, SENTINEL_BANDS, SENTINEL_INSTRUMENTS,
     SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY, L2A_IMAGE_PATHS,
-    L1C_IMAGE_PATHS)
+    L1C_IMAGE_PATHS, SENTINEL2_PROPERTY_PREFIX as s2_prefix)
 
 logger = logging.getLogger(__name__)
 
@@ -149,8 +149,8 @@ def create_item(granule_href: str,
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
     view.sun_azimuth = metadata.metadata_dict.get(
-        "sentinel2:mean_solar_azimuth")
-    if msz := metadata.metadata_dict.get("sentinel2:mean_solar_zenith"):
+        f"{s2_prefix}:mean_solar_azimuth")
+    if msz := metadata.metadata_dict.get(f"{s2_prefix}:mean_solar_zenith"):
         view.sun_elevation = 90 - msz
 
     # s2 properties

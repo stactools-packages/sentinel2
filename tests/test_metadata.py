@@ -6,6 +6,7 @@ from stactools.core.projection import reproject_geom
 from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.granule_metadata import GranuleMetadata
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 
 from tests import test_data
 
@@ -27,36 +28,36 @@ class Sentinel2MetadataTest(unittest.TestCase):
 
         expected = {
             # From product metadata
-            'sentinel2:product_uri':
+            f'{s2_prefix}:product_uri':
             'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE',
-            'sentinel2:generation_time': '2020-10-07T16:08:57.135Z',
-            'sentinel2:processing_baseline': '02.12',
-            'sentinel2:product_type': 'S2MSI2A',
-            'sentinel2:datatake_id': 'GS2A_20190212T192651_019029_N02.12',
-            'sentinel2:datatake_type': 'INS-NOBS',
-            'sentinel2:datastrip_id':
+            f'{s2_prefix}:generation_time': '2020-10-07T16:08:57.135Z',
+            f'{s2_prefix}:processing_baseline': '02.12',
+            f'{s2_prefix}:product_type': 'S2MSI2A',
+            f'{s2_prefix}:datatake_id': 'GS2A_20190212T192651_019029_N02.12',
+            f'{s2_prefix}:datatake_type': 'INS-NOBS',
+            f'{s2_prefix}:datastrip_id':
             'S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12',
-            'sentinel2:granule_id':
+            f'{s2_prefix}:granule_id':
             'S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12',
-            'sentinel2:mgrs_tile': '07HFE',
-            'sentinel2:reflectance_conversion_factor': 1.02763689829235,
+            f'{s2_prefix}:mgrs_tile': '07HFE',
+            f'{s2_prefix}:reflectance_conversion_factor': 1.02763689829235,
 
             # From granule metadata
-            'sentinel2:degraded_msi_data_percentage': 0.0,
-            'sentinel2:nodata_pixel_percentage': 96.769553,
-            'sentinel2:saturated_defective_pixel_percentage': 0.0,
-            'sentinel2:dark_features_percentage': 0.0,
-            'sentinel2:cloud_shadow_percentage': 0.0,
-            'sentinel2:vegetation_percentage': 0.000308,
-            'sentinel2:not_vegetated_percentage': 0.069531,
-            'sentinel2:water_percentage': 48.349833,
-            'sentinel2:unclassified_percentage': 0.0,
-            'sentinel2:medium_proba_clouds_percentage': 14.61311,
-            'sentinel2:high_proba_clouds_percentage': 24.183494,
-            'sentinel2:thin_cirrus_percentage': 12.783723,
-            'sentinel2:snow_ice_percentage': 0.0,
-            'sentinel2:mean_solar_zenith': 32.707073851362,
-            'sentinel2:mean_solar_azimuth': 62.3286549448294
+            f'{s2_prefix}:degraded_msi_data_percentage': 0.0,
+            f'{s2_prefix}:nodata_pixel_percentage': 96.769553,
+            f'{s2_prefix}:saturated_defective_pixel_percentage': 0.0,
+            f'{s2_prefix}:dark_features_percentage': 0.0,
+            f'{s2_prefix}:cloud_shadow_percentage': 0.0,
+            f'{s2_prefix}:vegetation_percentage': 0.000308,
+            f'{s2_prefix}:not_vegetated_percentage': 0.069531,
+            f'{s2_prefix}:water_percentage': 48.349833,
+            f'{s2_prefix}:unclassified_percentage': 0.0,
+            f'{s2_prefix}:medium_proba_clouds_percentage': 14.61311,
+            f'{s2_prefix}:high_proba_clouds_percentage': 24.183494,
+            f'{s2_prefix}:thin_cirrus_percentage': 12.783723,
+            f'{s2_prefix}:snow_ice_percentage': 0.0,
+            f'{s2_prefix}:mean_solar_zenith': 32.707073851362,
+            f'{s2_prefix}:mean_solar_azimuth': 62.3286549448294
         }
 
         for k, v in expected.items():

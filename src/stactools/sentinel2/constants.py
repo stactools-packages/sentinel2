@@ -4,6 +4,8 @@ from pystac.extensions.eo import Band
 from typing import Final, List, Dict
 from pystac.provider import ProviderRole
 
+SENTINEL2_PROPERTY_PREFIX = "sentinel2"
+
 SENTINEL_LICENSE: Final[Link] = Link(
     rel='license',
     target=

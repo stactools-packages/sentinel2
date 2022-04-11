@@ -9,7 +9,9 @@ from pystac.utils import str_to_datetime
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.core.utils import map_opt
-from stactools.sentinel2.constants import PRODUCT_METADATA_ASSET_KEY
+from stactools.sentinel2.constants import (PRODUCT_METADATA_ASSET_KEY,
+                                           SENTINEL2_PROPERTY_PREFIX as
+                                           s2_prefix)
 from stactools.sentinel2.utils import fix_z_values
 
 
@@ -169,25 +171,25 @@ class ProductMetadata:
     @property
     def metadata_dict(self) -> Dict[str, Any]:
         result = {
-            'sentinel2:product_uri':
+            f'{s2_prefix}:product_uri':
             self.product_id,
-            'sentinel2:generation_time':
+            f'{s2_prefix}:generation_time':
             self.product_info_node.find_text('GENERATION_TIME'),
-            'sentinel2:processing_baseline':
+            f'{s2_prefix}:processing_baseline':
             self.product_info_node.find_text('PROCESSING_BASELINE'),
-            'sentinel2:product_type':
+            f'{s2_prefix}:product_type':
             self.product_info_node.find_text('PRODUCT_TYPE'),
-            'sentinel2:datatake_id':
+            f'{s2_prefix}:datatake_id':
             self.datatake_node.get_attr('datatakeIdentifier'),
-            'sentinel2:datatake_type':
+            f'{s2_prefix}:datatake_type':
             self.datatake_node.find_text('DATATAKE_TYPE'),
-            'sentinel2:datastrip_id':
+            f'{s2_prefix}:datastrip_id':
             self.granule_node.get_attr('datastripIdentifier'),
-            'sentinel2:granule_id':
+            f'{s2_prefix}:granule_id':
             self.granule_node.get_attr('granuleIdentifier'),
-            'sentinel2:mgrs_tile':
+            f'{s2_prefix}:mgrs_tile':
             self.mgrs_tile,
-            'sentinel2:reflectance_conversion_factor':
+            f'{s2_prefix}:reflectance_conversion_factor':
             map_opt(float, self.reflectance_conversion_node.find_text('U'))
         }
 

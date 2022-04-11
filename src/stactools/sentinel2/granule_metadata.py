@@ -5,7 +5,9 @@ import pystac
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.core.utils import map_opt
-from stactools.sentinel2.constants import GRANULE_METADATA_ASSET_KEY
+from stactools.sentinel2.constants import (GRANULE_METADATA_ASSET_KEY,
+                                           SENTINEL2_PROPERTY_PREFIX as
+                                           s2_prefix)
 
 
 class GranuleMetadataError(Exception):
@@ -107,68 +109,68 @@ class GranuleMetadata:
     @property
     def metadata_dict(self):
         image_content_properties = {
-            'sentinel2:degraded_msi_data_percentage':
+            f'{s2_prefix}:degraded_msi_data_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DEGRADED_MSI_DATA_PERCENTAGE')),
-            'sentinel2:nodata_pixel_percentage':
+            f'{s2_prefix}:nodata_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('NODATA_PIXEL_PERCENTAGE')),
-            'sentinel2:saturated_defective_pixel_percentage':
+            f'{s2_prefix}:saturated_defective_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'SATURATED_DEFECTIVE_PIXEL_PERCENTAGE')),
-            'sentinel2:dark_features_percentage':
+            f'{s2_prefix}:dark_features_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DARK_FEATURES_PERCENTAGE')),
-            'sentinel2:cloud_shadow_percentage':
+            f'{s2_prefix}:cloud_shadow_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('CLOUD_SHADOW_PERCENTAGE')),
-            'sentinel2:vegetation_percentage':
+            f'{s2_prefix}:vegetation_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('VEGETATION_PERCENTAGE')),
-            'sentinel2:not_vegetated_percentage':
+            f'{s2_prefix}:not_vegetated_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'NOT_VEGETATED_PERCENTAGE')),
-            'sentinel2:water_percentage':
+            f'{s2_prefix}:water_percentage':
             map_opt(float,
                     self._image_content_node.find_text('WATER_PERCENTAGE')),
-            'sentinel2:unclassified_percentage':
+            f'{s2_prefix}:unclassified_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('UNCLASSIFIED_PERCENTAGE')),
-            'sentinel2:medium_proba_clouds_percentage':
+            f'{s2_prefix}:medium_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'MEDIUM_PROBA_CLOUDS_PERCENTAGE')),
-            'sentinel2:high_proba_clouds_percentage':
+            f'{s2_prefix}:high_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'HIGH_PROBA_CLOUDS_PERCENTAGE')),
-            'sentinel2:thin_cirrus_percentage':
+            f'{s2_prefix}:thin_cirrus_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('THIN_CIRRUS_PERCENTAGE')),
-            'sentinel2:snow_ice_percentage':
+            f'{s2_prefix}:snow_ice_percentage':
             map_opt(float,
                     self._image_content_node.find_text('SNOW_ICE_PERCENTAGE'))
         }
 
         result = {
             **image_content_properties,
-            'sentinel2:mean_solar_zenith': self.mean_solar_zenith,
-            'sentinel2:mean_solar_azimuth': self.mean_solar_azimuth,
+            f'{s2_prefix}:mean_solar_zenith': self.mean_solar_zenith,
+            f'{s2_prefix}:mean_solar_azimuth': self.mean_solar_azimuth,
         }
 
         return {k: v for k, v in result.items() if v is not None}
