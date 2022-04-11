@@ -109,6 +109,11 @@ class CreateItemTest(CliTestCase):
                     elif item.properties['s2:product_type'] == 'S2MSI2A':
                         used_bands = dict(SENTINEL_BANDS)
                         used_bands.pop('B10')
+                        self.assertTrue(
+                            set(used_bands.keys()).issubset(
+                                set(item.assets.keys())))
+                        self.assertTrue({"visual", "AOT", "WVP", "SCL"
+                                         }.issubset(set(item.assets.keys())))
 
                     self.assertEqual(bands_seen, set(used_bands.keys()))
 

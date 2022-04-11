@@ -281,7 +281,7 @@ def image_asset_from_href(
         set_asset_properties(asset)
 
         maybe_res = extract_gsd(asset_href)
-        asset_id = f'visual_{maybe_res}m' if maybe_res else 'visual'
+        asset_id = f'visual_{maybe_res}m' if maybe_res and maybe_res != 10 else "visual"
         return asset_id, asset
 
     elif AOT_PATTERN.search(asset_href):
@@ -292,7 +292,7 @@ def image_asset_from_href(
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = f'AOT_{maybe_res}m' if maybe_res else 'AOT'
+        asset_id = mk_asset_id(maybe_res, "AOT")
         return asset_id, asset
 
     elif WVP_PATTERN.search(asset_href):
@@ -303,21 +303,25 @@ def image_asset_from_href(
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = f'WVP_{maybe_res}m' if maybe_res else 'WVP'
+        asset_id = mk_asset_id(maybe_res, "WVP")
         return asset_id, asset
 
     elif SCL_PATTERN.search(asset_href):
         # Classification map
         asset = pystac.Asset(href=asset_href,
                              media_type=asset_media_type,
-                             title='Scene classfication map (SCL)',
+                             title='Scene classification map (SCL)',
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = f'SCL_{maybe_res}m' if maybe_res else 'SCL'
+        asset_id = mk_asset_id(maybe_res, "SCL")
         return asset_id, asset
     else:
         raise ValueError(f'Unexpected asset: {asset_href}')
+
+
+def mk_asset_id(maybe_res: Optional[int], name: str):
+    return f'{name}_{maybe_res}m' if maybe_res and maybe_res != 20 else name
 
 
 # this is used for SAFE archive format
