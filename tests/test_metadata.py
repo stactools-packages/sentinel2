@@ -57,7 +57,7 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f'{s2_prefix}:thin_cirrus_percentage': 12.783723,
             f'{s2_prefix}:snow_ice_percentage': 0.0,
             f'{s2_prefix}:mean_solar_zenith': 32.707073851362,
-            f'{s2_prefix}:mean_solar_azimuth': 62.3286549448294,
+            f'{s2_prefix}:mean_solar_azimuth': 62.3286549448294
         }
 
         for k, v in expected.items():
@@ -65,8 +65,6 @@ class Sentinel2MetadataTest(unittest.TestCase):
             self.assertEqual(s2_props[k], v)
 
         self.assertEqual(granule_metadata.cloudiness_percentage, 51.580326)
-        self.assertEqual(granule_metadata.processing_baseline,
-                         s2_props[f"{s2_prefix}:processing_baseline"])
 
     def test_footprint_containing_geom_with_z_dimension(self):
         product_md_path = test_data.get_path(
