@@ -11,6 +11,7 @@ import pystac
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.sat import OrbitState, SatExtension
+from pystac.extensions.view import ViewExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.grid import GridExtension
 
@@ -144,6 +145,12 @@ def create_item(granule_href: str,
         logger.error(
             f'Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}'
         )
+
+    # View Extension
+    view = ViewExtension.ext(item, add_if_missing=True)
+    view.sun_azimuth = metadata.metadata_dict.get("s2:mean_solar_azimuth")
+    if msz := metadata.metadata_dict.get("s2:mean_solar_zenith"):
+        view.sun_elevation = 90 - msz
 
     # s2 properties
     item.properties.update(metadata.metadata_dict)

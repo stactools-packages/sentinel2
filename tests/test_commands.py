@@ -1,6 +1,8 @@
 from collections import defaultdict
 import os
 from tempfile import TemporaryDirectory
+
+from pystac.extensions.view import ViewExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.grid import GridExtension
 
@@ -201,3 +203,9 @@ class CreateItemTest(CliTestCase):
                     if len(grid_id) == 4:
                         grid_id = f"0{grid_id}"  # add zero pad
                     self.assertIn(f"_T{grid_id}", item.id)
+
+                    self.assertTrue(item.properties.get("view:sun_azimuth"))
+                    self.assertTrue(item.properties.get("view:sun_elevation"))
+                    view = ViewExtension.ext(item)
+                    self.assertTrue(view.sun_azimuth)
+                    self.assertTrue(view.sun_elevation)
