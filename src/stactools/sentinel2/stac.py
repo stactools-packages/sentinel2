@@ -37,6 +37,7 @@ TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI[_.]")
 AOT_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]AOT[_.]")
 WVP_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]WVP[_.]")
 SCL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SCL[_.]")
+THUMBNAIL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]preview[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
@@ -213,8 +214,9 @@ def image_asset_from_href(
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
 
-    shape = list(resolution_to_shape[int(resolution)])
-    transform = transform_from_bbox(proj_bbox, shape)
+    if resolution is not None:
+        shape = list(resolution_to_shape[int(resolution)])
+        transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(_asset: pystac.Asset,
                              _band_gsd: Optional[int] = None):
@@ -316,6 +318,12 @@ def image_asset_from_href(
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "SCL")
         return asset_id, asset
+    elif THUMBNAIL_PATTERN.search(asset_href):
+        # thumbnail image
+        return "thumbnail", pystac.Asset(href=asset_href,
+                                         media_type=pystac.MediaType.JPEG,
+                                         title='Thumbnail image',
+                                         roles=['thumbnail'])
     else:
         raise ValueError(f'Unexpected asset: {asset_href}')
 
