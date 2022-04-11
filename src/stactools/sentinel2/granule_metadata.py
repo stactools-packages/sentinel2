@@ -107,68 +107,68 @@ class GranuleMetadata:
     @property
     def metadata_dict(self):
         image_content_properties = {
-            's2:degraded_msi_data_percentage':
+            'sentinel2:degraded_msi_data_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DEGRADED_MSI_DATA_PERCENTAGE')),
-            's2:nodata_pixel_percentage':
+            'sentinel2:nodata_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('NODATA_PIXEL_PERCENTAGE')),
-            's2:saturated_defective_pixel_percentage':
+            'sentinel2:saturated_defective_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'SATURATED_DEFECTIVE_PIXEL_PERCENTAGE')),
-            's2:dark_features_percentage':
+            'sentinel2:dark_features_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DARK_FEATURES_PERCENTAGE')),
-            's2:cloud_shadow_percentage':
+            'sentinel2:cloud_shadow_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('CLOUD_SHADOW_PERCENTAGE')),
-            's2:vegetation_percentage':
+            'sentinel2:vegetation_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('VEGETATION_PERCENTAGE')),
-            's2:not_vegetated_percentage':
+            'sentinel2:not_vegetated_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'NOT_VEGETATED_PERCENTAGE')),
-            's2:water_percentage':
+            'sentinel2:water_percentage':
             map_opt(float,
                     self._image_content_node.find_text('WATER_PERCENTAGE')),
-            's2:unclassified_percentage':
+            'sentinel2:unclassified_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('UNCLASSIFIED_PERCENTAGE')),
-            's2:medium_proba_clouds_percentage':
+            'sentinel2:medium_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'MEDIUM_PROBA_CLOUDS_PERCENTAGE')),
-            's2:high_proba_clouds_percentage':
+            'sentinel2:high_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'HIGH_PROBA_CLOUDS_PERCENTAGE')),
-            's2:thin_cirrus_percentage':
+            'sentinel2:thin_cirrus_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('THIN_CIRRUS_PERCENTAGE')),
-            's2:snow_ice_percentage':
+            'sentinel2:snow_ice_percentage':
             map_opt(float,
                     self._image_content_node.find_text('SNOW_ICE_PERCENTAGE'))
         }
 
         result = {
             **image_content_properties,
-            's2:mean_solar_zenith': self.mean_solar_zenith,
-            's2:mean_solar_azimuth': self.mean_solar_azimuth,
+            'sentinel2:mean_solar_zenith': self.mean_solar_zenith,
+            'sentinel2:mean_solar_azimuth': self.mean_solar_azimuth,
         }
 
         return {k: v for k, v in result.items() if v is not None}

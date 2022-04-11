@@ -169,25 +169,25 @@ class ProductMetadata:
     @property
     def metadata_dict(self) -> Dict[str, Any]:
         result = {
-            's2:product_uri':
+            'sentinel2:product_uri':
             self.product_id,
-            's2:generation_time':
+            'sentinel2:generation_time':
             self.product_info_node.find_text('GENERATION_TIME'),
-            's2:processing_baseline':
+            'sentinel2:processing_baseline':
             self.product_info_node.find_text('PROCESSING_BASELINE'),
-            's2:product_type':
+            'sentinel2:product_type':
             self.product_info_node.find_text('PRODUCT_TYPE'),
-            's2:datatake_id':
+            'sentinel2:datatake_id':
             self.datatake_node.get_attr('datatakeIdentifier'),
-            's2:datatake_type':
+            'sentinel2:datatake_type':
             self.datatake_node.find_text('DATATAKE_TYPE'),
-            's2:datastrip_id':
+            'sentinel2:datastrip_id':
             self.granule_node.get_attr('datastripIdentifier'),
-            's2:granule_id':
+            'sentinel2:granule_id':
             self.granule_node.get_attr('granuleIdentifier'),
-            's2:mgrs_tile':
+            'sentinel2:mgrs_tile':
             self.mgrs_tile,
-            's2:reflectance_conversion_factor':
+            'sentinel2:reflectance_conversion_factor':
             map_opt(float, self.reflectance_conversion_node.find_text('U'))
         }
 

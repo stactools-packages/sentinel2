@@ -47,7 +47,7 @@ class TileInfoMetadata:
         elif product_name and "_MSIL1C_" in product_name:
             product_type = "S2MSI1C"
 
-        result = {'s2:product_type': product_type}
+        result = {'sentinel2:product_type': product_type}
 
         return {k: v for k, v in result.items() if v is not None}
 

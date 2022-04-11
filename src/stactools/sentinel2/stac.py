@@ -148,8 +148,9 @@ def create_item(granule_href: str,
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-    view.sun_azimuth = metadata.metadata_dict.get("s2:mean_solar_azimuth")
-    if msz := metadata.metadata_dict.get("s2:mean_solar_zenith"):
+    view.sun_azimuth = metadata.metadata_dict.get(
+        "sentinel2:mean_solar_azimuth")
+    if msz := metadata.metadata_dict.get("sentinel2:mean_solar_zenith"):
         view.sun_elevation = 90 - msz
 
     # s2 properties
