@@ -129,6 +129,7 @@ BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
 }
 
 L2A_IMAGE_PATHS: Final[List[str]] = [
+    "preview.jpg",
     "R10m/B04.jp2",
     "R10m/B03.jp2",
     "R10m/B02.jp2",
@@ -169,6 +170,7 @@ L2A_IMAGE_PATHS: Final[List[str]] = [
 ]
 
 L1C_IMAGE_PATHS: Final[List[str]] = [
+    "preview.jpg",
     "B01.jp2",
     "B02.jp2",
     "B03.jp2",
