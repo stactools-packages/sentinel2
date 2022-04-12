@@ -106,7 +106,7 @@ class GranuleMetadata:
 
     @property
     def metadata_dict(self):
-        image_content_properties = {
+        properties: Dict[str, Optional[float]] = {
             's2:degraded_msi_data_percentage':
             map_opt(
                 float,
@@ -165,13 +165,7 @@ class GranuleMetadata:
                     self._image_content_node.find_text('SNOW_ICE_PERCENTAGE'))
         }
 
-        result = {
-            **image_content_properties,
-            's2:mean_solar_zenith': self.mean_solar_zenith,
-            's2:mean_solar_azimuth': self.mean_solar_azimuth,
-        }
-
-        return {k: v for k, v in result.items() if v is not None}
+        return {k: v for k, v in properties.items() if v is not None}
 
     @property
     def product_id(self) -> str:

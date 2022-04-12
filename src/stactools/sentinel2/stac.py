@@ -11,6 +11,7 @@ import pystac
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.sat import OrbitState, SatExtension
+from pystac.extensions.view import ViewExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.grid import GridExtension
 
@@ -61,6 +62,8 @@ class Metadata:
     resolution_to_shape: Dict[int, Tuple[int, int]]
     orbit_state: Optional[str] = None
     relative_orbit: Optional[int] = None
+    sun_azimuth: Optional[float] = None
+    sun_zenith: Optional[float] = None
 
 
 def create_item(granule_href: str,
@@ -144,6 +147,12 @@ def create_item(granule_href: str,
         logger.error(
             f'Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}'
         )
+
+    # View Extension
+    view = ViewExtension.ext(item, add_if_missing=True)
+    view.sun_azimuth = metadata.sun_azimuth
+    if msz := metadata.sun_zenith:
+        view.sun_elevation = 90 - msz
 
     # s2 properties
     item.properties.update(metadata.metadata_dict)
@@ -371,7 +380,10 @@ def metadata_from_safe_manifest(
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
-        resolution_to_shape=granule_metadata.resolution_to_shape)
+        resolution_to_shape=granule_metadata.resolution_to_shape,
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
+    )
 
 
 # this is used for the Sinergise S3 format,
@@ -414,4 +426,7 @@ def metadata_from_granule_metadata(
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
-        image_paths=image_paths)
+        image_paths=image_paths,
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
+    )
