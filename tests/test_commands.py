@@ -1,6 +1,7 @@
 import os
 import re
 from collections import defaultdict
+from itertools import chain
 from tempfile import TemporaryDirectory
 
 import pystac
@@ -13,7 +14,7 @@ from stactools.core.projection import reproject_geom
 from stactools.testing import CliTestCase
 
 from stactools.sentinel2.commands import create_sentinel2_command
-from stactools.sentinel2.constants import BANDS_TO_RESOLUTIONS
+from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME, BANDS_TO_RESOLUTIONS
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import SENTINEL_BANDS
 from stactools.sentinel2.grid import GridExtension
@@ -112,15 +113,11 @@ class CreateItemTest(CliTestCase):
                         used_bands = SENTINEL_BANDS
                     elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
                         used_bands = dict(SENTINEL_BANDS)
-                        used_bands.pop("B10")
-                        self.assertTrue(
-                            set(used_bands.keys()).issubset(set(item.assets.keys()))
-                        )
-                        self.assertTrue(
-                            {"visual", "AOT", "WVP", "SCL"}.issubset(
-                                set(item.assets.keys())
-                            )
-                        )
+                        used_bands.pop("cirrus")
+                        for b in chain(
+                            used_bands.keys(), ["visual", "aot", "wvp", "scl"]
+                        ):
+                            self.assertIn(b, item.assets.keys())
 
                     self.assertEqual(bands_seen, set(used_bands.keys()))
 
@@ -157,7 +154,9 @@ class CreateItemTest(CliTestCase):
                                     r"[_/](B\d[A\d])", asset.href
                                 ).group(1)
                                 asset_res = extract_gsd(asset.href)
-                                self.assertEqual(href_band, band_name)
+                                self.assertEqual(
+                                    BANDS_TO_ASSET_NAME[href_band], band_name
+                                )
                                 if len(asset_split) == 1:
                                     self.assertEqual(asset_res, resolutions[0])
                                     self.assertIn("gsd", asset.extra_fields)
@@ -170,7 +169,7 @@ class CreateItemTest(CliTestCase):
 
                         # Level 2A does not have Band 10
                         used_resolutions = dict(BANDS_TO_RESOLUTIONS)
-                        used_resolutions.pop("B10")
+                        used_resolutions.pop("cirrus")
 
                     self.assertEqual(
                         set(resolutions_seen.keys()), set(used_resolutions.keys())
@@ -178,7 +177,7 @@ class CreateItemTest(CliTestCase):
                     for band in resolutions_seen:
                         # B08 has only 10m resolution in SAFE archive
                         # but 20m and 60m in S3 sinergise data
-                        if band == "B08":
+                        if band == "nir":
                             if len(resolutions_seen[band]) == 1:
                                 self.assertEqual(
                                     set(resolutions_seen[band]),

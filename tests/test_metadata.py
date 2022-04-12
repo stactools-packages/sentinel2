@@ -62,6 +62,10 @@ class Sentinel2MetadataTest(unittest.TestCase):
             self.assertEqual(s2_props[k], v)
 
         self.assertEqual(granule_metadata.cloudiness_percentage, 51.580326)
+        self.assertEqual(
+            granule_metadata.processing_baseline,
+            s2_props[f"{s2_prefix}:processing_baseline"],
+        )
 
     def test_footprint_containing_geom_with_z_dimension(self):
         product_md_path = test_data.get_path(

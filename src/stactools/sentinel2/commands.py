@@ -5,6 +5,7 @@ from typing import Optional
 
 import click
 
+from stactools.sentinel2.constants import DEFAULT_TOLERANCE
 from stactools.sentinel2.stac import create_item
 
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ def create_sentinel2_command(cli):
     @click.option(
         "--tolerance",
         type=float,
-        default=0.0001,
+        default=DEFAULT_TOLERANCE,
         help="Item geometry simplification tolerance, e.g., 0.0001",
     )
     @click.option(
