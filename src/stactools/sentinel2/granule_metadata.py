@@ -5,7 +5,9 @@ import pystac
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.core.utils import map_opt
-from stactools.sentinel2.constants import GRANULE_METADATA_ASSET_KEY
+from stactools.sentinel2.constants import (GRANULE_METADATA_ASSET_KEY,
+                                           SENTINEL2_PROPERTY_PREFIX as
+                                           s2_prefix)
 
 
 class GranuleMetadataError(Exception):
@@ -107,60 +109,60 @@ class GranuleMetadata:
     @property
     def metadata_dict(self):
         properties: Dict[str, Optional[float]] = {
-            's2:degraded_msi_data_percentage':
+            f'{s2_prefix}:degraded_msi_data_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DEGRADED_MSI_DATA_PERCENTAGE')),
-            's2:nodata_pixel_percentage':
+            f'{s2_prefix}:nodata_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('NODATA_PIXEL_PERCENTAGE')),
-            's2:saturated_defective_pixel_percentage':
+            f'{s2_prefix}:saturated_defective_pixel_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'SATURATED_DEFECTIVE_PIXEL_PERCENTAGE')),
-            's2:dark_features_percentage':
+            f'{s2_prefix}:dark_features_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'DARK_FEATURES_PERCENTAGE')),
-            's2:cloud_shadow_percentage':
+            f'{s2_prefix}:cloud_shadow_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('CLOUD_SHADOW_PERCENTAGE')),
-            's2:vegetation_percentage':
+            f'{s2_prefix}:vegetation_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('VEGETATION_PERCENTAGE')),
-            's2:not_vegetated_percentage':
+            f'{s2_prefix}:not_vegetated_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'NOT_VEGETATED_PERCENTAGE')),
-            's2:water_percentage':
+            f'{s2_prefix}:water_percentage':
             map_opt(float,
                     self._image_content_node.find_text('WATER_PERCENTAGE')),
-            's2:unclassified_percentage':
+            f'{s2_prefix}:unclassified_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('UNCLASSIFIED_PERCENTAGE')),
-            's2:medium_proba_clouds_percentage':
+            f'{s2_prefix}:medium_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'MEDIUM_PROBA_CLOUDS_PERCENTAGE')),
-            's2:high_proba_clouds_percentage':
+            f'{s2_prefix}:high_proba_clouds_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text(
                     'HIGH_PROBA_CLOUDS_PERCENTAGE')),
-            's2:thin_cirrus_percentage':
+            f'{s2_prefix}:thin_cirrus_percentage':
             map_opt(
                 float,
                 self._image_content_node.find_text('THIN_CIRRUS_PERCENTAGE')),
-            's2:snow_ice_percentage':
+            f'{s2_prefix}:snow_ice_percentage':
             map_opt(float,
                     self._image_content_node.find_text('SNOW_ICE_PERCENTAGE'))
         }
