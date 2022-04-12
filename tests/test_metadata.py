@@ -1,21 +1,19 @@
 import unittest
 
 from shapely.geometry import box, mapping, shape
-
 from stactools.core.projection import reproject_geom
-from stactools.sentinel2.safe_manifest import SafeManifest
-from stactools.sentinel2.product_metadata import ProductMetadata
-from stactools.sentinel2.granule_metadata import GranuleMetadata
-from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
+from stactools.sentinel2.granule_metadata import GranuleMetadata
+from stactools.sentinel2.product_metadata import ProductMetadata
+from stactools.sentinel2.safe_manifest import SafeManifest
 from tests import test_data
 
 
 class Sentinel2MetadataTest(unittest.TestCase):
-
     def test_parses_product_metadata_properties(self):
         manifest_path = test_data.get_path(
-            'data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
+            "data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE"
         )
 
         manifest = SafeManifest(manifest_path)
@@ -28,34 +26,30 @@ class Sentinel2MetadataTest(unittest.TestCase):
 
         expected = {
             # From product metadata
-            f'{s2_prefix}:product_uri':
-            'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE',
-            f'{s2_prefix}:generation_time': '2020-10-07T16:08:57.135Z',
-            f'{s2_prefix}:processing_baseline': '02.12',
-            f'{s2_prefix}:product_type': 'S2MSI2A',
-            f'{s2_prefix}:datatake_id': 'GS2A_20190212T192651_019029_N02.12',
-            f'{s2_prefix}:datatake_type': 'INS-NOBS',
-            f'{s2_prefix}:datastrip_id':
-            'S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12',
-            f'{s2_prefix}:granule_id':
-            'S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12',
-            f'{s2_prefix}:mgrs_tile': '07HFE',
-            f'{s2_prefix}:reflectance_conversion_factor': 1.02763689829235,
-
+            f"{s2_prefix}:product_uri": "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
+            f"{s2_prefix}:generation_time": "2020-10-07T16:08:57.135Z",
+            f"{s2_prefix}:processing_baseline": "02.12",
+            f"{s2_prefix}:product_type": "S2MSI2A",
+            f"{s2_prefix}:datatake_id": "GS2A_20190212T192651_019029_N02.12",
+            f"{s2_prefix}:datatake_type": "INS-NOBS",
+            f"{s2_prefix}:datastrip_id": "S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12",
+            f"{s2_prefix}:granule_id": "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
+            f"{s2_prefix}:mgrs_tile": "07HFE",
+            f"{s2_prefix}:reflectance_conversion_factor": 1.02763689829235,
             # From granule metadata
-            f'{s2_prefix}:degraded_msi_data_percentage': 0.0,
-            f'{s2_prefix}:nodata_pixel_percentage': 96.769553,
-            f'{s2_prefix}:saturated_defective_pixel_percentage': 0.0,
-            f'{s2_prefix}:dark_features_percentage': 0.0,
-            f'{s2_prefix}:cloud_shadow_percentage': 0.0,
-            f'{s2_prefix}:vegetation_percentage': 0.000308,
-            f'{s2_prefix}:not_vegetated_percentage': 0.069531,
-            f'{s2_prefix}:water_percentage': 48.349833,
-            f'{s2_prefix}:unclassified_percentage': 0.0,
-            f'{s2_prefix}:medium_proba_clouds_percentage': 14.61311,
-            f'{s2_prefix}:high_proba_clouds_percentage': 24.183494,
-            f'{s2_prefix}:thin_cirrus_percentage': 12.783723,
-            f'{s2_prefix}:snow_ice_percentage': 0.0,
+            f"{s2_prefix}:degraded_msi_data_percentage": 0.0,
+            f"{s2_prefix}:nodata_pixel_percentage": 96.769553,
+            f"{s2_prefix}:saturated_defective_pixel_percentage": 0.0,
+            f"{s2_prefix}:dark_features_percentage": 0.0,
+            f"{s2_prefix}:cloud_shadow_percentage": 0.0,
+            f"{s2_prefix}:vegetation_percentage": 0.000308,
+            f"{s2_prefix}:not_vegetated_percentage": 0.069531,
+            f"{s2_prefix}:water_percentage": 48.349833,
+            f"{s2_prefix}:unclassified_percentage": 0.0,
+            f"{s2_prefix}:medium_proba_clouds_percentage": 14.61311,
+            f"{s2_prefix}:high_proba_clouds_percentage": 24.183494,
+            f"{s2_prefix}:thin_cirrus_percentage": 12.783723,
+            f"{s2_prefix}:snow_ice_percentage": 0.0,
         }
 
         for k, v in expected.items():
@@ -66,11 +60,13 @@ class Sentinel2MetadataTest(unittest.TestCase):
 
     def test_footprint_containing_geom_with_z_dimension(self):
         product_md_path = test_data.get_path(
-            'data-files/S2A_MSIL2A_20150826T185436_N0212_R070'
-            '_T11SLT_20210412T023147/MTD_MSIL2A.xml')
+            "data-files/S2A_MSIL2A_20150826T185436_N0212_R070"
+            "_T11SLT_20210412T023147/MTD_MSIL2A.xml"
+        )
         granule_md_path = test_data.get_path(
-            'data-files/S2A_MSIL2A_20150826T185436_N0212_R070'
-            '_T11SLT_20210412T023147/MTD_TL.xml')
+            "data-files/S2A_MSIL2A_20150826T185436_N0212_R070"
+            "_T11SLT_20210412T023147/MTD_TL.xml"
+        )
         product_metadata = ProductMetadata(product_md_path)
         granule_metadata = GranuleMetadata(granule_md_path)
 
@@ -81,18 +77,20 @@ class Sentinel2MetadataTest(unittest.TestCase):
 
         proj_box = box(*proj_bbox)
         ll_proj_box = shape(
-            reproject_geom(f"epsg:{epsg}", "epsg:4326", mapping(proj_box)))
+            reproject_geom(f"epsg:{epsg}", "epsg:4326", mapping(proj_box))
+        )
 
         # Test that the bboxes roughly match by ensuring the difference
         # is less than 5% of total area of the reprojected proj bbox.
         self.assertTrue(
-            footprint.envelope.difference(ll_proj_box).area < (
-                ll_proj_box.area * 0.05))
+            footprint.envelope.difference(ll_proj_box).area < (ll_proj_box.area * 0.05)
+        )
 
     def test_footprint_containing_geom_with_0_parses(self):
         product_md_path = test_data.get_path(
-            'data-files/S2A_MSIL2A_20180721T053721'
-            '_N0212_R062_T43MDV_20201011T181419.SAFE/MTD_MSIL2a.xml')
+            "data-files/S2A_MSIL2A_20180721T053721"
+            "_N0212_R062_T43MDV_20201011T181419.SAFE/MTD_MSIL2a.xml"
+        )
         product_metadata = ProductMetadata(product_md_path)
 
         footprint = shape(product_metadata.geometry)

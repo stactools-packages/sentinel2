@@ -1,38 +1,33 @@
-from collections import defaultdict
 import os
+import re
+from collections import defaultdict
 from tempfile import TemporaryDirectory
 
-from pystac.extensions.view import ViewExtension
-from stactools.sentinel2.mgrs import MgrsExtension
-from stactools.sentinel2.grid import GridExtension
-
-from stactools.sentinel2.utils import extract_gsd
-import re
 import pystac
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.view import ViewExtension
 from pystac.utils import is_absolute_href
-from shapely.geometry import box, shape, mapping
-
+from shapely.geometry import box, mapping, shape
 from stactools.core.projection import reproject_geom
-from stactools.sentinel2.commands import create_sentinel2_command
-from stactools.sentinel2.constants import (BANDS_TO_RESOLUTIONS,
-                                           SENTINEL_BANDS,
-                                           SENTINEL2_PROPERTY_PREFIX as
-                                           s2_prefix)
 from stactools.testing import CliTestCase
 
+from stactools.sentinel2.commands import create_sentinel2_command
+from stactools.sentinel2.constants import BANDS_TO_RESOLUTIONS
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
+from stactools.sentinel2.constants import SENTINEL_BANDS
+from stactools.sentinel2.grid import GridExtension
+from stactools.sentinel2.mgrs import MgrsExtension
+from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
 
 
 def proj_bbox_area_difference(item):
     projection = ProjectionExtension.ext(item)
-    visual_asset = item.assets.get('visual_10m') or \
-                   item.assets.get('visual')
+    visual_asset = item.assets.get("visual_10m") or item.assets.get("visual")
     asset_projection = ProjectionExtension.ext(visual_asset)
     pb = mapping(box(*asset_projection.bbox))
-    proj_geom = shape(
-        reproject_geom(f'epsg:{projection.epsg}', 'epsg:4326', pb))
+    proj_geom = shape(reproject_geom(f"epsg:{projection.epsg}", "epsg:4326", pb))
 
     item_geom = shape(item.geometry)
 
@@ -46,42 +41,47 @@ def proj_bbox_area_difference(item):
 
 
 class CreateItemTest(CliTestCase):
-
     def create_subcommand_functions(self):
         return [create_sentinel2_command]
 
     def test_create_item(self):
         granule_hrefs = {
-            k: test_data.get_path(f'data-files/{v}')
+            k: test_data.get_path(f"data-files/{v}")
             for (k, v) in [
-                ('S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248',
-                 'S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE'
-                 ),
-                ('S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857',
-                 'S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE'
-                 ),
-                ('S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658',
-                 'S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE'
-                 ),
-                ('S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500',
-                 'esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE'
-                 ),
-                ('S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG',
-                 'S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG'),
-                ('S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG',
-                 'S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG'),
+                (
+                    "S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248",
+                    "S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE",
+                ),
+                (
+                    "S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857",
+                    "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
+                ),
+                (
+                    "S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658",
+                    "S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE",
+                ),
+                (
+                    "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500",
+                    "esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
+                ),
+                (
+                    "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
+                    "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
+                ),
+                (
+                    "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
+                    "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
+                ),
             ]
         }
 
         for item_id, granule_href in granule_hrefs.items():
             with self.subTest(granule_href):
                 with TemporaryDirectory() as tmp_dir:
-                    cmd = ['sentinel2', 'create-item', granule_href, tmp_dir]
+                    cmd = ["sentinel2", "create-item", granule_href, tmp_dir]
                     self.run_command(cmd)  # type: ignore
 
-                    jsons = [
-                        p for p in os.listdir(tmp_dir) if p.endswith('.json')
-                    ]
+                    jsons = [p for p in os.listdir(tmp_dir) if p.endswith(".json")]
                     self.assertEqual(len(jsons), 1)
                     fname = jsons[0]
 
@@ -97,30 +97,30 @@ class CreateItemTest(CliTestCase):
                     for key, asset in item.assets.items():
                         # Ensure that there's no relative path parts
                         # in the asset HREFs
-                        self.assertTrue('/./' not in asset.href)
+                        self.assertTrue("/./" not in asset.href)
 
                         self.assertTrue(is_absolute_href(asset.href))
                         asset_eo = EOExtension.ext(asset)
                         bands = asset_eo.bands
                         if bands is not None:
                             bands_seen |= set(b.name for b in bands)
-                            if key.split('_')[0] in SENTINEL_BANDS:
+                            if key.split("_")[0] in SENTINEL_BANDS:
                                 for b in bands:
-                                    bands_to_assets[b.name].append(
-                                        (key, asset))
+                                    bands_to_assets[b.name].append((key, asset))
 
-                    if item.properties[
-                            f'{s2_prefix}:product_type'] == 'S2MSI1C':
+                    if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
                         used_bands = SENTINEL_BANDS
-                    elif item.properties[
-                            f'{s2_prefix}:product_type'] == 'S2MSI2A':
+                    elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
                         used_bands = dict(SENTINEL_BANDS)
-                        used_bands.pop('B10')
+                        used_bands.pop("B10")
                         self.assertTrue(
-                            set(used_bands.keys()).issubset(
-                                set(item.assets.keys())))
-                        self.assertTrue({"visual", "AOT", "WVP", "SCL"
-                                         }.issubset(set(item.assets.keys())))
+                            set(used_bands.keys()).issubset(set(item.assets.keys()))
+                        )
+                        self.assertTrue(
+                            {"visual", "AOT", "WVP", "SCL"}.issubset(
+                                set(item.assets.keys())
+                            )
+                        )
 
                     self.assertEqual(bands_seen, set(used_bands.keys()))
 
@@ -133,64 +133,66 @@ class CreateItemTest(CliTestCase):
 
                     # Level 1C does not have the same layout as Level 2A. So the
                     # whole resolution
-                    if item.properties[
-                            f'{s2_prefix}:product_type'] == 'S2MSI1C':
+                    if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
                         for band_name, assets in bands_to_assets.items():
                             for (asset_key, asset) in assets:
                                 resolutions_seen[band_name].append(
-                                    asset.extra_fields['gsd'])
+                                    asset.extra_fields["gsd"]
+                                )
 
                         # Level 1C only has the highest resolution version of each band
                         used_resolutions = {
                             band: [resolutions[0]]
-                            for band, resolutions in
-                            BANDS_TO_RESOLUTIONS.items()
+                            for band, resolutions in BANDS_TO_RESOLUTIONS.items()
                         }
-                    elif item.properties[
-                            f'{s2_prefix}:product_type'] == 'S2MSI2A':
+                    elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
                         for band_name, assets in bands_to_assets.items():
                             for (asset_key, asset) in assets:
                                 resolutions = BANDS_TO_RESOLUTIONS[band_name]
 
-                                asset_split = asset_key.split('_')
+                                asset_split = asset_key.split("_")
                                 self.assertLessEqual(len(asset_split), 2)
 
-                                href_band = re.search(r'[_/](B\d[A\d])',
-                                                      asset.href).group(1)
+                                href_band = re.search(
+                                    r"[_/](B\d[A\d])", asset.href
+                                ).group(1)
                                 asset_res = extract_gsd(asset.href)
                                 self.assertEqual(href_band, band_name)
                                 if len(asset_split) == 1:
                                     self.assertEqual(asset_res, resolutions[0])
-                                    self.assertIn('gsd', asset.extra_fields)
-                                    resolutions_seen[band_name].append(
-                                        asset_res)
+                                    self.assertIn("gsd", asset.extra_fields)
+                                    resolutions_seen[band_name].append(asset_res)
                                 else:
-                                    self.assertNotEqual(
-                                        asset_res, resolutions[0])
+                                    self.assertNotEqual(asset_res, resolutions[0])
                                     self.assertIn(asset_res, resolutions)
-                                    self.assertNotIn('gsd', asset.extra_fields)
-                                    resolutions_seen[band_name].append(
-                                        asset_res)
+                                    self.assertNotIn("gsd", asset.extra_fields)
+                                    resolutions_seen[band_name].append(asset_res)
 
                         # Level 2A does not have Band 10
                         used_resolutions = dict(BANDS_TO_RESOLUTIONS)
-                        used_resolutions.pop('B10')
+                        used_resolutions.pop("B10")
 
-                    self.assertEqual(set(resolutions_seen.keys()),
-                                     set(used_resolutions.keys()))
+                    self.assertEqual(
+                        set(resolutions_seen.keys()), set(used_resolutions.keys())
+                    )
                     for band in resolutions_seen:
                         # B08 has only 10m resolution in SAFE archive
                         # but 20m and 60m in S3 sinergise data
-                        if band == 'B08':
+                        if band == "B08":
                             if len(resolutions_seen[band]) == 1:
-                                self.assertEqual(set(resolutions_seen[band]),
-                                                 {used_resolutions[band][0]})
+                                self.assertEqual(
+                                    set(resolutions_seen[band]),
+                                    {used_resolutions[band][0]},
+                                )
                             else:
-                                self.assertEqual(set(resolutions_seen[band]),
-                                                 set(used_resolutions[band]))
+                                self.assertEqual(
+                                    set(resolutions_seen[band]),
+                                    set(used_resolutions[band]),
+                                )
                         else:
-                            self.assertEqual(set(resolutions_seen[band]),
-                                             set(used_resolutions[band]))
+                            self.assertEqual(
+                                set(resolutions_seen[band]), set(used_resolutions[band])
+                            )
 
                     self.assertLess(proj_bbox_area_difference(item), 0.005)
 
@@ -201,12 +203,13 @@ class CreateItemTest(CliTestCase):
                     mgrs = MgrsExtension.ext(item)
                     self.assertIn(
                         f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}",
-                        item.id)
+                        item.id,
+                    )
 
                     self.assertTrue(item.properties.get("grid:code"))
 
                     grid = GridExtension.ext(item)
-                    grid_id = grid.code.split('-')[1]
+                    grid_id = grid.code.split("-")[1]
                     if len(grid_id) == 4:
                         grid_id = f"0{grid_id}"  # add zero pad
                     self.assertIn(f"_T{grid_id}", item.id)

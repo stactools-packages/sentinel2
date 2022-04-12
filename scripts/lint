@@ -19,10 +19,6 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     if [ "${1:-}" = "--help" ]; then
         usage
     else
-        # Code formatting
-        yapf -dpr ${DIRS_TO_CHECK[@]}
-        # Lint
-        flake8 ${DIRS_TO_CHECK[@]}
-
+        pre-commit run --all-files
     fi
 fi
