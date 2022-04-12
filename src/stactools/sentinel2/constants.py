@@ -1,26 +1,25 @@
+from typing import Dict, Final, List
+
 import pystac
-from pystac.link import Link
 from pystac.extensions.eo import Band
-from typing import Final, List, Dict
+from pystac.link import Link
 from pystac.provider import ProviderRole
 
 SENTINEL2_PROPERTY_PREFIX = "sentinel2"
 
 SENTINEL_LICENSE: Final[Link] = Link(
-    rel='license',
-    target=
-    'https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice'
+    rel="license",
+    target="https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice",
 )
 
-SENTINEL_INSTRUMENTS: Final[List[str]] = ['msi']
-SENTINEL_CONSTELLATION: Final[str] = 'sentinel-2'
+SENTINEL_INSTRUMENTS: Final[List[str]] = ["msi"]
+SENTINEL_CONSTELLATION: Final[str] = "sentinel-2"
 
 SENTINEL_PROVIDER: Final[pystac.Provider] = pystac.Provider(
-    name='ESA',
-    roles=[
-        ProviderRole.PRODUCER, ProviderRole.PROCESSOR, ProviderRole.LICENSOR
-    ],
-    url='https://earth.esa.int/web/guest/home')
+    name="ESA",
+    roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR, ProviderRole.LICENSOR],
+    url="https://earth.esa.int/web/guest/home",
+)
 
 SAFE_MANIFEST_ASSET_KEY: Final[str] = "safe_manifest"
 INSPIRE_METADATA_ASSET_KEY: Final[str] = "inspire_metadata"
@@ -32,84 +31,97 @@ TILEINFO_METADATA_ASSET_KEY: Final[str] = "tileinfo_metadata"
 DEFAULT_TOLERANCE: Final[float] = 0.0001
 
 SENTINEL_BANDS: Final[Dict[str, Band]] = {
-    'coastal':
-    Band.create(name='coastal',
-                common_name='coastal',
-                description='Coastal aerosol (band 1)',
-                center_wavelength=0.443,
-                full_width_half_max=0.027),
-    'blue':
-    Band.create(name='blue',
-                common_name='blue',
-                description='Blue (band 2)',
-                center_wavelength=0.490,
-                full_width_half_max=0.098),
-    'green':
-    Band.create(name='green',
-                common_name='green',
-                description='Green (band 3)',
-                center_wavelength=0.560,
-                full_width_half_max=0.045),
-    'red':
-    Band.create(name='red',
-                common_name='red',
-                description='Red (band 4)',
-                center_wavelength=0.665,
-                full_width_half_max=0.038),
-    'rededge1':
-    Band.create(name='rededge1',
-                common_name='rededge',
-                description='Red edge 1 (band 5)',
-                center_wavelength=0.704,
-                full_width_half_max=0.019),
-    'rededge2':
-    Band.create(name='rededge2',
-                common_name='rededge',
-                description='Red edge 2 (band 6)',
-                center_wavelength=0.740,
-                full_width_half_max=0.018),
-    'rededge3':
-    Band.create(name='rededge3',
-                common_name='rededge',
-                description='Red edge 3 (band 7)',
-                center_wavelength=0.783,
-                full_width_half_max=0.028),
-    'nir':
-    Band.create(name='nir',
-                common_name='nir',
-                description='NIR 1 (band 8)',
-                center_wavelength=0.842,
-                full_width_half_max=0.145),
-    'nir08':
-    Band.create(name='nir08',
-                common_name='nir08',
-                description='NIR 2 (band 8A)',
-                center_wavelength=0.865,
-                full_width_half_max=0.033),
-    'nir09':
-    Band.create(name='nir09',
-                common_name='nir09',
-                description='NIR 3 (band 9)',
-                center_wavelength=0.945,
-                full_width_half_max=0.026),
-    'cirrus':
-    Band.create(name='cirrus',
-                common_name='cirrus',
-                description='Cirrus (band 10)',
-                center_wavelength=1.3735,
-                full_width_half_max=0.075),
-    'swir16':
-    Band.create(name='swir16',
-                common_name='swir16',
-                description='SWIR 1 (band 11)',
-                center_wavelength=1.610,
-                full_width_half_max=0.143),
-    'swir22':
-    Band.create(name='swir22',
-                common_name='swir22',
-                description='SWIR 2 (band 12)',
-                center_wavelength=2.190,
-                full_width_half_max=0.242),
+    "coastal": Band.create(
+        name="coastal",
+        common_name="coastal",
+        description="Coastal aerosol (band 1)",
+        center_wavelength=0.443,
+        full_width_half_max=0.027,
+    ),
+    "blue": Band.create(
+        name="blue",
+        common_name="blue",
+        description="Blue (band 2)",
+        center_wavelength=0.490,
+        full_width_half_max=0.098,
+    ),
+    "green": Band.create(
+        name="green",
+        common_name="green",
+        description="Green (band 3)",
+        center_wavelength=0.560,
+        full_width_half_max=0.045,
+    ),
+    "red": Band.create(
+        name="red",
+        common_name="red",
+        description="Red (band 4)",
+        center_wavelength=0.665,
+        full_width_half_max=0.038,
+    ),
+    "rededge1": Band.create(
+        name="rededge1",
+        common_name="rededge",
+        description="Red edge 1 (band 5)",
+        center_wavelength=0.704,
+        full_width_half_max=0.019,
+    ),
+    "rededge2": Band.create(
+        name="rededge2",
+        common_name="rededge",
+        description="Red edge 2 (band 6)",
+        center_wavelength=0.740,
+        full_width_half_max=0.018,
+    ),
+    "rededge3": Band.create(
+        name="rededge3",
+        common_name="rededge",
+        description="Red edge 3 (band 7)",
+        center_wavelength=0.783,
+        full_width_half_max=0.028,
+    ),
+    "nir": Band.create(
+        name="nir",
+        common_name="nir",
+        description="NIR 1 (band 8)",
+        center_wavelength=0.842,
+        full_width_half_max=0.145,
+    ),
+    "nir08": Band.create(
+        name="nir08",
+        common_name="nir08",
+        description="NIR 2 (band 8A)",
+        center_wavelength=0.865,
+        full_width_half_max=0.033,
+    ),
+    "nir09": Band.create(
+        name="nir09",
+        common_name="nir09",
+        description="NIR 3 (band 9)",
+        center_wavelength=0.945,
+        full_width_half_max=0.026,
+    ),
+    "cirrus": Band.create(
+        name="cirrus",
+        common_name="cirrus",
+        description="Cirrus (band 10)",
+        center_wavelength=1.3735,
+        full_width_half_max=0.075,
+    ),
+    "swir16": Band.create(
+        name="swir16",
+        common_name="swir16",
+        description="SWIR 1 (band 11)",
+        center_wavelength=1.610,
+        full_width_half_max=0.143,
+    ),
+    "swir22": Band.create(
+        name="swir22",
+        common_name="swir22",
+        description="SWIR 2 (band 12)",
+        center_wavelength=2.190,
+        full_width_half_max=0.242,
+    ),
 }
 
 # A dict describing the resolutions that are
@@ -117,35 +129,35 @@ SENTINEL_BANDS: Final[Dict[str, Band]] = {
 # The first resolution is the sensor gsd; others
 # are downscaled versions.
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
-    'coastal': [60],
-    'blue': [10, 20, 60],
-    'green': [10, 20, 60],
-    'red': [10, 20, 60],
-    'rededge1': [20, 60],
-    'rededge2': [20, 60],
-    'rededge3': [20, 60],
-    'nir': [10, 20, 60],
-    'nir08': [20, 60],
-    'nir09': [60],
-    'cirrus': [60],
-    'swir16': [20, 60],
-    'swir22': [20, 60],
+    "coastal": [60],
+    "blue": [10, 20, 60],
+    "green": [10, 20, 60],
+    "red": [10, 20, 60],
+    "rededge1": [20, 60],
+    "rededge2": [20, 60],
+    "rededge3": [20, 60],
+    "nir": [10, 20, 60],
+    "nir08": [20, 60],
+    "nir09": [60],
+    "cirrus": [60],
+    "swir16": [20, 60],
+    "swir22": [20, 60],
 }
 
 BANDS_TO_ASSET_NAME: Final[Dict[str, str]] = {
-    'B01': "coastal",
-    'B02': "blue",
-    'B03': "green",
-    'B04': "red",
-    'B05': "rededge1",
-    'B06': "rededge2",
-    'B07': "rededge3",
-    'B08': "nir",
-    'B8A': "nir08",
-    'B09': "nir09",
-    'B10': "cirrus",
-    'B11': "swir16",
-    'B12': "swir22",
+    "B01": "coastal",
+    "B02": "blue",
+    "B03": "green",
+    "B04": "red",
+    "B05": "rededge1",
+    "B06": "rededge2",
+    "B07": "rededge3",
+    "B08": "nir",
+    "B8A": "nir08",
+    "B09": "nir09",
+    "B10": "cirrus",
+    "B11": "swir16",
+    "B12": "swir22",
 }
 
 L2A_IMAGE_PATHS: Final[List[str]] = [

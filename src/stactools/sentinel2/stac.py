@@ -2,34 +2,44 @@ import logging
 import os
 import re
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple, Pattern, Final, Any
 from datetime import datetime
-from stactools.core.projection import reproject_geom
-from shapely.geometry import shape as make_shape, mapping
 from itertools import chain
+from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
+
 import pystac
-from pystac.extensions.eo import EOExtension
+from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
-from stactools.sentinel2.mgrs import MgrsExtension
-from stactools.sentinel2.grid import GridExtension
-from stactools.sentinel2.constants import DEFAULT_TOLERANCE
-
+from shapely.geometry import mapping
+from shapely.geometry import shape as make_shape
 from stactools.core.io import ReadHrefModifier
-from stactools.core.projection import transform_from_bbox
-from stactools.sentinel2.safe_manifest import SafeManifest
-from stactools.sentinel2.product_metadata import ProductMetadata
+from stactools.core.projection import reproject_geom, transform_from_bbox
+
+from stactools.sentinel2.constants import (
+    BANDS_TO_ASSET_NAME,
+    BANDS_TO_RESOLUTIONS,
+    DATASTRIP_METADATA_ASSET_KEY,
+    DEFAULT_TOLERANCE,
+    INSPIRE_METADATA_ASSET_KEY,
+    L1C_IMAGE_PATHS,
+    L2A_IMAGE_PATHS,
+)
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
+from stactools.sentinel2.constants import (
+    SENTINEL_BANDS,
+    SENTINEL_CONSTELLATION,
+    SENTINEL_INSTRUMENTS,
+    SENTINEL_LICENSE,
+    SENTINEL_PROVIDER,
+)
 from stactools.sentinel2.granule_metadata import GranuleMetadata
+from stactools.sentinel2.grid import GridExtension
+from stactools.sentinel2.mgrs import MgrsExtension
+from stactools.sentinel2.product_metadata import ProductMetadata
+from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.tileinfo_metadata import TileInfoMetadata
 from stactools.sentinel2.utils import extract_gsd
-from stactools.sentinel2.constants import (
-    BANDS_TO_RESOLUTIONS, DATASTRIP_METADATA_ASSET_KEY, SENTINEL_PROVIDER,
-    SENTINEL_LICENSE, SENTINEL_BANDS, SENTINEL_INSTRUMENTS,
-    SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY, L2A_IMAGE_PATHS,
-    L1C_IMAGE_PATHS, BANDS_TO_ASSET_NAME, SENTINEL2_PROPERTY_PREFIX as
-    s2_prefix)
-from pystac.extensions.eo import Band
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +59,9 @@ BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
 
 RGB_BANDS: Final[List[Band]] = [
-    SENTINEL_BANDS['red'], SENTINEL_BANDS['green'], SENTINEL_BANDS['blue']
+    SENTINEL_BANDS["red"],
+    SENTINEL_BANDS["green"],
+    SENTINEL_BANDS["blue"],
 ]
 
 
@@ -74,11 +86,13 @@ class Metadata:
     sun_zenith: Optional[float] = None
 
 
-def create_item(granule_href: str,
-                tolerance: float = DEFAULT_TOLERANCE,
-                additional_providers: Optional[List[pystac.Provider]] = None,
-                read_href_modifier: Optional[ReadHrefModifier] = None,
-                asset_href_prefix: Optional[str] = None) -> pystac.Item:
+def create_item(
+    granule_href: str,
+    tolerance: float = DEFAULT_TOLERANCE,
+    additional_providers: Optional[List[pystac.Provider]] = None,
+    read_href_modifier: Optional[ReadHrefModifier] = None,
+    asset_href_prefix: Optional[str] = None,
+) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
     Arguments:
@@ -90,25 +104,26 @@ def create_item(granule_href: str,
         read_href_modifier: A function that takes an HREF and returns a modified HREF.
             This can be used to modify a HREF to make it readable, e.g. appending
             an Azure SAS token or creating a signed URL.
-        asset_href_prefix: The URL prefix to apply to the asset hrefs 
+        asset_href_prefix: The URL prefix to apply to the asset hrefs
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
     """  # noqa
 
     if granule_href.lower().endswith(".safe"):
-        metadata = metadata_from_safe_manifest(granule_href,
-                                               read_href_modifier)
+        metadata = metadata_from_safe_manifest(granule_href, read_href_modifier)
     else:
-        metadata = metadata_from_granule_metadata(granule_href,
-                                                  read_href_modifier,
-                                                  tolerance)
+        metadata = metadata_from_granule_metadata(
+            granule_href, read_href_modifier, tolerance
+        )
 
-    item = pystac.Item(id=metadata.scene_id,
-                       geometry=metadata.geometry,
-                       bbox=metadata.bbox,
-                       datetime=metadata.datetime,
-                       properties={})
+    item = pystac.Item(
+        id=metadata.scene_id,
+        geometry=metadata.geometry,
+        bbox=metadata.bbox,
+        datetime=metadata.datetime,
+        properties={},
+    )
 
     # --Common metadata--
 
@@ -130,8 +145,9 @@ def create_item(granule_href: str,
     # sat
     if metadata.orbit_state or metadata.relative_orbit:
         sat = SatExtension.ext(item, add_if_missing=True)
-        sat.orbit_state = OrbitState(
-            metadata.orbit_state.lower()) if metadata.orbit_state else None
+        sat.orbit_state = (
+            OrbitState(metadata.orbit_state.lower()) if metadata.orbit_state else None
+        )
         sat.relative_orbit = metadata.relative_orbit
 
     # proj
@@ -139,7 +155,7 @@ def create_item(granule_href: str,
     projection.epsg = metadata.epsg
     if projection.epsg is None:
         raise ValueError(
-            f'Could not determine EPSG code for {granule_href}; which is required.'
+            f"Could not determine EPSG code for {granule_href}; which is required."
         )
 
     # MGRS and Grid Extension
@@ -153,7 +169,7 @@ def create_item(granule_href: str,
         grid.code = f"MGRS-{mgrs.utm_zone}{mgrs.latitude_band}{mgrs.grid_square}"
     else:
         logger.error(
-            f'Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}'
+            f"Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}"
         )
 
     # View Extension
@@ -167,16 +183,19 @@ def create_item(granule_href: str,
 
     # --Assets--
 
-    image_assets = dict([
-        image_asset_from_href(
-            os.path.join(asset_href_prefix or granule_href,
-                         image_path), metadata.resolution_to_shape,
-            metadata.proj_bbox, metadata.image_media_type)
-        for image_path in metadata.image_paths
-    ])
+    image_assets = dict(
+        [
+            image_asset_from_href(
+                os.path.join(asset_href_prefix or granule_href, image_path),
+                metadata.resolution_to_shape,
+                metadata.proj_bbox,
+                metadata.image_media_type,
+            )
+            for image_path in metadata.image_paths
+        ]
+    )
 
-    for key, asset in chain(image_assets.items(),
-                            metadata.extra_assets.items()):
+    for key, asset in chain(image_assets.items(), metadata.extra_assets.items()):
         assert key not in item.assets
         item.add_asset(key, asset)
 
@@ -188,40 +207,44 @@ def create_item(granule_href: str,
 
 
 def image_asset_from_href(
-        asset_href: str,
-        resolution_to_shape: Dict[int, Tuple[int, int]],
-        proj_bbox: List[float],
-        media_type: Optional[str] = None) -> Tuple[str, pystac.Asset]:
-    logger.debug(f'Creating asset for image {asset_href}')
+    asset_href: str,
+    resolution_to_shape: Dict[int, Tuple[int, int]],
+    proj_bbox: List[float],
+    media_type: Optional[str] = None,
+) -> Tuple[str, pystac.Asset]:
+    logger.debug(f"Creating asset for image {asset_href}")
 
     _, ext = os.path.splitext(asset_href)
     if media_type is not None:
         asset_media_type = media_type
     else:
-        if ext.lower() == '.jp2':
+        if ext.lower() == ".jp2":
             asset_media_type = pystac.MediaType.JPEG2000
-        elif ext.lower() in ['.tiff', '.tif']:
+        elif ext.lower() in [".tiff", ".tif"]:
             asset_media_type = pystac.MediaType.GEOTIFF
         else:
-            raise Exception(
-                f'Must supply a media type for asset : {asset_href}')
+            raise Exception(f"Must supply a media type for asset : {asset_href}")
 
     # Handle preview image
 
-    if '_PVI' in asset_href:
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title='True color preview',
-                             roles=['data'])
+    if "_PVI" in asset_href:
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="True color preview",
+            roles=["data"],
+        )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
-        return 'preview', asset
+        return "preview", asset
     elif THUMBNAIL_PATTERN.search(asset_href):
         # thumbnail image
-        asset = pystac.Asset(href=asset_href,
-                             media_type=pystac.MediaType.JPEG,
-                             title='Thumbnail image',
-                             roles=['thumbnail'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=pystac.MediaType.JPEG,
+            title="Thumbnail image",
+            roles=["thumbnail"],
+        )
         return "thumbnail", asset
 
     # Extract gsd and proj info
@@ -238,8 +261,7 @@ def image_asset_from_href(
     shape = list(resolution_to_shape[int(resolution)])
     transform = transform_from_bbox(proj_bbox, shape)
 
-    def set_asset_properties(_asset: pystac.Asset,
-                             _band_gsd: Optional[int] = None):
+    def set_asset_properties(_asset: pystac.Asset, _band_gsd: Optional[int] = None):
         if _band_gsd:
             pystac.CommonMetadata(_asset).gsd = _band_gsd
         asset_projection = ProjectionExtension.ext(_asset)
@@ -257,7 +279,7 @@ def image_asset_from_href(
             band = band_from_band_id(band_id)
         except KeyError:
             # Level-1C have different names
-            band_id = os.path.splitext(asset_href)[0].split('_')[-1]
+            band_id = os.path.splitext(asset_href)[0].split("_")[-1]
             band = band_from_band_id(band_id)
             asset_res = highest_asset_res(band_id_search.group(1))
 
@@ -277,12 +299,14 @@ def image_asset_from_href(
             # resolution in the asset key.
             # TODO: Use the raster extension and spatial_resolution
             # property to encode the spatial resolution of all assets.
-            asset_key = f'{BANDS_TO_ASSET_NAME[band_id]}_{int(asset_res)}m'
+            asset_key = f"{BANDS_TO_ASSET_NAME[band_id]}_{int(asset_res)}m"
 
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title=f'{band.description} - {asset_res}m',
-                             roles=['data'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title=f"{band.description} - {asset_res}m",
+            roles=["data"],
+        )
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
@@ -292,24 +316,28 @@ def image_asset_from_href(
     # Handle auxiliary images
     elif TCI_PATTERN.search(asset_href):
         # True color
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title='True color image',
-                             roles=['visual'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="True color image",
+            roles=["visual"],
+        )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
         set_asset_properties(asset)
 
         maybe_res = extract_gsd(asset_href)
-        asset_id = f'visual_{maybe_res}m' if maybe_res and maybe_res != 10 else "visual"
+        asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
         return asset_id, asset
 
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title='Aerosol optical thickness (AOT)',
-                             roles=['data'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="Aerosol optical thickness (AOT)",
+            roles=["data"],
+        )
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "aot")
@@ -317,10 +345,12 @@ def image_asset_from_href(
 
     elif WVP_PATTERN.search(asset_href):
         # Water vapor
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title='Water vapour (WVP)',
-                             roles=['data'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="Water vapour (WVP)",
+            roles=["data"],
+        )
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "wvp")
@@ -328,16 +358,18 @@ def image_asset_from_href(
 
     elif SCL_PATTERN.search(asset_href):
         # Classification map
-        asset = pystac.Asset(href=asset_href,
-                             media_type=asset_media_type,
-                             title='Scene classification map (SCL)',
-                             roles=['data'])
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="Scene classification map (SCL)",
+            roles=["data"],
+        )
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "scl")
         return asset_id, asset
     else:
-        raise ValueError(f'Unexpected asset: {asset_href}')
+        raise ValueError(f"Unexpected asset: {asset_href}")
 
 
 def band_from_band_id(band_id):
@@ -349,37 +381,50 @@ def highest_asset_res(band_id: str) -> int:
 
 
 def mk_asset_id(maybe_res: Optional[int], name: str):
-    return f'{name.lower()}_{maybe_res}m' if maybe_res and maybe_res != 20 else name
+    return f"{name.lower()}_{maybe_res}m" if maybe_res and maybe_res != 20 else name
 
 
 # this is used for SAFE archive format
 def metadata_from_safe_manifest(
-        granule_href: str,
-        read_href_modifier: Optional[ReadHrefModifier]) -> Metadata:
+    granule_href: str, read_href_modifier: Optional[ReadHrefModifier]
+) -> Metadata:
     safe_manifest = SafeManifest(granule_href, read_href_modifier)
-    product_metadata = ProductMetadata(safe_manifest.product_metadata_href,
-                                       read_href_modifier)
-    granule_metadata = GranuleMetadata(safe_manifest.granule_metadata_href,
-                                       read_href_modifier)
-    extra_assets = dict([
-        safe_manifest.create_asset(),
-        product_metadata.create_asset(),
-        granule_metadata.create_asset(),
-        (INSPIRE_METADATA_ASSET_KEY,
-         pystac.Asset(href=safe_manifest.inspire_metadata_href,
-                      media_type=pystac.MediaType.XML,
-                      roles=['metadata'])),
-        (DATASTRIP_METADATA_ASSET_KEY,
-         pystac.Asset(href=safe_manifest.datastrip_metadata_href,
-                      media_type=pystac.MediaType.XML,
-                      roles=['metadata'])),
-    ])
+    product_metadata = ProductMetadata(
+        safe_manifest.product_metadata_href, read_href_modifier
+    )
+    granule_metadata = GranuleMetadata(
+        safe_manifest.granule_metadata_href, read_href_modifier
+    )
+    extra_assets = dict(
+        [
+            safe_manifest.create_asset(),
+            product_metadata.create_asset(),
+            granule_metadata.create_asset(),
+            (
+                INSPIRE_METADATA_ASSET_KEY,
+                pystac.Asset(
+                    href=safe_manifest.inspire_metadata_href,
+                    media_type=pystac.MediaType.XML,
+                    roles=["metadata"],
+                ),
+            ),
+            (
+                DATASTRIP_METADATA_ASSET_KEY,
+                pystac.Asset(
+                    href=safe_manifest.datastrip_metadata_href,
+                    media_type=pystac.MediaType.XML,
+                    roles=["metadata"],
+                ),
+            ),
+        ]
+    )
 
     if safe_manifest.thumbnail_href is not None:
         extra_assets["preview"] = pystac.Asset(
             href=safe_manifest.thumbnail_href,
             media_type=pystac.MediaType.COG,
-            roles=['thumbnail'])
+            roles=["thumbnail"],
+        )
 
     return Metadata(
         scene_id=product_metadata.scene_id,
@@ -392,7 +437,7 @@ def metadata_from_safe_manifest(
         relative_orbit=product_metadata.relative_orbit,
         metadata_dict={
             **product_metadata.metadata_dict,
-            **granule_metadata.metadata_dict
+            **granule_metadata.metadata_dict,
         },
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
@@ -408,34 +453,41 @@ def metadata_from_safe_manifest(
 # this is used for the Sinergise S3 format,
 # e.g., s3://sentinel-s2-l1c/tiles/10/S/DG/2018/12/31/0/
 def metadata_from_granule_metadata(
-        granule_metadata_href: str,
-        read_href_modifier: Optional[ReadHrefModifier],
-        tolerance: float) -> Metadata:
+    granule_metadata_href: str,
+    read_href_modifier: Optional[ReadHrefModifier],
+    tolerance: float,
+) -> Metadata:
     granule_metadata = GranuleMetadata(
-        os.path.join(granule_metadata_href, 'metadata.xml'),
-        read_href_modifier)
+        os.path.join(granule_metadata_href, "metadata.xml"), read_href_modifier
+    )
     tileinfo_metadata = TileInfoMetadata(
-        os.path.join(granule_metadata_href, 'tileInfo.json'),
-        read_href_modifier)
+        os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
+    )
 
     geometry = make_shape(
-        reproject_geom(f'epsg:{granule_metadata.epsg}', 'epsg:4326',
-                       tileinfo_metadata.geometry)).simplify(tolerance)
+        reproject_geom(
+            f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
+        )
+    ).simplify(tolerance)
 
-    extra_assets = dict([
-        granule_metadata.create_asset(),
-        tileinfo_metadata.create_asset(),
-    ])
+    extra_assets = dict(
+        [
+            granule_metadata.create_asset(),
+            tileinfo_metadata.create_asset(),
+        ]
+    )
 
-    image_paths = L2A_IMAGE_PATHS if "_L2A_" in granule_metadata.scene_id else L1C_IMAGE_PATHS
+    image_paths = (
+        L2A_IMAGE_PATHS if "_L2A_" in granule_metadata.scene_id else L1C_IMAGE_PATHS
+    )
 
     return Metadata(
         scene_id=granule_metadata.scene_id,
         extra_assets=extra_assets,
         metadata_dict={
             **granule_metadata.metadata_dict,
-            **tileinfo_metadata.metadata_dict, f"{s2_prefix}:processing_baseline":
-            granule_metadata.processing_baseline
+            **tileinfo_metadata.metadata_dict,
+            f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
         },
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,

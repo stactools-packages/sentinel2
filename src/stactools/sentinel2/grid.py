@@ -1,14 +1,10 @@
 """Implements the :stac-ext:`Grid Extension <grid>`."""
 
-from typing import Any, Dict, Optional, Union, cast
-from typing import Pattern
 import re
+from typing import Any, Dict, Optional, Pattern, Set, Union, cast
 
 import pystac
-from pystac.extensions.base import (
-    ExtensionManagementMixin,
-    PropertiesExtension,
-)
+from pystac.extensions.base import ExtensionManagementMixin, PropertiesExtension
 from pystac.extensions.hooks import ExtensionHooks
 
 SCHEMA_URI: str = "https://stac-extensions.github.io/grid/v1.0.0/schema.json"
@@ -25,14 +21,15 @@ def validated_code(v: str) -> str:
     if not isinstance(v, str):
         raise ValueError("Invalid Grid code: must be str")
     if not CODE_PATTERN.fullmatch(v):
-        raise ValueError(f"Invalid Grid code: {v}"
-                         f" does not match the regex {CODE_REGEX}")
+        raise ValueError(
+            f"Invalid Grid code: {v}" f" does not match the regex {CODE_REGEX}"
+        )
     return v
 
 
 class GridExtension(
-        PropertiesExtension,
-        ExtensionManagementMixin[Union[pystac.Item, pystac.Collection]],
+    PropertiesExtension,
+    ExtensionManagementMixin[Union[pystac.Item, pystac.Collection]],
 ):
     """A concrete implementation of :class:`GridExtension` on an :class:`~pystac.Item`
     that extends the properties of the Item to include properties defined in the
@@ -70,8 +67,7 @@ class GridExtension(
 
     @property
     def code(self) -> Optional[str]:
-        """Get or sets the latitude band of the datasource.
-        """
+        """Get or sets the latitude band of the datasource."""
         return self._get_property(CODE_PROP, str)
 
     @code.setter
@@ -83,9 +79,7 @@ class GridExtension(
         return SCHEMA_URI
 
     @classmethod
-    def ext(cls,
-            obj: pystac.Item,
-            add_if_missing: bool = False) -> "GridExtension":
+    def ext(cls, obj: pystac.Item, add_if_missing: bool = False) -> "GridExtension":
         """Extends the given STAC Object with properties from the :stac-ext:`Grid
         Extension <grid>`.
 
@@ -106,7 +100,7 @@ class GridExtension(
 
 class GridExtensionHooks(ExtensionHooks):
     schema_uri: str = SCHEMA_URI
-    prev_extension_ids = {}
+    prev_extension_ids: Set[str] = set()
     stac_object_types = {pystac.STACObjectType.ITEM}
 
 

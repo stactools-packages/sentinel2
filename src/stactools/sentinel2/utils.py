@@ -1,5 +1,5 @@
-from typing import List, Final, Pattern, Optional
 import re
+from typing import Final, List, Optional, Pattern
 
 GSD_PATTERN: Final[Pattern[str]] = re.compile(r"[_R](\d0)m")
 
@@ -22,7 +22,7 @@ def fix_z_values(coord_values: List[str]) -> List[float]:
         # Check if all 3rd position values are '0'
         # Ignore any blank values
         third_position_is_zero = [
-            x == '0' for i, x in enumerate(coord_values) if i % 3 == 2 and x
+            x == "0" for i, x in enumerate(coord_values) if i % 3 == 2 and x
         ]
 
         if all(third_position_is_zero):

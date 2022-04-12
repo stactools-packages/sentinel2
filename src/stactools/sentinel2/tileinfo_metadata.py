@@ -1,15 +1,14 @@
+import json
 from datetime import datetime
 from typing import Any, Dict, Optional, Tuple
+
 import pystac
 from pystac.utils import str_to_datetime
-
-from stactools.core.io import ReadHrefModifier
-from stactools.core.io import read_text
-from stactools.sentinel2.constants import (TILEINFO_METADATA_ASSET_KEY,
-                                           SENTINEL2_PROPERTY_PREFIX as
-                                           s2_prefix)
-import json
 from shapely.geometry import shape
+from stactools.core.io import ReadHrefModifier, read_text
+
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
+from stactools.sentinel2.constants import TILEINFO_METADATA_ASSET_KEY
 
 
 class TileInfoMetadataError(Exception):
@@ -17,10 +16,7 @@ class TileInfoMetadataError(Exception):
 
 
 class TileInfoMetadata:
-
-    def __init__(self,
-                 href,
-                 read_href_modifier: Optional[ReadHrefModifier] = None):
+    def __init__(self, href, read_href_modifier: Optional[ReadHrefModifier] = None):
         self.href = href
         self.tileinfo = json.loads(read_text(self.href, read_href_modifier))
 
@@ -49,12 +45,12 @@ class TileInfoMetadata:
         elif product_name and "_MSIL1C_" in product_name:
             product_type = "S2MSI1C"
 
-        result = {f'{s2_prefix}:product_type': product_type}
+        result = {f"{s2_prefix}:product_type": product_type}
 
         return {k: v for k, v in result.items() if v is not None}
 
     def create_asset(self):
-        asset = pystac.Asset(href=self.href,
-                             media_type=pystac.MediaType.JSON,
-                             roles=['metadata'])
+        asset = pystac.Asset(
+            href=self.href, media_type=pystac.MediaType.JSON, roles=["metadata"]
+        )
         return TILEINFO_METADATA_ASSET_KEY, asset

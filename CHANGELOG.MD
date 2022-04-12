@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Change asset names to use underscore instead of dash
 - Band 8A corrected to have common name `nir08` instead of `rededge`
 - Asset object keys are now common name rather than band numbers (e.g., `red` instead of `B10`)
+- Use black (instead of yapf) for formatting
+- pre-commit and isort
 
 ### Added
 
