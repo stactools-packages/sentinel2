@@ -14,6 +14,7 @@ from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.grid import GridExtension
+from stactools.sentinel2.constants import DEFAULT_TOLERANCE
 
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import transform_from_bbox
@@ -26,7 +27,8 @@ from stactools.sentinel2.constants import (
     BANDS_TO_RESOLUTIONS, DATASTRIP_METADATA_ASSET_KEY, SENTINEL_PROVIDER,
     SENTINEL_LICENSE, SENTINEL_BANDS, SENTINEL_INSTRUMENTS,
     SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY, L2A_IMAGE_PATHS,
-    L1C_IMAGE_PATHS)
+    L1C_IMAGE_PATHS, BANDS_TO_ASSET_NAME)
+from pystac.extensions.eo import Band
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +46,10 @@ BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
 BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
+
+RGB_BANDS: Final[List[Band]] = [
+    SENTINEL_BANDS['red'], SENTINEL_BANDS['green'], SENTINEL_BANDS['blue']
+]
 
 
 @dataclass
@@ -68,7 +74,7 @@ class Metadata:
 
 
 def create_item(granule_href: str,
-                tolerance: float,
+                tolerance: float = DEFAULT_TOLERANCE,
                 additional_providers: Optional[List[pystac.Provider]] = None,
                 read_href_modifier: Optional[ReadHrefModifier] = None,
                 asset_href_prefix: Optional[str] = None) -> pystac.Item:
@@ -207,10 +213,15 @@ def image_asset_from_href(
                              title='True color preview',
                              roles=['data'])
         asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = [
-            SENTINEL_BANDS['B04'], SENTINEL_BANDS['B03'], SENTINEL_BANDS['B02']
-        ]
+        asset_eo.bands = RGB_BANDS
         return 'preview', asset
+    elif THUMBNAIL_PATTERN.search(asset_href):
+        # thumbnail image
+        asset = pystac.Asset(href=asset_href,
+                             media_type=pystac.MediaType.JPEG,
+                             title='Thumbnail image',
+                             roles=['thumbnail'])
+        return "thumbnail", asset
 
     # Extract gsd and proj info
     resolution = extract_gsd(asset_href)
@@ -219,13 +230,12 @@ def image_asset_from_href(
         # asset name
         band_id_search = BAND_PATTERN.search(asset_href)
         if band_id_search:
-            resolution = BANDS_TO_RESOLUTIONS[band_id_search.groups()[0]][0]
+            resolution = highest_asset_res(band_id_search.group(1))
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
 
-    if resolution is not None:
-        shape = list(resolution_to_shape[int(resolution)])
-        transform = transform_from_bbox(proj_bbox, shape)
+    shape = list(resolution_to_shape[int(resolution)])
+    transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(_asset: pystac.Asset,
                              _band_gsd: Optional[int] = None):
@@ -243,12 +253,12 @@ def image_asset_from_href(
         try:
             band_id = band_id_search.group(1)
             asset_res = resolution
-            band = SENTINEL_BANDS[band_id]
+            band = band_from_band_id(band_id)
         except KeyError:
             # Level-1C have different names
             band_id = os.path.splitext(asset_href)[0].split('_')[-1]
-            band = SENTINEL_BANDS[band_id]
-            asset_res = BANDS_TO_RESOLUTIONS[band_id_search.groups()[0]][0]
+            band = band_from_band_id(band_id)
+            asset_res = highest_asset_res(band_id_search.group(1))
 
         # Get the asset resolution from the file name.
         # If the asset resolution is the band GSD, then
@@ -258,15 +268,15 @@ def image_asset_from_href(
         # raster spatial resolution and gsd will differ.
         # See https://github.com/radiantearth/stac-spec/issues/1096
         band_gsd: Optional[int] = None
-        if asset_res == BANDS_TO_RESOLUTIONS[band_id][0]:
-            asset_key = band_id
+        if asset_res == highest_asset_res(band_id):
+            asset_key = BANDS_TO_ASSET_NAME[band_id]
             band_gsd = asset_res
         else:
             # If this isn't the default resolution, use the raster
             # resolution in the asset key.
             # TODO: Use the raster extension and spatial_resolution
             # property to encode the spatial resolution of all assets.
-            asset_key = f'{band_id}_{int(asset_res)}m'
+            asset_key = f'{BANDS_TO_ASSET_NAME[band_id]}_{int(asset_res)}m'
 
         asset = pystac.Asset(href=asset_href,
                              media_type=asset_media_type,
@@ -274,7 +284,7 @@ def image_asset_from_href(
                              roles=['data'])
 
         asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = [SENTINEL_BANDS[band_id]]
+        asset_eo.bands = [band_from_band_id(band_id)]
         set_asset_properties(asset, band_gsd)
         return asset_key, asset
 
@@ -286,9 +296,7 @@ def image_asset_from_href(
                              title='True color image',
                              roles=['visual'])
         asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = [
-            SENTINEL_BANDS['B04'], SENTINEL_BANDS['B03'], SENTINEL_BANDS['B02']
-        ]
+        asset_eo.bands = RGB_BANDS
         set_asset_properties(asset)
 
         maybe_res = extract_gsd(asset_href)
@@ -303,7 +311,7 @@ def image_asset_from_href(
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "AOT")
+        asset_id = mk_asset_id(maybe_res, "aot")
         return asset_id, asset
 
     elif WVP_PATTERN.search(asset_href):
@@ -314,7 +322,7 @@ def image_asset_from_href(
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "WVP")
+        asset_id = mk_asset_id(maybe_res, "wvp")
         return asset_id, asset
 
     elif SCL_PATTERN.search(asset_href):
@@ -325,20 +333,22 @@ def image_asset_from_href(
                              roles=['data'])
         set_asset_properties(asset)
         maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "SCL")
+        asset_id = mk_asset_id(maybe_res, "scl")
         return asset_id, asset
-    elif THUMBNAIL_PATTERN.search(asset_href):
-        # thumbnail image
-        return "thumbnail", pystac.Asset(href=asset_href,
-                                         media_type=pystac.MediaType.JPEG,
-                                         title='Thumbnail image',
-                                         roles=['thumbnail'])
     else:
         raise ValueError(f'Unexpected asset: {asset_href}')
 
 
+def band_from_band_id(band_id):
+    return SENTINEL_BANDS[BANDS_TO_ASSET_NAME[band_id]]
+
+
+def highest_asset_res(band_id: str) -> int:
+    return BANDS_TO_RESOLUTIONS[BANDS_TO_ASSET_NAME[band_id]][0]
+
+
 def mk_asset_id(maybe_res: Optional[int], name: str):
-    return f'{name}_{maybe_res}m' if maybe_res and maybe_res != 20 else name
+    return f'{name.lower()}_{maybe_res}m' if maybe_res and maybe_res != 20 else name
 
 
 # this is used for SAFE archive format

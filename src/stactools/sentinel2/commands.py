@@ -4,6 +4,7 @@ import json
 import os
 from typing import Optional
 from stactools.sentinel2.stac import create_item
+from stactools.sentinel2.constants import DEFAULT_TOLERANCE
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ def create_sentinel2_command(cli):
         help='Path to JSON file containing array of additional providers')
     @click.option('--tolerance',
                   type=float,
-                  default=0.0001,
+                  default=DEFAULT_TOLERANCE,
                   help='Item geometry simplification tolerance, e.g., 0.0001')
     @click.option(
         '--asset-href-prefix',
