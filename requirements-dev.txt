@@ -3,9 +3,5 @@ codespell
 coverage
 flake8
 pre-commit
-pylint
-sphinx
-sphinx-autobuild
-sphinx-click
-sphinxcontrib-fulltoc
-sphinxcontrib-napoleon
+pytest
+pytest-cov
