@@ -24,16 +24,20 @@ class Sentinel2MetadataTest(unittest.TestCase):
         s2_props = product_metadata.metadata_dict
         s2_props.update(granule_metadata.metadata_dict)
 
+        # fmt: off
         expected = {
             # From product metadata
-            f"{s2_prefix}:product_uri": "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
+            f"{s2_prefix}:product_uri":
+                "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
             f"{s2_prefix}:generation_time": "2020-10-07T16:08:57.135Z",
             f"{s2_prefix}:processing_baseline": "02.12",
             f"{s2_prefix}:product_type": "S2MSI2A",
             f"{s2_prefix}:datatake_id": "GS2A_20190212T192651_019029_N02.12",
             f"{s2_prefix}:datatake_type": "INS-NOBS",
-            f"{s2_prefix}:datastrip_id": "S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12",
-            f"{s2_prefix}:granule_id": "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
+            f"{s2_prefix}:datastrip_id":
+                "S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12",
+            f"{s2_prefix}:granule_id":
+                "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
             f"{s2_prefix}:mgrs_tile": "07HFE",
             f"{s2_prefix}:reflectance_conversion_factor": 1.02763689829235,
             # From granule metadata
@@ -51,6 +55,7 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f"{s2_prefix}:thin_cirrus_percentage": 12.783723,
             f"{s2_prefix}:snow_ice_percentage": 0.0,
         }
+        # fmt: on
 
         for k, v in expected.items():
             self.assertIn(k, s2_props)
