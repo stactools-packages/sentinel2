@@ -56,8 +56,6 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f'{s2_prefix}:high_proba_clouds_percentage': 24.183494,
             f'{s2_prefix}:thin_cirrus_percentage': 12.783723,
             f'{s2_prefix}:snow_ice_percentage': 0.0,
-            f'{s2_prefix}:mean_solar_zenith': 32.707073851362,
-            f'{s2_prefix}:mean_solar_azimuth': 62.3286549448294,
         }
 
         for k, v in expected.items():

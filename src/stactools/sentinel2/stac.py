@@ -26,7 +26,7 @@ from stactools.sentinel2.constants import (
     BANDS_TO_RESOLUTIONS, DATASTRIP_METADATA_ASSET_KEY, SENTINEL_PROVIDER,
     SENTINEL_LICENSE, SENTINEL_BANDS, SENTINEL_INSTRUMENTS,
     SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY, L2A_IMAGE_PATHS,
-    L1C_IMAGE_PATHS, SENTINEL2_PROPERTY_PREFIX as s2_prefix)
+    L1C_IMAGE_PATHS)
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +38,7 @@ TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI[_.]")
 AOT_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]AOT[_.]")
 WVP_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]WVP[_.]")
 SCL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SCL[_.]")
+THUMBNAIL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]preview[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
@@ -62,6 +63,8 @@ class Metadata:
     resolution_to_shape: Dict[int, Tuple[int, int]]
     orbit_state: Optional[str] = None
     relative_orbit: Optional[int] = None
+    sun_azimuth: Optional[float] = None
+    sun_zenith: Optional[float] = None
 
 
 def create_item(granule_href: str,
@@ -148,9 +151,8 @@ def create_item(granule_href: str,
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-    view.sun_azimuth = metadata.metadata_dict.get(
-        f"{s2_prefix}:mean_solar_azimuth")
-    if msz := metadata.metadata_dict.get(f"{s2_prefix}:mean_solar_zenith"):
+    view.sun_azimuth = metadata.sun_azimuth
+    if msz := metadata.sun_zenith:
         view.sun_elevation = 90 - msz
 
     # s2 properties
@@ -221,8 +223,9 @@ def image_asset_from_href(
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
 
-    shape = list(resolution_to_shape[int(resolution)])
-    transform = transform_from_bbox(proj_bbox, shape)
+    if resolution is not None:
+        shape = list(resolution_to_shape[int(resolution)])
+        transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(_asset: pystac.Asset,
                              _band_gsd: Optional[int] = None):
@@ -324,6 +327,12 @@ def image_asset_from_href(
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "SCL")
         return asset_id, asset
+    elif THUMBNAIL_PATTERN.search(asset_href):
+        # thumbnail image
+        return "thumbnail", pystac.Asset(href=asset_href,
+                                         media_type=pystac.MediaType.JPEG,
+                                         title='Thumbnail image',
+                                         roles=['thumbnail'])
     else:
         raise ValueError(f'Unexpected asset: {asset_href}')
 
@@ -379,7 +388,10 @@ def metadata_from_safe_manifest(
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
-        resolution_to_shape=granule_metadata.resolution_to_shape)
+        resolution_to_shape=granule_metadata.resolution_to_shape,
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
+    )
 
 
 # this is used for the Sinergise S3 format,
@@ -423,4 +435,7 @@ def metadata_from_granule_metadata(
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
-        image_paths=image_paths)
+        image_paths=image_paths,
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
+    )
