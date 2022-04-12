@@ -27,7 +27,8 @@ from stactools.sentinel2.constants import (
     BANDS_TO_RESOLUTIONS, DATASTRIP_METADATA_ASSET_KEY, SENTINEL_PROVIDER,
     SENTINEL_LICENSE, SENTINEL_BANDS, SENTINEL_INSTRUMENTS,
     SENTINEL_CONSTELLATION, INSPIRE_METADATA_ASSET_KEY, L2A_IMAGE_PATHS,
-    L1C_IMAGE_PATHS, BANDS_TO_ASSET_NAME)
+    L1C_IMAGE_PATHS, BANDS_TO_ASSET_NAME, SENTINEL2_PROPERTY_PREFIX as
+    s2_prefix)
 from pystac.extensions.eo import Band
 
 logger = logging.getLogger(__name__)
@@ -433,7 +434,8 @@ def metadata_from_granule_metadata(
         extra_assets=extra_assets,
         metadata_dict={
             **granule_metadata.metadata_dict,
-            **tileinfo_metadata.metadata_dict,
+            **tileinfo_metadata.metadata_dict, f"{s2_prefix}:processing_baseline":
+            granule_metadata.processing_baseline
         },
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
