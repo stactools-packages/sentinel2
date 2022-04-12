@@ -18,8 +18,7 @@ from shapely.geometry import box, shape, mapping
 from stactools.core.projection import reproject_geom
 from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import (BANDS_TO_RESOLUTIONS,
-                                           SENTINEL_BANDS,
-                                           BANDS_TO_ASSET_NAME,
+                                           SENTINEL_BANDS, BANDS_TO_ASSET_NAME,
                                            SENTINEL2_PROPERTY_PREFIX as
                                            s2_prefix)
 from stactools.testing import CliTestCase
