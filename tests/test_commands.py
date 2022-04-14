@@ -1,5 +1,7 @@
 import os
 import re
+
+# import shutil
 from collections import defaultdict
 from itertools import chain
 from tempfile import TemporaryDirectory
@@ -46,34 +48,28 @@ class CreateItemTest(CliTestCase):
         return [create_sentinel2_command]
 
     def test_create_item(self):
+        # fmt: off
+        id_to_filename = {
+            "S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248":
+                "S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE",
+            "S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857":
+                "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
+            "S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658":
+                "S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE",
+            # "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126":
+            #     "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
+            "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500":
+                "esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
+            "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG":
+                "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
+            "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG":
+                "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
+        }
+        # fmt: on
+
         granule_hrefs = {
             k: test_data.get_path(f"data-files/{v}")
-            for (k, v) in [
-                (
-                    "S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248",
-                    "S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE",
-                ),
-                (
-                    "S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857",
-                    "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
-                ),
-                (
-                    "S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658",
-                    "S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE",
-                ),
-                (
-                    "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500",
-                    "esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
-                ),
-                (
-                    "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
-                    "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
-                ),
-                (
-                    "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
-                    "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
-                ),
-            ]
+            for (k, v) in id_to_filename.items()
         }
 
         for item_id, granule_href in granule_hrefs.items():
@@ -86,11 +82,22 @@ class CreateItemTest(CliTestCase):
                     self.assertEqual(len(jsons), 1)
                     fname = jsons[0]
 
+                    # shutil.copyfile(os.path.join(tmp_dir, fname),
+                    # f"{granule_href}/expected_output.json")
+
                     item = pystac.Item.from_file(os.path.join(tmp_dir, fname))
 
                     item.validate()
 
                     self.assertEqual(item.id, item_id)
+
+                    expected_item = pystac.Item.from_file(
+                        f"{granule_href}/expected_output.json"
+                    )
+
+                    assert item.to_dict(
+                        include_self_link=False
+                    ) == expected_item.to_dict(include_self_link=False)
 
                     bands_seen = set()
                     bands_to_assets = defaultdict(list)
