@@ -24,10 +24,8 @@ from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
-    "coastal": [
-        60,
-        20,
-    ],  # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
+    # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
+    "coastal": [60, 20],
     "blue": [10, 20, 60],
     "green": [10, 20, 60],
     "red": [10, 20, 60],
