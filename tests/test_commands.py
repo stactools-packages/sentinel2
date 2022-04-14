@@ -197,8 +197,10 @@ class CreateItemTest(CliTestCase):
                         set(resolutions_seen.keys()), set(used_resolutions.keys())
                     )
                     for band in resolutions_seen:
-                        # B08 has only 10m resolution in SAFE archive
+                        # B08 (nir) has only 10m resolution in SAFE archive
                         # but 20m and 60m in S3 sinergise data
+                        # B01 (coastal) has 60m data for all years,
+                        # but also 20m for 2021/22 and newer.
                         if band == "nir" or band == "coastal":
                             if len(resolutions_seen[band]) == 1:
                                 self.assertEqual(
