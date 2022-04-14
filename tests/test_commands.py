@@ -3,7 +3,7 @@ import re
 from collections import defaultdict
 from itertools import chain
 from tempfile import TemporaryDirectory
-from typing import Dict, Final, List
+from typing import Any, Dict, Final, List
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -22,9 +22,6 @@ from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
-
-# import shutil
-
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
     # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
@@ -112,12 +109,14 @@ class CreateItemTest(CliTestCase):
                     # shutil.copyfile(os.path.join(tmp_dir, fname),
                     # f"{granule_href}/expected_output.json")
 
-                    assert item.to_dict(
-                        include_self_link=False
-                    ) == pystac.Item.from_file(
-                        f"{granule_href}/expected_output.json"
-                    ).to_dict(
-                        include_self_link=False
+                    def mk_comparable(i: pystac.Item) -> Dict[str, Any]:
+                        d = i.to_dict(include_self_link=False)
+                        for a in d["assets"].values():
+                            a["href"] = a["href"].split("data-files")[1]
+                        return d
+
+                    assert mk_comparable(item) == mk_comparable(
+                        pystac.Item.from_file(f"{granule_href}/expected_output.json")
                     )
 
                     bands_seen = set()
