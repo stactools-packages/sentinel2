@@ -128,20 +128,20 @@ SENTINEL_BANDS: Final[Dict[str, Band]] = {
 # available for each band as separate assets.
 # The first resolution is the sensor gsd; others
 # are downscaled versions.
-BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
-    "coastal": [60],
-    "blue": [10, 20, 60],
-    "green": [10, 20, 60],
-    "red": [10, 20, 60],
-    "rededge1": [20, 60],
-    "rededge2": [20, 60],
-    "rededge3": [20, 60],
-    "nir": [10, 20, 60],
-    "nir08": [20, 60],
-    "nir09": [60],
-    "cirrus": [60],
-    "swir16": [20, 60],
-    "swir22": [20, 60],
+UNSUFFIXED_BAND_RESOLUTION: Final[Dict[str, int]] = {
+    "coastal": 60,
+    "blue": 10,
+    "green": 10,
+    "red": 10,
+    "rededge1": 20,
+    "rededge2": 20,
+    "rededge3": 20,
+    "nir": 10,
+    "nir08": 20,
+    "nir09": 60,
+    "cirrus": 60,
+    "swir16": 20,
+    "swir22": 20,
 }
 
 BANDS_TO_ASSET_NAME: Final[Dict[str, str]] = {

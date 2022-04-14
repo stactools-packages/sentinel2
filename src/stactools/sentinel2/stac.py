@@ -18,7 +18,6 @@ from stactools.core.projection import reproject_geom, transform_from_bbox
 
 from stactools.sentinel2.constants import (
     BANDS_TO_ASSET_NAME,
-    BANDS_TO_RESOLUTIONS,
     DATASTRIP_METADATA_ASSET_KEY,
     DEFAULT_TOLERANCE,
     INSPIRE_METADATA_ASSET_KEY,
@@ -32,6 +31,7 @@ from stactools.sentinel2.constants import (
     SENTINEL_INSTRUMENTS,
     SENTINEL_LICENSE,
     SENTINEL_PROVIDER,
+    UNSUFFIXED_BAND_RESOLUTION,
 )
 from stactools.sentinel2.granule_metadata import GranuleMetadata
 from stactools.sentinel2.grid import GridExtension
@@ -377,7 +377,7 @@ def band_from_band_id(band_id):
 
 
 def highest_asset_res(band_id: str) -> int:
-    return BANDS_TO_RESOLUTIONS[BANDS_TO_ASSET_NAME[band_id]][0]
+    return UNSUFFIXED_BAND_RESOLUTION[BANDS_TO_ASSET_NAME[band_id]]
 
 
 def mk_asset_id(maybe_res: Optional[int], name: str):
