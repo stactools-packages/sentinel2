@@ -9,6 +9,7 @@ from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
 import pystac
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
 from shapely.geometry import mapping
@@ -65,7 +66,7 @@ RGB_BANDS: Final[List[Band]] = [
 ]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Metadata:
     scene_id: str
     cloudiness_percentage: Optional[float]
@@ -80,6 +81,7 @@ class Metadata:
     epsg: int
     proj_bbox: List[float]
     resolution_to_shape: Dict[int, Tuple[int, int]]
+    processing_baseline: str
     orbit_state: Optional[str] = None
     relative_orbit: Optional[int] = None
     sun_azimuth: Optional[float] = None
@@ -186,10 +188,11 @@ def create_item(
     image_assets = dict(
         [
             image_asset_from_href(
-                os.path.join(asset_href_prefix or granule_href, image_path),
-                metadata.resolution_to_shape,
-                metadata.proj_bbox,
-                metadata.image_media_type,
+                asset_href=os.path.join(asset_href_prefix or granule_href, image_path),
+                resolution_to_shape=metadata.resolution_to_shape,
+                proj_bbox=metadata.proj_bbox,
+                media_type=metadata.image_media_type,
+                processing_baseline=metadata.processing_baseline,
             )
             for image_path in metadata.image_paths
         ]
@@ -210,7 +213,8 @@ def image_asset_from_href(
     asset_href: str,
     resolution_to_shape: Dict[int, Tuple[int, int]],
     proj_bbox: List[float],
-    media_type: Optional[str] = None,
+    media_type: Optional[str],
+    processing_baseline: str,
 ) -> Tuple[str, pystac.Asset]:
     logger.debug(f"Creating asset for image {asset_href}")
 
@@ -292,14 +296,14 @@ def image_asset_from_href(
         # See https://github.com/radiantearth/stac-spec/issues/1096
         band_gsd: Optional[int] = None
         if asset_res == highest_asset_res(band_id):
-            asset_key = BANDS_TO_ASSET_NAME[band_id]
+            asset_id = BANDS_TO_ASSET_NAME[band_id]
             band_gsd = asset_res
         else:
             # If this isn't the default resolution, use the raster
             # resolution in the asset key.
             # TODO: Use the raster extension and spatial_resolution
             # property to encode the spatial resolution of all assets.
-            asset_key = f"{BANDS_TO_ASSET_NAME[band_id]}_{int(asset_res)}m"
+            asset_id = f"{BANDS_TO_ASSET_NAME[band_id]}_{int(asset_res)}m"
 
         asset = pystac.Asset(
             href=asset_href,
@@ -311,7 +315,25 @@ def image_asset_from_href(
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
         set_asset_properties(asset, band_gsd)
-        return asset_key, asset
+
+        if processing_baseline < "04.00":
+            scale = 0.0001  # DN = 10000 * REFLECTANCE
+            offset = 0
+        else:  # todo: pull this from metadata
+            scale = 0.0001
+            offset = -1000
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT16,
+                bits_per_sample=15,
+                unit="unitless",
+                scale=scale,
+                offset=offset,
+            )
+        ]
 
     # Handle auxiliary images
     elif TCI_PATTERN.search(asset_href):
@@ -328,8 +350,6 @@ def image_asset_from_href(
 
         maybe_res = extract_gsd(asset_href)
         asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
-        return asset_id, asset
-
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
         asset = pystac.Asset(
@@ -339,10 +359,21 @@ def image_asset_from_href(
             roles=["data"],
         )
         set_asset_properties(asset)
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT16,
+                bits_per_sample=15,
+                unit="unitless",
+                scale=0.001,
+                offset=0,
+            )
+        ]
+
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "aot")
-        return asset_id, asset
-
     elif WVP_PATTERN.search(asset_href):
         # Water vapor
         asset = pystac.Asset(
@@ -352,10 +383,21 @@ def image_asset_from_href(
             roles=["data"],
         )
         set_asset_properties(asset)
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT16,
+                bits_per_sample=15,
+                unit="cm",
+                scale=0.001,
+                offset=0,
+            )
+        ]
+
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "wvp")
-        return asset_id, asset
-
     elif SCL_PATTERN.search(asset_href):
         # Classification map
         asset = pystac.Asset(
@@ -365,11 +407,22 @@ def image_asset_from_href(
             roles=["data"],
         )
         set_asset_properties(asset)
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+                unit="unitless",
+            )
+        ]
+
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "scl")
-        return asset_id, asset
     else:
         raise ValueError(f"Unexpected asset: {asset_href}")
+
+    return asset_id, asset
 
 
 def band_from_band_id(band_id):
@@ -447,6 +500,7 @@ def metadata_from_safe_manifest(
         resolution_to_shape=granule_metadata.resolution_to_shape,
         sun_zenith=granule_metadata.mean_solar_zenith,
         sun_azimuth=granule_metadata.mean_solar_azimuth,
+        processing_baseline=granule_metadata.processing_baseline,
     )
 
 
@@ -501,4 +555,5 @@ def metadata_from_granule_metadata(
         image_paths=image_paths,
         sun_zenith=granule_metadata.mean_solar_zenith,
         sun_azimuth=granule_metadata.mean_solar_azimuth,
+        processing_baseline=granule_metadata.processing_baseline,
     )
