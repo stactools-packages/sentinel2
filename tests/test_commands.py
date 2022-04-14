@@ -1,10 +1,9 @@
 import os
 import re
-
-# import shutil
 from collections import defaultdict
 from itertools import chain
 from tempfile import TemporaryDirectory
+from typing import Dict, Final, List
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -16,13 +15,32 @@ from stactools.core.projection import reproject_geom
 from stactools.testing import CliTestCase
 
 from stactools.sentinel2.commands import create_sentinel2_command
-from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME, BANDS_TO_RESOLUTIONS
+from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import SENTINEL_BANDS
 from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
+
+BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
+    "coastal": [
+        60,
+        20,
+    ],  # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
+    "blue": [10, 20, 60],
+    "green": [10, 20, 60],
+    "red": [10, 20, 60],
+    "rededge1": [20, 60],
+    "rededge2": [20, 60],
+    "rededge3": [20, 60],
+    "nir": [10, 20, 60],
+    "nir08": [20, 60],
+    "nir09": [60],
+    "cirrus": [60],
+    "swir16": [20, 60],
+    "swir22": [20, 60],
+}
 
 
 def proj_bbox_area_difference(item):
@@ -56,14 +74,14 @@ class CreateItemTest(CliTestCase):
                 "S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE",
             "S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658":
                 "S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE",
-            # "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126":
-            #     "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
             "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500":
                 "esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
             "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG":
                 "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
             "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG":
                 "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
+            "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126":
+                "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
         }
         # fmt: on
 
@@ -82,22 +100,19 @@ class CreateItemTest(CliTestCase):
                     self.assertEqual(len(jsons), 1)
                     fname = jsons[0]
 
-                    # shutil.copyfile(os.path.join(tmp_dir, fname),
-                    # f"{granule_href}/expected_output.json")
-
                     item = pystac.Item.from_file(os.path.join(tmp_dir, fname))
 
                     item.validate()
 
                     self.assertEqual(item.id, item_id)
 
-                    expected_item = pystac.Item.from_file(
-                        f"{granule_href}/expected_output.json"
-                    )
-
                     assert item.to_dict(
                         include_self_link=False
-                    ) == expected_item.to_dict(include_self_link=False)
+                    ) == pystac.Item.from_file(
+                        f"{granule_href}/expected_output.json"
+                    ).to_dict(
+                        include_self_link=False
+                    )
 
                     bands_seen = set()
                     bands_to_assets = defaultdict(list)
@@ -184,7 +199,7 @@ class CreateItemTest(CliTestCase):
                     for band in resolutions_seen:
                         # B08 has only 10m resolution in SAFE archive
                         # but 20m and 60m in S3 sinergise data
-                        if band == "nir":
+                        if band == "nir" or band == "coastal":
                             if len(resolutions_seen[band]) == 1:
                                 self.assertEqual(
                                     set(resolutions_seen[band]),
