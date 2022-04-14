@@ -113,6 +113,11 @@ class CreateItemTest(CliTestCase):
                         d = i.to_dict(include_self_link=False)
                         for a in d["assets"].values():
                             a["href"] = a["href"].split("data-files")[1]
+
+                        for c in d["geometry"]["coordinates"][0]:
+                            c[0] = round(c[0], 5)
+                            c[1] = round(c[1], 5)
+
                         return d
 
                     assert mk_comparable(item) == mk_comparable(
