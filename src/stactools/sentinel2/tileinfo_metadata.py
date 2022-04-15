@@ -23,6 +23,11 @@ class TileInfoMetadata:
         self._datetime = str_to_datetime(self.tileinfo["timestamp"])
         self._geometry = self.tileinfo["tileDataGeometry"]
         self._bbox = shape(self._geometry).bounds
+        self._product_path = self.tileinfo["productPath"]
+
+    @property
+    def product_path(self) -> str:
+        return self._product_path
 
     @property
     def geometry(self) -> Dict[str, Any]:

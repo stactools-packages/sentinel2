@@ -331,7 +331,7 @@ def image_asset_from_href(
         # prior to processing baseline 04.00, scale and offset were
         # defined out of band, so handle that case
         offset = (
-            boa_add_offsets[band_id] * DEFAULT_SCALE
+            round(boa_add_offsets[band_id] * DEFAULT_SCALE, 6)
             if boa_add_offsets
             else offset_for_pb(processing_baseline)
         )
@@ -531,6 +531,17 @@ def metadata_from_granule_metadata(
         os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
     )
 
+    product_metadata = None
+    if os.path.exists(f := os.path.join(granule_metadata_href, "product_metadata.xml")):
+        product_metadata = ProductMetadata(f, read_href_modifier)
+    elif granule_metadata_href.startswith("https://roda.sentinel-hub.com"):
+        f = (
+            granule_metadata_href.split("tiles/")[0]
+            + tileinfo_metadata.product_path
+            + "/metadata.xml"
+        )
+        product_metadata = ProductMetadata(f, read_href_modifier)
+
     geometry = make_shape(
         reproject_geom(
             f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
@@ -569,4 +580,5 @@ def metadata_from_granule_metadata(
         sun_zenith=granule_metadata.mean_solar_zenith,
         sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
+        boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )
