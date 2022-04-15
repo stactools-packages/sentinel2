@@ -64,6 +64,12 @@ class ProductMetadata:
             )
         self.qa_node = qa_node
 
+        # BOA_ADD_OFFSET_VALUES_LIST only exists in processing baseline 04.00 and higher
+        boa_add_offset_values_list_node = self._root.find(
+            "n1:General_Info/Product_Image_Characteristics/BOA_ADD_OFFSET_VALUES_LIST"
+        )
+        self.boa_add_offset_values_list_node = boa_add_offset_values_list_node
+
         def _get_geometries():
             geometric_info = self._root.find("n1:Geometric_Info")
             footprint_text = geometric_info.find_text(
@@ -195,6 +201,31 @@ class ProductMetadata:
         }
 
         return {k: v for k, v in result.items() if v is not None}
+
+    @property
+    def boa_add_offsets(self) -> Dict[str, int]:
+        if self.boa_add_offset_values_list_node is not None:
+            xs = {
+                x.get_attr("band_id"): int(x.text)
+                for x in self.boa_add_offset_values_list_node.findall("BOA_ADD_OFFSET")
+            }
+            return {
+                "B01": xs["0"],
+                "B02": xs["1"],
+                "B03": xs["2"],
+                "B04": xs["3"],
+                "B05": xs["4"],
+                "B06": xs["5"],
+                "B07": xs["6"],
+                "B08": xs["7"],
+                "B8A": xs["8"],
+                "B09": xs["9"],
+                "B10": xs["10"],
+                "B11": xs["11"],
+                "B12": xs["12"],
+            }
+        else:
+            return {}
 
     def create_asset(self):
         asset = pystac.Asset(
