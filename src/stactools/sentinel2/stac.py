@@ -65,6 +65,8 @@ RGB_BANDS: Final[List[Band]] = [
     SENTINEL_BANDS["blue"],
 ]
 
+DEFAULT_SCALE = 0.0001
+
 
 @dataclass(frozen=True)
 class Metadata:
@@ -86,6 +88,7 @@ class Metadata:
     relative_orbit: Optional[int] = None
     sun_azimuth: Optional[float] = None
     sun_zenith: Optional[float] = None
+    boa_add_offsets: Optional[Dict[str, int]] = None
 
 
 def create_item(
@@ -193,6 +196,7 @@ def create_item(
                 proj_bbox=metadata.proj_bbox,
                 media_type=metadata.image_media_type,
                 processing_baseline=metadata.processing_baseline,
+                boa_add_offsets=metadata.boa_add_offsets,
             )
             for image_path in metadata.image_paths
         ]
@@ -209,12 +213,20 @@ def create_item(
     return item
 
 
+def offset_for_pb(processing_baseline: str) -> float:
+    if processing_baseline < "04.00":
+        return 0
+    else:
+        return -0.1
+
+
 def image_asset_from_href(
     asset_href: str,
     resolution_to_shape: Dict[int, Tuple[int, int]],
     proj_bbox: List[float],
     media_type: Optional[str],
     processing_baseline: str,
+    boa_add_offsets: Optional[Dict[str, int]] = None,
 ) -> Tuple[str, pystac.Asset]:
     logger.debug(f"Creating asset for image {asset_href}")
 
@@ -316,21 +328,21 @@ def image_asset_from_href(
         asset_eo.bands = [band_from_band_id(band_id)]
         set_asset_properties(asset, band_gsd)
 
-        if processing_baseline < "04.00":
-            scale = 0.0001  # DN = 10000 * REFLECTANCE
-            offset = 0
-        else:  # todo: pull this from metadata
-            scale = 0.0001
-            offset = -1000
-
+        # prior to processing baseline 04.00, scale and offset were
+        # defined out of band, so handle that case
+        offset = (
+            round(boa_add_offsets[band_id] * DEFAULT_SCALE, 6)
+            if boa_add_offsets
+            else offset_for_pb(processing_baseline)
+        )
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
                 data_type=DataType.UINT16,
                 bits_per_sample=15,
-                unit="unitless",
-                scale=scale,
+                unit="none",
+                scale=DEFAULT_SCALE,
                 offset=offset,
             )
         ]
@@ -366,7 +378,7 @@ def image_asset_from_href(
                 spatial_resolution=resolution,
                 data_type=DataType.UINT16,
                 bits_per_sample=15,
-                unit="unitless",
+                unit="none",
                 scale=0.001,
                 offset=0,
             )
@@ -413,7 +425,7 @@ def image_asset_from_href(
                 nodata=0,
                 spatial_resolution=resolution,
                 data_type=DataType.UINT8,
-                unit="unitless",
+                unit="none",
             )
         ]
 
@@ -501,6 +513,7 @@ def metadata_from_safe_manifest(
         sun_zenith=granule_metadata.mean_solar_zenith,
         sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
+        boa_add_offsets=product_metadata.boa_add_offsets,
     )
 
 
@@ -517,6 +530,17 @@ def metadata_from_granule_metadata(
     tileinfo_metadata = TileInfoMetadata(
         os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
     )
+
+    product_metadata = None
+    if os.path.exists(f := os.path.join(granule_metadata_href, "product_metadata.xml")):
+        product_metadata = ProductMetadata(f, read_href_modifier)
+    elif granule_metadata_href.startswith("https://roda.sentinel-hub.com"):
+        f = (
+            granule_metadata_href.split("tiles/")[0]
+            + tileinfo_metadata.product_path
+            + "/metadata.xml"
+        )
+        product_metadata = ProductMetadata(f, read_href_modifier)
 
     geometry = make_shape(
         reproject_geom(
@@ -556,4 +580,5 @@ def metadata_from_granule_metadata(
         sun_zenith=granule_metadata.mean_solar_zenith,
         sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
+        boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )
