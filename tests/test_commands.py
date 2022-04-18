@@ -122,6 +122,9 @@ class CreateItemTest(CliTestCase):
                             c[0] = round(c[0], 5)
                             c[1] = round(c[1], 5)
 
+                        for i, v in enumerate(bbox := d["bbox"]):
+                            bbox[i] = round(v, 5)
+
                         return d
 
                     assert mk_comparable(item) == mk_comparable(

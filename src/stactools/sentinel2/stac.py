@@ -328,24 +328,9 @@ def image_asset_from_href(
         asset_eo.bands = [band_from_band_id(band_id)]
         set_asset_properties(asset, band_gsd)
 
-        # prior to processing baseline 04.00, scale and offset were
-        # defined out of band, so handle that case
-        offset = (
-            round(boa_add_offsets[band_id] * DEFAULT_SCALE, 6)
-            if boa_add_offsets
-            else offset_for_pb(processing_baseline)
+        RasterExtension.ext(asset).bands = raster_bands(
+            boa_add_offsets, processing_baseline, band_id, resolution
         )
-        RasterExtension.ext(asset).bands = [
-            RasterBand.create(
-                nodata=0,
-                spatial_resolution=resolution,
-                data_type=DataType.UINT16,
-                bits_per_sample=15,
-                unit="none",
-                scale=DEFAULT_SCALE,
-                offset=offset,
-            )
-        ]
 
     # Handle auxiliary images
     elif TCI_PATTERN.search(asset_href):
@@ -582,3 +567,30 @@ def metadata_from_granule_metadata(
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )
+
+
+def raster_bands(
+    boa_add_offsets: Optional[Dict[str, int]],
+    processing_baseline: str,
+    band_id: str,
+    resolution: float,
+) -> List[RasterBand]:
+    # prior to processing baseline 04.00, scale and offset were
+    # defined out of band, so handle that case
+    offset = (
+        round(boa_add_offsets[band_id] * DEFAULT_SCALE, 6)
+        if boa_add_offsets
+        else offset_for_pb(processing_baseline)
+    )
+
+    return [
+        RasterBand.create(
+            nodata=0,
+            spatial_resolution=resolution,
+            data_type=DataType.UINT16,
+            bits_per_sample=15,
+            unit="none",
+            scale=DEFAULT_SCALE,
+            offset=offset,
+        )
+    ]
