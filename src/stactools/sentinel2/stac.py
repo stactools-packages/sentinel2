@@ -213,13 +213,6 @@ def create_item(
     return item
 
 
-def offset_for_pb(processing_baseline: str) -> float:
-    if processing_baseline < "04.00":
-        return 0
-    else:
-        return -0.1
-
-
 def image_asset_from_href(
     asset_href: str,
     resolution_to_shape: Dict[int, Tuple[int, int]],
@@ -567,6 +560,13 @@ def metadata_from_granule_metadata(
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )
+
+
+def offset_for_pb(processing_baseline: str) -> float:
+    if processing_baseline < "04.00":
+        return 0
+    else:
+        return -0.1
 
 
 def raster_bands(
