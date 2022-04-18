@@ -321,7 +321,7 @@ def image_asset_from_href(
         asset_eo.bands = [band_from_band_id(band_id)]
         set_asset_properties(asset, band_gsd)
 
-        RasterExtension.ext(asset, add_if_missing=True).bands = raster_bands(
+        RasterExtension.ext(asset).bands = raster_bands(
             boa_add_offsets, processing_baseline, band_id, resolution
         )
 
@@ -350,7 +350,7 @@ def image_asset_from_href(
         )
         set_asset_properties(asset)
 
-        RasterExtension.ext(asset, add_if_missing=True).bands = [
+        RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
@@ -374,7 +374,7 @@ def image_asset_from_href(
         )
         set_asset_properties(asset)
 
-        RasterExtension.ext(asset, add_if_missing=True).bands = [
+        RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
@@ -398,7 +398,7 @@ def image_asset_from_href(
         )
         set_asset_properties(asset)
 
-        RasterExtension.ext(asset, add_if_missing=True).bands = [
+        RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
