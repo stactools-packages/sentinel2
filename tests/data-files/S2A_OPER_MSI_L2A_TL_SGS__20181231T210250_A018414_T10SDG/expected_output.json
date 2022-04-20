@@ -9950,7 +9950,7 @@
     },
     {
       "rel": "self",
-      "href": "/var/folders/3q/jbg6x0zx3194zq6_2jbwygjw0000gn/T/tmp87jt7r7s/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG.json",
+      "href": "/var/folders/3q/jbg6x0zx3194zq6_2jbwygjw0000gn/T/tmpf7dqgw57/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG.json",
       "type": "application/json"
     }
   ],
@@ -9995,6 +9995,17 @@
         -10.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10030,6 +10041,17 @@
         0.0,
         -10.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10067,6 +10089,17 @@
         -10.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10093,6 +10126,17 @@
         -10.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10118,6 +10162,17 @@
         0.0,
         -10.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "none",
+          "scale": 0.001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10204,6 +10259,17 @@
         -10.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10239,6 +10305,17 @@
         0.0,
         -20.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10276,6 +10353,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10311,6 +10399,17 @@
         0.0,
         -20.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10348,6 +10447,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10384,6 +10494,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10418,6 +10539,17 @@
         0.0,
         -20.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10454,6 +10586,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10489,6 +10632,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10514,6 +10668,17 @@
         0.0,
         -20.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10551,6 +10716,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10577,6 +10753,14 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20,
+          "unit": "none"
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10602,6 +10786,17 @@
         0.0,
         -20.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10687,6 +10882,17 @@
         -20.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10721,6 +10927,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10757,6 +10974,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10791,6 +11019,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10827,6 +11066,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10862,6 +11112,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10896,6 +11157,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -10933,6 +11205,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -10967,6 +11250,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -11003,6 +11297,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -11028,6 +11333,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -11064,6 +11380,17 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -11090,6 +11417,14 @@
         -60.0,
         4200000.0
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 60,
+          "unit": "none"
+        }
+      ],
       "roles": [
         "data"
       ]
@@ -11115,6 +11450,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -11151,6 +11497,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"
@@ -11235,6 +11592,17 @@
         0.0,
         -60.0,
         4200000.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "none",
+          "scale": 0.0001,
+          "offset": 0
+        }
       ],
       "roles": [
         "data"

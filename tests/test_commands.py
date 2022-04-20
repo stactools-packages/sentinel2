@@ -3,7 +3,7 @@ import re
 from collections import defaultdict
 from itertools import chain
 from tempfile import TemporaryDirectory
-from typing import Dict, Final, List
+from typing import Any, Dict, Final, List
 
 import pystac
 from pystac.extensions.eo import EOExtension
@@ -24,10 +24,8 @@ from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
-    "coastal": [
-        60,
-        20,
-    ],  # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
+    # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
+    "coastal": [60, 20],
     "blue": [10, 20, 60],
     "green": [10, 20, 60],
     "red": [10, 20, 60],
@@ -76,12 +74,16 @@ class CreateItemTest(CliTestCase):
                 "S2B_MSIL2A_20191228T210519_N0212_R071_T01CCV_20201003T104658.SAFE",
             "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500":
                 "esa_S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
+            "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126":
+                "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
             "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG":
                 "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
             "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG":
                 "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
-            "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126":
-                "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
+            "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP":
+                "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
+            "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ":
+                "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ",
         }
         # fmt: on
 
@@ -106,12 +108,27 @@ class CreateItemTest(CliTestCase):
 
                     self.assertEqual(item.id, item_id)
 
-                    assert item.to_dict(
-                        include_self_link=False
-                    ) == pystac.Item.from_file(
-                        f"{granule_href}/expected_output.json"
-                    ).to_dict(
-                        include_self_link=False
+                    # uncomment these lines to update the expected_output files
+                    # import shutil
+                    # shutil.copyfile(os.path.join(tmp_dir, fname),
+                    # f"{granule_href}/expected_output.json")
+
+                    def mk_comparable(i: pystac.Item) -> Dict[str, Any]:
+                        d = i.to_dict(include_self_link=False)
+                        for a in d["assets"].values():
+                            a["href"] = a["href"].split("data-files")[1]
+
+                        for c in d["geometry"]["coordinates"][0]:
+                            c[0] = round(c[0], 5)
+                            c[1] = round(c[1], 5)
+
+                        for i, v in enumerate(bbox := d["bbox"]):
+                            bbox[i] = round(v, 5)
+
+                        return d
+
+                    assert mk_comparable(item) == mk_comparable(
+                        pystac.Item.from_file(f"{granule_href}/expected_output.json")
                     )
 
                     bands_seen = set()
