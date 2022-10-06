@@ -145,7 +145,7 @@ def create_item(
 
     # eo
     eo = EOExtension.ext(item, add_if_missing=True)
-    eo.cloud_cover = metadata.cloudiness_percentage
+    eo.cloud_cover = round(metadata.cloudiness_percentage, 2)
 
     # sat
     if metadata.orbit_state or metadata.relative_orbit:
@@ -179,7 +179,7 @@ def create_item(
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-    view.sun_azimuth = metadata.sun_azimuth
+    view.sun_azimuth = round(metadata.sun_azimuth, 2)
     if msz := metadata.sun_zenith:
         view.sun_elevation = 90 - msz
 
