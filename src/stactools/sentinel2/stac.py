@@ -241,7 +241,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="True color preview",
-            roles=["data"],
+            roles=["data","reflectance"],
         )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
@@ -314,7 +314,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title=f"{band.description} - {asset_res}m",
-            roles=["data"],
+            roles=["data","reflectance"],
         )
 
         asset_eo = EOExtension.ext(asset)
@@ -346,7 +346,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Aerosol optical thickness (AOT)",
-            roles=["data"],
+            roles=["data","reflectance"],
         )
         set_asset_properties(asset)
 
@@ -370,7 +370,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Water vapour (WVP)",
-            roles=["data"],
+            roles=["data","reflectance"],
         )
         set_asset_properties(asset)
 
@@ -394,7 +394,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Scene classification map (SCL)",
-            roles=["data"],
+            roles=["data","reflectance"],
         )
         set_asset_properties(asset)
 
