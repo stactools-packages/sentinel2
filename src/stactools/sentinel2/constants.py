@@ -5,7 +5,7 @@ from pystac.extensions.eo import Band
 from pystac.link import Link
 from pystac.provider import ProviderRole
 
-SENTINEL2_PROPERTY_PREFIX = "sentinel2"
+SENTINEL2_PROPERTY_PREFIX = "s2"
 
 SENTINEL_LICENSE: Final[Link] = Link(
     rel="license",
