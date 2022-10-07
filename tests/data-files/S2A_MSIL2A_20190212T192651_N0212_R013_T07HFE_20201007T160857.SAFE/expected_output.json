@@ -108,13 +108,13 @@
     },
     {
       "rel": "self",
-      "href": "/var/folders/3q/jbg6x0zx3194zq6_2jbwygjw0000gn/T/tmpfcf7bay6/S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857.json",
+      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmp000rsc53/S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857.json",
       "type": "application/json"
     }
   ],
   "assets": {
     "blue_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B02_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B02_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 20m",
       "eo:bands": [
@@ -156,11 +156,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B03_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B03_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 20m",
       "eo:bands": [
@@ -202,11 +203,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B04_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B04_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 20m",
       "eo:bands": [
@@ -248,11 +250,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B05_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B05_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -295,11 +298,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B06_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B06_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -342,11 +346,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B07_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B07_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -389,11 +394,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B8A_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B8A_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -436,11 +442,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B11_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B11_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -483,11 +490,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B12_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B12_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -530,11 +538,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_SCL_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_SCL_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -564,11 +573,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_AOT_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_AOT_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -601,11 +611,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_WVP_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_WVP_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -638,11 +649,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_TCI_20m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_TCI_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "True color image",
       "eo:bands": [
@@ -691,7 +703,7 @@
       ]
     },
     "coastal": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B01_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B01_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -734,11 +746,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B02_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B02_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 60m",
       "eo:bands": [
@@ -780,11 +793,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B03_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B03_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 60m",
       "eo:bands": [
@@ -826,11 +840,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B04_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B04_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 60m",
       "eo:bands": [
@@ -872,11 +887,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B05_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B05_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 1 (band 5) - 60m",
       "eo:bands": [
@@ -918,11 +934,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B06_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B06_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 2 (band 6) - 60m",
       "eo:bands": [
@@ -964,11 +981,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B07_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B07_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 3 (band 7) - 60m",
       "eo:bands": [
@@ -1010,11 +1028,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B8A_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B8A_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 2 (band 8A) - 60m",
       "eo:bands": [
@@ -1056,11 +1075,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir09": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B09_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B09_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -1103,11 +1123,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B11_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B11_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 1 (band 11) - 60m",
       "eo:bands": [
@@ -1149,11 +1170,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B12_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B12_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 2 (band 12) - 60m",
       "eo:bands": [
@@ -1195,11 +1217,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_SCL_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_SCL_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -1229,11 +1252,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_AOT_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_AOT_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -1266,11 +1290,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_WVP_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_WVP_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -1303,11 +1328,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_TCI_60m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_TCI_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "True color image",
       "eo:bands": [
@@ -1356,7 +1382,7 @@
       ]
     },
     "blue": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B02_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B02_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -1399,11 +1425,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B03_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B03_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -1446,11 +1473,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B04_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B04_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -1493,11 +1521,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B08_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_B08_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -1540,11 +1569,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_10m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_AOT_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_AOT_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -1577,11 +1607,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_10m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_WVP_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_WVP_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -1614,11 +1645,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_TCI_10m.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_TCI_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "True color image",
       "eo:bands": [
@@ -1667,42 +1699,42 @@
       ]
     },
     "safe_manifest": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/manifest.safe",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/manifest.safe",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "product_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/MTD_MSIL2A.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/MTD_MSIL2A.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "granule_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/MTD_TL.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/MTD_TL.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "inspire_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/INSPIRE.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/INSPIRE.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "datastrip_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/DATASTRIP/DS_ESRI_20201007T160858_S20190212T192646/MTD_DS.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/DATASTRIP/DS_ESRI_20201007T160858_S20190212T192646/MTD_DS.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "preview": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/QI_DATA/T07HFE_20190212T192651_PVI.tif",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/QI_DATA/T07HFE_20190212T192651_PVI.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
         "thumbnail"

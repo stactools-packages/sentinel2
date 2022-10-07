@@ -100,13 +100,13 @@
     },
     {
       "rel": "self",
-      "href": "/var/folders/3q/jbg6x0zx3194zq6_2jbwygjw0000gn/T/tmp9ewihdpa/S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248.json",
+      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmpq7icz4jm/S2A_MSIL1C_20210908T042701_R133_T46RER_20210908T070248.json",
       "type": "application/json"
     }
   ],
   "assets": {
     "coastal": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B01.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -149,11 +149,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -196,11 +197,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -243,11 +245,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -290,11 +293,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B05.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -337,11 +341,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B06.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -384,11 +389,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B07.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -431,11 +437,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -478,11 +485,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B8A.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -525,11 +533,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir09": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B09.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -572,11 +581,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "cirrus": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B10.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B10.jp2",
       "type": "image/jp2",
       "title": "Cirrus (band 10) - 60m",
       "eo:bands": [
@@ -619,11 +629,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B11.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -666,11 +677,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B12.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -713,11 +725,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/IMG_DATA/T46RER_20210908T042701_TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -766,35 +779,35 @@
       ]
     },
     "safe_manifest": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/manifest.safe",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/manifest.safe",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "product_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/MTD_MSIL1C.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/MTD_MSIL1C.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "granule_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/MTD_TL.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/GRANULE/L1C_T46RER_A032448_20210908T043714/MTD_TL.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "inspire_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/INSPIRE.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/INSPIRE.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "datastrip_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/DATASTRIP/DS_VGS4_20210908T070248_S20210908T043714/MTD_DS.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE/DATASTRIP/DS_VGS4_20210908T070248_S20210908T043714/MTD_DS.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
