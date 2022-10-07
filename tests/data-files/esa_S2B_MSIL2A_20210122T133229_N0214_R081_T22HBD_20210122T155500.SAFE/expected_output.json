@@ -19,7 +19,7 @@
     "instruments": [
       "msi"
     ],
-    "eo:cloud_cover": 0.45,
+    "eo:cloud_cover": 0.447807,
     "sat:orbit_state": "descending",
     "sat:relative_orbit": 81,
     "proj:epsg": 32722,
@@ -27,7 +27,7 @@
     "mgrs:latitude_band": "H",
     "mgrs:grid_square": "BD",
     "grid:code": "MGRS-22HBD",
-    "view:sun_azimuth": 64.95,
+    "view:sun_azimuth": 64.9495240978383,
     "view:sun_elevation": 57.6287688142736,
     "sentinel2:product_uri": "S2B_MSIL2A_20210122T133229_N0214_R081_T22HBD_20210122T155500.SAFE",
     "sentinel2:generation_time": "2021-01-22T15:55:00.000000Z",
@@ -128,7 +128,7 @@
     },
     {
       "rel": "self",
-      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmprhswwqm3/S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500.json",
+      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmpwwdr3jsi/S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500.json",
       "type": "application/json"
     }
   ],
@@ -1737,6 +1737,7 @@
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",

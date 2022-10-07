@@ -146,6 +146,7 @@ def create_item(
     # eo
     eo = EOExtension.ext(item, add_if_missing=True)
     eo.cloud_cover = metadata.cloudiness_percentage
+    RasterExtension.add_to(item)
 
     # sat
     if metadata.orbit_state or metadata.relative_orbit:
