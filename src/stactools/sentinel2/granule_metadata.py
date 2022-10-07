@@ -109,6 +109,40 @@ class GranuleMetadata:
     @property
     def metadata_dict(self):
         properties: Dict[str, Optional[float]] = {
+            # f"{s2_prefix}:granule_id": map_opt(
+            # float, self._image_content_node.find_text("granuleIdentifier=")
+            # ),
+            # f"{s2_prefix}:datatake_id": map_opt(
+            # float,
+            # self._image_content_node.find_text("Datatake datatakeIdentifier="),
+            # ),
+            f"{s2_prefix}:product_uri": map_opt(
+                float, self._image_content_node.find_text("PRODUCT_URI")
+            ),
+            # f"{s2_prefix}:datastrip_id": map_opt(
+            # float, self._image_content_node.find_text("datastripIdentifier=")
+            # ),
+            f"{s2_prefix}:product_type": map_opt(
+                float, self._image_content_node.find_text("PRODUCT_TYPE")
+            ),
+            f"{s2_prefix}:orbit_state": map_opt(
+                float, self._image_content_node.find_text("SENSING_ORBIT_DIRECTION")
+            ),
+            f"{s2_prefix}:datatake_type": map_opt(
+                float, self._image_content_node.find_text("DATATAKE_TYPE")
+            ),
+            f"{s2_prefix}:generation_time": map_opt(
+                float, self._image_content_node.find_text("GENERATION_TIME")
+            ),
+            f"{s2_prefix}:relative_orbit": map_opt(
+                float, self._image_content_node.find_text("SENSING_ORBIT_NUMBER")
+            ),
+            f"{s2_prefix}:reflectance_conversion_factor": map_opt(
+                float,
+                self._image_content_node.find_text(
+                    "BOA_ADD_OFFSET_VALUES_LIST/Reflectance_Conversion/U"
+                ),
+            ),
             f"{s2_prefix}:degraded_msi_data_percentage": map_opt(
                 float,
                 self._image_content_node.find_text("DEGRADED_MSI_DATA_PERCENTAGE"),
