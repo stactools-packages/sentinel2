@@ -90,13 +90,13 @@
     },
     {
       "rel": "self",
-      "href": "/var/folders/3q/jbg6x0zx3194zq6_2jbwygjw0000gn/T/tmp6a7cl37l/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP.json",
+      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmprkdrvg3_/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP.json",
       "type": "application/json"
     }
   ],
   "assets": {
     "thumbnail": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/preview.jpg",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/preview.jpg",
       "type": "image/jpeg",
       "title": "Thumbnail image",
       "roles": [
@@ -104,7 +104,7 @@
       ]
     },
     "red": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -141,7 +141,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -151,7 +150,7 @@
       ]
     },
     "green": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -188,7 +187,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -198,7 +196,7 @@
       ]
     },
     "blue": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -235,7 +233,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -245,7 +242,7 @@
       ]
     },
     "wvp_10m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -282,7 +279,7 @@
       ]
     },
     "aot_10m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -309,7 +306,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
@@ -319,7 +315,7 @@
       ]
     },
     "visual": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -368,7 +364,7 @@
       ]
     },
     "nir": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -405,7 +401,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -415,7 +410,7 @@
       ]
     },
     "swir22": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B12.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -452,7 +447,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -462,7 +456,7 @@
       ]
     },
     "rededge2": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B06.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -499,7 +493,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -509,7 +502,7 @@
       ]
     },
     "rededge3": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B07.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -546,7 +539,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -556,7 +548,7 @@
       ]
     },
     "rededge1": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B05.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -593,7 +585,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -603,7 +594,7 @@
       ]
     },
     "swir16": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B11.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -640,7 +631,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -650,7 +640,7 @@
       ]
     },
     "red_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 20m",
       "eo:bands": [
@@ -686,7 +676,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -696,7 +685,7 @@
       ]
     },
     "green_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 20m",
       "eo:bands": [
@@ -732,7 +721,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -742,7 +730,7 @@
       ]
     },
     "blue_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 20m",
       "eo:bands": [
@@ -778,7 +766,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -788,7 +775,7 @@
       ]
     },
     "wvp": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -825,7 +812,7 @@
       ]
     },
     "nir08": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B8A.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -862,7 +849,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -872,7 +858,7 @@
       ]
     },
     "scl": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/SCL.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -897,8 +883,7 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 20,
-          "unit": "none"
+          "spatial_resolution": 20
         }
       ],
       "roles": [
@@ -906,7 +891,7 @@
       ]
     },
     "aot": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -933,7 +918,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
@@ -943,7 +927,7 @@
       ]
     },
     "visual_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -992,7 +976,7 @@
       ]
     },
     "nir_20m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 20m",
       "eo:bands": [
@@ -1028,7 +1012,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1038,7 +1021,7 @@
       ]
     },
     "swir22_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B12.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 60m",
       "eo:bands": [
@@ -1074,7 +1057,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1084,7 +1066,7 @@
       ]
     },
     "rededge2_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B06.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 60m",
       "eo:bands": [
@@ -1120,7 +1102,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1130,7 +1111,7 @@
       ]
     },
     "rededge3_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B07.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 60m",
       "eo:bands": [
@@ -1166,7 +1147,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1176,7 +1156,7 @@
       ]
     },
     "rededge1_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B05.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 60m",
       "eo:bands": [
@@ -1212,7 +1192,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1222,7 +1201,7 @@
       ]
     },
     "swir16_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B11.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 60m",
       "eo:bands": [
@@ -1258,7 +1237,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1268,7 +1246,7 @@
       ]
     },
     "red_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 60m",
       "eo:bands": [
@@ -1304,7 +1282,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1314,7 +1291,7 @@
       ]
     },
     "coastal": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B01.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -1351,7 +1328,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1361,7 +1337,7 @@
       ]
     },
     "green_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 60m",
       "eo:bands": [
@@ -1397,7 +1373,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1407,7 +1382,7 @@
       ]
     },
     "blue_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 60m",
       "eo:bands": [
@@ -1443,7 +1418,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1453,7 +1427,7 @@
       ]
     },
     "wvp_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -1490,7 +1464,7 @@
       ]
     },
     "nir08_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B8A.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 60m",
       "eo:bands": [
@@ -1526,7 +1500,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1536,7 +1509,7 @@
       ]
     },
     "scl_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/SCL.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -1561,8 +1534,7 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 60,
-          "unit": "none"
+          "spatial_resolution": 60
         }
       ],
       "roles": [
@@ -1570,7 +1542,7 @@
       ]
     },
     "aot_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -1597,7 +1569,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
@@ -1607,7 +1578,7 @@
       ]
     },
     "nir09": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B09.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -1644,7 +1615,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1654,7 +1624,7 @@
       ]
     },
     "visual_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -1703,7 +1673,7 @@
       ]
     },
     "nir_60m": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 60m",
       "eo:bands": [
@@ -1739,7 +1709,6 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": -0.1
         }
@@ -1749,14 +1718,14 @@
       ]
     },
     "granule_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/metadata.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/metadata.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "tileinfo_metadata": {
-      "href": "/Users/philvarner/code/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/tileInfo.json",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/tileInfo.json",
       "type": "application/json",
       "roles": [
         "metadata"
