@@ -199,11 +199,8 @@ class ProductMetadata:
                 float, self.reflectance_conversion_node.find_text("U")
             ),
         }
-        return {
-            k: round(v, 2) if isinstance(v, float) else v
-            for k, v in result.items()
-            if v is not None
-        }
+
+        return {k: v for k, v in result.items() if v is not None}
 
     @property
     def boa_add_offsets(self) -> Dict[str, int]:

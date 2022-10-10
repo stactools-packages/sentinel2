@@ -156,11 +156,7 @@ class GranuleMetadata:
             ),
         }
 
-        return {
-            k: round(v, 2) if isinstance(v, float) else v
-            for k, v in properties.items()
-            if v is not None
-        }
+        return {k: v for k, v in properties.items() if v is not None}
 
     @property
     def product_id(self) -> str:
