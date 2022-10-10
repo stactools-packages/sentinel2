@@ -356,7 +356,6 @@ def image_asset_from_href(
                 spatial_resolution=resolution,
                 data_type=DataType.UINT16,
                 bits_per_sample=15,
-                unit="none",
                 scale=0.001,
                 offset=0,
             )
@@ -403,7 +402,6 @@ def image_asset_from_href(
                 nodata=0,
                 spatial_resolution=resolution,
                 data_type=DataType.UINT8,
-                unit="none",
             )
         ]
 
@@ -589,7 +587,6 @@ def raster_bands(
             spatial_resolution=resolution,
             data_type=DataType.UINT16,
             bits_per_sample=15,
-            unit="none",
             scale=DEFAULT_SCALE,
             offset=offset,
         )
