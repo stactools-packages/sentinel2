@@ -109,12 +109,9 @@ class CreateItemTest(CliTestCase):
                     self.assertEqual(item.id, item_id)
 
                     # uncomment these lines to update the expected_output files
-                    import shutil
-
-                    shutil.copyfile(
-                        os.path.join(tmp_dir, fname),
-                        f"{granule_href}/expected_output.json",
-                    )
+                    # import shutil
+                    # shutil.copyfile(os.path.join(tmp_dir, fname),
+                    # f"{granule_href}/expected_output.json")
 
                     def mk_comparable(i: pystac.Item) -> Dict[str, Any]:
                         d = i.to_dict(include_self_link=False)

@@ -39,20 +39,20 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f"{s2_prefix}:granule_id":
                 "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
             f"{s2_prefix}:mgrs_tile": "07HFE",
-            f"{s2_prefix}:reflectance_conversion_factor": 1.03,
+            f"{s2_prefix}:reflectance_conversion_factor": 1.02763689829235,
             # From granule metadata
             f"{s2_prefix}:degraded_msi_data_percentage": 0.0,
-            f"{s2_prefix}:nodata_pixel_percentage": 96.77,
+            f"{s2_prefix}:nodata_pixel_percentage": 96.769553,
             f"{s2_prefix}:saturated_defective_pixel_percentage": 0.0,
             f"{s2_prefix}:dark_features_percentage": 0.0,
             f"{s2_prefix}:cloud_shadow_percentage": 0.0,
-            f"{s2_prefix}:vegetation_percentage": 0.00,
-            f"{s2_prefix}:not_vegetated_percentage": 0.07,
-            f"{s2_prefix}:water_percentage": 48.35,
+            f"{s2_prefix}:vegetation_percentage": 0.000308,
+            f"{s2_prefix}:not_vegetated_percentage": 0.069531,
+            f"{s2_prefix}:water_percentage": 48.349833,
             f"{s2_prefix}:unclassified_percentage": 0.0,
-            f"{s2_prefix}:medium_proba_clouds_percentage": 14.61,
-            f"{s2_prefix}:high_proba_clouds_percentage": 24.18,
-            f"{s2_prefix}:thin_cirrus_percentage": 12.78,
+            f"{s2_prefix}:medium_proba_clouds_percentage": 14.61311,
+            f"{s2_prefix}:high_proba_clouds_percentage": 24.183494,
+            f"{s2_prefix}:thin_cirrus_percentage": 12.783723,
             f"{s2_prefix}:snow_ice_percentage": 0.0,
         }
         # fmt: on
