@@ -98,7 +98,7 @@
     "thumbnail": {
       "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ/preview.jpg",
       "type": "image/jpeg",
-      "title": "Thumbnail image",
+      "title": "Thumbnail image", 
       "roles": [
         "thumbnail"
       ]

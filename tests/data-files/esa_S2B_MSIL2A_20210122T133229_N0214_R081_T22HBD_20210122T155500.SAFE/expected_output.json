@@ -128,7 +128,7 @@
     },
     {
       "rel": "self",
-      "href": "",
+      "href": "", 
       "type": "application/json"
     }
   ],

@@ -9949,7 +9949,7 @@
       "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice"
     },
     {
-      "rel": "self",
+      "rel": "self", 
       "href": "",
       "type": "application/json"
     }

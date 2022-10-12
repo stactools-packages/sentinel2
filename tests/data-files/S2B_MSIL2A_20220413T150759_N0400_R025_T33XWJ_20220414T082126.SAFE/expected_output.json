@@ -40,7 +40,7 @@
     "sentinel2:mgrs_tile": "33XWJ",
     "sentinel2:reflectance_conversion_factor": 0.99707551771009,
     "sentinel2:degraded_msi_data_percentage": 0.0,
-    "sentinel2:nodata_pixel_percentage": 98.441625,
+    "sentinel2:nodata_pixel_percentage": 98.441625, 
     "sentinel2:saturated_defective_pixel_percentage": 0.0,
     "sentinel2:dark_features_percentage": 0.0,
     "sentinel2:cloud_shadow_percentage": 0.0,

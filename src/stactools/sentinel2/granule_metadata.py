@@ -90,25 +90,55 @@ class GranuleMetadata:
 
     @property
     def cloudiness_percentage(self) -> Optional[float]:
-        return map_opt(
-            float, self._image_content_node.find_text("CLOUDY_PIXEL_PERCENTAGE")
+        return round(
+            map_opt(
+                float, self._image_content_node.find_text("CLOUDY_PIXEL_PERCENTAGE")
+            ),
+            2,
         )
 
     @property
     def mean_solar_zenith(self) -> Optional[float]:
-        return map_opt(
-            float, self._tile_angles_node.find_text("Mean_Sun_Angle/ZENITH_ANGLE")
+        return round(
+            map_opt(
+                float, self._tile_angles_node.find_text("Mean_Sun_Angle/ZENITH_ANGLE")
+            ),
+            4,
         )
 
     @property
     def mean_solar_azimuth(self) -> Optional[float]:
-        return map_opt(
-            float, self._tile_angles_node.find_text("Mean_Sun_Angle/AZIMUTH_ANGLE")
+        return round(
+            map_opt(
+                float, self._tile_angles_node.find_text("Mean_Sun_Angle/AZIMUTH_ANGLE")
+            ),
+            4,
         )
 
     @property
     def metadata_dict(self):
         properties: Dict[str, Optional[float]] = {
+            f"{s2_prefix}:product_type": map_opt(
+                float, self._image_content_node.find_text("PRODUCT_TYPE")
+            ),
+            f"{s2_prefix}:orbit_state": map_opt(
+                float, self._image_content_node.find_text("SENSING_ORBIT_DIRECTION")
+            ),
+            f"{s2_prefix}:datatake_type": map_opt(
+                float, self._image_content_node.find_text("DATATAKE_TYPE")
+            ),
+            f"{s2_prefix}:generation_time": map_opt(
+                float, self._image_content_node.find_text("GENERATION_TIME")
+            ),
+            f"{s2_prefix}:relative_orbit": map_opt(
+                float, self._image_content_node.find_text("SENSING_ORBIT_NUMBER")
+            ),
+            f"{s2_prefix}:reflectance_conversion_factor": map_opt(
+                float,
+                self._image_content_node.find_text(
+                    "BOA_ADD_OFFSET_VALUES_LIST/Reflectance_Conversion/U"
+                ),
+            ),
             f"{s2_prefix}:degraded_msi_data_percentage": map_opt(
                 float,
                 self._image_content_node.find_text("DEGRADED_MSI_DATA_PERCENTAGE"),
@@ -156,7 +186,30 @@ class GranuleMetadata:
             ),
         }
 
-        return {k: v for k, v in properties.items() if v is not None}
+        round_dict = {
+            f"{s2_prefix}:cloudiness_percentage": 2,
+            f"{s2_prefix}:degraded_msi_data_percentage": 2,
+            f"{s2_prefix}:reflectance_conversion_factor": 4,
+            f"{s2_prefix}:saturated_defective_pixel_percentage": 2,
+            f"{s2_prefix}:nodata_pixel_percentage": 2,
+            f"{s2_prefix}:vegetation_percentage": 2,
+            f"{s2_prefix}:cloud_shadow_percentage": 2,
+            f"{s2_prefix}:dark_features_percentage": 2,
+            f"{s2_prefix}:unclassified_percentage": 2,
+            f"{s2_prefix}:water_percentage": 2,
+            f"{s2_prefix}:not_vegetated_percentage": 2,
+            f"{s2_prefix}:high_proba_clouds_percentage": 2,
+            f"{s2_prefix}:medium_proba_clouds_percentage": 2,
+            f"{s2_prefix}:snow_ice_percentage": 2,
+            f"{s2_prefix}:thin_cirrus_percentage": 2,
+            f"{s2_prefix}:vegetation_percentage": 2,
+        }
+
+        return {
+            k: round(v, round_dict[k]) if k in round_dict.keys() else v
+            for k, v in properties.items()
+            if v is not None
+        }
 
     @property
     def product_id(self) -> str:
@@ -165,10 +218,8 @@ class GranuleMetadata:
     @property
     def scene_id(self) -> str:
         """Returns the string to be used for a STAC Item id.
-
         Removes the processing number and .SAFE extension
         from the product_id defined below.
-
         Parsed based on the naming convention found here:
         https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
         """
@@ -192,7 +243,6 @@ class GranuleMetadata:
     @property
     def processing_baseline(self) -> Optional[str]:
         """Returns the string to be used for the baseline_processing property
-
         Parsed based on the naming convention found here:
         https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
         """

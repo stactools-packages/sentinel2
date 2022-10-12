@@ -121,13 +121,14 @@ def create_item(
         metadata = metadata_from_granule_metadata(
             granule_href, read_href_modifier, tolerance
         )
+    created = datetime.now().isoformat()
 
     item = pystac.Item(
         id=metadata.scene_id,
         geometry=metadata.geometry,
         bbox=metadata.bbox,
         datetime=metadata.datetime,
-        properties={},
+        properties={"created": created},
     )
 
     # --Common metadata--
@@ -146,6 +147,7 @@ def create_item(
     # eo
     eo = EOExtension.ext(item, add_if_missing=True)
     eo.cloud_cover = metadata.cloudiness_percentage
+    RasterExtension.add_to(item)
 
     # sat
     if metadata.orbit_state or metadata.relative_orbit:
@@ -241,7 +243,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="True color preview",
-            roles=["data"],
+            roles=["data", "reflectance"],
         )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
@@ -314,7 +316,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title=f"{band.description} - {asset_res}m",
-            roles=["data"],
+            roles=["data", "reflectance"],
         )
 
         asset_eo = EOExtension.ext(asset)
@@ -346,7 +348,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Aerosol optical thickness (AOT)",
-            roles=["data"],
+            roles=["data", "reflectance"],
         )
         set_asset_properties(asset)
 
@@ -370,7 +372,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Water vapour (WVP)",
-            roles=["data"],
+            roles=["data", "reflectance"],
         )
         set_asset_properties(asset)
 
@@ -394,7 +396,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Scene classification map (SCL)",
-            roles=["data"],
+            roles=["data", "reflectance"],
         )
         set_asset_properties(asset)
 
@@ -484,12 +486,12 @@ def metadata_from_safe_manifest(
         },
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
-        cloudiness_percentage=granule_metadata.cloudiness_percentage,
+        cloudiness_percentage=round(granule_metadata.cloudiness_percentage, 2),
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
-        sun_zenith=granule_metadata.mean_solar_zenith,
-        sun_azimuth=granule_metadata.mean_solar_azimuth,
+        sun_zenith=round(granule_metadata.mean_solar_zenith, 2),
+        sun_azimuth=round(granule_metadata.mean_solar_azimuth, 2),
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets,
     )
@@ -545,7 +547,7 @@ def metadata_from_granule_metadata(
             **tileinfo_metadata.metadata_dict,
             f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
         },
-        cloudiness_percentage=granule_metadata.cloudiness_percentage,
+        cloudiness_percentage=round(granule_metadata.cloudiness_percentage),
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
@@ -555,8 +557,8 @@ def metadata_from_granule_metadata(
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
         image_paths=image_paths,
-        sun_zenith=granule_metadata.mean_solar_zenith,
-        sun_azimuth=granule_metadata.mean_solar_azimuth,
+        sun_zenith=round(granule_metadata.mean_solar_zenith, 2),
+        sun_azimuth=round(granule_metadata.mean_solar_azimuth, 2),
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )

@@ -135,7 +135,7 @@
       "title": "Blue (band 2) - 20m",
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "blue", 
           "common_name": "blue",
           "description": "Blue (band 2)",
           "center_wavelength": 0.49,
