@@ -3,7 +3,6 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2022-10-12T11:32Z",
     "providers": [
       {
         "name": "ESA",
@@ -20,29 +19,29 @@
     "instruments": [
       "msi"
     ],
-    "eo:cloud_cover": 2.78,
+    "eo:cloud_cover": 2.779036,
     "proj:epsg": 32610,
     "mgrs:utm_zone": 10,
     "mgrs:latitude_band": "S",
     "mgrs:grid_square": "DG",
     "grid:code": "MGRS-10SDG",
-    "view:sun_azimuth": 161.1057,
-    "view:sun_elevation": 27.0991,
-    "sentinel2:degraded_msi_data_percentage": 0.0,
-    "sentinel2:nodata_pixel_percentage": 40.42,
-    "sentinel2:saturated_defective_pixel_percentage": 0.0,
-    "sentinel2:dark_features_percentage": 0.0,
-    "sentinel2:cloud_shadow_percentage": 0.0,
-    "sentinel2:vegetation_percentage": 0.0,
-    "sentinel2:not_vegetated_percentage": 0.0,
-    "sentinel2:water_percentage": 97.22,
-    "sentinel2:unclassified_percentage": 0.0,
-    "sentinel2:medium_proba_clouds_percentage": 0.0,
-    "sentinel2:high_proba_clouds_percentage": 0.0,
-    "sentinel2:thin_cirrus_percentage": 2.78,
-    "sentinel2:snow_ice_percentage": 0.0,
-    "sentinel2:product_type": "S2MSI2A",
-    "sentinel2:processing_baseline": "02.11",
+    "view:sun_azimuth": 161.105709274255,
+    "view:sun_elevation": 27.099070943431997,
+    "s2:degraded_msi_data_percentage": 0.0,
+    "s2:nodata_pixel_percentage": 40.422097,
+    "s2:saturated_defective_pixel_percentage": 0.0,
+    "s2:dark_features_percentage": 0.000769,
+    "s2:cloud_shadow_percentage": 0.0,
+    "s2:vegetation_percentage": 0.000741,
+    "s2:not_vegetated_percentage": 0.002829,
+    "s2:water_percentage": 97.216278,
+    "s2:unclassified_percentage": 0.00034,
+    "s2:medium_proba_clouds_percentage": 0.001637,
+    "s2:high_proba_clouds_percentage": 0.000457,
+    "s2:thin_cirrus_percentage": 2.776942,
+    "s2:snow_ice_percentage": 0.0,
+    "s2:product_type": "S2MSI2A",
+    "s2:processing_baseline": "02.11",
     "datetime": "2018-12-31T19:04:06.567000Z"
   },
   "geometry": {
@@ -9948,16 +9947,11 @@
     {
       "rel": "license",
       "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice"
-    },
-    {
-      "rel": "self",
-      "href": "",
-      "type": "application/json"
     }
   ],
   "assets": {
     "thumbnail": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/preview.jpg",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/preview.jpg",
       "type": "image/jpeg",
       "title": "Thumbnail image",
       "roles": [
@@ -9965,7 +9959,7 @@
       ]
     },
     "red": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -10002,18 +9996,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "green": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -10050,18 +10042,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "blue": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -10098,18 +10088,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp_10m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -10142,12 +10130,11 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot_10m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -10174,18 +10161,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "visual": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -10234,7 +10219,7 @@
       ]
     },
     "nir": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R10m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -10271,18 +10256,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "swir22": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B12.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -10319,18 +10302,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge2": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B06.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -10367,18 +10348,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge3": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B07.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -10415,18 +10394,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge1": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B05.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -10463,18 +10440,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "swir16": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B11.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -10511,18 +10486,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "red_20m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 20m",
       "eo:bands": [
@@ -10558,18 +10531,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "green_20m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 20m",
       "eo:bands": [
@@ -10605,18 +10576,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "blue_20m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 20m",
       "eo:bands": [
@@ -10652,18 +10621,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -10696,12 +10663,11 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir08": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B8A.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -10738,18 +10704,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "scl": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/SCL.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -10774,17 +10738,15 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 20,
-          "unit": "none"
+          "spatial_resolution": 20
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -10811,18 +10773,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "visual_20m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -10871,7 +10831,7 @@
       ]
     },
     "nir_20m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R20m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 20m",
       "eo:bands": [
@@ -10907,18 +10867,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "swir22_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B12.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 60m",
       "eo:bands": [
@@ -10954,18 +10912,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge2_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B06.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 60m",
       "eo:bands": [
@@ -11001,18 +10957,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge3_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B07.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 60m",
       "eo:bands": [
@@ -11048,18 +11002,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "rededge1_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B05.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 60m",
       "eo:bands": [
@@ -11095,18 +11047,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "swir16_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B11.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 60m",
       "eo:bands": [
@@ -11142,18 +11092,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "red_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B04.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 60m",
       "eo:bands": [
@@ -11189,18 +11137,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "coastal": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B01.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -11237,18 +11183,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "green_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B03.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 60m",
       "eo:bands": [
@@ -11284,18 +11228,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "blue_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B02.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 60m",
       "eo:bands": [
@@ -11331,18 +11273,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/WVP.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -11375,12 +11315,11 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir08_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B8A.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 60m",
       "eo:bands": [
@@ -11416,18 +11355,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "scl_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/SCL.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -11452,17 +11389,15 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 60,
-          "unit": "none"
+          "spatial_resolution": 60
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/AOT.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -11489,18 +11424,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir09": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B09.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -11537,18 +11470,16 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "visual_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/TCI.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -11597,7 +11528,7 @@
       ]
     },
     "nir_60m": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B08.jp2",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/R60m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 60m",
       "eo:bands": [
@@ -11633,25 +11564,23 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "unit": "none",
           "scale": 0.0001,
           "offset": 0
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "granule_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/metadata.xml",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/metadata.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "tileinfo_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/tileInfo.json",
+      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG/tileInfo.json",
       "type": "application/json",
       "roles": [
         "metadata"
@@ -11666,7 +11595,6 @@
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.0.0/schema.json",
