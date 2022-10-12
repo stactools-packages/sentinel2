@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- remove local/temp paths from expected_output.json
+- remove units where they are 'none'
+- update precision for float values
+- updated prefix from 'sentinel2' to 's2'
 - TCI asset now has role `visual` instead of `data`
 - Change platform and constellation to use best practices (lowercase, no spaces)
 - Change asset names to use underscore instead of dash
@@ -18,6 +22,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- add "reflectance" to all data asset roles
+- add additional sentinel2 properties
+- add raster extension
 - Populate MGRS Extension fields
 - Populate Grid Extension fields
 - Add support for AWS S3 Open Data format (produced by Sinergise)
