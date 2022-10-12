@@ -121,7 +121,7 @@ def create_item(
         metadata = metadata_from_granule_metadata(
             granule_href, read_href_modifier, tolerance
         )
-    created = datetime.now().isoformat()
+    created = datetime.now().strftime("%Y-%m-%dT%H:%MZ")
 
     item = pystac.Item(
         id=metadata.scene_id,
@@ -475,7 +475,7 @@ def metadata_from_safe_manifest(
         scene_id=product_metadata.scene_id,
         extra_assets=extra_assets,
         geometry=product_metadata.geometry,
-        bbox=product_metadata.bbox,
+        bbox=[round(v, 6) for v in product_metadata.bbox],
         datetime=product_metadata.datetime,
         platform=product_metadata.platform,
         orbit_state=product_metadata.orbit_state,
@@ -486,12 +486,12 @@ def metadata_from_safe_manifest(
         },
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
-        cloudiness_percentage=round(granule_metadata.cloudiness_percentage, 2),
+        cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
-        proj_bbox=granule_metadata.proj_bbox,
+        proj_bbox=[round(v, 6) for v in granule_metadata.proj_bbox],
         resolution_to_shape=granule_metadata.resolution_to_shape,
-        sun_zenith=round(granule_metadata.mean_solar_zenith, 2),
-        sun_azimuth=round(granule_metadata.mean_solar_azimuth, 2),
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets,
     )
@@ -547,7 +547,7 @@ def metadata_from_granule_metadata(
             **tileinfo_metadata.metadata_dict,
             f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
         },
-        cloudiness_percentage=round(granule_metadata.cloudiness_percentage),
+        cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
@@ -557,8 +557,8 @@ def metadata_from_granule_metadata(
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
         image_paths=image_paths,
-        sun_zenith=round(granule_metadata.mean_solar_zenith, 2),
-        sun_azimuth=round(granule_metadata.mean_solar_azimuth, 2),
+        sun_zenith=granule_metadata.mean_solar_zenith,
+        sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
     )

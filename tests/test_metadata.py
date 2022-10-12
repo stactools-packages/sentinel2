@@ -56,8 +56,6 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f"{s2_prefix}:snow_ice_percentage": 0.0,
         }
         # fmt: on
-        for k, v in expected.items():
-            print(k, v)
 
         for k, v in expected.items():
             self.assertIn(k, s2_props)

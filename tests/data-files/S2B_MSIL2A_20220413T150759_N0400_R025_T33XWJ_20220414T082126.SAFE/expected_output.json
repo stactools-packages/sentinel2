@@ -3,6 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126",
   "properties": {
+    "created": "2022-10-12T11:32Z",
     "providers": [
       {
         "name": "ESA",
@@ -19,7 +20,7 @@
     "instruments": [
       "msi"
     ],
-    "eo:cloud_cover": 98.944211,
+    "eo:cloud_cover": 98.94,
     "sat:orbit_state": "ascending",
     "sat:relative_orbit": 25,
     "proj:epsg": 32633,
@@ -27,8 +28,8 @@
     "mgrs:latitude_band": "X",
     "mgrs:grid_square": "WJ",
     "grid:code": "MGRS-33XWJ",
-    "view:sun_azimuth": 246.540424743604,
-    "view:sun_elevation": 13.471380977263905,
+    "view:sun_azimuth": 246.5404,
+    "view:sun_elevation": 13.471400000000003,
     "sentinel2:product_uri": "S2B_MSIL2A_20220413T150759_N0400_R025_T33XWJ_20220414T082126.SAFE",
     "sentinel2:generation_time": "2022-04-14T08:21:26.580338Z",
     "sentinel2:processing_baseline": "04.00",
@@ -38,20 +39,20 @@
     "sentinel2:datastrip_id": "S2B_OPER_MSI_L2A_DS_ESRI_20220414T082127_S20220413T150756_N04.00",
     "sentinel2:granule_id": "S2B_OPER_MSI_L2A_TL_ESRI_20220414T082127_A026649_T33XWJ_N04.00",
     "sentinel2:mgrs_tile": "33XWJ",
-    "sentinel2:reflectance_conversion_factor": 0.99707551771009,
+    "sentinel2:reflectance_conversion_factor": 0.9971,
     "sentinel2:degraded_msi_data_percentage": 0.0,
-    "sentinel2:nodata_pixel_percentage": 98.441625, 
+    "sentinel2:nodata_pixel_percentage": 98.44,
     "sentinel2:saturated_defective_pixel_percentage": 0.0,
     "sentinel2:dark_features_percentage": 0.0,
     "sentinel2:cloud_shadow_percentage": 0.0,
     "sentinel2:vegetation_percentage": 0.0,
-    "sentinel2:not_vegetated_percentage": 0.016606,
+    "sentinel2:not_vegetated_percentage": 0.02,
     "sentinel2:water_percentage": 0.0,
     "sentinel2:unclassified_percentage": 0.0,
-    "sentinel2:medium_proba_clouds_percentage": 4.630229,
-    "sentinel2:high_proba_clouds_percentage": 94.313979,
+    "sentinel2:medium_proba_clouds_percentage": 4.63,
+    "sentinel2:high_proba_clouds_percentage": 94.31,
     "sentinel2:thin_cirrus_percentage": 0.0,
-    "sentinel2:snow_ice_percentage": 1.039183,
+    "sentinel2:snow_ice_percentage": 1.04,
     "datetime": "2022-04-13T15:07:59.024000Z"
   },
   "geometry": {
@@ -96,7 +97,7 @@
     },
     {
       "rel": "self",
-      "href": "",
+      "href": "/var/folders/_r/948mypx50hq04qshn5700hqr0000gn/T/tmpea_6uh5d/S2B_MSIL2A_20220413T150759_R025_T33XWJ_20220414T082126.json",
       "type": "application/json"
     }
   ],
@@ -144,7 +145,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue_20m": {
@@ -190,7 +192,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_20m": {
@@ -236,7 +239,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_20m": {
@@ -282,7 +286,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1": {
@@ -329,7 +334,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2": {
@@ -376,7 +382,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3": {
@@ -423,7 +430,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08": {
@@ -470,7 +478,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16": {
@@ -517,7 +526,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22": {
@@ -564,7 +574,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl": {
@@ -598,7 +609,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot": {
@@ -635,7 +647,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp": {
@@ -672,7 +685,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_20m": {
@@ -768,7 +782,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue_60m": {
@@ -814,7 +829,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_60m": {
@@ -860,7 +876,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_60m": {
@@ -906,7 +923,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1_60m": {
@@ -952,7 +970,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2_60m": {
@@ -998,7 +1017,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3_60m": {
@@ -1044,7 +1064,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08_60m": {
@@ -1090,7 +1111,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir09": {
@@ -1137,7 +1159,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16_60m": {
@@ -1183,7 +1206,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22_60m": {
@@ -1229,7 +1253,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl_60m": {
@@ -1263,7 +1288,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_60m": {
@@ -1300,7 +1326,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_60m": {
@@ -1337,7 +1364,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_60m": {
@@ -1433,7 +1461,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green": {
@@ -1480,7 +1509,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red": {
@@ -1527,7 +1557,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir": {
@@ -1574,7 +1605,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_10m": {
@@ -1611,7 +1643,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_10m": {
@@ -1648,7 +1681,8 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual": {
@@ -1744,13 +1778,14 @@
     }
   },
   "bbox": [
-    14.998951147316966,
-    80.10986307013093,
-    17.7331712786673,
-    80.16533661794836
+    14.998951,
+    80.109863,
+    17.733171,
+    80.165337
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
