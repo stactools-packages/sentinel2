@@ -8,7 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- remove local/temp paths from expected_output.json
 - remove units where they are 'none'
 - update precision for float values
 - updated prefix from 'sentinel2' to 's2'
