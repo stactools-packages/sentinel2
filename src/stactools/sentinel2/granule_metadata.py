@@ -90,29 +90,23 @@ class GranuleMetadata:
 
     @property
     def cloudiness_percentage(self) -> Optional[float]:
-        return round(
-            map_opt(
-                float, self._image_content_node.find_text("CLOUDY_PIXEL_PERCENTAGE")
-            ),
-            2,
+        return map_opt(
+            float,
+            self._image_content_node.find_text("CLOUDY_PIXEL_PERCENTAGE"),
         )
 
     @property
     def mean_solar_zenith(self) -> Optional[float]:
-        return round(
-            map_opt(
-                float, self._tile_angles_node.find_text("Mean_Sun_Angle/ZENITH_ANGLE")
-            ),
-            4,
+        return map_opt(
+            float,
+            self._tile_angles_node.find_text("Mean_Sun_Angle/ZENITH_ANGLE"),
         )
 
     @property
     def mean_solar_azimuth(self) -> Optional[float]:
-        return round(
-            map_opt(
-                float, self._tile_angles_node.find_text("Mean_Sun_Angle/AZIMUTH_ANGLE")
-            ),
-            4,
+        return map_opt(
+            float,
+            self._tile_angles_node.find_text("Mean_Sun_Angle/AZIMUTH_ANGLE"),
         )
 
     @property
@@ -186,30 +180,7 @@ class GranuleMetadata:
             ),
         }
 
-        round_dict = {
-            f"{s2_prefix}:cloudiness_percentage": 2,
-            f"{s2_prefix}:degraded_msi_data_percentage": 2,
-            f"{s2_prefix}:reflectance_conversion_factor": 4,
-            f"{s2_prefix}:saturated_defective_pixel_percentage": 2,
-            f"{s2_prefix}:nodata_pixel_percentage": 2,
-            f"{s2_prefix}:vegetation_percentage": 2,
-            f"{s2_prefix}:cloud_shadow_percentage": 2,
-            f"{s2_prefix}:dark_features_percentage": 2,
-            f"{s2_prefix}:unclassified_percentage": 2,
-            f"{s2_prefix}:water_percentage": 2,
-            f"{s2_prefix}:not_vegetated_percentage": 2,
-            f"{s2_prefix}:high_proba_clouds_percentage": 2,
-            f"{s2_prefix}:medium_proba_clouds_percentage": 2,
-            f"{s2_prefix}:snow_ice_percentage": 2,
-            f"{s2_prefix}:thin_cirrus_percentage": 2,
-            f"{s2_prefix}:vegetation_percentage": 2,
-        }
-
-        return {
-            k: round(v, round_dict[k]) if k in round_dict.keys() else v
-            for k, v in properties.items()
-            if v is not None
-        }
+        return {k: v for k, v in properties.items() if v is not None}
 
     @property
     def product_id(self) -> str:

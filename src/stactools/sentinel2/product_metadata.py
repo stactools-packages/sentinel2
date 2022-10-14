@@ -200,15 +200,7 @@ class ProductMetadata:
             ),
         }
 
-        round_dict = {
-            f"{s2_prefix}:reflectance_conversion_factor": 4,
-        }
-
-        return {
-            k: round(v, round_dict[k]) if k in round_dict.keys() else v
-            for k, v in result.items()
-            if v is not None
-        }
+        return {k: v for k, v in result.items() if v is not None}
 
     @property
     def boa_add_offsets(self) -> Dict[str, int]:

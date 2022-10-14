@@ -16,6 +16,7 @@ from shapely.geometry import mapping
 from shapely.geometry import shape as make_shape
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
+from stactools.core.utils.antimeridian import Strategy
 
 from stactools.sentinel2.constants import (
     BANDS_TO_ASSET_NAME,
@@ -40,7 +41,7 @@ from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.tileinfo_metadata import TileInfoMetadata
-from stactools.sentinel2.utils import extract_gsd
+from stactools.sentinel2.utils import extract_gsd, handle_antimeridian
 
 logger = logging.getLogger(__name__)
 
@@ -97,6 +98,7 @@ def create_item(
     additional_providers: Optional[List[pystac.Provider]] = None,
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
+    antimeridian_strategy: Strategy = Strategy.SPLIT,
 ) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
@@ -110,6 +112,9 @@ def create_item(
             This can be used to modify a HREF to make it readable, e.g. appending
             an Azure SAS token or creating a signed URL.
         asset_href_prefix: The URL prefix to apply to the asset hrefs
+        antimeridian_strategy (Antimeridian): Either split on -180 or
+            normalize geometries so all longitudes are either positive or
+            negative.
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
@@ -130,6 +135,15 @@ def create_item(
         datetime=metadata.datetime,
         properties={"created": created},
     )
+
+    # Handle antimeridian
+    handle_am = False
+    for coord in metadata.geometry["coordinates"][0]:
+        if coord[0] >= 180 or coord[0] <= -180:
+            handle_am = True
+
+    if handle_am is True:
+        handle_antimeridian(item, antimeridian_strategy)
 
     # --Common metadata--
 
