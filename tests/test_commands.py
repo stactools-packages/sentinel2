@@ -15,7 +15,7 @@ from stactools.core.projection import reproject_geom
 from stactools.testing import CliTestCase
 
 from stactools.sentinel2.commands import create_sentinel2_command
-from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME
+from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME, COORD_ROUNDING
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import SENTINEL_BANDS
 from stactools.sentinel2.grid import GridExtension
@@ -126,12 +126,12 @@ class CreateItemTest(CliTestCase):
                         if len(d["geometry"]["coordinates"]) > 1:
                             for i in range(0, len(d["geometry"]["coordinates"][0])):
                                 for c in d["geometry"]["coordinates"][0][i]:
-                                    c[0] = round(c[0], 5)
-                                    c[1] = round(c[1], 5)
+                                    c[0] = round(c[0], COORD_ROUNDING)
+                                    c[1] = round(c[1], COORD_ROUNDING)
                         else:
                             for c in d["geometry"]["coordinates"][0]:
-                                c[0] = round(c[0], 5)
-                                c[1] = round(c[1], 5)
+                                c[0] = round(c[0], COORD_ROUNDING)
+                                c[1] = round(c[1], COORD_ROUNDING)
 
                         for i, v in enumerate(bbox := d["bbox"]):
                             bbox[i] = round(v, 5)
