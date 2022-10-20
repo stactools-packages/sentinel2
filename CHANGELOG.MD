@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
-## Unreleased
+## [Unreleased]
+
+## [0.4.0] - 2022-10-28
 
 ### Changed
 
@@ -29,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add support for AWS S3 Open Data format (produced by Sinergise)
 - Band 9 now has common name nir09 and Band 10 has common name cirrus
 
-## 0.3.0
+## [0.3.0] - 2022-03-22
 
 ## Changed
 
@@ -39,9 +41,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Adding support for Level-1C products
 
-## 0.2.0
+## [0.2.0] - 2021-07-21
 
 ### Changed
 
 - Modified Item IDs to include product discriminator ([#7](https://github.com/stactools-packages/sentinel2/pull/7))
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
+
+[Unreleased]: <https://github.com/stactools-packages/landsat/compare/v0.4.0..main>
+[0.4.0]: <https://github.com/stactools-packages/landsat/compare/v0.3.0..v0.4.0>
+[0.3.0]: <https://github.com/stactools-packages/landsat/compare/v0.2.0..v0.3.0>
+[0.2.0]: <https://github.com/stactools-packages/sentinel2/releases/tag/v0.2.0>
