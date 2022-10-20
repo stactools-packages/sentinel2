@@ -1,0 +1,234 @@
+{
+    "id": "sentinel2-l2A",
+    "title": "Sentinel 2 Level 2A",
+    "description": "Global Sentinel 2 Level 2A data",
+    "license": "proprietary",
+    "links": [
+        {
+            "rel": "cite-as",
+            "href": "",
+            "title": "Sentinel 2 L2A"
+        },
+        {
+            "rel": "license",
+            "href": "https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions",
+            "title": "Public Domain"
+        }
+    ],
+    "keywords": [
+        "Sentinel",
+        "ESA",
+        "Satellite",
+        "Global",
+        "Imagery"
+    ],
+    "providers": [
+        {
+            "name": "ESA",
+            "roles": [
+                "producer",
+                "licensor"
+            ],
+            "url": "https://www.esa.int/"
+        },
+        {
+            "name": "ESA",
+            "roles": [
+                "producer",
+                "processor",
+                "licensor"
+            ],
+            "url": "https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2"
+        },
+        {
+            "name": "",
+            "roles": [
+                "host"
+            ],
+            "url": ""
+        }
+    ],
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    -180.0,
+                    -90.0,
+                    180.0,
+                    90.0
+                ]
+            ]
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "2015-06-23T00:00:00Z",
+                    ""
+                ]
+            ]
+        }
+    },
+    "summaries": {
+        "platform": [
+            "Sentinel-1"
+        ],
+        "instruments": [
+            "mi"
+        ],
+        "gsd": [
+            10,
+            20,
+            60
+        ],
+        "view:off_nadir": [
+            0
+        ],
+        "sci:doi": [
+            "10.5066/P9AF14YV"
+        ],
+        "eo:bands": [
+            {
+                "name": "B4",
+                "common_name": "green",
+                "description": "Visible green (Landsat 1-3 Band B4)",
+                "center_wavelength": 0.55,
+                "full_width_half_max": 0.1
+            }
+        ]
+    },
+    "item_assets": {
+        "thumbnail": {
+            "type": "JPEG",
+            "title": "Thumbnail image",
+            "roles": [
+                "thumbnail"
+            ]
+        },
+        "reduced_resolution_browse": {
+            "type": "JPEG",
+            "title": "Reduced resolution browse image",
+            "roles": [
+                "overview"
+            ]
+        },
+        "mtl.json": {
+            "type": "JSON",
+            "title": "Product Metadata File (json)",
+            "description": "Collection 2 Level-2 Product Metadata File (json)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "mtl.txt": {
+            "type": "TEXT",
+            "title": "Product Metadata File (txt)",
+            "description": "Collection 2 Level-2 Product Metadata File (txt)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "mtl.xml": {
+            "type": "XML",
+            "title": "Product Metadata File (xml)",
+            "description": "Collection 2 Level-2 Product Metadata File (xml)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "qa_pixel": {
+            "type": "COG",
+            "title": "Pixel Quality Assessment Band",
+            "description": "Collection 2 Level-2 Pixel Quality Assessment Band",
+            "raster:bands": [
+                {
+                    "nodata": 1,
+                    "data_type": "uint16",
+                    "spatial_resolution": 60,
+                    "unit": "bit index"
+                }
+            ],
+            "roles": [
+                "cloud"
+            ]
+        },
+        "qa_radsat": {
+            "type": "COG",
+            "title": "Radiometric Saturation and Dropped Pixel Quality Assessment Band",
+            "description": "Collection 2 Level-2 Radiometric Saturation and Dropped Pixel Quality Assessment Band",
+            "raster:bands": [
+                {
+                    "data_type": "uint16",
+                    "spatial_resolution": 60,
+                    "unit": "bit index"
+                }
+            ],
+            "roles": [
+                "saturation"
+            ]
+        },
+        "green": {
+            "type": "COG",
+            "title": "Green Band",
+            "description": "Collection 2 Level-2 Green Band Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "red": {
+            "type": "COG",
+            "title": "Red Band",
+            "description": "Collection 2 Level-2 Red Band Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "nir08": {
+            "type": "COG",
+            "title": "Near Infrared Band 0.8",
+            "description": "Collection 2 Level-2 Near Infrared Band 0.8 Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "nir09": {
+            "type": "COG",
+            "title": "Near Infrared Band 0.9",
+            "description": "Collection 2 Level-2 Near Infrared Band 0.9 Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        }
+    }
+}

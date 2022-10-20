@@ -1,0 +1,172 @@
+{
+    "type": "Collection",
+    "id": "sentinel2-l2a",
+    "stac_version": "",
+    "description": "Global Level 2 Sentinel-2 data",
+    "links": [
+        {
+            "rel": "root",
+            "href": "./collection.json",
+            "type": "application/json",
+            "title": "Sentinel 2 Level 2A"
+        },
+        {
+            "rel": "cite-as",
+            "href": "https://doi.org/10.5270/s2_-znk9xsj",
+            "title": "Sentinel-2 MSI Level-2A BOA Reflectance"
+        },
+        {
+            "rel": "license",
+            "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice",
+            "title": "Public Domain"
+        },
+        {
+            "rel": "item",
+            "href": "./LM05_L1GS_001001_19850524_02_T2/LM05_L1GS_001001_19850524_02_T2.json",
+            "type": "application/json"
+        }
+    ],
+    "stac_extensions": [
+      "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+      "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+      "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
+      "https://stac-extensions.github.io/raster/v1.0.0/schema.json",
+      "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
+    ],
+    "item_assets": {
+        "thumbnail": {
+            "type": "JPEG",
+            "title": "Thumbnail image",
+            "roles": [
+                "thumbnail"
+            ]
+        },
+        "reduced_resolution_browse": {
+            "type": "JPEG",
+            "title": "Reduced resolution browse image",
+            "roles": [
+                "overview"
+            ]
+        },
+        "mtl.json": {
+            "type": "JSON",
+            "title": "Product Metadata File (json)",
+            "description": "Collection 2 Level-1 Product Metadata File (json)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "mtl.txt": {
+            "type": "TEXT",
+            "title": "Product Metadata File (txt)",
+            "description": "Collection 2 Level-1 Product Metadata File (txt)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "mtl.xml": {
+            "type": "XML",
+            "title": "Product Metadata File (xml)",
+            "description": "Collection 2 Level-1 Product Metadata File (xml)",
+            "roles": [
+                "metadata"
+            ]
+        },
+        "qa_pixel": {
+            "type": "COG",
+            "title": "Pixel Quality Assessment Band",
+            "description": "Collection 2 Level-1 Pixel Quality Assessment Band",
+            "raster:bands": [
+                {
+                    "nodata": 1,
+                    "data_type": "uint16",
+                    "spatial_resolution": 60,
+                    "unit": "bit index"
+                }
+            ],
+            "roles": [
+                "cloud"
+            ]
+        },
+        "qa_radsat": {
+            "type": "COG",
+            "title": "Radiometric Saturation and Dropped Pixel Quality Assessment Band",
+            "description": "Collection 2 Level-1 Radiometric Saturation and Dropped Pixel Quality Assessment Band",
+            "raster:bands": [
+                {
+                    "data_type": "uint16",
+                    "spatial_resolution": 60,
+                    "unit": "bit index"
+                }
+            ],
+            "roles": [
+                "saturation"
+            ]
+        },
+        "green": {
+            "type": "COG",
+            "title": "Green Band",
+            "description": "Collection 2 Level-1 Green Band Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "red": {
+            "type": "COG",
+            "title": "Red Band",
+            "description": "Collection 2 Level-1 Red Band Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "nir08": {
+            "type": "COG",
+            "title": "Near Infrared Band 0.8",
+            "description": "Collection 2 Level-1 Near Infrared Band 0.8 Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        },
+        "nir09": {
+            "type": "COG",
+            "title": "Near Infrared Band 0.9",
+            "description": "Collection 2 Level-1 Near Infrared Band 0.9 Top of Atmosphere Radiance",
+            "raster:bands": [
+                {
+                    "nodata": 0,
+                    "data_type": "uint8",
+                    "spatial_resolution": 60,
+                    "unit": "watt/steradian/square_meter/micrometer"
+                }
+            ],
+            "roles": [
+                "data"
+            ]
+        }
+    }
+}
+      
