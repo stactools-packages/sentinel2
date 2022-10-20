@@ -29,6 +29,7 @@ DATASTRIP_METADATA_ASSET_KEY: Final[str] = "datastrip_metadata"
 TILEINFO_METADATA_ASSET_KEY: Final[str] = "tileinfo_metadata"
 
 DEFAULT_TOLERANCE: Final[float] = 0.0001
+COORD_ROUNDING: Final[int] = 6
 
 SENTINEL_BANDS: Final[Dict[str, Band]] = {
     "coastal": Band.create(

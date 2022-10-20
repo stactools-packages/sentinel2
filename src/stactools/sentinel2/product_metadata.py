@@ -9,7 +9,7 @@ from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.core.utils import map_opt
 
-from stactools.sentinel2.constants import PRODUCT_METADATA_ASSET_KEY
+from stactools.sentinel2.constants import COORD_ROUNDING, PRODUCT_METADATA_ASSET_KEY
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.utils import fix_z_values
 
@@ -82,12 +82,23 @@ class ProductMetadata:
 
             footprint_coords = fix_z_values(footprint_text.split(" "))
             footprint_points = [
-                p[::-1] for p in list(zip(*[iter(footprint_coords)] * 2))
+                p[::-1]
+                for p in list(
+                    zip(
+                        *[
+                            iter(
+                                round(coord, COORD_ROUNDING)
+                                for coord in footprint_coords
+                            )
+                        ]
+                        * 2
+                    )
+                )
             ]
             footprint_polygon = Polygon(footprint_points)
             geometry = mapping(footprint_polygon)
             bbox = footprint_polygon.bounds
-
+            print(geometry)
             return bbox, geometry
 
         self.bbox, self.geometry = _get_geometries()

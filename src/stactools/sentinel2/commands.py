@@ -4,6 +4,7 @@ import os
 from typing import Optional
 
 import click
+from stactools.core.utils.antimeridian import Strategy
 
 from stactools.sentinel2.constants import DEFAULT_TOLERANCE
 from stactools.sentinel2.stac import create_item
@@ -55,11 +56,15 @@ def create_sentinel2_command(cli):
             with open(providers) as f:
                 additional_providers = json.load(f)
 
+        antimeridian_strategy = "split"
+        strategy = Strategy[antimeridian_strategy.upper()]
+
         item = create_item(
             granule_href=src,
             additional_providers=additional_providers,
             tolerance=tolerance,
             asset_href_prefix=asset_href_prefix,
+            antimeridian_strategy=strategy,
         )
 
         item_path = os.path.join(dst, "{}.json".format(item.id))
