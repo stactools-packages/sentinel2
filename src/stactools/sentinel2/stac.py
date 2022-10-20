@@ -16,6 +16,7 @@ from shapely.geometry import mapping
 from shapely.geometry import shape as make_shape
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
+from stactools.core.utils import antimeridian
 from stactools.core.utils.antimeridian import Strategy
 
 from stactools.sentinel2.constants import (
@@ -42,7 +43,7 @@ from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.tileinfo_metadata import TileInfoMetadata
-from stactools.sentinel2.utils import extract_gsd, handle_antimeridian
+from stactools.sentinel2.utils import extract_gsd
 
 logger = logging.getLogger(__name__)
 
@@ -137,14 +138,8 @@ def create_item(
         properties={"created": created},
     )
 
-    # Handle antimeridian
-    handle_am = False
-    for coord in metadata.geometry["coordinates"][0]:
-        if coord[0] >= 180 or coord[0] <= -180:
-            handle_am = True
-
-    if handle_am is True:
-        handle_antimeridian(item, antimeridian_strategy)
+    # Handle antimeridian if necessary
+    antimeridian.fix_item(item, antimeridian_strategy)
 
     # --Common metadata--
 
