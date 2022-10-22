@@ -553,6 +553,7 @@ def metadata_from_granule_metadata(
         metadata_dict={
             **granule_metadata.metadata_dict,
             **tileinfo_metadata.metadata_dict,
+            **product_metadata.metadata_dict,
             f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
         },
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
