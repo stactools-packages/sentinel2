@@ -1,0 +1,1407 @@
+{
+  "type": "Collection",
+  "id": "sentinel2-c2-l2a",
+  "stac_version": "1.0.0",
+  "description": "Global Sentinel-2 Collection 2 data from the Multispectral Instrument (MSI) onboard Sentinel 2",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "Sentinel 2 Collection 2 Level 2A "
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5270/S2_-742ikth",
+      "title": "Copernicus Sentinel-2 Collection 2 MSI Level-2A (L2A) Bottom-of-Atmosphere Radiance"
+    },
+    {
+      "rel": "license",
+      "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice",
+      "title": "proprietary"
+    },
+    {
+      "rel": "item",
+      "href": "./S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658/S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658.json",
+      "type": "application/json"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
+  ],
+  "item_assets": {
+    "blue_20m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "blue_20m",
+      "description": "Collection 2 Level 2A Blue Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "green_20m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "green_20m",
+      "description": "Collection 2 Level 2A Green Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "red_20m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "red_20m",
+      "description": "Collection 2 Level 2A Red Edge Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge1": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge1",
+      "description": "Collection 2 Level 2A Red Edge (1) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge2": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge2",
+      "description": "Collection 2 Level 2A Red Edge (2) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge3": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge3",
+      "description": "Collection 2 Level 2A Red Edge (3) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "nir08": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "nir08",
+      "description": "Collection 2 Level 2A Near Infrared (8) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "swir16": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "swir16",
+      "description": "Collection 2 Level 2A Shortwave Infrared (16) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "swir22": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "swir22",
+      "description": "Collection 2 Level 2A Shortwave Infrared (22) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "scl": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "scl",
+      "description": "Collection 2 Level 2A Scene Classification Map",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "aot": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "aot",
+      "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "wvp": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "wvp",
+      "description": "Collection 2 Level 2A Water Vapour",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "coastal": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "coastal",
+      "description": "Collection 2 Level 2A Coastal Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "blue_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "blue_60m",
+      "description": "Collection 2 Level 2A Blue Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "green_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "green_60m",
+      "description": "Collection 2 Level 2A Green Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "red_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "red_60m",
+      "description": "Collection 2 Level 2A Red Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge1_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge1_60m",
+      "description": "Collection 2 Level 2A Red Edge (1) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge2_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge2_60m",
+      "description": "Collection 2 Level 2A Red Edge (2) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "rededge3_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "rededge3_60m",
+      "description": "Collection 2 Level 2A Red Edge (3) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "nir08_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "nir08_60m",
+      "description": "Collection 2 Level 2A Near Infrared (8) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "nir09": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "nir09",
+      "description": "Collection 2 Level 2A Near Infrared (9) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "swir16_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "swir16_60m",
+      "description": "Collection 2 Level 2A Shortwave Infrared (16) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "swir22_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "swir22_60m",
+      "description": "Collection 2 Level 2A Shortwave Infrared (22) Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "scl_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "scl_60m",
+      "description": "Collection 2 Level 2A Scene Classification Map",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 60
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "aot_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "aot_60m",
+      "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "wvp_60m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "wvp_60m",
+      "description": "Collection 2 Level 2A Water Vapour",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "blue": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "blue",
+      "description": "Collection 2 Level 2A Blue Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "green": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "green",
+      "description": "Collection 2 Level 2A Green Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "red": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "red",
+      "description": "Collection 2 Level 2A Red Bottom of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud",
+        "radiance"
+      ]
+    },
+    "nir": {
+      "type": "image/jp2",
+      "title": "nir",
+      "description": "Collection 2 Level 2A Near Infrared Top of Atmosphere Radiance",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "Radiance"
+      ],
+      "aot_10m": {
+        "type": "COG",
+        "title": "aot_10m",
+        "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "wvp_10m": {
+        "type": "COG",
+        "title": "wvp_10m",
+        "description": "Collection 2 Level 2A Water Vapour",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "blue_20m": {
+        "type": "COG",
+        "title": "blue_20m",
+        "description": "Collection 2 Level 2A Blue Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "green_20m": {
+        "type": "COG",
+        "title": "green_20m",
+        "description": "Collection 2 Level 2A Green Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "red_20m": {
+        "type": "COG",
+        "title": "red_20m",
+        "description": "Collection 2 Level 2A Red Edge Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge1": {
+        "type": "COG",
+        "title": "rededge1",
+        "description": "Collection 2 Level 2A Red Edge (1) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge2": {
+        "type": "COG",
+        "title": "rededge2",
+        "description": "Collection 2 Level 2A Red Edge (2) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge3": {
+        "type": "COG",
+        "title": "rededge3",
+        "description": "Collection 2 Level 2A Red Edge (3) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "nir08": {
+        "type": "COG",
+        "title": "nir08",
+        "description": "Collection 2 Level 2A Near Infrared (8) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "swir16": {
+        "type": "COG",
+        "title": "swir16",
+        "description": "Collection 2 Level 2A Shortwave Infrared (16) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "swir22": {
+        "type": "COG",
+        "title": "swir22",
+        "description": "Collection 2 Level 2A Shortwave Infrared (22) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "scl": {
+        "type": "COG",
+        "title": "scl",
+        "description": "Collection 2 Level 2A Scene Classification Map",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint8",
+            "spatial_resolution": 20
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "aot": {
+        "type": "COG",
+        "title": "aot",
+        "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "wvp": {
+        "type": "COG",
+        "title": "wvp",
+        "description": "Collection 2 Level 2A Water Vapour",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "coastal": {
+        "type": "COG",
+        "title": "coastal",
+        "description": "Collection 2 Level 2A Coastal Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "blue_60m": {
+        "type": "COG",
+        "title": "blue_60m",
+        "description": "Collection 2 Level 2A Blue Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "green_60m": {
+        "type": "COG",
+        "title": "green_60m",
+        "description": "Collection 2 Level 2A Green Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "red_60m": {
+        "type": "COG",
+        "title": "red_60m",
+        "description": "Collection 2 Level 2A Red Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge1_60m": {
+        "type": "COG",
+        "title": "rededge1_60m",
+        "description": "Collection 2 Level 2A Red Edge (1) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge2_60m": {
+        "type": "COG",
+        "title": "rededge2_60m",
+        "description": "Collection 2 Level 2A Red Edge (2) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "rededge3_60m": {
+        "type": "COG",
+        "title": "rededge3_60m",
+        "description": "Collection 2 Level 2A Red Edge (3) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "nir08_60m": {
+        "type": "COG",
+        "title": "nir08_60m",
+        "description": "Collection 2 Level 2A Near Infrared (8) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "nir09": {
+        "type": "COG",
+        "title": "nir09",
+        "description": "Collection 2 Level 2A Near Infrared (9) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "swir16_60m": {
+        "type": "COG",
+        "title": "swir16_60m",
+        "description": "Collection 2 Level 2A Shortwave Infrared (16) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "swir22_60m": {
+        "type": "COG",
+        "title": "swir22_60m",
+        "description": "Collection 2 Level 2A Shortwave Infrared (22) Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "scl_60m": {
+        "type": "COG",
+        "title": "scl_60m",
+        "description": "Collection 2 Level 2A Scene Classification Map",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint8",
+            "spatial_resolution": 60
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "aot_60m": {
+        "type": "COG",
+        "title": "aot_60m",
+        "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "wvp_60m": {
+        "type": "COG",
+        "title": "wvp_60m",
+        "description": "Collection 2 Level 2A Water Vapour",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data"
+        ]
+      },
+      "blue": {
+        "type": "COG",
+        "title": "blue",
+        "description": "Collection 2 Level 2A Blue Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "green": {
+        "type": "COG",
+        "title": "green",
+        "description": "Collection 2 Level 2A Green Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "red": {
+        "type": "COG",
+        "title": "red",
+        "description": "Collection 2 Level 2A Red Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      },
+      "nir": {
+        "type": "COG",
+        "title": "nir",
+        "description": "Collection 2 Level 2A Near Infrared Top of Atmosphere Radiance",
+        "raster:bands": [
+          {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+          }
+        ],
+        "roles": [
+          "data",
+          "Radiance"
+        ]
+      }
+    },
+    "aot_10m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "aot_10m",
+      "description": "Collection 2 Level 2A Aerosol Optical Thickness",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "wvp_10m": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "wvp_10m",
+      "description": "Collection 2 Level 2A Water Vapour",
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "unit": "cm",
+          "scale": 0.001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    }
+  },
+  "title": "Sentinel 2 Collection 2 Level 2A ",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2015-06-27T10:25:31.456000Z",
+          null
+        ]
+      ]
+    }
+  },
+  "license": "proprietary",
+  "keywords": [
+    "sentinel",
+    "earth observation",
+    "esa"
+  ],
+  "providers": [
+    {
+      "name": "ESA",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://earth.esa.int/web/guest/home"
+    },
+    {
+      "name": "Sinergise",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://registry.opendata.aws/sentinel-2/"
+    },
+    {
+      "name": "AWS",
+      "roles": [
+        "host"
+      ],
+      "url": "http://sentinel-pds.s3-website.eu-central-1.amazonaws.com/"
+    },
+    {
+      "name": "Element 84",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://element84.com"
+    }
+  ],
+  "summaries": {
+    "platform": [
+      "sentinel-2a",
+      "sentinel-2b"
+    ],
+    "constellation": [
+      "sentinel-2"
+    ],
+    "instruments": [
+      "msi"
+    ],
+    "gsd": [
+      10,
+      20,
+      60
+    ],
+    "view:off_nadir": [
+      0
+    ],
+    "sci:doi": [
+      "10.5270/s2_-znk9xsj"
+    ],
+    "eo:bands": [
+      {
+        "name": "coastal",
+        "common_name": "coastal",
+        "description": "Coastal aerosol (band 1)",
+        "center_wavelength": 0.443,
+        "full_width_half_max": 0.027
+      },
+      {
+        "name": "blue",
+        "common_name": "blue",
+        "description": "Blue (band 2)",
+        "center_wavelength": 0.49,
+        "full_width_half_max": 0.098
+      },
+      {
+        "name": "green",
+        "common_name": "green",
+        "description": "Green (band 3)",
+        "center_wavelength": 0.56,
+        "full_width_half_max": 0.045
+      },
+      {
+        "name": "red",
+        "common_name": "red",
+        "description": "Red (band 4)",
+        "center_wavelength": 0.665,
+        "full_width_half_max": 0.038
+      },
+      {
+        "name": "rededge1",
+        "common_name": "rededge",
+        "description": "Red edge 1 (band 5)",
+        "center_wavelength": 0.704,
+        "full_width_half_max": 0.019
+      },
+      {
+        "name": "rededge2",
+        "common_name": "rededge",
+        "description": "Red edge 2 (band 6)",
+        "center_wavelength": 0.74,
+        "full_width_half_max": 0.018
+      },
+      {
+        "name": "rededge3",
+        "common_name": "rededge",
+        "description": "Red edge 3 (band 7)",
+        "center_wavelength": 0.783,
+        "full_width_half_max": 0.028
+      },
+      {
+        "name": "nir",
+        "common_name": "nir",
+        "description": "NIR 1 (band 8)",
+        "center_wavelength": 0.842,
+        "full_width_half_max": 0.145
+      },
+      {
+        "name": "nir08",
+        "common_name": "nir08",
+        "description": "NIR 2 (band 8A)",
+        "center_wavelength": 0.865,
+        "full_width_half_max": 0.033
+      },
+      {
+        "name": "nir09",
+        "common_name": "nir09",
+        "description": "NIR 3 (band 9)",
+        "center_wavelength": 0.945,
+        "full_width_half_max": 0.026
+      },
+      {
+        "name": "cirrus",
+        "common_name": "cirrus",
+        "description": "Cirrus (band 10)",
+        "center_wavelength": 1.3735,
+        "full_width_half_max": 0.075
+      },
+      {
+        "name": "swir16",
+        "common_name": "swir16",
+        "description": "SWIR 1 (band 11)",
+        "center_wavelength": 1.61,
+        "full_width_half_max": 0.143
+      },
+      {
+        "name": "swir22",
+        "common_name": "swir22",
+        "description": "SWIR 2 (band 12)",
+        "center_wavelength": 2.19,
+        "full_width_half_max": 0.242
+      }
+    ]
+  }
+}

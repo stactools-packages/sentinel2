@@ -1,0 +1,255 @@
+{
+    "blue_20m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "green_20m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "red_20m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge1": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge2":  {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge3":  {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "nir08": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "swir16": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "swir22": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "scl": {
+            "nodata": 0,
+            "data_type": "uint8",
+            "spatial_resolution": 20
+        },
+    "aot": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "scale": 0.001,
+            "offset": 0
+        },
+    "wvp": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 20,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+        },
+    "coastal": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "blue_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "green_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "red_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge1_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge2_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "rededge3_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "nir08_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "nir09": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "swir16_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "swir22_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "scl_60m":{
+            "nodata": 0,
+            "data_type": "uint8",
+            "spatial_resolution": 60
+        },
+    "aot_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "scale": 0.001,
+            "offset": 0
+        },
+    "wvp_60m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 60,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+        },
+    "blue": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "green": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "red": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "nir": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.0001,
+            "offset": 0
+        },
+    "aot_10m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "scale": 0.001,
+            "offset": 0
+        },
+    "wvp_10m": {
+            "nodata": 0,
+            "data_type": "uint16",
+            "bits_per_sample": 15,
+            "spatial_resolution": 10,
+            "unit": "cm",
+            "scale": 0.001,
+            "offset": 0
+        }
+}

@@ -7,10 +7,13 @@ from itertools import chain
 from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
 
 import pystac
+from pystac import Collection
 from pystac.extensions.eo import Band, EOExtension
+from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
+from pystac.extensions.scientific import ScientificExtension
 from pystac.extensions.view import ViewExtension
 from shapely.geometry import mapping
 from shapely.geometry import shape as make_shape
@@ -21,6 +24,7 @@ from stactools.core.utils.antimeridian import Strategy
 
 from stactools.sentinel2.constants import (
     BANDS_TO_ASSET_NAME,
+    COLLECTION_IDS,
     COORD_ROUNDING,
     DATASTRIP_METADATA_ASSET_KEY,
     DEFAULT_TOLERANCE,
@@ -37,6 +41,7 @@ from stactools.sentinel2.constants import (
     SENTINEL_PROVIDER,
     UNSUFFIXED_BAND_RESOLUTION,
 )
+from stactools.sentinel2.fragments import CollectionFragments, Fragments
 from stactools.sentinel2.granule_metadata import GranuleMetadata
 from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
@@ -217,6 +222,26 @@ def create_item(
     for key, asset in chain(image_assets.items(), metadata.extra_assets.items()):
         assert key not in item.assets
         item.add_asset(key, asset)
+
+    fragments = Fragments("msi", "sentinel2", granule_href)
+    # Common assets
+    assets = fragments.common_assets()
+    for key, asset in assets.items():
+        item.add_asset(key, asset)
+
+    # assets
+    eo_bands = fragments.eo_bands()
+    raster_bands = fragments.raster_bands()
+    for key, asset in assets.items():
+        item.add_asset(key, asset)
+        eo_band = eo_bands.get(key, None)
+        if eo_band is not None:
+            optical_eo = EOExtension.ext(asset, add_if_missing=True)
+            optical_eo.bands = [Band.create(**eo_band)]
+        raster_band = raster_bands.get(key, None)
+        if raster_band is not None:
+            optical_raster = RasterExtension.ext(asset, add_if_missing=True)
+            optical_raster.bands = [RasterBand.create(**raster_band)]
 
     # --Links--
 
@@ -603,3 +628,41 @@ def raster_bands(
             offset=offset,
         )
     ]
+
+
+def create_collection(collection_id: str) -> Collection:
+    """Creates a STAC Collection for Landsat Collection 2 Level-1 or Level-2
+    data.
+    Args:
+        collection_id (str): ID of the STAC Collection. Must be one of
+            "sentinel2-c1-l1c" or "sentinel2-c2-l2a".
+    Returns:
+        Collection: The created STAC Collection.
+    """
+    if collection_id not in COLLECTION_IDS:
+        raise ValueError(f"Invalid collection id: {collection_id}")
+
+    fragment = CollectionFragments(collection_id).collection()
+
+    collection = Collection(
+        id=collection_id,
+        title=fragment["title"],
+        description=fragment["description"],
+        license=fragment["license"],
+        keywords=fragment["keywords"],
+        providers=fragment["providers"],
+        extent=fragment["extent"],
+        summaries=fragment["summaries"],
+    )
+    collection.add_links(fragment["links"])
+
+    item_assets = ItemAssetsExtension(collection)
+    item_assets.item_assets = fragment["item_assets"]
+
+    ItemAssetsExtension.add_to(collection)
+    ViewExtension.add_to(collection)
+    ScientificExtension.add_to(collection)
+    RasterExtension.add_to(collection)
+    EOExtension.add_to(collection)
+
+    return collection

@@ -121,6 +121,7 @@ class CreateItemTest(CliTestCase):
                     def mk_comparable(i: pystac.Item) -> Dict[str, Any]:
                         d = i.to_dict(include_self_link=False)
                         for a in d["assets"].values():
+                            print(d["assets"].values())
                             a["href"] = a["href"].split("data-files")[1]
 
                         if len(d["geometry"]["coordinates"]) > 1:

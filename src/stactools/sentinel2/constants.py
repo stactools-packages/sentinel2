@@ -21,6 +21,7 @@ SENTINEL_PROVIDER: Final[pystac.Provider] = pystac.Provider(
     url="https://earth.esa.int/web/guest/home",
 )
 
+COLLECTION_IDS: Final[List[str]] = ["sentinel2-c1-l1c", "sentinel2-c2-l2a"]
 SAFE_MANIFEST_ASSET_KEY: Final[str] = "safe_manifest"
 INSPIRE_METADATA_ASSET_KEY: Final[str] = "inspire_metadata"
 PRODUCT_METADATA_ASSET_KEY: Final[str] = "product_metadata"

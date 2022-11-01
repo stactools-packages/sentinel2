@@ -98,7 +98,6 @@ class ProductMetadata:
             footprint_polygon = Polygon(footprint_points)
             geometry = mapping(footprint_polygon)
             bbox = footprint_polygon.bounds
-            print(geometry)
             return bbox, geometry
 
         self.bbox, self.geometry = _get_geometries()

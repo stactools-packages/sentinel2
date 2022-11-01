@@ -1,0 +1,49 @@
+{
+      "safe_manifest": {
+         "type":"XML",
+         "title": "Safe Manifest",
+         "description": "Safe Manifest File (xml)",
+         "roles":[
+            "metadata"
+         ],
+         "href_suffix": "manifest.safe"
+      },
+      "product_metadata":{
+         "type":"XML",
+         "title": "Product Metadata File (xml)",
+         "roles":[
+            "metadata"
+         ],
+         "href_suffix": "product_metadata.xml"
+      },
+      "granule_metadata":{
+         "type":"XML",
+         "title": "Granule Metadata File (xml)",
+         "roles":[
+            "metadata"
+         ],
+         "href_suffix": "MTD_TL.xml"
+      },
+      "inspire_metadata":{
+         "type":"XML",
+         "title": "Inspire Metadata File (xml)",
+         "roles":[
+            "metadata"
+         ],
+         "href_suffix": "INSPIRE.xml"
+      },
+      "datastrip_metadata":{
+         "type":"XML",
+         "title": "Datastrip Metadata File (xml)",
+         "roles":[
+            "metadata"
+         ],
+         "href_suffix": "MTD_DS.xml"
+      },
+      "preview": {
+         "type": "COG",
+         "roles": [
+           "thumbnail"
+         ]
+       }
+}

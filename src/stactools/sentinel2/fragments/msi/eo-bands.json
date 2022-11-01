@@ -1,0 +1,76 @@
+{ 
+  "coastal": {
+    "common_name": "coastal",
+    "description": "Coastal aerosol (band 1)",
+    "center_wavelength": 0.443,
+    "full_width_half_max": 0.027
+  },
+  "red": {
+    "common_name": "red",
+    "description": "Red (band 4)",
+    "center_wavelength": 0.665,
+    "full_width_half_max": 0.038
+  },
+  "green": {
+    "common_name": "green",
+    "description": "Green (band 3)",
+    "center_wavelength": 0.56,
+    "full_width_half_max": 0.045
+  },
+  "blue": {
+    "common_name": "blue",
+    "description": "Blue (band 2)",
+    "center_wavelength": 0.49,
+    "full_width_half_max": 0.098
+  },
+    "rededge1": {
+      "common_name": "rededge",
+      "description": "Red edge 1 (band 5)",
+      "center_wavelength": 0.704,
+      "full_width_half_max": 0.019
+  },
+  "rededge2": {
+      "common_name": "rededge",
+      "description": "Red edge 2 (band 6)",
+      "center_wavelength": 0.74,
+      "full_width_half_max": 0.018
+  },
+  "rededge3": {
+    "common_name": "rededge",
+    "description": "Red edge 3 (band 7)",
+    "center_wavelength": 0.783,
+    "full_width_half_max": 0.028
+  },
+  "nir": {
+    "common_name": "nir",
+    "description": "NIR 1 (band 8)",
+    "center_wavelength": 0.842,
+    "full_width_half_max": 0.145
+  },
+  "nir08": {
+    "common_name": "nir08",
+    "description": "NIR 2 (band 8A)",
+    "center_wavelength": 0.865,
+    "full_width_half_max": 0.033
+  },
+  "nir09": {
+    "common_name": "nir09",
+    "description": "NIR 3 (band 9)",
+    "center_wavelength": 0.945,
+    "full_width_half_max": 0.026
+  },
+  "swir16": {
+    "common_name": "swir16",
+    "description": "SWIR 1 (band 11)",
+    "center_wavelength": 1.61,
+    "full_width_half_max": 0.143
+  },
+  "swir22": {
+    "common_name": "swir22",
+    "description": "SWIR 2 (band 12)",
+    "center_wavelength": 2.19,
+    "full_width_half_max": 0.242
+  }
+}
+
+
