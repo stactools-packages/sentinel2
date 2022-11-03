@@ -101,6 +101,7 @@ def create_item(
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
     antimeridian_strategy: Strategy = Strategy.SPLIT,
+    correct_tiledatageom: bool = False,
 ) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
@@ -126,7 +127,7 @@ def create_item(
         metadata = metadata_from_safe_manifest(granule_href, read_href_modifier)
     else:
         metadata = metadata_from_granule_metadata(
-            granule_href, read_href_modifier, tolerance
+            granule_href, read_href_modifier, tolerance, correct_tiledatageom
         )
     created = datetime.now().strftime("%Y-%m-%dT%H:%MZ")
 
@@ -511,13 +512,48 @@ def metadata_from_granule_metadata(
     granule_metadata_href: str,
     read_href_modifier: Optional[ReadHrefModifier],
     tolerance: float,
+    correct_tiledatageom: bool,
 ) -> Metadata:
     granule_metadata = GranuleMetadata(
         os.path.join(granule_metadata_href, "metadata.xml"), read_href_modifier
     )
-    tileinfo_metadata = TileInfoMetadata(
-        os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
-    )
+    if correct_tiledatageom:
+        try:
+            tileinfo_metadata = TileInfoMetadata(
+                os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
+            )
+        except Exception:
+            import json
+
+            import requests
+
+            # Retrieve tileDataGeometry from L1c if it is not present in L2a
+            l1_href = os.path.join(
+                granule_metadata_href.replace("l2a", "l1c"), "tileInfo.json"
+            )
+            tile_geom = json.loads(requests.get(l1_href).text)["tileDataGeometry"]
+            l2 = json.loads(requests.get(l1_href.replace("l1c", "l2a")).text)
+            l2["tileDataGeometry"] = tile_geom
+
+            # Write a new temp file with the tileDataGeometry added to the L2A tileInfo.json
+            with open("/tmp/add_tiledatageom.json", "w") as f:
+                json.dump(l2, f)
+
+            tileinfo_metadata = TileInfoMetadata("/tmp/add_tiledatageom.json")
+
+            # Correct the tileinfo_metadata to have the granule href instead of the temp file href
+            from stactools.core.io import read_text
+
+            tileinfo_metadata.href = os.path.join(
+                granule_metadata_href, "tileInfo.json"
+            )
+            tileinfo_metadata.tileinfo = json.loads(
+                read_text(tileinfo_metadata.href, read_href_modifier)
+            )
+    else:
+        tileinfo_metadata = TileInfoMetadata(
+            os.path.join(granule_metadata_href, "tileInfo.json"), read_href_modifier
+        )
 
     product_metadata = None
     if os.path.exists(f := os.path.join(granule_metadata_href, "product_metadata.xml")):
