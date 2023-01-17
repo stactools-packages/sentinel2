@@ -572,14 +572,18 @@ def metadata_from_granule_metadata(
         L2A_IMAGE_PATHS if "_L2A_" in granule_metadata.scene_id else L1C_IMAGE_PATHS
     )
 
+    metadata_dict = {
+        **granule_metadata.metadata_dict,
+        **tileinfo_metadata.metadata_dict,
+        f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
+    }
+    if product_metadata is not None:
+        metadata_dict.update(**product_metadata.metadata_dict)
+
     return Metadata(
         scene_id=granule_metadata.scene_id,
         extra_assets=extra_assets,
-        metadata_dict={
-            **granule_metadata.metadata_dict,
-            **tileinfo_metadata.metadata_dict,
-            f"{s2_prefix}:processing_baseline": granule_metadata.processing_baseline,
-        },
+        metadata_dict=metadata_dict,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
