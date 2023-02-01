@@ -3,6 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
+    "created": "2023-02-01T09:04Z",
     "providers": [
       {
         "name": "ESA",
@@ -91,7 +92,7 @@
   ],
   "assets": {
     "thumbnail": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/preview.jpg",
+      "href": "./preview.jpg",
       "type": "image/jpeg",
       "title": "Thumbnail image",
       "roles": [
@@ -99,7 +100,7 @@
       ]
     },
     "red": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B04.jp2",
+      "href": "./R10m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -141,11 +142,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B03.jp2",
+      "href": "./R10m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -187,11 +189,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B02.jp2",
+      "href": "./R10m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -233,11 +236,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_10m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/WVP.jp2",
+      "href": "./R10m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -270,11 +274,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_10m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/AOT.jp2",
+      "href": "./R10m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -306,11 +311,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/TCI.jp2",
+      "href": "./R10m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -359,7 +365,7 @@
       ]
     },
     "nir": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R10m/B08.jp2",
+      "href": "./R10m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -401,11 +407,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B12.jp2",
+      "href": "./R20m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -447,11 +454,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B06.jp2",
+      "href": "./R20m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -493,11 +501,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B07.jp2",
+      "href": "./R20m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -539,11 +548,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B05.jp2",
+      "href": "./R20m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -585,11 +595,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B11.jp2",
+      "href": "./R20m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -631,11 +642,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_20m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B04.jp2",
+      "href": "./R20m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 20m",
       "eo:bands": [
@@ -676,11 +688,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_20m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B03.jp2",
+      "href": "./R20m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 20m",
       "eo:bands": [
@@ -721,11 +734,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue_20m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B02.jp2",
+      "href": "./R20m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 20m",
       "eo:bands": [
@@ -766,11 +780,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/WVP.jp2",
+      "href": "./R20m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -803,11 +818,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B8A.jp2",
+      "href": "./R20m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -849,11 +865,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/SCL.jp2",
+      "href": "./R20m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -882,11 +899,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/AOT.jp2",
+      "href": "./R20m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -918,11 +936,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_20m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/TCI.jp2",
+      "href": "./R20m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -971,7 +990,7 @@
       ]
     },
     "nir_20m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R20m/B08.jp2",
+      "href": "./R20m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 20m",
       "eo:bands": [
@@ -1012,11 +1031,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir22_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B12.jp2",
+      "href": "./R60m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 60m",
       "eo:bands": [
@@ -1057,11 +1077,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge2_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B06.jp2",
+      "href": "./R60m/B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 60m",
       "eo:bands": [
@@ -1102,11 +1123,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge3_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B07.jp2",
+      "href": "./R60m/B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 60m",
       "eo:bands": [
@@ -1147,11 +1169,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "rededge1_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B05.jp2",
+      "href": "./R60m/B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 60m",
       "eo:bands": [
@@ -1192,11 +1215,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "swir16_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B11.jp2",
+      "href": "./R60m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 60m",
       "eo:bands": [
@@ -1237,11 +1261,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "red_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B04.jp2",
+      "href": "./R60m/B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 60m",
       "eo:bands": [
@@ -1282,11 +1307,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "coastal": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B01.jp2",
+      "href": "./R60m/B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -1328,11 +1354,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "green_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B03.jp2",
+      "href": "./R60m/B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 60m",
       "eo:bands": [
@@ -1373,11 +1400,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "blue_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B02.jp2",
+      "href": "./R60m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 60m",
       "eo:bands": [
@@ -1418,11 +1446,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "wvp_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/WVP.jp2",
+      "href": "./R60m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
       "proj:shape": [
@@ -1455,11 +1484,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir08_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B8A.jp2",
+      "href": "./R60m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 60m",
       "eo:bands": [
@@ -1500,11 +1530,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "scl_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/SCL.jp2",
+      "href": "./R60m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
       "proj:shape": [
@@ -1533,11 +1564,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "aot_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/AOT.jp2",
+      "href": "./R60m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
       "proj:shape": [
@@ -1569,11 +1601,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "nir09": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B09.jp2",
+      "href": "./R60m/B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -1615,11 +1648,12 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "visual_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/TCI.jp2",
+      "href": "./R60m/TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -1668,7 +1702,7 @@
       ]
     },
     "nir_60m": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/R60m/B08.jp2",
+      "href": "./R60m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 60m",
       "eo:bands": [
@@ -1709,18 +1743,19 @@
         }
       ],
       "roles": [
-        "data"
+        "data",
+        "reflectance"
       ]
     },
     "granule_metadata": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/metadata.xml",
+      "href": "./metadata.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "tileinfo_metadata": {
-      "href": "/Users/kperham/projects/sentinel2/tests/data-files/S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP/tileInfo.json",
+      "href": "./tileInfo.json",
       "type": "application/json",
       "roles": [
         "metadata"
@@ -1735,6 +1770,7 @@
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.0.0/schema.json",

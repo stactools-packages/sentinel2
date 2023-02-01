@@ -113,18 +113,10 @@ class CreateItemTest(CliTestCase):
 
                     self.assertEqual(item.id, item_id)
 
-                    # uncomment these lines to update the expected_output files
-                    import shutil
-
-                    shutil.copyfile(
-                        os.path.join(tmp_dir, fname),
-                        f"{granule_href}/expected_output.json",
-                    )
-
                     def mk_comparable(i: pystac.Item) -> Dict[str, Any]:
+                        i.common_metadata.created = None
+                        i.make_asset_hrefs_absolute()
                         d = i.to_dict(include_self_link=False)
-                        for a in d["assets"].values():
-                            a["href"] = a["href"].split("data-files")[1]
 
                         if len(d["geometry"]["coordinates"]) > 1:
                             for i in range(0, len(d["geometry"]["coordinates"][0])):
