@@ -2,9 +2,9 @@ import re
 from typing import Dict, Final, List, Optional, Pattern, Tuple
 
 import pystac
+from pystac.utils import map_opt
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
-from stactools.core.utils import map_opt
 
 from stactools.sentinel2.constants import GRANULE_METADATA_ASSET_KEY
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
