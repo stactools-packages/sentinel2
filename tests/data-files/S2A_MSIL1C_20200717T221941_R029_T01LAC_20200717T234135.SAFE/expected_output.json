@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135",
   "properties": {
-    "created": "2022-10-14T12:08Z",
+    "created": "2023-02-01T09:04Z",
     "providers": [
       {
         "name": "ESA",
@@ -50,23 +50,23 @@
         [
           [
             180.0,
-            -16.347379696256823
+            -16.34738
           ],
           [
             180.0,
-            -15.35591136701329
+            -15.355911
           ],
           [
-            179.27517845240016,
-            -15.34545370590625
+            179.275178,
+            -15.345454
           ],
           [
-            179.25694918943802,
-            -16.335986146256882
+            179.256949,
+            -16.335986
           ],
           [
             180.0,
-            -16.347379696256823
+            -16.34738
           ]
         ]
       ],
@@ -74,23 +74,23 @@
         [
           [
             -180.0,
-            -15.35591136701329
+            -15.355911
           ],
           [
             -180.0,
-            -16.347379696256823
+            -16.34738
           ],
           [
             -179.71667,
-            -16.35172398794926
+            -16.351724
           ],
           [
             -179.70343,
-            -15.360190240553301
+            -15.36019
           ],
           [
             -180.0,
-            -15.35591136701329
+            -15.355911
           ]
         ]
       ]
@@ -100,16 +100,11 @@
     {
       "rel": "license",
       "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice"
-    },
-    {
-      "rel": "self",
-      "href": "",
-      "type": "application/json"
     }
   ],
   "assets": {
     "coastal": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B01.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
       "eo:bands": [
@@ -156,7 +151,7 @@
       ]
     },
     "blue": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B02.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
       "eo:bands": [
@@ -203,7 +198,7 @@
       ]
     },
     "green": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B03.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "eo:bands": [
@@ -250,7 +245,7 @@
       ]
     },
     "red": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B04.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
       "eo:bands": [
@@ -297,7 +292,7 @@
       ]
     },
     "rededge1": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B05.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
       "eo:bands": [
@@ -344,7 +339,7 @@
       ]
     },
     "rededge2": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B06.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
       "eo:bands": [
@@ -391,7 +386,7 @@
       ]
     },
     "rededge3": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B07.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
       "eo:bands": [
@@ -438,7 +433,7 @@
       ]
     },
     "nir": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B08.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
       "eo:bands": [
@@ -485,7 +480,7 @@
       ]
     },
     "nir08": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B8A.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
       "eo:bands": [
@@ -532,7 +527,7 @@
       ]
     },
     "nir09": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B09.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
       "eo:bands": [
@@ -579,7 +574,7 @@
       ]
     },
     "cirrus": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B10.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B10.jp2",
       "type": "image/jp2",
       "title": "Cirrus (band 10) - 60m",
       "eo:bands": [
@@ -626,7 +621,7 @@
       ]
     },
     "swir16": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B11.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
       "eo:bands": [
@@ -673,7 +668,7 @@
       ]
     },
     "swir22": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B12.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
       "eo:bands": [
@@ -720,7 +715,7 @@
       ]
     },
     "visual": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_TCI.jp2",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_TCI.jp2",
       "type": "image/jp2",
       "title": "True color image",
       "eo:bands": [
@@ -769,35 +764,35 @@
       ]
     },
     "safe_manifest": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/manifest.safe",
+      "href": "./manifest.safe",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "product_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/MTD_MSIL1C.xml",
+      "href": "./MTD_MSIL1C.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "granule_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/MTD_TL.xml",
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/MTD_TL.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "inspire_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/INSPIRE.xml",
+      "href": "./INSPIRE.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
     "datastrip_metadata": {
-      "href": "../sentinel2/tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/DATASTRIP/DS_SGS__20200717T234135_S20200717T221944/MTD_DS.xml",
+      "href": "./DATASTRIP/DS_SGS__20200717T234135_S20200717T221944/MTD_DS.xml",
       "type": "application/xml",
       "roles": [
         "metadata"
@@ -805,10 +800,10 @@
     }
   },
   "bbox": [
-    179.25694918943802,
-    -16.35172398794926,
+    179.256949,
+    -16.351724,
     -179.70343,
-    -15.34545370590625
+    -15.345454
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",

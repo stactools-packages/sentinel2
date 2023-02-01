@@ -57,3 +57,9 @@ Run the tests with:
 ```commandline
 pytest -vvv
 ```
+
+If you change the STAC metadata output, you will need to re-create the test files with the following command:
+
+```shell
+python scripts/create_expected.py
+```
