@@ -37,7 +37,7 @@ from stactools.sentinel2.constants import (
     SENTINEL_PROVIDER,
     UNSUFFIXED_BAND_RESOLUTION,
 )
-from stactools.sentinel2.granule_metadata import GranuleMetadata
+from stactools.sentinel2.granule_metadata import GranuleMetadata, ViewingAngle
 from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.product_metadata import ProductMetadata
@@ -87,6 +87,7 @@ class Metadata:
     proj_bbox: List[float]
     resolution_to_shape: Dict[int, Tuple[int, int]]
     processing_baseline: str
+    viewing_angles: Dict[str, ViewingAngle]
     orbit_state: Optional[str] = None
     relative_orbit: Optional[int] = None
     sun_azimuth: Optional[float] = None
@@ -208,6 +209,7 @@ def create_item(
                 proj_bbox=metadata.proj_bbox,
                 media_type=metadata.image_media_type,
                 processing_baseline=metadata.processing_baseline,
+                viewing_angles=metadata.viewing_angles,
                 boa_add_offsets=metadata.boa_add_offsets,
             )
             for image_path in metadata.image_paths
@@ -231,6 +233,7 @@ def image_asset_from_href(
     proj_bbox: List[float],
     media_type: Optional[str],
     processing_baseline: str,
+    viewing_angles: Dict[str, ViewingAngle],
     boa_add_offsets: Optional[Dict[str, int]] = None,
 ) -> Tuple[str, pystac.Asset]:
     logger.debug(f"Creating asset for image {asset_href}")
@@ -328,6 +331,11 @@ def image_asset_from_href(
             title=f"{band.description} - {asset_res}m",
             roles=["data", "reflectance"],
         )
+        viewing_angle = viewing_angles[band_id]
+        # We can't use the ViewExtension here until
+        # https://github.com/stac-utils/pystac/issues/793 is fixed
+        asset.extra_fields["view:azimuth"] = viewing_angle.azimuth
+        asset.extra_fields["view:incidence_angle"] = viewing_angle.zenith
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
@@ -502,6 +510,7 @@ def metadata_from_safe_manifest(
         sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets,
+        viewing_angles=granule_metadata.viewing_angles,
     )
 
 
@@ -573,6 +582,7 @@ def metadata_from_granule_metadata(
         sun_azimuth=granule_metadata.mean_solar_azimuth,
         processing_baseline=granule_metadata.processing_baseline,
         boa_add_offsets=product_metadata.boa_add_offsets if product_metadata else None,
+        viewing_angles=granule_metadata.viewing_angles,
     )
 
 

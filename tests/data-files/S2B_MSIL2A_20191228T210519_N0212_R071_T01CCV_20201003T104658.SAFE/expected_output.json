@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_MSIL2A_20191228T210519_R071_T01CCV_20201003T104658",
   "properties": {
-    "created": "2023-02-01T09:04Z",
+    "created": "2023-02-08T13:42Z",
     "providers": [
       {
         "name": "ESA",
@@ -129,6 +129,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B02_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 20m",
+      "view:azimuth": 299.520631476454,
+      "view:incidence_angle": 10.7985970063199,
       "eo:bands": [
         {
           "name": "blue",
@@ -175,6 +177,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B03_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 20m",
+      "view:azimuth": 300.497757463677,
+      "view:incidence_angle": 10.822233080032,
       "eo:bands": [
         {
           "name": "green",
@@ -221,6 +225,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B04_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 20m",
+      "view:azimuth": 301.398604018607,
+      "view:incidence_angle": 10.8507073259669,
       "eo:bands": [
         {
           "name": "red",
@@ -267,6 +273,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B05_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 1 (band 5) - 20m",
+      "view:azimuth": 301.880666343481,
+      "view:incidence_angle": 10.8687158186137,
       "eo:bands": [
         {
           "name": "rededge1",
@@ -314,6 +322,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B06_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 2 (band 6) - 20m",
+      "view:azimuth": 302.374527614989,
+      "view:incidence_angle": 10.8888434410565,
       "eo:bands": [
         {
           "name": "rededge2",
@@ -361,6 +371,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B07_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 3 (band 7) - 20m",
+      "view:azimuth": 302.874609684129,
+      "view:incidence_angle": 10.9204140720004,
       "eo:bands": [
         {
           "name": "rededge3",
@@ -408,6 +420,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B8A_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 2 (band 8A) - 20m",
+      "view:azimuth": 303.366040038463,
+      "view:incidence_angle": 10.9442443310732,
       "eo:bands": [
         {
           "name": "nir08",
@@ -455,6 +469,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B11_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 1 (band 11) - 20m",
+      "view:azimuth": 302.24300991018,
+      "view:incidence_angle": 10.8845308415639,
       "eo:bands": [
         {
           "name": "swir16",
@@ -502,6 +518,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B12_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 2 (band 12) - 20m",
+      "view:azimuth": 303.42008542786,
+      "view:incidence_angle": 10.9485408965834,
       "eo:bands": [
         {
           "name": "swir22",
@@ -707,6 +725,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B01_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Coastal aerosol (band 1) - 60m",
+      "view:azimuth": 303.825599018102,
+      "view:incidence_angle": 10.9693522443217,
       "eo:bands": [
         {
           "name": "coastal",
@@ -754,6 +774,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B02_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 60m",
+      "view:azimuth": 299.520631476454,
+      "view:incidence_angle": 10.7985970063199,
       "eo:bands": [
         {
           "name": "blue",
@@ -800,6 +822,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B03_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 60m",
+      "view:azimuth": 300.497757463677,
+      "view:incidence_angle": 10.822233080032,
       "eo:bands": [
         {
           "name": "green",
@@ -846,6 +870,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B04_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 60m",
+      "view:azimuth": 301.398604018607,
+      "view:incidence_angle": 10.8507073259669,
       "eo:bands": [
         {
           "name": "red",
@@ -892,6 +918,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B05_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 1 (band 5) - 60m",
+      "view:azimuth": 301.880666343481,
+      "view:incidence_angle": 10.8687158186137,
       "eo:bands": [
         {
           "name": "rededge1",
@@ -938,6 +966,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B06_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 2 (band 6) - 60m",
+      "view:azimuth": 302.374527614989,
+      "view:incidence_angle": 10.8888434410565,
       "eo:bands": [
         {
           "name": "rededge2",
@@ -984,6 +1014,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B07_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red edge 3 (band 7) - 60m",
+      "view:azimuth": 302.874609684129,
+      "view:incidence_angle": 10.9204140720004,
       "eo:bands": [
         {
           "name": "rededge3",
@@ -1030,6 +1062,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B8A_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 2 (band 8A) - 60m",
+      "view:azimuth": 303.366040038463,
+      "view:incidence_angle": 10.9442443310732,
       "eo:bands": [
         {
           "name": "nir08",
@@ -1076,6 +1110,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B09_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 3 (band 9) - 60m",
+      "view:azimuth": 304.325095060087,
+      "view:incidence_angle": 10.9975598362208,
       "eo:bands": [
         {
           "name": "nir09",
@@ -1123,6 +1159,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B11_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 1 (band 11) - 60m",
+      "view:azimuth": 302.24300991018,
+      "view:incidence_angle": 10.8845308415639,
       "eo:bands": [
         {
           "name": "swir16",
@@ -1169,6 +1207,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B12_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "SWIR 2 (band 12) - 60m",
+      "view:azimuth": 303.42008542786,
+      "view:incidence_angle": 10.9485408965834,
       "eo:bands": [
         {
           "name": "swir22",
@@ -1373,6 +1413,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R10m/T01CCV_20191228T210519_B02_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Blue (band 2) - 10m",
+      "view:azimuth": 299.520631476454,
+      "view:incidence_angle": 10.7985970063199,
       "eo:bands": [
         {
           "name": "blue",
@@ -1420,6 +1462,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R10m/T01CCV_20191228T210519_B03_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Green (band 3) - 10m",
+      "view:azimuth": 300.497757463677,
+      "view:incidence_angle": 10.822233080032,
       "eo:bands": [
         {
           "name": "green",
@@ -1467,6 +1511,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R10m/T01CCV_20191228T210519_B04_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Red (band 4) - 10m",
+      "view:azimuth": 301.398604018607,
+      "view:incidence_angle": 10.8507073259669,
       "eo:bands": [
         {
           "name": "red",
@@ -1514,6 +1560,8 @@
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R10m/T01CCV_20191228T210519_B08_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "NIR 1 (band 8) - 10m",
+      "view:azimuth": 300.008008590281,
+      "view:incidence_angle": 10.8094588480691,
       "eo:bands": [
         {
           "name": "nir",

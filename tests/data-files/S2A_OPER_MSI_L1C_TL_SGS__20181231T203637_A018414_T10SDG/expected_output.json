@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
   "properties": {
-    "created": "2023-02-01T09:04Z",
+    "created": "2023-02-08T13:42Z",
     "providers": [
       {
         "name": "ESA",
@@ -9951,6 +9951,8 @@
       "href": "./B01.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
+      "view:azimuth": 105.222653658973,
+      "view:incidence_angle": 9.32344350171152,
       "eo:bands": [
         {
           "name": "coastal",
@@ -9998,6 +10000,8 @@
       "href": "./B02.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
+      "view:azimuth": 103.534530624244,
+      "view:incidence_angle": 9.16046316628897,
       "eo:bands": [
         {
           "name": "blue",
@@ -10045,6 +10049,8 @@
       "href": "./B03.jp2",
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
+      "view:azimuth": 103.928753911312,
+      "view:incidence_angle": 9.18166424413228,
       "eo:bands": [
         {
           "name": "green",
@@ -10092,6 +10098,8 @@
       "href": "./B04.jp2",
       "type": "image/jp2",
       "title": "Red (band 4) - 10m",
+      "view:azimuth": 104.282145404007,
+      "view:incidence_angle": 9.20898720626288,
       "eo:bands": [
         {
           "name": "red",
@@ -10139,6 +10147,8 @@
       "href": "./B05.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
+      "view:azimuth": 104.481053232259,
+      "view:incidence_angle": 9.22703019472298,
       "eo:bands": [
         {
           "name": "rededge1",
@@ -10186,6 +10196,8 @@
       "href": "./B06.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
+      "view:azimuth": 104.639978163478,
+      "view:incidence_angle": 9.25101940900086,
       "eo:bands": [
         {
           "name": "rededge2",
@@ -10233,6 +10245,8 @@
       "href": "./B07.jp2",
       "type": "image/jp2",
       "title": "Red edge 3 (band 7) - 20m",
+      "view:azimuth": 104.830111033463,
+      "view:incidence_angle": 9.27342229047768,
       "eo:bands": [
         {
           "name": "rededge3",
@@ -10280,6 +10294,8 @@
       "href": "./B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 (band 8) - 10m",
+      "view:azimuth": 103.731973628264,
+      "view:incidence_angle": 9.16993618804109,
       "eo:bands": [
         {
           "name": "nir",
@@ -10327,6 +10343,8 @@
       "href": "./B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 (band 8A) - 20m",
+      "view:azimuth": 104.971830884209,
+      "view:incidence_angle": 9.30011056604762,
       "eo:bands": [
         {
           "name": "nir08",
@@ -10374,6 +10392,8 @@
       "href": "./B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 (band 9) - 60m",
+      "view:azimuth": 105.469406889576,
+      "view:incidence_angle": 9.36492818809416,
       "eo:bands": [
         {
           "name": "nir09",
@@ -10421,6 +10441,8 @@
       "href": "./B10.jp2",
       "type": "image/jp2",
       "title": "Cirrus (band 10) - 60m",
+      "view:azimuth": 104.211804645039,
+      "view:incidence_angle": 9.20259833475114,
       "eo:bands": [
         {
           "name": "cirrus",
@@ -10468,6 +10490,8 @@
       "href": "./B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
+      "view:azimuth": 104.635075782653,
+      "view:incidence_angle": 9.23831368292313,
       "eo:bands": [
         {
           "name": "swir16",
@@ -10515,6 +10539,8 @@
       "href": "./B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2 (band 12) - 20m",
+      "view:azimuth": 105.032044110384,
+      "view:incidence_angle": 9.29659647868938,
       "eo:bands": [
         {
           "name": "swir22",
