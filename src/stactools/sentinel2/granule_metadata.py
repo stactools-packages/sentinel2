@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import re
+from dataclasses import dataclass
 from typing import Dict, Final, List, Optional, Pattern, Tuple
 
 import pystac
@@ -39,8 +42,10 @@ class GranuleMetadata:
             raise GranuleMetadataError(f"Cannot find tile angles node in {self.href}")
         self._tile_angles_node = tile_angles_node
 
-        self._viewing_angle_nodes = self._tile_angles_node.findall(
-            "Mean_Viewing_Incidence_Angle_List/Mean_Viewing_Incidence_Angle"
+        self.viewing_angles = ViewingAngle.from_nodes(
+            self._tile_angles_node.findall(
+                "Mean_Viewing_Incidence_Angle_List/Mean_Viewing_Incidence_Angle"
+            )
         )
 
         self._image_content_node = self._root.find(
@@ -227,3 +232,37 @@ class GranuleMetadata:
             href=self.href, media_type=pystac.MediaType.XML, roles=["metadata"]
         )
         return GRANULE_METADATA_ASSET_KEY, asset
+
+
+@dataclass
+class ViewingAngle:
+    azimuth: float
+    zenith: float
+
+    @classmethod
+    def from_nodes(cls, nodes: List[XmlElement]) -> Dict[str, ViewingAngle]:
+        angles = dict()
+        for node in nodes:
+            band_id_str = node.get_attr("bandId")
+            if band_id_str is None:
+                raise ValueError("expected band id on viewing angle node")
+            else:
+                band_id = int(band_id_str)
+            if band_id < 8:
+                band = f"B0{band_id + 1}"
+            elif band_id == 8:
+                band = "B8A"
+            else:
+                band = f"B{band_id:02}"
+            zenith = float(
+                node.find_text_or_throw(
+                    "ZENITH_ANGLE", lambda s: ValueError(f"missing ZENITH_ANGLE: {s}")
+                )
+            )
+            azimuth = float(
+                node.find_text_or_throw(
+                    "AZIMUTH_ANGLE", lambda s: ValueError(f"missing AZIMUTH_ANGLE: {s}")
+                )
+            )
+            angles[band] = cls(azimuth=azimuth, zenith=zenith)
+        return angles
