@@ -821,6 +821,13 @@
       "roles": [
         "metadata"
       ]
+    },
+    "preview": {
+      "href": "./GRANULE/L1C_T46RER_A032448_20210908T043714/QI_DATA/T46RER_20210908T042701_PVI.jp2",
+      "type": "image/jp2",
+      "roles": [
+        "thumbnail"
+      ]
     }
   },
   "bbox": [
