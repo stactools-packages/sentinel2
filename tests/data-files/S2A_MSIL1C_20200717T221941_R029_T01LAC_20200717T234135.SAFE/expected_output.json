@@ -823,6 +823,13 @@
       "roles": [
         "metadata"
       ]
+    },
+    "preview": {
+      "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/QI_DATA/T01LAC_20200717T221941_PVI.jp2",
+      "type": "image/jp2",
+      "roles": [
+        "thumbnail"
+      ]
     }
   },
   "bbox": [

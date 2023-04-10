@@ -483,7 +483,7 @@ def metadata_from_safe_manifest(
     if safe_manifest.thumbnail_href is not None:
         extra_assets["preview"] = pystac.Asset(
             href=safe_manifest.thumbnail_href,
-            media_type=pystac.MediaType.COG,
+            media_type=product_metadata.image_media_type,
             roles=["thumbnail"],
         )
 

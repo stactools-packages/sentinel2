@@ -46,6 +46,7 @@ class SafeManifest:
             [
                 'dataObject[@ID="S2_Level-1C_Preview_Tile1_Data"]/byteStream/fileLocation',
                 'dataObject[@ID="Preview_4_Tile1_Data"]/byteStream/fileLocation',
+                'dataObject[@ID="Preview_0_Tile1_Data"]/byteStream/fileLocation',
             ]
         )
 

@@ -1770,7 +1770,7 @@
     },
     "preview": {
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/QI_DATA/T22HBD_20210122T133229_PVI.jp2",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "type": "image/jp2",
       "roles": [
         "thumbnail"
       ]
