@@ -229,7 +229,7 @@ class GranuleMetadata:
 
     @property
     def pvi_filename(self) -> Optional[str]:
-        return self._root.find_text('n1:Quality_Indicators_Info/PVI_FILENAME')
+        return self._root.find_text("n1:Quality_Indicators_Info/PVI_FILENAME")
 
     def create_asset(self):
         asset = pystac.Asset(
