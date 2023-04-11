@@ -41,16 +41,6 @@ class SafeManifest:
             return os.path.join(self.granule_href, file_path)
 
     @property
-    def thumbnail_href(self) -> Optional[str]:
-        return self._find_href(
-            [
-                'dataObject[@ID="S2_Level-1C_Preview_Tile1_Data"]/byteStream/fileLocation',
-                'dataObject[@ID="Preview_4_Tile1_Data"]/byteStream/fileLocation',
-                'dataObject[@ID="Preview_0_Tile1_Data"]/byteStream/fileLocation',
-            ]
-        )
-
-    @property
     def product_metadata_href(self) -> Optional[str]:
         return self._find_href(
             [
