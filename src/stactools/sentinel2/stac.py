@@ -480,9 +480,9 @@ def metadata_from_safe_manifest(
         ]
     )
 
-    if safe_manifest.thumbnail_href is not None:
+    if granule_metadata.pvi_filename is not None:
         extra_assets["preview"] = pystac.Asset(
-            href=safe_manifest.thumbnail_href,
+            href=os.path.join(granule_href, granule_metadata.pvi_filename),
             media_type=product_metadata.image_media_type,
             roles=["thumbnail"],
         )

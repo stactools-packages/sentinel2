@@ -227,6 +227,10 @@ class GranuleMetadata:
             return mgrs_match.group(1)
         return None
 
+    @property
+    def pvi_filename(self) -> Optional[str]:
+        return self._root.find_text("n1:Quality_Indicators_Info/PVI_FILENAME")
+
     def create_asset(self):
         asset = pystac.Asset(
             href=self.href, media_type=pystac.MediaType.XML, roles=["metadata"]
