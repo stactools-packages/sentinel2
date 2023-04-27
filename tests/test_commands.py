@@ -7,6 +7,7 @@ from typing import Any, Dict, Final, List
 
 import pystac
 from pystac.extensions.eo import EOExtension
+from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.view import ViewExtension
 from pystac.utils import is_absolute_href
@@ -18,7 +19,6 @@ from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME, COORD_ROUNDING
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import SENTINEL_BANDS
-from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.utils import extract_gsd
 from tests import test_data
@@ -239,26 +239,27 @@ class CreateItemTest(CliTestCase):
 
                     # self.assertLess(proj_bbox_area_difference(item), 0.005)
 
-                    self.assertTrue(item.properties.get("mgrs:latitude_band"))
-                    self.assertTrue(item.properties.get("mgrs:utm_zone"))
-                    self.assertTrue(item.properties.get("mgrs:grid_square"))
-
                     mgrs = MgrsExtension.ext(item)
                     self.assertIn(
                         f"_T{mgrs.utm_zone:02d}{mgrs.latitude_band}{mgrs.grid_square}",
                         item.id,
                     )
-
-                    self.assertTrue(item.properties.get("grid:code"))
+                    self.assertTrue(mgrs.latitude_band)
+                    self.assertTrue(mgrs.utm_zone)
+                    self.assertTrue(mgrs.grid_square)
 
                     grid = GridExtension.ext(item)
+                    self.assertTrue(grid.code)
                     grid_id = grid.code.split("-")[1]
                     if len(grid_id) == 4:
                         grid_id = f"0{grid_id}"  # add zero pad
                     self.assertIn(f"_T{grid_id}", item.id)
 
-                    self.assertTrue(item.properties.get("view:sun_azimuth"))
-                    self.assertTrue(item.properties.get("view:sun_elevation"))
                     view = ViewExtension.ext(item)
                     self.assertTrue(view.sun_azimuth)
                     self.assertTrue(view.sun_elevation)
+
+                    proj = ProjectionExtension.ext(item)
+                    self.assertTrue(proj.centroid)
+                    self.assertTrue(proj.centroid["lat"])
+                    self.assertTrue(proj.centroid["lon"])

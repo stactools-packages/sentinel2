@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_MSIL2A_20190212T192651_R013_T07HFE_20201007T160857",
   "properties": {
-    "created": "2023-02-08T13:42Z",
+    "created": "2023-04-27T12:43Z",
     "providers": [
       {
         "name": "ESA",
@@ -24,6 +24,10 @@
     "sat:orbit_state": "descending",
     "sat:relative_orbit": 13,
     "proj:epsg": 32707,
+    "proj:centroid": {
+      "lat": -31.6824,
+      "lon": -139.74481
+    },
     "mgrs:utm_zone": 7,
     "mgrs:latitude_band": "H",
     "mgrs:grid_square": "FE",
@@ -1768,7 +1772,7 @@
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/grid/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
     "https://stac-extensions.github.io/view/v1.0.0/schema.json"
   ]
 }
