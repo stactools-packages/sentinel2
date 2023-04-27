@@ -167,7 +167,7 @@ def create_item(
         )
         sat.relative_orbit = metadata.relative_orbit
 
-    # Projection Extensio
+    # Projection Extension
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = metadata.epsg
     if projection.epsg is None:
