@@ -7,13 +7,13 @@ from itertools import chain
 from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
 
 import pystac
+import shapely
 from pystac.extensions.eo import Band, EOExtension
+from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
-from shapely.geometry import mapping
-from shapely.geometry import shape as make_shape
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
 from stactools.core.utils import antimeridian
@@ -38,7 +38,6 @@ from stactools.sentinel2.constants import (
     UNSUFFIXED_BAND_RESOLUTION,
 )
 from stactools.sentinel2.granule_metadata import GranuleMetadata, ViewingAngle
-from stactools.sentinel2.grid import GridExtension
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.safe_manifest import SafeManifest
@@ -168,13 +167,15 @@ def create_item(
         )
         sat.relative_orbit = metadata.relative_orbit
 
-    # proj
+    # Projection Extension
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = metadata.epsg
     if projection.epsg is None:
         raise ValueError(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
+    centroid = shapely.geometry.shape(item.geometry).centroid
+    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(centroid.x, 5)}
 
     # MGRS and Grid Extension
     mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
@@ -539,7 +540,7 @@ def metadata_from_granule_metadata(
         )
         product_metadata = ProductMetadata(f, read_href_modifier)
 
-    geometry = make_shape(
+    geometry = shapely.geometry.shape(
         reproject_geom(
             f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
         )
@@ -572,7 +573,7 @@ def metadata_from_granule_metadata(
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
-        geometry=mapping(geometry),
+        geometry=shapely.geometry.mapping(geometry),
         bbox=geometry.bounds,
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
