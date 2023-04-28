@@ -6,11 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.4.1] - 2023-04-28
+
 ### Added
 
 - Projection Extension 'centroid' field
 
-## [0.4.0] - 2022-10-28
+## [0.4.0] - 2023-01-31
 
 ### Changed
 
@@ -52,7 +54,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Modified Item IDs to include product discriminator ([#7](https://github.com/stactools-packages/sentinel2/pull/7))
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
 
-[Unreleased]: <https://github.com/stactools-packages/landsat/compare/v0.4.0..main>
-[0.4.0]: <https://github.com/stactools-packages/landsat/compare/v0.3.0..v0.4.0>
-[0.3.0]: <https://github.com/stactools-packages/landsat/compare/v0.2.0..v0.3.0>
+[Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.4.1..main>
+[0.4.1]: <https://github.com/stactools-packages/sentinel2/compare/v0.4.0..v0.4.1>
+[0.4.0]: <https://github.com/stactools-packages/sentinel2/compare/v0.3.0..v0.4.0>
+[0.3.0]: <https://github.com/stactools-packages/sentinel2/compare/v0.2.0..v0.3.0>
 [0.2.0]: <https://github.com/stactools-packages/sentinel2/releases/tag/v0.2.0>
