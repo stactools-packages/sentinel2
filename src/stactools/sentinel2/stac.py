@@ -10,6 +10,7 @@ from pystac.extensions.sat import OrbitState, SatExtension
 
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import transform_from_bbox
+from stactools.core.utils.antimeridian import Strategy, fix_item
 from stactools.sentinel2.safe_manifest import SafeManifest
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.granule_metadata import GranuleMetadata
@@ -23,9 +24,11 @@ logger = logging.getLogger(__name__)
 
 
 def create_item(
-        granule_href: str,
-        additional_providers: Optional[List[pystac.Provider]] = None,
-        read_href_modifier: Optional[ReadHrefModifier] = None) -> pystac.Item:
+    granule_href: str,
+    additional_providers: Optional[List[pystac.Provider]] = None,
+    read_href_modifier: Optional[ReadHrefModifier] = None,
+    antimeridian_strategy: Optional[Strategy] = None,
+) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
     Arguments:
@@ -133,6 +136,10 @@ def create_item(
     # --Links--
 
     item.links.append(SENTINEL_LICENSE)
+
+    # Fix antimeridian
+    if antimeridian_strategy is not None:
+        fix_item(item, antimeridian_strategy)
 
     return item
 

@@ -1,0 +1,89 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<Level-2A_CAL_AC_Ground_Image_Processing_Parameter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="L2A_CAL_AC_GIPP.xsd">
+    <Flags>
+      <Scaling_Limiter>true</Scaling_Limiter>
+      <Scaling_Disabler>true</Scaling_Disabler>
+      <Rho_Retrieval_Step2>true</Rho_Retrieval_Step2>
+    </Flags>
+  <References>
+    <Lib_Dir>lib</Lib_Dir>
+  </References>
+  <Sensor>
+    <Resolution>
+        <Band_List>
+          <!-- full width half maximum -->
+          <fwhm>0.020</fwhm>
+          <fwhm>0.065</fwhm>
+          <fwhm>0.035</fwhm>
+          <fwhm>0.030</fwhm>
+          <fwhm>0.015</fwhm>
+          <fwhm>0.015</fwhm>
+          <fwhm>0.020</fwhm>
+          <fwhm>0.115</fwhm>
+          <fwhm>0.020</fwhm>
+          <fwhm>0.020</fwhm>
+          <fwhm>0.030</fwhm>
+          <fwhm>0.090</fwhm>
+          <fwhm>0.180</fwhm>
+        </Band_List>
+      </Resolution>
+      <Calibration>
+      	<min_sc_blu>0.9</min_sc_blu>
+      	<max_sc_blu>1.1</max_sc_blu>
+        <Band_List>
+          <wavelength c0="0.00000" c1="0.001">0.443</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.490</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.560</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.665</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.705</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.740</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.783</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.842</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.865</wavelength>
+          <wavelength c0="0.00000" c1="0.001">0.945</wavelength>
+          <wavelength c0="0.00000" c1="0.0005">1.375</wavelength>
+          <wavelength c0="0.00000" c1="0.0002">1.610</wavelength>
+          <wavelength c0="0.00000" c1="0.00005">2.190</wavelength>
+        </Band_List>
+   </Calibration>
+  </Sensor>
+  <ACL_Prio_1>
+    <AC_Min_Ddv_Area>2.0</AC_Min_Ddv_Area>
+    <AC_Swir_Refl_Lower_Th>0.01</AC_Swir_Refl_Lower_Th>
+    <AC_Swir_22um_Red_Refl_Ratio>0.5</AC_Swir_22um_Red_Refl_Ratio>
+    <AC_Red_Blue_Refl_Ratio>0.5</AC_Red_Blue_Refl_Ratio>
+    <AC_Cut_Off_Aot_Iter_Vegetation>0.01</AC_Cut_Off_Aot_Iter_Vegetation>
+    <AC_Cut_Off_Aot_Iter_Water>-0.005</AC_Cut_Off_Aot_Iter_Water>
+    <AC_Aerosol_Type_Ratio_Th>0.05</AC_Aerosol_Type_Ratio_Th>
+    <AC_Topo_Corr_Th>0.01</AC_Topo_Corr_Th>
+    <AC_Slope_Th>6.0</AC_Slope_Th>
+    <AC_Dem_P2p_Val>50.0</AC_Dem_P2p_Val>
+  </ACL_Prio_1>
+  <ACL_Prio_2>
+    <AC_Swir_Refl_Ndvi_Th>0.10</AC_Swir_Refl_Ndvi_Th>
+    <AC_Ddv_Swir_Refl_Th1>0.05</AC_Ddv_Swir_Refl_Th1>
+    <AC_Ddv_Swir_Refl_Th2>0.10</AC_Ddv_Swir_Refl_Th2>
+    <AC_Ddv_Swir_Refl_Th3>0.12</AC_Ddv_Swir_Refl_Th3>
+    <AC_Ddv_16um_Refl_Th1>0.10</AC_Ddv_16um_Refl_Th1>
+    <AC_Ddv_16um_Refl_Th2>0.15</AC_Ddv_16um_Refl_Th2>
+    <AC_Ddv_16um_Refl_Th3>0.18</AC_Ddv_16um_Refl_Th3>
+    <AC_Dbv_Nir_Refl_Th>0.35</AC_Dbv_Nir_Refl_Th>
+    <AC_Dbv_Ndvi_Th>0.66</AC_Dbv_Ndvi_Th>
+    <AC_Red_Ref_Refl_Th>0.02</AC_Red_Ref_Refl_Th>
+    <AC_Dbv_Red_Veget_Tst_Ndvi_Th>0.40</AC_Dbv_Red_Veget_Tst_Ndvi_Th>
+    <AC_Dbv_Red_Veget_Refl_Th>0.15</AC_Dbv_Red_Veget_Refl_Th>
+    <AC_Wv_Iter_Start_Summer>1.0</AC_Wv_Iter_Start_Summer>
+    <AC_Wv_Iter_Start_Winter>0.4</AC_Wv_Iter_Start_Winter>
+    <AC_Rng_Nbhd_Terrain_Corr>0.5</AC_Rng_Nbhd_Terrain_Corr>
+    <AC_Max_Nr_Topo_Iter>3</AC_Max_Nr_Topo_Iter>
+    <AC_Topo_Corr_Cutoff>1.5</AC_Topo_Corr_Cutoff>
+    <AC_Vegetation_Index_Th>3.0</AC_Vegetation_Index_Th>
+  </ACL_Prio_2>
+  <ACL_Prio_3>
+    <AC_Limit_Area_Path_Rad_Scale>0</AC_Limit_Area_Path_Rad_Scale>
+    <AC_Ddv_Smooting_Window>1.0</AC_Ddv_Smooting_Window>
+    <AC_Terrain_Refl_Start>0.1</AC_Terrain_Refl_Start>
+    <AC_Spr_Refl_Percentage>0.25</AC_Spr_Refl_Percentage>
+    <AC_Spr_Refl_Promille>0.3</AC_Spr_Refl_Promille>
+  </ACL_Prio_3>
+</Level-2A_CAL_AC_Ground_Image_Processing_Parameter>
