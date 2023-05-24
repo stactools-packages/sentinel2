@@ -1,0 +1,78 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<Level-2A_CAL_SC_Ground_Image_Processing_Parameter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="L2A_CAL_SC_GIPP.xsd">
+  <Scene_Classification>
+    <References>
+      <Snow_Map>GlobalSnowMap.tiff</Snow_Map>
+      <ESACCI_WaterBodies_Map>ESACCI-LC-L4-WB-Map-150m-P13Y-2000-v4.0.tif</ESACCI_WaterBodies_Map>
+      <ESACCI_LandCover_Map>ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif</ESACCI_LandCover_Map>
+      <ESACCI_SnowCondition_Map_Dir>ESACCI-LC-L4-Snow-Cond-500m-MONTHLY-2000-2012-v2.4</ESACCI_SnowCondition_Map_Dir>
+    </References>
+    <Classificators>
+      <NO_DATA>0</NO_DATA>
+      <SATURATED_DEFECTIVE>1</SATURATED_DEFECTIVE>
+      <DARK_FEATURES>2</DARK_FEATURES>
+      <CLOUD_SHADOWS>3</CLOUD_SHADOWS>
+      <VEGETATION>4</VEGETATION>
+      <NOT_VEGETATED>5</NOT_VEGETATED>
+      <WATER>6</WATER>
+      <UNCLASSIFIED>7</UNCLASSIFIED>
+      <MEDIUM_PROBA_CLOUDS>8</MEDIUM_PROBA_CLOUDS>
+      <HIGH_PROBA_CLOUDS>9</HIGH_PROBA_CLOUDS>
+      <THIN_CIRRUS>10</THIN_CIRRUS>
+      <SNOW_ICE>11</SNOW_ICE>
+    </Classificators>
+    <Thresholds>
+      <T1_B02>0.18</T1_B02>
+      <T2_B02>0.22</T2_B02>
+      <T1_B04>0.06</T1_B04>
+      <!-- modif JL 20151223 (was 0.08)-->
+      <T2_B04>0.25</T2_B04>
+      <T1_B8A>0.15</T1_B8A>
+      <T2_B8A>0.35</T2_B8A>
+      <T1_B10>0.012</T1_B10>
+      <T2_B10>0.035</T2_B10>
+      <T1_B12>0.25</T1_B12>
+      <T2_B12>0.12</T2_B12>
+      <T_B02_B12>0.018</T_B02_B12>
+      <T_CLOUD_LP>0.0</T_CLOUD_LP>
+      <T_CLOUD_MP>0.20</T_CLOUD_MP>
+      <!-- modif JL 20151218 (was 0.35)-->
+      <T_CLOUD_HP>0.80</T_CLOUD_HP>
+      <!-- modif JL 20151218 (was 0.65)-->
+      <T1_NDSI_CLD>-0.24</T1_NDSI_CLD>
+      <T2_NDSI_CLD>-0.16</T2_NDSI_CLD>
+      <T1_NDSI_SNW>0.35</T1_NDSI_SNW>
+      <!-- modif JL 20151218 (was 0.20)-->
+      <T2_NDSI_SNW>0.50</T2_NDSI_SNW>
+      <!-- modif JL 20151218 (was 0.42)-->
+      <T1_NDVI>0.36</T1_NDVI>
+      <T2_NDVI>0.42</T2_NDVI>
+      <!-- modif JL 20151218 (was 0.47 then 0.40)-->
+      <T1_SNOW>0.12</T1_SNOW>
+      <T2_SNOW>0.25</T2_SNOW>
+      <T1_R_B02_B04>0.85</T1_R_B02_B04>
+      <T2_R_B02_B04>0.95</T2_R_B02_B04>
+      <T1_R_B8A_B03>1.50</T1_R_B8A_B03>
+      <T2_R_B8A_B03>2.50</T2_R_B8A_B03>
+      <T1_R_B8A_B11>0.90</T1_R_B8A_B11>
+      <T2_R_B8A_B11>1.10</T2_R_B8A_B11>
+      <T11_B02>-0.40</T11_B02>
+      <T12_B02>0.46</T12_B02>
+      <T11_R_B02_B11>0.70</T11_R_B02_B11>
+      <!-- modif JL 20151218 (was 0.8 then 0.55)-->
+      <T12_R_B02_B11>1.0</T12_R_B02_B11>
+      <!-- modif JL 20151218 (was 1.5 then 0.8)-->
+      <T21_R_B02_B11>2.00</T21_R_B02_B11>
+      <T22_R_B02_B11>4.00</T22_R_B02_B11>
+      <T21_B12>0.1</T21_B12>
+      <T22_B12>-0.09</T22_B12>
+      <RV_B2>6.96000</RV_B2>
+      <RV_B3>5.26667</RV_B3>
+      <RV_B4>5.37708</RV_B4>
+      <RV_B8>7.52000</RV_B8>
+      <RV_B11>5.45000</RV_B11>
+      <RV_B12>2.55000</RV_B12>
+      <T_SDW>0.75</T_SDW>
+    </Thresholds>
+  </Scene_Classification>
+</Level-2A_CAL_SC_Ground_Image_Processing_Parameter>
