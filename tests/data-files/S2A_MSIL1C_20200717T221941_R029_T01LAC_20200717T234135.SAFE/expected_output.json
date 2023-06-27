@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135",
   "properties": {
-    "created": "2023-04-27T12:43Z",
+    "created": "2023-06-27T10:52Z",
     "providers": [
       {
         "name": "ESA",
@@ -26,7 +26,7 @@
     "proj:epsg": 32701,
     "proj:centroid": {
       "lat": -15.84874,
-      "lon": 77.79704
+      "lon": 179.77808
     },
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "L",

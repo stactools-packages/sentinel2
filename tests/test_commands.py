@@ -85,7 +85,11 @@ class CreateItemTest(CliTestCase):
             "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ":
                 "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ",
             "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135":
-                "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE"
+                "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE",
+            "S2A_MSIL2A_20230625T234621_R073_T01WCP_20230626T022157":
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022157.SAFE",
+            "S2A_MSIL2A_20230625T234621_R073_T01WCS_20230626T022157":
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCS_20230626T022157.SAFE"
         }
         # fmt: on
 
@@ -263,3 +267,5 @@ class CreateItemTest(CliTestCase):
                     self.assertTrue(proj.centroid)
                     self.assertTrue(proj.centroid["lat"])
                     self.assertTrue(proj.centroid["lon"])
+
+                    # self.assertEqual(item.geometry["type"], "Polygon", f"Item id {item.id}")

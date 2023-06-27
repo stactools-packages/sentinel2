@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import re
@@ -174,8 +175,24 @@ def create_item(
         raise ValueError(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
-    centroid = shapely.geometry.shape(item.geometry).centroid
-    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(centroid.x, 5)}
+
+    if item.geometry and item.geometry.get("type") == "MultiPolygon":
+        normalized_centroid_geometry = json.loads(json.dumps(item.geometry.copy()))
+        for c1 in normalized_centroid_geometry["coordinates"]:
+            for c2 in c1:
+                for c3 in c2:
+                    if c3[0] < -160:
+                        c3[0] = 360 + c3[0]
+        centroid = shapely.geometry.shape(normalized_centroid_geometry).centroid
+
+        lon = centroid.x
+        if lon > 180:
+            lon = lon - 360
+    else:
+        centroid = shapely.geometry.shape(item.geometry).centroid
+        lon = centroid.x
+
+    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(lon, 5)}
 
     # MGRS and Grid Extension
     mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
