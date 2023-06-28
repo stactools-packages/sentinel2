@@ -121,15 +121,16 @@ class CreateItemTest(CliTestCase):
                         i.make_asset_hrefs_absolute()
                         d = i.to_dict(include_self_link=False)
 
-                        if len(d["geometry"]["coordinates"]) > 1:
-                            for i in range(0, len(d["geometry"]["coordinates"][0])):
-                                for c in d["geometry"]["coordinates"][0][i]:
+                        if d["geometry"]["type"] == "Polygon":
+                            if len(d["geometry"]["coordinates"]) > 1:
+                                for i in range(0, len(d["geometry"]["coordinates"][0])):
+                                    for c in d["geometry"]["coordinates"][0][i]:
+                                        c[0] = round(c[0], COORD_ROUNDING)
+                                        c[1] = round(c[1], COORD_ROUNDING)
+                            else:
+                                for c in d["geometry"]["coordinates"][0]:
                                     c[0] = round(c[0], COORD_ROUNDING)
                                     c[1] = round(c[1], COORD_ROUNDING)
-                        else:
-                            for c in d["geometry"]["coordinates"][0]:
-                                c[0] = round(c[0], COORD_ROUNDING)
-                                c[1] = round(c[1], COORD_ROUNDING)
 
                         for i, v in enumerate(bbox := d["bbox"]):
                             bbox[i] = round(v, 5)
