@@ -269,5 +269,3 @@ class CreateItemTest(CliTestCase):
                     self.assertTrue(proj.centroid)
                     self.assertTrue(proj.centroid["lat"])
                     self.assertTrue(proj.centroid["lon"])
-
-                    # self.assertEqual(item.geometry["type"], "Polygon", f"Item id {item.id}")
