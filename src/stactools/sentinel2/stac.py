@@ -181,7 +181,7 @@ def create_item(
         for c1 in normalized_centroid_geometry["coordinates"]:
             for c2 in c1:
                 for c3 in c2:
-                    if c3[0] < -160:
+                    if c3[0] < 0:
                         c3[0] = 360 + c3[0]
         centroid = shapely.geometry.shape(normalized_centroid_geometry).centroid
 
