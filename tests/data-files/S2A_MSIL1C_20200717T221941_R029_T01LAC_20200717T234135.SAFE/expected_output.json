@@ -3,11 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135",
   "properties": {
-<<<<<<< HEAD
-    "created": "2023-06-27T10:52Z",
-=======
-    "created": "2023-06-29T11:25Z",
->>>>>>> pv/fix-dependency-on-stactools
+    "created": "2023-06-29T15:17Z",
     "providers": [
       {
         "name": "ESA",
