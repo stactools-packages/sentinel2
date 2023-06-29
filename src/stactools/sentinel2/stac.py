@@ -176,7 +176,15 @@ def create_item(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
 
-    if item.geometry and item.geometry.get("type") == "MultiPolygon":
+    # It is assumed that any MultiPolygon is an antimeridian-crossing scene.
+    # If we used split, this "normalizes" the polygon with negative longitude to have positive
+    # longitude greater than 180, then takes the centroid of this new MultiPolygon, and the
+    # un-normalize it back to within (-180,180).
+    if (
+        antimeridian_strategy == Strategy.SPLIT
+        and item.geometry
+        and item.geometry.get("type") == "MultiPolygon"
+    ):
         normalized_centroid_geometry = json.loads(json.dumps(item.geometry.copy()))
         for c1 in normalized_centroid_geometry["coordinates"]:
             for c2 in c1:
