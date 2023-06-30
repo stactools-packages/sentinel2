@@ -84,8 +84,15 @@ class CreateItemTest(CliTestCase):
                 "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
             "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ":
                 "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ",
+            # antimeridian-crossing scene
             "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135":
-                "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE"
+                "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE",
+            # antimeridian-crossing scene with positive lon centroid
+            "S2A_MSIL2A_20230625T234621_R073_T01WCP_20230626T022157":
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022157.SAFE",
+            # antimeridian-crossing scene with negative lon centroid
+            "S2A_MSIL2A_20230625T234621_R073_T01WCS_20230626T022157":
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCS_20230626T022157.SAFE"
         }
         # fmt: on
 
@@ -115,15 +122,16 @@ class CreateItemTest(CliTestCase):
                         i.make_asset_hrefs_absolute()
                         d = i.to_dict(include_self_link=False)
 
-                        if len(d["geometry"]["coordinates"]) > 1:
-                            for i in range(0, len(d["geometry"]["coordinates"][0])):
-                                for c in d["geometry"]["coordinates"][0][i]:
+                        if d["geometry"]["type"] == "Polygon":
+                            if len(d["geometry"]["coordinates"]) > 1:
+                                for i in range(0, len(d["geometry"]["coordinates"][0])):
+                                    for c in d["geometry"]["coordinates"][0][i]:
+                                        c[0] = round(c[0], COORD_ROUNDING)
+                                        c[1] = round(c[1], COORD_ROUNDING)
+                            else:
+                                for c in d["geometry"]["coordinates"][0]:
                                     c[0] = round(c[0], COORD_ROUNDING)
                                     c[1] = round(c[1], COORD_ROUNDING)
-                        else:
-                            for c in d["geometry"]["coordinates"][0]:
-                                c[0] = round(c[0], COORD_ROUNDING)
-                                c[1] = round(c[1], COORD_ROUNDING)
 
                         for i, v in enumerate(bbox := d["bbox"]):
                             bbox[i] = round(v, 5)

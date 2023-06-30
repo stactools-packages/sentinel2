@@ -174,8 +174,37 @@ def create_item(
         raise ValueError(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
-    centroid = shapely.geometry.shape(item.geometry).centroid
-    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(centroid.x, 5)}
+
+    # It is assumed that any MultiPolygon is an antimeridian-crossing scene.
+    # If we used split, this "normalizes" the polygon with negative longitude to have positive
+    # longitude greater than 180, then takes the centroid of this new MultiPolygon, and the
+    # un-normalize it back to within (-180,180).
+    if (
+        antimeridian_strategy == Strategy.SPLIT
+        and item.geometry
+        and item.geometry.get("type") == "MultiPolygon"
+    ):
+        shapely_geometry = shapely.geometry.shape(item.geometry)
+        # force all positive lons so we can merge on an antimeridian split
+        polys = list(shapely_geometry.geoms)
+        for index, poly in enumerate(polys):
+            coords = list(poly.exterior.coords)
+            lons = [coord[0] for coord in coords]
+            if min(lons) < 0:
+                polys[index] = shapely.affinity.translate(poly, xoff=+360)
+        normalized_geometry = shapely.geometry.MultiPolygon(polys)
+
+        # shapely computes the centroid of a multipolygon incorrectly, so instead
+        # compute the convex hull and use that centroid
+        centroid = normalized_geometry.convex_hull.centroid
+        lon = centroid.x
+        if lon > 180:
+            lon = lon - 360
+    else:
+        centroid = shapely.geometry.shape(item.geometry).centroid
+        lon = centroid.x
+
+    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(lon, 5)}
 
     # MGRS and Grid Extension
     mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
