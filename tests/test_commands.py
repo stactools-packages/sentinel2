@@ -84,6 +84,7 @@ class CreateItemTest(CliTestCase):
                 "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
             "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ":
                 "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ",
+            # antimeridian-crossing scene
             "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135":
                 "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE",
             # antimeridian-crossing scene with positive lon centroid

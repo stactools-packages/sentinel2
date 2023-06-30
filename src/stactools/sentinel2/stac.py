@@ -1,4 +1,3 @@
-import json
 import logging
 import os
 import re
@@ -185,14 +184,19 @@ def create_item(
         and item.geometry
         and item.geometry.get("type") == "MultiPolygon"
     ):
-        normalized_centroid_geometry = json.loads(json.dumps(item.geometry.copy()))
-        for c1 in normalized_centroid_geometry["coordinates"]:
-            for c2 in c1:
-                for c3 in c2:
-                    if c3[0] < 0:
-                        c3[0] = 360 + c3[0]
-        centroid = shapely.geometry.shape(normalized_centroid_geometry).centroid
+        shapely_geometry = shapely.geometry.shape(item.geometry)
+        # force all positive lons so we can merge on an antimeridian split
+        polys = list(shapely_geometry.geoms)
+        for index, poly in enumerate(polys):
+            coords = list(poly.exterior.coords)
+            lons = [coord[0] for coord in coords]
+            if min(lons) < 0:
+                polys[index] = shapely.affinity.translate(poly, xoff=+360)
+        normalized_geometry = shapely.geometry.MultiPolygon(polys)
 
+        # shapely computes the centroid of a multipolygon incorrectly, so instead
+        # compute the convex hull and use that centroid
+        centroid = normalized_geometry.convex_hull.centroid
         lon = centroid.x
         if lon > 180:
             lon = lon - 360

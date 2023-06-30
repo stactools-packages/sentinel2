@@ -25,8 +25,8 @@
     "sat:relative_orbit": 29,
     "proj:epsg": 32701,
     "proj:centroid": {
-      "lat": -15.84905,
-      "lon": 179.77808
+      "lat": -15.84929,
+      "lon": 179.77816
     },
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "L",
