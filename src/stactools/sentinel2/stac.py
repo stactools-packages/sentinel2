@@ -1,4 +1,5 @@
 import logging
+import math
 import os
 import re
 from dataclasses import dataclass
@@ -222,9 +223,17 @@ def create_item(
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-    view.sun_azimuth = metadata.sun_azimuth
-    if msz := metadata.sun_zenith:
+
+    # both sun_azimuth and sun_zenith can be NaN, so don't set
+    # when that is the case
+    if (msa := metadata.sun_azimuth) and not math.isnan(msa):
+        view.sun_azimuth = msa
+
+    if (msz := metadata.sun_zenith) and not math.isnan(msz):
         view.sun_elevation = 90 - msz
+
+    if not view.sun_azimuth and not view.sun_elevation:
+        ViewExtension.remove_from(item)
 
     # s2 properties
     item.properties.update(metadata.metadata_dict)

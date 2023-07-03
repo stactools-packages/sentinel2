@@ -92,7 +92,11 @@ class CreateItemTest(CliTestCase):
                 "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022157.SAFE",
             # antimeridian-crossing scene with negative lon centroid
             "S2A_MSIL2A_20230625T234621_R073_T01WCS_20230626T022157":
-                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCS_20230626T022157.SAFE"
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCS_20230626T022157.SAFE",
+            # both sun_azimuth and sun_zenith can be NaN, so don't set
+            "S2A_MSIL2A_20230625T234621_R073_T01WCP_20230626T022158":
+                "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022158.SAFE",
+
         }
         # fmt: on
 
@@ -263,9 +267,18 @@ class CreateItemTest(CliTestCase):
                         grid_id = f"0{grid_id}"  # add zero pad
                     self.assertIn(f"_T{grid_id}", item.id)
 
-                    view = ViewExtension.ext(item)
-                    self.assertTrue(view.sun_azimuth)
-                    self.assertTrue(view.sun_elevation)
+                    try:
+                        view = ViewExtension.ext(item)
+                        self.assertTrue(view.sun_azimuth)
+                        self.assertTrue(view.sun_elevation)
+                    except pystac.errors.ExtensionNotImplemented as e:
+                        # this item is the example that doesn't have the View Extension
+                        # applied because the values are NaN
+                        if (
+                            item_id
+                            != "S2A_MSIL2A_20230625T234621_R073_T01WCP_20230626T022158"
+                        ):
+                            raise e
 
                     proj = ProjectionExtension.ext(item)
                     self.assertTrue(proj.centroid)
