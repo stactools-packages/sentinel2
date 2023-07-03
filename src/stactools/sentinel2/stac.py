@@ -232,7 +232,7 @@ def create_item(
     if (msz := metadata.sun_zenith) and not math.isnan(msz):
         view.sun_elevation = 90 - msz
 
-    if not view.sun_azimuth and not view.sun_elevation:
+    if view.sun_azimuth is None and view.sun_elevation is None:
         ViewExtension.remove_from(item)
 
     # s2 properties
