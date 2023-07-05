@@ -129,8 +129,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R10m/T01WCP_20230625T234621_B02_10m.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 10m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "blue",
@@ -179,7 +177,6 @@
       "type": "image/jp2",
       "title": "Green (band 3) - 10m",
       "view:azimuth": 141.625951315865,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "green",
@@ -449,8 +446,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R20m/T01WCP_20230625T234621_B01_20m.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 20m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "coastal",
@@ -497,8 +492,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R20m/T01WCP_20230625T234621_B02_20m.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 20m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "blue",
@@ -546,7 +539,6 @@
       "type": "image/jp2",
       "title": "Green (band 3) - 20m",
       "view:azimuth": 141.625951315865,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "green",
@@ -641,8 +633,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R20m/T01WCP_20230625T234621_B05_20m.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 20m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "rededge1",
@@ -690,8 +680,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R20m/T01WCP_20230625T234621_B06_20m.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 20m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "rededge2",
@@ -837,8 +825,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R20m/T01WCP_20230625T234621_B11_20m.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 20m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "swir16",
@@ -1093,8 +1079,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R60m/T01WCP_20230625T234621_B01_60m.jp2",
       "type": "image/jp2",
       "title": "Coastal aerosol (band 1) - 60m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "coastal",
@@ -1142,8 +1126,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R60m/T01WCP_20230625T234621_B02_60m.jp2",
       "type": "image/jp2",
       "title": "Blue (band 2) - 60m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "blue",
@@ -1191,7 +1173,6 @@
       "type": "image/jp2",
       "title": "Green (band 3) - 60m",
       "view:azimuth": 141.625951315865,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "green",
@@ -1286,8 +1267,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R60m/T01WCP_20230625T234621_B05_60m.jp2",
       "type": "image/jp2",
       "title": "Red edge 1 (band 5) - 60m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "rededge1",
@@ -1334,8 +1313,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R60m/T01WCP_20230625T234621_B06_60m.jp2",
       "type": "image/jp2",
       "title": "Red edge 2 (band 6) - 60m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "rededge2",
@@ -1527,8 +1504,6 @@
       "href": "./GRANULE/L2A_T01WCP_A041826_20230625T234624/IMG_DATA/R60m/T01WCP_20230625T234621_B11_60m.jp2",
       "type": "image/jp2",
       "title": "SWIR 1 (band 11) - 60m",
-      "view:azimuth": NaN,
-      "view:incidence_angle": NaN,
       "eo:bands": [
         {
           "name": "swir16",

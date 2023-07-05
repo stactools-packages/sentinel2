@@ -222,18 +222,16 @@ def create_item(
         )
 
     # View Extension
-    view = ViewExtension.ext(item, add_if_missing=True)
 
     # both sun_azimuth and sun_zenith can be NaN, so don't set
     # when that is the case
     if (msa := metadata.sun_azimuth) and not math.isnan(msa):
+        view = ViewExtension.ext(item, add_if_missing=True)
         view.sun_azimuth = msa
 
     if (msz := metadata.sun_zenith) and not math.isnan(msz):
+        view = ViewExtension.ext(item, add_if_missing=True)
         view.sun_elevation = 90 - msz
-
-    if view.sun_azimuth is None and view.sun_elevation is None:
-        ViewExtension.remove_from(item)
 
     # s2 properties
     item.properties.update(metadata.metadata_dict)
@@ -243,6 +241,7 @@ def create_item(
     image_assets = dict(
         [
             image_asset_from_href(
+                item=item,
                 asset_href=os.path.join(asset_href_prefix or granule_href, image_path),
                 resolution_to_shape=metadata.resolution_to_shape,
                 proj_bbox=metadata.proj_bbox,
@@ -267,6 +266,7 @@ def create_item(
 
 
 def image_asset_from_href(
+    item: pystac.Item,
     asset_href: str,
     resolution_to_shape: Dict[int, Tuple[int, int]],
     proj_bbox: List[float],
@@ -373,8 +373,17 @@ def image_asset_from_href(
         viewing_angle = viewing_angles[band_id]
         # We can't use the ViewExtension here until
         # https://github.com/stac-utils/pystac/issues/793 is fixed
-        asset.extra_fields["view:azimuth"] = viewing_angle.azimuth
-        asset.extra_fields["view:incidence_angle"] = viewing_angle.zenith
+        if not math.isnan(viewing_angle.azimuth):
+            # View Extension doesn't specify fields in Assets,
+            # but if it does, this should be uncommented
+            # ViewExtension.ext(item, add_if_missing=True)
+            asset.extra_fields["view:azimuth"] = viewing_angle.azimuth
+
+        if not math.isnan(viewing_angle.zenith):
+            # View Extension doesn't specify fields in Assets,
+            # but if it does, this should be uncommented
+            # ViewExtension.ext(item, add_if_missing=True)
+            asset.extra_fields["view:incidence_angle"] = viewing_angle.zenith
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
