@@ -15,6 +15,9 @@ from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
+from shapely.geometry import mapping as shapely_mapping
+from shapely.geometry import shape as shapely_shape
+from shapely.validation import make_valid
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
 from stactools.core.utils import antimeridian
@@ -131,9 +134,12 @@ def create_item(
         )
     created = datetime.now().strftime("%Y-%m-%dT%H:%MZ")
 
+    # ensure that we have a valid geometry
+    geometry = shapely_mapping(make_valid(shapely_shape(metadata.geometry)))
+
     item = pystac.Item(
         id=metadata.scene_id,
-        geometry=metadata.geometry,
+        geometry=geometry,
         bbox=metadata.bbox,
         datetime=metadata.datetime,
         properties={"created": created},
@@ -177,15 +183,15 @@ def create_item(
         )
 
     # It is assumed that any MultiPolygon is an antimeridian-crossing scene.
-    # If we used split, this "normalizes" the polygon with negative longitude to have positive
-    # longitude greater than 180, then takes the centroid of this new MultiPolygon, and the
-    # un-normalize it back to within (-180,180).
+    # If we used split, the code below "normalizes" the polygon with negative longitude to
+    # have positive longitude greater than 180, then takes the centroid of this new
+    # MultiPolygon, and the un-normalize it back to within (-180,180).
     if (
         antimeridian_strategy == Strategy.SPLIT
         and item.geometry
         and item.geometry.get("type") == "MultiPolygon"
     ):
-        shapely_geometry = shapely.geometry.shape(item.geometry)
+        shapely_geometry = shapely_shape(item.geometry)
         # force all positive lons so we can merge on an antimeridian split
         polys = list(shapely_geometry.geoms)
         for index, poly in enumerate(polys):
@@ -195,14 +201,16 @@ def create_item(
                 polys[index] = shapely.affinity.translate(poly, xoff=+360)
         normalized_geometry = shapely.geometry.MultiPolygon(polys)
 
-        # shapely computes the centroid of a multipolygon incorrectly, so instead
-        # compute the convex hull and use that centroid
-        centroid = normalized_geometry.convex_hull.centroid
+        # shapely computes the centroid of an invalid geometry incorrectly, so
+        # ensure we have a valid geometry
+        normalized_geometry = make_valid(normalized_geometry)
+
+        centroid = normalized_geometry.centroid
         lon = centroid.x
         if lon > 180:
             lon = lon - 360
     else:
-        centroid = shapely.geometry.shape(item.geometry).centroid
+        centroid = shapely_shape(item.geometry).centroid
         lon = centroid.x
 
     projection.centroid = {"lat": round(centroid.y, 5), "lon": round(lon, 5)}
@@ -587,7 +595,7 @@ def metadata_from_granule_metadata(
         )
         product_metadata = ProductMetadata(f, read_href_modifier)
 
-    geometry = shapely.geometry.shape(
+    geometry = shapely_shape(
         reproject_geom(
             f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
         )
@@ -620,7 +628,7 @@ def metadata_from_granule_metadata(
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
-        geometry=shapely.geometry.mapping(geometry),
+        geometry=shapely_mapping(geometry),
         bbox=geometry.bounds,
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
