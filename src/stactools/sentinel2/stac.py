@@ -199,11 +199,10 @@ def create_item(
             lons = [coord[0] for coord in coords]
             if min(lons) < 0:
                 polys[index] = shapely.affinity.translate(poly, xoff=+360)
-        normalized_geometry = shapely.geometry.MultiPolygon(polys)
 
-        # shapely computes the centroid of an invalid geometry incorrectly, so
-        # ensure we have a valid geometry
-        normalized_geometry = make_valid(normalized_geometry)
+        # make_valid merges the normalized MultiPolygon into a single normalized Polygon
+        # and removes any line artifacts that may exist.
+        normalized_geometry = make_valid(shapely.geometry.MultiPolygon(polys))
 
         centroid = normalized_geometry.centroid
         lon = centroid.x
