@@ -13,14 +13,17 @@ from pystac.extensions.view import ViewExtension
 from pystac.utils import is_absolute_href
 from shapely.geometry import box, mapping, shape
 from stactools.core.projection import reproject_geom
-from stactools.testing import CliTestCase
-
 from stactools.sentinel2.commands import create_sentinel2_command
-from stactools.sentinel2.constants import BANDS_TO_ASSET_NAME, COORD_ROUNDING
+from stactools.sentinel2.constants import (
+    BANDS_TO_ASSET_NAME,
+    COORD_ROUNDING,
+    SENTINEL_BANDS,
+)
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
-from stactools.sentinel2.constants import SENTINEL_BANDS
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.utils import extract_gsd
+from stactools.testing import CliTestCase
+
 from tests import test_data
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
@@ -186,7 +189,7 @@ class CreateItemTest(CliTestCase):
                     # whole resolution
                     if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
                         for band_name, assets in bands_to_assets.items():
-                            for (asset_key, asset) in assets:
+                            for asset_key, asset in assets:
                                 resolutions_seen[band_name].append(
                                     asset.extra_fields["gsd"]
                                 )
@@ -198,7 +201,7 @@ class CreateItemTest(CliTestCase):
                         }
                     elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
                         for band_name, assets in bands_to_assets.items():
-                            for (asset_key, asset) in assets:
+                            for asset_key, asset in assets:
                                 resolutions = BANDS_TO_RESOLUTIONS[band_name]
 
                                 asset_split = asset_key.split("_")
