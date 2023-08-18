@@ -189,7 +189,7 @@ class CreateItemTest(CliTestCase):
                     # whole resolution
                     if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
                         for band_name, assets in bands_to_assets.items():
-                            for (asset_key, asset) in assets:
+                            for asset_key, asset in assets:
                                 resolutions_seen[band_name].append(
                                     asset.extra_fields["gsd"]
                                 )
@@ -201,7 +201,7 @@ class CreateItemTest(CliTestCase):
                         }
                     elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
                         for band_name, assets in bands_to_assets.items():
-                            for (asset_key, asset) in assets:
+                            for asset_key, asset in assets:
                                 resolutions = BANDS_TO_RESOLUTIONS[band_name]
 
                                 asset_split = asset_key.split("_")
