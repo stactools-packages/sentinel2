@@ -12,10 +12,6 @@ repos:
       - id: codespell
         args: [--ignore-words=.codespellignore]
         types_or: [jupyter, markdown, python, shell]
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.991
     hooks:
@@ -32,8 +28,7 @@ repos:
           - pyproj
           - pystac
           - types-requests
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.278
     hooks:
-      - id: isort
-        name: isort (python)
+      - id: ruff

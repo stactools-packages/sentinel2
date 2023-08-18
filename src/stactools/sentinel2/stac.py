@@ -22,7 +22,6 @@ from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
 from stactools.core.utils import antimeridian
 from stactools.core.utils.antimeridian import Strategy
-
 from stactools.sentinel2.constants import (
     BANDS_TO_ASSET_NAME,
     COORD_ROUNDING,
@@ -31,9 +30,6 @@ from stactools.sentinel2.constants import (
     INSPIRE_METADATA_ASSET_KEY,
     L1C_IMAGE_PATHS,
     L2A_IMAGE_PATHS,
-)
-from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
-from stactools.sentinel2.constants import (
     SENTINEL_BANDS,
     SENTINEL_CONSTELLATION,
     SENTINEL_INSTRUMENTS,
@@ -41,6 +37,7 @@ from stactools.sentinel2.constants import (
     SENTINEL_PROVIDER,
     UNSUFFIXED_BAND_RESOLUTION,
 )
+from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.granule_metadata import GranuleMetadata, ViewingAngle
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.product_metadata import ProductMetadata
@@ -182,10 +179,11 @@ def create_item(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
 
-    # It is assumed that any MultiPolygon is an antimeridian-crossing scene.
-    # If we used split, the code below "normalizes" the polygon with negative longitude to
-    # have positive longitude greater than 180, then takes the centroid of this new
-    # MultiPolygon, and the un-normalize it back to within (-180,180).
+    # It is assumed that any MultiPolygon is an antimeridian-crossing scene.  If
+    # we used split, the code below "normalizes" the polygon with negative
+    # longitude to have positive longitude greater than 180, then takes the
+    # centroid of this new MultiPolygon, and the un-normalize it back to within
+    # (-180,180).
     if (
         antimeridian_strategy == Strategy.SPLIT
         and item.geometry
@@ -225,7 +223,8 @@ def create_item(
         grid.code = f"MGRS-{mgrs.utm_zone}{mgrs.latitude_band}{mgrs.grid_square}"
     else:
         logger.error(
-            f"Error populating MGRS and Grid Extensions fields from ID: {metadata.scene_id}"
+            "Error populating MGRS and Grid Extensions fields from ID: "
+            f"{metadata.scene_id}"
         )
 
     # View Extension

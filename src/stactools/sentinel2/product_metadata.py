@@ -7,7 +7,6 @@ from pystac.utils import map_opt, str_to_datetime
 from shapely.geometry import Polygon, mapping
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
-
 from stactools.sentinel2.constants import COORD_ROUNDING, PRODUCT_METADATA_ASSET_KEY
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.utils import fix_z_values
@@ -52,7 +51,8 @@ class ProductMetadata:
         )
         if reflectance_conversion_node is None:
             raise ProductMetadataError(
-                f"Could not find reflectance conversion node in product metadata at {self.href}"
+                "Could not find reflectance conversion node in product metadata at "
+                f"{self.href}"
             )
         self.reflectance_conversion_node = reflectance_conversion_node
 
