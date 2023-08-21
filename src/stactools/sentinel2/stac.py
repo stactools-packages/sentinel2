@@ -7,8 +7,9 @@ from datetime import datetime
 from itertools import chain
 from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
 
+import antimeridian
 import pystac
-import shapely
+import stactools.core.utils.antimeridian
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -20,7 +21,6 @@ from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
-from stactools.core.utils import antimeridian
 from stactools.core.utils.antimeridian import Strategy
 from stactools.sentinel2.constants import (
     BANDS_TO_ASSET_NAME,
@@ -143,7 +143,7 @@ def create_item(
     )
 
     # Handle antimeridian if necessary
-    antimeridian.fix_item(item, antimeridian_strategy)
+    stactools.core.utils.antimeridian.fix_item(item, antimeridian_strategy)
 
     # --Common metadata--
 
@@ -179,38 +179,8 @@ def create_item(
             f"Could not determine EPSG code for {granule_href}; which is required."
         )
 
-    # It is assumed that any MultiPolygon is an antimeridian-crossing scene.  If
-    # we used split, the code below "normalizes" the polygon with negative
-    # longitude to have positive longitude greater than 180, then takes the
-    # centroid of this new MultiPolygon, and the un-normalize it back to within
-    # (-180,180).
-    if (
-        antimeridian_strategy == Strategy.SPLIT
-        and item.geometry
-        and item.geometry.get("type") == "MultiPolygon"
-    ):
-        shapely_geometry = shapely_shape(item.geometry)
-        # force all positive lons so we can merge on an antimeridian split
-        polys = list(shapely_geometry.geoms)
-        for index, poly in enumerate(polys):
-            coords = list(poly.exterior.coords)
-            lons = [coord[0] for coord in coords]
-            if min(lons) < 0:
-                polys[index] = shapely.affinity.translate(poly, xoff=+360)
-
-        # make_valid merges the normalized MultiPolygon into a single normalized Polygon
-        # and removes any line artifacts that may exist.
-        normalized_geometry = make_valid(shapely.geometry.MultiPolygon(polys))
-
-        centroid = normalized_geometry.centroid
-        lon = centroid.x
-        if lon > 180:
-            lon = lon - 360
-    else:
-        centroid = shapely_shape(item.geometry).centroid
-        lon = centroid.x
-
-    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(lon, 5)}
+    centroid = antimeridian.centroid(item.geometry)
+    projection.centroid = {"lat": round(centroid.y, 5), "lon": round(centroid.x, 5)}
 
     # MGRS and Grid Extension
     mgrs_match = MGRS_PATTERN.search(metadata.scene_id)
