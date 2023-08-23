@@ -575,6 +575,9 @@ def metadata_from_granule_metadata(
             tileinfo_metadata.create_asset(),
         ]
     )
+    if product_metadata:
+        key, asset = product_metadata.create_asset()
+        extra_assets[key] = asset
 
     image_paths = (
         L2A_IMAGE_PATHS if "_L2A_" in granule_metadata.scene_id else L1C_IMAGE_PATHS
