@@ -1,7 +1,7 @@
 import unittest
 
 from shapely.geometry import box, mapping, shape
-from stactools.core.projection import reproject_geom
+from stactools.core.projection import reproject_shape
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.granule_metadata import GranuleMetadata
 from stactools.sentinel2.product_metadata import ProductMetadata
@@ -86,7 +86,7 @@ class Sentinel2MetadataTest(unittest.TestCase):
 
         proj_box = box(*proj_bbox)
         ll_proj_box = shape(
-            reproject_geom(f"epsg:{epsg}", "epsg:4326", mapping(proj_box))
+            reproject_shape(f"epsg:{epsg}", "epsg:4326", mapping(proj_box))
         )
 
         # Test that the bboxes roughly match by ensuring the difference
