@@ -9,7 +9,6 @@ from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
 
 import antimeridian
 import pystac
-import stactools.core.utils.antimeridian
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -131,8 +130,10 @@ def create_item(
         )
     created = datetime.now().strftime("%Y-%m-%dT%H:%MZ")
 
-    # ensure that we have a valid geometry
-    geometry = shapely_mapping(make_valid(shapely_shape(metadata.geometry)))
+    # ensure that we have a valid geometry, fixing any antimeridian issues
+    geometry = shapely_mapping(
+        make_valid(shapely_shape(antimeridian.fix_shape(metadata.geometry)))
+    )
 
     item = pystac.Item(
         id=metadata.scene_id,
@@ -141,9 +142,6 @@ def create_item(
         datetime=metadata.datetime,
         properties={"created": created},
     )
-
-    # Handle antimeridian if necessary
-    stactools.core.utils.antimeridian.fix_item(item, antimeridian_strategy)
 
     # --Common metadata--
 

@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - `product_metadata` asset ([#117](https://github.com/stactools-packages/sentinel2/pull/117))
 
+### Fixed
+
+- Antimeridian handling (again) ([#122](https://github.com/stactools-packages/sentinel2/pull/122))
+
 ## [0.4.2] - 2023-07-03
 
 ## Fixed
