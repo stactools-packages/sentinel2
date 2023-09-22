@@ -14,7 +14,7 @@ root = Path(__file__).parents[1]
 data_files = root / "tests" / "data-files"
 
 for path in data_files.iterdir():
-    if path.name in EXCLUDE:
+    if path.name in EXCLUDE or path.name.startswith("."):
         continue
     item = stac.create_item(str(path))
     item.set_self_href(str(data_files / path.name / "expected_output.json"))
