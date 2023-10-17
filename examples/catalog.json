@@ -1,0 +1,23 @@
+{
+  "type": "Catalog",
+  "id": "sentinel2-examples",
+  "stac_version": "1.0.0",
+  "description": "Example collections and items for stactools-sentinel2",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./sentinel2-l1c-example/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./sentinel2-l2a-example/collection.json",
+      "type": "application/json"
+    }
+  ]
+}

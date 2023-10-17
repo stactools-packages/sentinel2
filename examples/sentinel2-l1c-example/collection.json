@@ -1,0 +1,44 @@
+{
+  "type": "Collection",
+  "id": "sentinel2-l1c-example",
+  "stac_version": "1.0.0",
+  "description": "Example collection of sentinel2 L1C data",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.71667,
+          -16.351724,
+          180.0,
+          -15.345454
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-07-17T22:19:41.024000Z",
+          "2020-07-17T22:19:41.024000Z"
+        ]
+      ]
+    }
+  },
+  "license": "proprietary"
+}
