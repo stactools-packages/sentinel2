@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - `product_metadata` asset ([#117](https://github.com/stactools-packages/sentinel2/pull/117))
+- Examples ([#124](https://github.com/stactools-packages/sentinel2/pull/124))
 
 ### Fixed
 

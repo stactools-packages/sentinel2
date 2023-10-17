@@ -1,0 +1,878 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135",
+  "properties": {
+    "created": "2023-10-17T13:51Z",
+    "providers": [
+      {
+        "name": "ESA",
+        "roles": [
+          "producer",
+          "processor",
+          "licensor"
+        ],
+        "url": "https://earth.esa.int/web/guest/home"
+      }
+    ],
+    "platform": "sentinel-2a",
+    "constellation": "sentinel-2",
+    "instruments": [
+      "msi"
+    ],
+    "eo:cloud_cover": 5.4828,
+    "sat:orbit_state": "descending",
+    "sat:relative_orbit": 29,
+    "proj:epsg": 32701,
+    "proj:centroid": {
+      "lat": -15.84874,
+      "lon": 179.77808
+    },
+    "mgrs:utm_zone": 1,
+    "mgrs:latitude_band": "L",
+    "mgrs:grid_square": "AC",
+    "grid:code": "MGRS-1LAC",
+    "view:sun_azimuth": 36.1960474596642,
+    "view:sun_elevation": 44.816914793905,
+    "s2:product_uri": "S2A_MSIL1C_20200717T221941_N0209_R029_T01LAC_20200717T234135.SAFE",
+    "s2:generation_time": "2020-07-17T23:41:35.000000Z",
+    "s2:processing_baseline": "02.09",
+    "s2:product_type": "S2MSI1C",
+    "s2:datatake_id": "GS2A_20200717T221941_026481_N02.09",
+    "s2:datatake_type": "INS-NOBS",
+    "s2:datastrip_id": "S2A_OPER_MSI_L1C_DS_SGS__20200717T234135_S20200717T221944_N02.09",
+    "s2:granule_id": "S2A_OPER_MSI_L1C_TL_SGS__20200717T234135_A026481_T01LAC_N02.09",
+    "s2:mgrs_tile": "01LAC",
+    "s2:reflectance_conversion_factor": 0.967801407960869,
+    "s2:degraded_msi_data_percentage": 0.0,
+    "datetime": "2020-07-17T22:19:41.024000Z"
+  },
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [
+            180.0,
+            -15.355911
+          ],
+          [
+            180.0,
+            -15.355911
+          ],
+          [
+            179.27517799999998,
+            -15.345454
+          ],
+          [
+            179.25694899999996,
+            -16.335986
+          ],
+          [
+            180.0,
+            -16.34738
+          ],
+          [
+            180.0,
+            -16.34738
+          ],
+          [
+            180.0,
+            -15.355911
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -180.0,
+            -16.34738
+          ],
+          [
+            -179.71667,
+            -16.351724
+          ],
+          [
+            -179.70343,
+            -15.36019
+          ],
+          [
+            -180.0,
+            -15.355911
+          ],
+          [
+            -180.0,
+            -16.34738
+          ]
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice"
+    },
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "coastal": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B01.jp2",
+      "type": "image/jp2",
+      "title": "Coastal aerosol (band 1) - 60m",
+      "view:azimuth": 137.788376577405,
+      "view:incidence_angle": 3.36687397628323,
+      "eo:bands": [
+        {
+          "name": "coastal",
+          "common_name": "coastal",
+          "description": "Coastal aerosol (band 1)",
+          "center_wavelength": 0.443,
+          "full_width_half_max": 0.027
+        }
+      ],
+      "gsd": 60,
+      "proj:shape": [
+        1830,
+        1830
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        60.0,
+        0.0,
+        99960.0,
+        0.0,
+        -60.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "blue": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B02.jp2",
+      "type": "image/jp2",
+      "title": "Blue (band 2) - 10m",
+      "view:azimuth": 143.988834219607,
+      "view:incidence_angle": 2.73906952611488,
+      "eo:bands": [
+        {
+          "name": "blue",
+          "common_name": "blue",
+          "description": "Blue (band 2)",
+          "center_wavelength": 0.49,
+          "full_width_half_max": 0.098
+        }
+      ],
+      "gsd": 10,
+      "proj:shape": [
+        10980,
+        10980
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        10.0,
+        0.0,
+        99960.0,
+        0.0,
+        -10.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "green": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B03.jp2",
+      "type": "image/jp2",
+      "title": "Green (band 3) - 10m",
+      "view:azimuth": 141.349145791963,
+      "view:incidence_angle": 2.8447298082134,
+      "eo:bands": [
+        {
+          "name": "green",
+          "common_name": "green",
+          "description": "Green (band 3)",
+          "center_wavelength": 0.56,
+          "full_width_half_max": 0.045
+        }
+      ],
+      "gsd": 10,
+      "proj:shape": [
+        10980,
+        10980
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        10.0,
+        0.0,
+        99960.0,
+        0.0,
+        -10.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "red": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B04.jp2",
+      "type": "image/jp2",
+      "title": "Red (band 4) - 10m",
+      "view:azimuth": 139.805379920991,
+      "view:incidence_angle": 2.96168535851192,
+      "eo:bands": [
+        {
+          "name": "red",
+          "common_name": "red",
+          "description": "Red (band 4)",
+          "center_wavelength": 0.665,
+          "full_width_half_max": 0.038
+        }
+      ],
+      "gsd": 10,
+      "proj:shape": [
+        10980,
+        10980
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        10.0,
+        0.0,
+        99960.0,
+        0.0,
+        -10.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "rededge1": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B05.jp2",
+      "type": "image/jp2",
+      "title": "Red edge 1 (band 5) - 20m",
+      "view:azimuth": 139.166533552428,
+      "view:incidence_angle": 3.03359111894815,
+      "eo:bands": [
+        {
+          "name": "rededge1",
+          "common_name": "rededge",
+          "description": "Red edge 1 (band 5)",
+          "center_wavelength": 0.704,
+          "full_width_half_max": 0.019
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "rededge2": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B06.jp2",
+      "type": "image/jp2",
+      "title": "Red edge 2 (band 6) - 20m",
+      "view:azimuth": 138.640146836666,
+      "view:incidence_angle": 3.10990527659489,
+      "eo:bands": [
+        {
+          "name": "rededge2",
+          "common_name": "rededge",
+          "description": "Red edge 2 (band 6)",
+          "center_wavelength": 0.74,
+          "full_width_half_max": 0.018
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "rededge3": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B07.jp2",
+      "type": "image/jp2",
+      "title": "Red edge 3 (band 7) - 20m",
+      "view:azimuth": 138.206766697338,
+      "view:incidence_angle": 3.19048039292866,
+      "eo:bands": [
+        {
+          "name": "rededge3",
+          "common_name": "rededge",
+          "description": "Red edge 3 (band 7)",
+          "center_wavelength": 0.783,
+          "full_width_half_max": 0.028
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "nir": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B08.jp2",
+      "type": "image/jp2",
+      "title": "NIR 1 (band 8) - 10m",
+      "view:azimuth": 142.516303245366,
+      "view:incidence_angle": 2.78846603218996,
+      "eo:bands": [
+        {
+          "name": "nir",
+          "common_name": "nir",
+          "description": "NIR 1 (band 8)",
+          "center_wavelength": 0.842,
+          "full_width_half_max": 0.145
+        }
+      ],
+      "gsd": 10,
+      "proj:shape": [
+        10980,
+        10980
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        10.0,
+        0.0,
+        99960.0,
+        0.0,
+        -10.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 10,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "nir08": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B8A.jp2",
+      "type": "image/jp2",
+      "title": "NIR 2 (band 8A) - 20m",
+      "view:azimuth": 137.8481810256,
+      "view:incidence_angle": 3.27449452552853,
+      "eo:bands": [
+        {
+          "name": "nir08",
+          "common_name": "nir08",
+          "description": "NIR 2 (band 8A)",
+          "center_wavelength": 0.865,
+          "full_width_half_max": 0.033
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "nir09": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B09.jp2",
+      "type": "image/jp2",
+      "title": "NIR 3 (band 9) - 60m",
+      "view:azimuth": 137.52617922993,
+      "view:incidence_angle": 3.45960801369843,
+      "eo:bands": [
+        {
+          "name": "nir09",
+          "common_name": "nir09",
+          "description": "NIR 3 (band 9)",
+          "center_wavelength": 0.945,
+          "full_width_half_max": 0.026
+        }
+      ],
+      "gsd": 60,
+      "proj:shape": [
+        1830,
+        1830
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        60.0,
+        0.0,
+        99960.0,
+        0.0,
+        -60.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "cirrus": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B10.jp2",
+      "type": "image/jp2",
+      "title": "Cirrus (band 10) - 60m",
+      "view:azimuth": 140.039893201705,
+      "view:incidence_angle": 2.93310160341489,
+      "eo:bands": [
+        {
+          "name": "cirrus",
+          "common_name": "cirrus",
+          "description": "Cirrus (band 10)",
+          "center_wavelength": 1.3735,
+          "full_width_half_max": 0.075
+        }
+      ],
+      "gsd": 60,
+      "proj:shape": [
+        1830,
+        1830
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        60.0,
+        0.0,
+        99960.0,
+        0.0,
+        -60.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 60,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "swir16": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B11.jp2",
+      "type": "image/jp2",
+      "title": "SWIR 1 (band 11) - 20m",
+      "view:azimuth": 138.291227249188,
+      "view:incidence_angle": 3.10110907911197,
+      "eo:bands": [
+        {
+          "name": "swir16",
+          "common_name": "swir16",
+          "description": "SWIR 1 (band 11)",
+          "center_wavelength": 1.61,
+          "full_width_half_max": 0.143
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "swir22": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B12.jp2",
+      "type": "image/jp2",
+      "title": "SWIR 2 (band 12) - 20m",
+      "view:azimuth": 137.363268618098,
+      "view:incidence_angle": 3.29707972874256,
+      "eo:bands": [
+        {
+          "name": "swir22",
+          "common_name": "swir22",
+          "description": "SWIR 2 (band 12)",
+          "center_wavelength": 2.19,
+          "full_width_half_max": 0.242
+        }
+      ],
+      "gsd": 20,
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        99960.0,
+        0.0,
+        -20.0,
+        8300020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint16",
+          "bits_per_sample": 15,
+          "spatial_resolution": 20,
+          "scale": 0.0001,
+          "offset": 0
+        }
+      ],
+      "roles": [
+        "data",
+        "reflectance"
+      ]
+    },
+    "visual": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_TCI.jp2",
+      "type": "image/jp2",
+      "title": "True color image",
+      "eo:bands": [
+        {
+          "name": "red",
+          "common_name": "red",
+          "description": "Red (band 4)",
+          "center_wavelength": 0.665,
+          "full_width_half_max": 0.038
+        },
+        {
+          "name": "green",
+          "common_name": "green",
+          "description": "Green (band 3)",
+          "center_wavelength": 0.56,
+          "full_width_half_max": 0.045
+        },
+        {
+          "name": "blue",
+          "common_name": "blue",
+          "description": "Blue (band 2)",
+          "center_wavelength": 0.49,
+          "full_width_half_max": 0.098
+        }
+      ],
+      "proj:shape": [
+        10980,
+        10980
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190220.0,
+        209760.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        10.0,
+        0.0,
+        99960.0,
+        0.0,
+        -10.0,
+        8300020.0
+      ],
+      "roles": [
+        "visual"
+      ]
+    },
+    "safe_manifest": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/manifest.safe",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "product_metadata": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/MTD_MSIL1C.xml",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "granule_metadata": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/MTD_TL.xml",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "inspire_metadata": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/INSPIRE.xml",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "datastrip_metadata": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/DATASTRIP/DS_SGS__20200717T234135_S20200717T221944/MTD_DS.xml",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "preview": {
+      "href": "../../../tests/data-files/S2A_MSIL1C_20200717T221941_R029_T01LAC_20200717T234135.SAFE/GRANULE/L1C_T01LAC_A026481_20200717T221944/QI_DATA/T01LAC_20200717T221941_PVI.jp2",
+      "type": "image/jp2",
+      "roles": [
+        "thumbnail"
+      ]
+    }
+  },
+  "bbox": [
+    -179.71667,
+    -16.351724,
+    180.0,
+    -15.345454
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+  ],
+  "collection": "sentinel2-l1c-example"
+}
