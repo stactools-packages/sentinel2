@@ -3,17 +3,17 @@
 
 repos:
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.11.0
     hooks:
       - id: black
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.5
+    rev: v2.2.6
     hooks:
       - id: codespell
         args: [--ignore-words=.codespellignore]
         types_or: [jupyter, markdown, python, shell]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
+    rev: v1.6.1
     hooks:
       - id: mypy
         # TODO lint test and scripts too
@@ -29,6 +29,6 @@ repos:
           - pystac
           - types-requests
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.285
+    rev: v0.1.4
     hooks:
       - id: ruff

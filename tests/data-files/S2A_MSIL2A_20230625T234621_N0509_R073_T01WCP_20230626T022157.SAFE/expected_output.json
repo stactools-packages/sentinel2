@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_MSIL2A_20230625T234621_R073_T01WCP_20230626T022157",
   "properties": {
-    "created": "2023-09-18T12:28Z",
+    "created": "2023-09-18T12:28:00Z",
     "providers": [
       {
         "name": "ESA",

@@ -15,6 +15,7 @@ from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import ViewExtension
+from pystac.utils import now_to_rfc3339_str
 from shapely.geometry import mapping as shapely_mapping
 from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
@@ -128,7 +129,8 @@ def create_item(
         metadata = metadata_from_granule_metadata(
             granule_href, read_href_modifier, tolerance
         )
-    created = datetime.now().strftime("%Y-%m-%dT%H:%MZ")
+
+    created = now_to_rfc3339_str()
 
     # ensure that we have a valid geometry, fixing any antimeridian issues
     geometry = shapely_mapping(
