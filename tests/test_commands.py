@@ -123,6 +123,8 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
 
         return d
 
+    assert item.common_metadata.created is not None
+
     assert mk_comparable(item) == mk_comparable(
         pystac.Item.from_file(f"{granule_href}/expected_output.json")
     )
