@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_MSIL2A_20210122T133229_R081_T22HBD_20210122T155500",
   "properties": {
-    "created": "2023-11-10T19:25:52.246651Z",
+    "created": "2023-11-10T20:34:27.266721Z",
     "providers": [
       {
         "name": "ESA",
@@ -173,7 +173,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -222,7 +222,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -271,7 +271,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -320,7 +320,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 10,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -492,7 +492,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -540,7 +540,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -588,7 +588,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -637,7 +637,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -686,7 +686,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -735,7 +735,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -784,7 +784,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -833,7 +833,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -882,7 +882,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 20,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1089,7 +1089,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1137,7 +1137,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1185,7 +1185,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1233,7 +1233,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1281,7 +1281,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1329,7 +1329,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1377,7 +1377,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1425,7 +1425,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1474,7 +1474,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1522,7 +1522,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
@@ -1570,7 +1570,7 @@
           "data_type": "uint16",
           "bits_per_sample": 15,
           "spatial_resolution": 60,
-          "scale": 0.01,
+          "scale": 0.0001,
           "offset": 0
         }
       ],
