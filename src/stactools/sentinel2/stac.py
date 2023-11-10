@@ -70,7 +70,7 @@ RGB_BANDS: Final[List[Band]] = [
     SENTINEL_BANDS["blue"],
 ]
 
-DEFAULT_SCALE = 0.01
+DEFAULT_SCALE = 0.0001
 
 
 @dataclass(frozen=True)
