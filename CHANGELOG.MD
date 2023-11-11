@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Populate `created` property with a valid RFC 3339 datetime ([#125](https://github.com/stactools-packages/sentinel2/pull/125))
 - stactools required version should be >=0.5.2 instead of >= 0.4.8 ([#125](https://github.com/stactools-packages/sentinel2/pull/125))
 
+### Changed
+
+- The convention for naming the STAC Items has changed. ([#131](https://github.com/stactools-packages/sentinel2/pull/131)). A full explanation given in [Issue #130](https://github.com/stactools-packages/sentinel2/issues/130)
+
 ## [0.4.2] - 2023-07-03
 
 ## Fixed
