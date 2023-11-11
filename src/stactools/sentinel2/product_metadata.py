@@ -123,13 +123,15 @@ class ProductMetadata:
             )
         id_parts = self.product_id.split("_")
 
-        # Remove .SAFE
-        id_parts[-1] = id_parts[-1].replace(".SAFE", "")
+        sensor_id = id_parts[0]
+        tile_id = id_parts[5].lstrip("T")
 
-        # Remove PDGS Processing Baseline number
-        id_parts = [part for part in id_parts if not part.startswith("N")]
+        # get datastrip sensing time to use as datetime
+        datastrip_id = self.metadata_dict["s2:datastrip_id"].split("_")
+        dt = datastrip_id[-2].lstrip("S")
+        processing_level = datastrip_id[3]
 
-        return "_".join(id_parts)
+        return f"{sensor_id}_T{tile_id}_{dt}_{processing_level}"
 
     @property
     def product_id(self) -> str:

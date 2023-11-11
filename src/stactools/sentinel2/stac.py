@@ -634,7 +634,9 @@ def metadata_from_granule_metadata(
         metadata_dict.update(**product_metadata.metadata_dict)
 
     return Metadata(
-        scene_id=granule_metadata.scene_id,
+        scene_id=granule_metadata.scene_id
+        if product_metadata is None
+        else product_metadata.scene_id,
         extra_assets=extra_assets,
         metadata_dict=metadata_dict,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
