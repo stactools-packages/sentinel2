@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add `https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json` conformance class
+- Add `s2:tile_id` field
 - `product_metadata` asset ([#117](https://github.com/stactools-packages/sentinel2/pull/117))
 - Examples ([#124](https://github.com/stactools-packages/sentinel2/pull/124))
 - `cloud` and `snow` assets ([#129](https://github.com/stactools-packages/sentinel2/pull/129))
@@ -22,9 +24,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The convention for naming the STAC Items has changed. ([#131](https://github.com/stactools-packages/sentinel2/pull/131)). A full explanation given in [Issue #130](https://github.com/stactools-packages/sentinel2/issues/130)
 
+### Removed
+
+- Removes `s2:granule_id`
+- Removes `s2:mgrs_tile` field, as this is covered by both the MRGS Extension and Grid Extension fields
+
 ## [0.4.2] - 2023-07-03
 
-## Fixed
+### Fixed
 
 - Antimeridian-crossing geometries are now valid.
 - Centroids of antimeridian-crossing MultiPolygons are now computed correctly.
