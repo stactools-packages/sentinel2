@@ -121,15 +121,18 @@ class ProductMetadata:
                 "naming convention, including "
                 "ending in .SAFE"
             )
+        # product_id: S2A_MSIL2A_20230419T153551_N0509_R111_T19TDJ_20230419T220859.SAFE
         id_parts = self.product_id.split("_")
+        sensor_id = id_parts[0]
+        tile_id = id_parts[5].lstrip("T")
 
-        # Remove .SAFE
-        id_parts[-1] = id_parts[-1].replace(".SAFE", "")
+        # get datastrip sensing time to use as datetime
+        # datastrip_id: S2A_OPER_MSI_L2A_DS_2APS_20230419T220859_S20230419T153818_N05.09
+        datastrip_id = self.metadata_dict["s2:datastrip_id"].split("_")
+        dt = datastrip_id[-2].lstrip("S")
+        processing_level = datastrip_id[3]
 
-        # Remove PDGS Processing Baseline number
-        id_parts = [part for part in id_parts if not part.startswith("N")]
-
-        return "_".join(id_parts)
+        return f"{sensor_id}_T{tile_id}_{dt}_{processing_level}"
 
     @property
     def product_id(self) -> str:

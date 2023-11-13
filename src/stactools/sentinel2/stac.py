@@ -56,6 +56,8 @@ TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI[_.]")
 AOT_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]AOT[_.]")
 WVP_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]WVP[_.]")
 SCL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SCL[_.]")
+CLD_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]CLD[_.]")
+SNW_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SNW[_.]")
 THUMBNAIL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]preview[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
@@ -452,6 +454,46 @@ def image_asset_from_href(
 
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "scl")
+    elif CLD_PATTERN.search(asset_href):
+        # cloud probabibilities
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="Cloud Probabilities",
+            roles=["cloud"],
+        )
+        set_asset_properties(asset)
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+            )
+        ]
+
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "cloud")
+    elif SNW_PATTERN.search(asset_href):
+        # snow probabilities
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="Snow Probabilities",
+            roles=["snow-ice"],
+        )
+        set_asset_properties(asset)
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+            )
+        ]
+
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "snow")
     else:
         raise ValueError(f"Unexpected asset: {asset_href}")
 
@@ -593,7 +635,9 @@ def metadata_from_granule_metadata(
         metadata_dict.update(**product_metadata.metadata_dict)
 
     return Metadata(
-        scene_id=granule_metadata.scene_id,
+        scene_id=granule_metadata.scene_id
+        if product_metadata is None
+        else product_metadata.scene_id,
         extra_assets=extra_assets,
         metadata_dict=metadata_dict,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
