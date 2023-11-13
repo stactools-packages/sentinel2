@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - The convention for naming the STAC Items has changed. ([#131](https://github.com/stactools-packages/sentinel2/pull/131)). A full explanation given in [Issue #130](https://github.com/stactools-packages/sentinel2/issues/130)
+- pystac >= 1.9.0 is now required
 
 ### Removed
 
