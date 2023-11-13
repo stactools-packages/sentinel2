@@ -28,7 +28,7 @@ GRANULE_METADATA_ASSET_KEY: Final[str] = "granule_metadata"
 DATASTRIP_METADATA_ASSET_KEY: Final[str] = "datastrip_metadata"
 TILEINFO_METADATA_ASSET_KEY: Final[str] = "tileinfo_metadata"
 
-DEFAULT_TOLERANCE: Final[float] = 0.0001
+DEFAULT_TOLERANCE: Final[float] = 0.01
 COORD_ROUNDING: Final[int] = 6
 
 SENTINEL_BANDS: Final[Dict[str, Band]] = {
@@ -143,6 +143,8 @@ UNSUFFIXED_BAND_RESOLUTION: Final[Dict[str, int]] = {
     "cirrus": 60,
     "swir16": 20,
     "swir22": 20,
+    "cloud": 20,
+    "snow": 20,
 }
 
 BANDS_TO_ASSET_NAME: Final[Dict[str, str]] = {
@@ -200,6 +202,8 @@ L2A_IMAGE_PATHS: Final[List[str]] = [
     "R60m/B09.jp2",
     "R60m/TCI.jp2",
     "R60m/B08.jp2",
+    "qi/CLD_20m.jp2",
+    "qi/SNW_20m.jp2",
 ]
 
 L1C_IMAGE_PATHS: Final[List[str]] = [

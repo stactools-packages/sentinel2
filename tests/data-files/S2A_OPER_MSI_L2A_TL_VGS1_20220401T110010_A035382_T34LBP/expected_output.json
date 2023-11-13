@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
-    "created": "2023-09-18T12:28:00Z",
+    "created": "2023-11-10T20:34:26.297068Z",
     "providers": [
       {
         "name": "ESA",
@@ -23,8 +23,8 @@
     "eo:cloud_cover": 92.696983,
     "proj:epsg": 32734,
     "proj:centroid": {
-      "lat": -9.98173,
-      "lon": 19.08891
+      "lat": -9.98196,
+      "lon": 19.08968
     },
     "mgrs:utm_zone": 34,
     "mgrs:latitude_band": "L",
@@ -60,18 +60,6 @@
         [
           18.837533655044183,
           -9.975080024847411
-        ],
-        [
-          19.064954896754926,
-          -10.01538671550922
-        ],
-        [
-          19.07018232787976,
-          -10.01378949869024
-        ],
-        [
-          19.09282095320704,
-          -10.01720693936726
         ],
         [
           19.26432785785136,
@@ -1801,6 +1789,72 @@
       "roles": [
         "data",
         "reflectance"
+      ]
+    },
+    "cloud": {
+      "href": "./qi/CLD_20m.jp2",
+      "type": "image/jp2",
+      "title": "Cloud Probabilities",
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        199980.0,
+        8790220.0,
+        309780.0,
+        8900020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        199980.0,
+        0.0,
+        -20.0,
+        8900020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        }
+      ],
+      "roles": [
+        "cloud"
+      ]
+    },
+    "snow": {
+      "href": "./qi/SNW_20m.jp2",
+      "type": "image/jp2",
+      "title": "Snow Probabilities",
+      "proj:shape": [
+        5490,
+        5490
+      ],
+      "proj:bbox": [
+        199980.0,
+        8790220.0,
+        309780.0,
+        8900020.0
+      ],
+      "proj:transform": [
+        20.0,
+        0.0,
+        199980.0,
+        0.0,
+        -20.0,
+        8900020.0
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        }
+      ],
+      "roles": [
+        "snow-ice"
       ]
     },
     "granule_metadata": {
