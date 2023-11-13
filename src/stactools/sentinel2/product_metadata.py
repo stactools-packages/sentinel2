@@ -1,4 +1,3 @@
-import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -181,11 +180,6 @@ class ProductMetadata:
         return self.datatake_node.find_text("SPACECRAFT_NAME")
 
     @property
-    def mgrs_tile(self) -> Optional[str]:
-        m = re.search(r"_T(\d{2}[a-zA-Z]{3})_", self.href)
-        return None if m is None else m.group(1)
-
-    @property
     def metadata_dict(self) -> Dict[str, Any]:
         result = {
             f"{s2_prefix}:product_uri": self.product_id,
@@ -205,8 +199,7 @@ class ProductMetadata:
             f"{s2_prefix}:datastrip_id": self.granule_node.get_attr(
                 "datastripIdentifier"
             ),
-            f"{s2_prefix}:granule_id": self.granule_node.get_attr("granuleIdentifier"),
-            f"{s2_prefix}:mgrs_tile": self.mgrs_tile,
+            f"{s2_prefix}:tile_id": self.granule_node.get_attr("granuleIdentifier"),
             f"{s2_prefix}:reflectance_conversion_factor": map_opt(
                 float, self.reflectance_conversion_node.find_text("U")
             ),

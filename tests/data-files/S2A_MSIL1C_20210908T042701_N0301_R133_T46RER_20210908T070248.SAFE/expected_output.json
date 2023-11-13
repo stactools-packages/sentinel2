@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2A_20210908T042701_032448_N03.01",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2A_OPER_MSI_L1C_DS_VGS4_20210908T070248_S20210908T043714_N03.01",
-    "s2:granule_id": "S2A_OPER_MSI_L1C_TL_VGS4_20210908T070248_A032448_T46RER_N03.01",
-    "s2:mgrs_tile": "46RER",
+    "s2:tile_id": "S2A_OPER_MSI_L1C_TL_VGS4_20210908T070248_A032448_T46RER_N03.01",
     "s2:reflectance_conversion_factor": 0.983841990384341,
     "s2:degraded_msi_data_percentage": 0.0,
     "datetime": "2021-09-08T04:27:01.024000Z"
@@ -847,6 +846,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ]
 }

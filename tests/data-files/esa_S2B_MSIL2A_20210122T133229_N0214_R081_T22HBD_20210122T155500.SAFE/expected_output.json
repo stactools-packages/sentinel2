@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2B_20210122T133229_020270_N02.14",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2B_OPER_MSI_L2A_DS_VGS2_20210122T155500_S20210122T133224_N02.14",
-    "s2:granule_id": "S2B_OPER_MSI_L2A_TL_VGS2_20210122T155500_A020270_T22HBD_N02.14",
-    "s2:mgrs_tile": "22HBD",
+    "s2:tile_id": "S2B_OPER_MSI_L2A_TL_VGS2_20210122T155500_A020270_T22HBD_N02.14",
     "s2:reflectance_conversion_factor": 1.03305092950356,
     "s2:degraded_msi_data_percentage": 0.0,
     "s2:nodata_pixel_percentage": 0.913129,
@@ -1793,6 +1792,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ]
 }
