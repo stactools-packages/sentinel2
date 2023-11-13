@@ -1,9 +1,9 @@
 {
   "type": "Feature",
   "stac_version": "1.0.0",
-  "id": "S2A_MSIL2A_20230625T234621_R073_T01WCS_20230626T022157",
+  "id": "S2A_T01WCS_20230625T234624_L2A",
   "properties": {
-    "created": "2023-11-10T20:34:27.199678Z",
+    "created": "2023-11-11T00:05:38.924283Z",
     "providers": [
       {
         "name": "ESA",
