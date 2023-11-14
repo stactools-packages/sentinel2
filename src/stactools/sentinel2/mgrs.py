@@ -1,7 +1,8 @@
 """Implements the :stac-ext:`MGRS Extension <mgrs>`."""
 
 import re
-from typing import Any, Dict, FrozenSet, Optional, Pattern, Set, Union, cast
+from re import Pattern
+from typing import Any, Optional, Union, cast
 
 import pystac
 from pystac.extensions.base import ExtensionManagementMixin, PropertiesExtension
@@ -15,7 +16,7 @@ LATITUDE_BAND_PROP: str = PREFIX + "latitude_band"  # required
 GRID_SQUARE_PROP: str = PREFIX + "grid_square"  # required
 UTM_ZONE_PROP: str = PREFIX + "utm_zone"
 
-LATITUDE_BANDS: FrozenSet[str] = frozenset(
+LATITUDE_BANDS: frozenset[str] = frozenset(
     {
         "C",
         "D",
@@ -40,7 +41,7 @@ LATITUDE_BANDS: FrozenSet[str] = frozenset(
     }
 )
 
-UTM_ZONES: FrozenSet[int] = frozenset(
+UTM_ZONES: frozenset[int] = frozenset(
     {
         1,
         2,
@@ -158,7 +159,7 @@ class MgrsExtension(
     item: pystac.Item
     """The :class:`~pystac.Item` being extended."""
 
-    properties: Dict[str, Any]
+    properties: dict[str, Any]
     """The :class:`~pystac.Item` properties, including extension properties."""
 
     def __init__(self, item: pystac.Item):
@@ -166,7 +167,7 @@ class MgrsExtension(
         self.properties = item.properties
 
     def __repr__(self) -> str:
-        return "<ItemMgrsExtension Item id={}>".format(self.item.id)
+        return f"<ItemMgrsExtension Item id={self.item.id}>"
 
     def apply(
         self,
@@ -242,7 +243,7 @@ class MgrsExtension(
 
 class MgrsExtensionHooks(ExtensionHooks):
     schema_uri: str = SCHEMA_URI
-    prev_extension_ids: Set[str] = set()
+    prev_extension_ids: set[str] = set()
     stac_object_types = {pystac.STACObjectType.ITEM}
 
 

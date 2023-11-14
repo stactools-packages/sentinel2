@@ -1,5 +1,6 @@
 import re
-from typing import Final, List, Optional, Pattern
+from re import Pattern
+from typing import Final, Optional
 
 import shapely
 from pystac import Item
@@ -18,7 +19,7 @@ def extract_gsd(image_path: str) -> Optional[int]:
         return None
 
 
-def fix_z_values(coord_values: List[str]) -> List[float]:
+def fix_z_values(coord_values: list[str]) -> list[float]:
     """Some geometries have a '0' value in the z position
     of the coordinates. This method detects and removes z
     position coordinates. This assumes that in cases where

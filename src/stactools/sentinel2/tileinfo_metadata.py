@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Optional
 
 import pystac
 from pystac.utils import str_to_datetime
@@ -29,11 +29,11 @@ class TileInfoMetadata:
         return self._product_path
 
     @property
-    def geometry(self) -> Dict[str, Any]:
+    def geometry(self) -> dict[str, Any]:
         return self._geometry
 
     @property
-    def bbox(self) -> Tuple[float, float, float, float]:
+    def bbox(self) -> tuple[float, float, float, float]:
         return self._bbox
 
     @property

@@ -1,5 +1,5 @@
 import os
-from typing import List, Optional, Tuple
+from typing import Optional
 
 import pystac
 from stactools.core.io import ReadHrefModifier
@@ -25,7 +25,7 @@ class SafeManifest:
                 f"Manifest at {self.href} does not have a dataObjectSection"
             )
 
-    def _find_href(self, xpaths: List[str]) -> Optional[str]:
+    def _find_href(self, xpaths: list[str]) -> Optional[str]:
         file_path = None
         for xpath in xpaths:
             file_path = self._data_object_section.find_attr("href", xpath)
@@ -73,7 +73,7 @@ class SafeManifest:
             ]
         )
 
-    def create_asset(self) -> Tuple[str, pystac.Asset]:
+    def create_asset(self) -> tuple[str, pystac.Asset]:
         asset = pystac.Asset(
             href=self.href, media_type=pystac.MediaType.XML, roles=["metadata"]
         )
