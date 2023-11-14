@@ -31,11 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removes `s2:mgrs_tile` field, as this is covered by both the MRGS Extension and Grid Extension fields
 - Drop support for Python 3.9
 
-### Removed
-
-- Removes `s2:granule_id`
-- Removes `s2:mgrs_tile` field, as this is covered by both the MRGS Extension and Grid Extension fields
-
 ## [0.4.2] - 2023-07-03
 
 ### Fixed
