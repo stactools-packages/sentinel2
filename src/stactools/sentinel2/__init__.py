@@ -11,4 +11,4 @@ def register_plugin(registry):
     registry.register_subcommand(commands.create_sentinel2_command)
 
 
-__version__ = "0.5.0-pre1"
+__version__ = "0.5.0a1"
