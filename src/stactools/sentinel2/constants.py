@@ -1,4 +1,4 @@
-from typing import Dict, Final, List
+from typing import Final
 
 import pystac
 from pystac.extensions.eo import Band
@@ -16,7 +16,7 @@ SENTINEL_LICENSE: Final[Link] = Link(
     target="https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice",
 )
 
-SENTINEL_INSTRUMENTS: Final[List[str]] = ["msi"]
+SENTINEL_INSTRUMENTS: Final[list[str]] = ["msi"]
 SENTINEL_CONSTELLATION: Final[str] = "sentinel-2"
 
 SENTINEL_PROVIDER: Final[pystac.Provider] = pystac.Provider(
@@ -35,7 +35,7 @@ TILEINFO_METADATA_ASSET_KEY: Final[str] = "tileinfo_metadata"
 DEFAULT_TOLERANCE: Final[float] = 0.01
 COORD_ROUNDING: Final[int] = 6
 
-SENTINEL_BANDS: Final[Dict[str, Band]] = {
+SENTINEL_BANDS: Final[dict[str, Band]] = {
     "coastal": Band.create(
         name="coastal",
         common_name="coastal",
@@ -133,7 +133,7 @@ SENTINEL_BANDS: Final[Dict[str, Band]] = {
 # available for each band as separate assets.
 # The first resolution is the sensor gsd; others
 # are downscaled versions.
-UNSUFFIXED_BAND_RESOLUTION: Final[Dict[str, int]] = {
+UNSUFFIXED_BAND_RESOLUTION: Final[dict[str, int]] = {
     "coastal": 60,
     "blue": 10,
     "green": 10,
@@ -151,7 +151,7 @@ UNSUFFIXED_BAND_RESOLUTION: Final[Dict[str, int]] = {
     "snow": 20,
 }
 
-BANDS_TO_ASSET_NAME: Final[Dict[str, str]] = {
+BANDS_TO_ASSET_NAME: Final[dict[str, str]] = {
     "B01": "coastal",
     "B02": "blue",
     "B03": "green",
@@ -167,7 +167,7 @@ BANDS_TO_ASSET_NAME: Final[Dict[str, str]] = {
     "B12": "swir22",
 }
 
-L2A_IMAGE_PATHS: Final[List[str]] = [
+L2A_IMAGE_PATHS: Final[list[str]] = [
     "preview.jpg",
     "R10m/B04.jp2",
     "R10m/B03.jp2",
@@ -210,7 +210,7 @@ L2A_IMAGE_PATHS: Final[List[str]] = [
     "qi/SNW_20m.jp2",
 ]
 
-L1C_IMAGE_PATHS: Final[List[str]] = [
+L1C_IMAGE_PATHS: Final[list[str]] = [
     "preview.jpg",
     "B01.jp2",
     "B02.jp2",

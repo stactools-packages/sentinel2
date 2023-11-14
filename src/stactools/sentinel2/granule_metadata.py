@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Dict, Final, List, Optional, Pattern, Tuple
+from re import Pattern
+from typing import Final
 
 import pystac
 from pystac.utils import map_opt
@@ -19,7 +20,7 @@ class GranuleMetadataError(Exception):
 
 
 class GranuleMetadata:
-    def __init__(self, href, read_href_modifier: Optional[ReadHrefModifier] = None):
+    def __init__(self, href, read_href_modifier: ReadHrefModifier | None = None):
         self.href = href
 
         self._root = XmlElement.from_file(href, read_href_modifier)
@@ -51,7 +52,7 @@ class GranuleMetadata:
             "n1:Quality_Indicators_Info/Image_Content_QI"
         )
 
-        self.resolution_to_shape: Dict[int, Tuple[int, int]] = {}
+        self.resolution_to_shape: dict[int, tuple[int, int]] = {}
         for size_node in self._geocoding_node.findall("Size"):
             res = size_node.get_attr("resolution")
             if res is None:
@@ -69,7 +70,7 @@ class GranuleMetadata:
             self.resolution_to_shape[int(res)] = (nrows, ncols)
 
     @property
-    def epsg(self) -> Optional[int]:
+    def epsg(self) -> int | None:
         epsg_str = self._geocoding_node.find_text("HORIZONTAL_CS_CODE")
         if epsg_str is None:
             return None
@@ -77,7 +78,7 @@ class GranuleMetadata:
             return int(epsg_str.split(":")[1])
 
     @property
-    def proj_bbox(self) -> List[float]:
+    def proj_bbox(self) -> list[float]:
         """The bbox of the image in the CRS of the image data"""
         nrows, ncols = self.resolution_to_shape[10]
         geoposition = self._geocoding_node.find("Geoposition")
@@ -93,21 +94,21 @@ class GranuleMetadata:
         return [ulx, uly - (10 * nrows), ulx + (10 * ncols), uly]
 
     @property
-    def cloudiness_percentage(self) -> Optional[float]:
+    def cloudiness_percentage(self) -> float | None:
         return map_opt(
             float,
             self._image_content_node.find_text("CLOUDY_PIXEL_PERCENTAGE"),
         )
 
     @property
-    def mean_solar_zenith(self) -> Optional[float]:
+    def mean_solar_zenith(self) -> float | None:
         return map_opt(
             float,
             self._tile_angles_node.find_text("Mean_Sun_Angle/ZENITH_ANGLE"),
         )
 
     @property
-    def mean_solar_azimuth(self) -> Optional[float]:
+    def mean_solar_azimuth(self) -> float | None:
         return map_opt(
             float,
             self._tile_angles_node.find_text("Mean_Sun_Angle/AZIMUTH_ANGLE"),
@@ -115,7 +116,7 @@ class GranuleMetadata:
 
     @property
     def metadata_dict(self):
-        properties: Dict[str, Optional[float]] = {
+        properties: dict[str, float | None] = {
             f"{s2_prefix}:tile_id": self.tile_id,
             f"{s2_prefix}:product_type": map_opt(
                 float, self._image_content_node.find_text("PRODUCT_TYPE")
@@ -208,7 +209,7 @@ class GranuleMetadata:
         return "_".join(id_parts)
 
     @property
-    def platform(self) -> Optional[str]:
+    def platform(self) -> str | None:
         if self.tile_id.startswith("S2A"):
             return "sentinel-2a"
         elif self.tile_id.startswith("S2B"):
@@ -217,7 +218,7 @@ class GranuleMetadata:
             return None
 
     @property
-    def processing_baseline(self) -> Optional[str]:
+    def processing_baseline(self) -> str | None:
         """Returns the string to be used for the baseline_processing property
         Parsed based on the naming convention found here:
         https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/naming-convention
@@ -228,7 +229,7 @@ class GranuleMetadata:
         return None
 
     @property
-    def pvi_filename(self) -> Optional[str]:
+    def pvi_filename(self) -> str | None:
         return self._root.find_text("n1:Quality_Indicators_Info/PVI_FILENAME")
 
     def create_asset(self):
@@ -244,7 +245,7 @@ class ViewingAngle:
     zenith: float
 
     @classmethod
-    def from_nodes(cls, nodes: List[XmlElement]) -> Dict[str, ViewingAngle]:
+    def from_nodes(cls, nodes: list[XmlElement]) -> dict[str, ViewingAngle]:
         angles = dict()
         for node in nodes:
             band_id_str = node.get_attr("bandId")

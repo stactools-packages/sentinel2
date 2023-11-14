@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 import pystac
 from pystac.utils import map_opt, str_to_datetime
@@ -162,7 +162,7 @@ class ProductMetadata:
             return pystac.MediaType.JPEG2000
 
     @property
-    def image_paths(self) -> List[str]:
+    def image_paths(self) -> list[str]:
         extension = ".tif" if self.image_media_type == pystac.MediaType.COG else ".jp2"
 
         return [f"{x.text}{extension}" for x in self.granule_node.findall("IMAGE_FILE")]
@@ -180,7 +180,7 @@ class ProductMetadata:
         return self.datatake_node.find_text("SPACECRAFT_NAME")
 
     @property
-    def metadata_dict(self) -> Dict[str, Any]:
+    def metadata_dict(self) -> dict[str, Any]:
         result = {
             f"{s2_prefix}:product_uri": self.product_id,
             f"{s2_prefix}:generation_time": self.product_info_node.find_text(
@@ -208,7 +208,7 @@ class ProductMetadata:
         return {k: v for k, v in result.items() if v is not None}
 
     @property
-    def boa_add_offsets(self) -> Dict[str, int]:
+    def boa_add_offsets(self) -> dict[str, int]:
         if self.boa_add_offset_values_list_node is not None:
             xs = {
                 x.get_attr("band_id"): int(x.text)

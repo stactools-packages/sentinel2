@@ -5,7 +5,8 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 from itertools import chain
-from typing import Any, Dict, Final, List, Optional, Pattern, Tuple
+from re import Pattern
+from typing import Any, Final, Optional
 
 import antimeridian
 import pystac
@@ -65,7 +66,7 @@ IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
 BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
 
-RGB_BANDS: Final[List[Band]] = [
+RGB_BANDS: Final[list[Band]] = [
     SENTINEL_BANDS["red"],
     SENTINEL_BANDS["green"],
     SENTINEL_BANDS["blue"],
@@ -78,30 +79,30 @@ DEFAULT_SCALE = 0.0001
 class Metadata:
     scene_id: str
     cloudiness_percentage: Optional[float]
-    extra_assets: Dict[str, pystac.Asset]
-    geometry: Dict[str, Any]
-    bbox: List[float]
+    extra_assets: dict[str, pystac.Asset]
+    geometry: dict[str, Any]
+    bbox: list[float]
     datetime: datetime
     platform: str
-    metadata_dict: Dict[str, Any]
+    metadata_dict: dict[str, Any]
     image_media_type: str
-    image_paths: List[str]
+    image_paths: list[str]
     epsg: int
-    proj_bbox: List[float]
-    resolution_to_shape: Dict[int, Tuple[int, int]]
+    proj_bbox: list[float]
+    resolution_to_shape: dict[int, tuple[int, int]]
     processing_baseline: str
-    viewing_angles: Dict[str, ViewingAngle]
+    viewing_angles: dict[str, ViewingAngle]
     orbit_state: Optional[str] = None
     relative_orbit: Optional[int] = None
     sun_azimuth: Optional[float] = None
     sun_zenith: Optional[float] = None
-    boa_add_offsets: Optional[Dict[str, int]] = None
+    boa_add_offsets: Optional[dict[str, int]] = None
 
 
 def create_item(
     granule_href: str,
     tolerance: float = DEFAULT_TOLERANCE,
-    additional_providers: Optional[List[pystac.Provider]] = None,
+    additional_providers: Optional[list[pystac.Provider]] = None,
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
     antimeridian_strategy: Strategy = Strategy.SPLIT,
@@ -247,13 +248,13 @@ def create_item(
 def image_asset_from_href(
     item: pystac.Item,
     asset_href: str,
-    resolution_to_shape: Dict[int, Tuple[int, int]],
-    proj_bbox: List[float],
+    resolution_to_shape: dict[int, tuple[int, int]],
+    proj_bbox: list[float],
     media_type: Optional[str],
     processing_baseline: str,
-    viewing_angles: Dict[str, ViewingAngle],
-    boa_add_offsets: Optional[Dict[str, int]] = None,
-) -> Tuple[str, pystac.Asset]:
+    viewing_angles: dict[str, ViewingAngle],
+    boa_add_offsets: Optional[dict[str, int]] = None,
+) -> tuple[str, pystac.Asset]:
     logger.debug(f"Creating asset for image {asset_href}")
 
     _, ext = os.path.splitext(asset_href)
@@ -666,11 +667,11 @@ def offset_for_pb(processing_baseline: str) -> float:
 
 
 def raster_bands(
-    boa_add_offsets: Optional[Dict[str, int]],
+    boa_add_offsets: Optional[dict[str, int]],
     processing_baseline: str,
     band_id: str,
     resolution: float,
-) -> List[RasterBand]:
+) -> list[RasterBand]:
     # prior to processing baseline 04.00, scale and offset were
     # defined out of band, so handle that case
     offset = (
