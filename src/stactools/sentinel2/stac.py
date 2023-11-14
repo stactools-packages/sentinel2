@@ -30,6 +30,7 @@ from stactools.sentinel2.constants import (
     INSPIRE_METADATA_ASSET_KEY,
     L1C_IMAGE_PATHS,
     L2A_IMAGE_PATHS,
+    SENTINEL2_EXTENSION_SCHEMA,
     SENTINEL_BANDS,
     SENTINEL_CONSTELLATION,
     SENTINEL_INSTRUMENTS,
@@ -160,12 +161,12 @@ def create_item(
 
     # --Extensions--
 
-    # eo
+    # Electro-Optical Extension
     eo = EOExtension.ext(item, add_if_missing=True)
     eo.cloud_cover = metadata.cloudiness_percentage
     RasterExtension.add_to(item)
 
-    # sat
+    # Satellite Extension
     if metadata.orbit_state or metadata.relative_orbit:
         sat = SatExtension.ext(item, add_if_missing=True)
         sat.orbit_state = (
@@ -200,7 +201,6 @@ def create_item(
         )
 
     # View Extension
-
     # both sun_azimuth and sun_zenith can be NaN, so don't set
     # when that is the case
     if (msa := metadata.sun_azimuth) and not math.isnan(msa):
@@ -211,7 +211,8 @@ def create_item(
         view = ViewExtension.ext(item, add_if_missing=True)
         view.sun_elevation = 90 - msz
 
-    # s2 properties
+    # Sentinel-2 Extension
+    item.stac_extensions.append(SENTINEL2_EXTENSION_SCHEMA)
     item.properties.update(metadata.metadata_dict)
 
     # --Assets--

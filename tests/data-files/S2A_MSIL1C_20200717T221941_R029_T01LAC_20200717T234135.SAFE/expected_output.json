@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2A_20200717T221941_026481_N02.09",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2A_OPER_MSI_L1C_DS_SGS__20200717T234135_S20200717T221944_N02.09",
-    "s2:granule_id": "S2A_OPER_MSI_L1C_TL_SGS__20200717T234135_A026481_T01LAC_N02.09",
-    "s2:mgrs_tile": "01LAC",
+    "s2:tile_id": "S2A_OPER_MSI_L1C_TL_SGS__20200717T234135_A026481_T01LAC_N02.09",
     "s2:reflectance_conversion_factor": 0.967801407960869,
     "s2:degraded_msi_data_percentage": 0.0,
     "datetime": "2020-07-17T22:19:41.024000Z"
@@ -857,6 +856,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ]
 }

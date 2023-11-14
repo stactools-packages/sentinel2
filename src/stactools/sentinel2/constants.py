@@ -7,6 +7,10 @@ from pystac.provider import ProviderRole
 
 SENTINEL2_PROPERTY_PREFIX = "s2"
 
+SENTINEL2_EXTENSION_SCHEMA = (
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
+)
+
 SENTINEL_LICENSE: Final[Link] = Link(
     rel="license",
     target="https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice",

@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2A_20190212T192651_019029_N02.12",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12",
-    "s2:granule_id": "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
-    "s2:mgrs_tile": "07HFE",
+    "s2:tile_id": "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
     "s2:reflectance_conversion_factor": 1.02763689829235,
     "s2:degraded_msi_data_percentage": 0.0,
     "s2:nodata_pixel_percentage": 96.769553,
@@ -1788,7 +1787,8 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ],
   "collection": "sentinel2-l2a-example"
 }

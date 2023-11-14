@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2B_20191228T210519_014683_N02.12",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2B_OPER_MSI_L2A_DS_ESRI_20201003T104659_S20191228T210521_N02.12",
-    "s2:granule_id": "S2B_OPER_MSI_L2A_TL_ESRI_20201003T104659_A014683_T01CCV_N02.12",
-    "s2:mgrs_tile": "01CCV",
+    "s2:tile_id": "S2B_OPER_MSI_L2A_TL_ESRI_20201003T104659_A014683_T01CCV_N02.12",
     "s2:reflectance_conversion_factor": 1.03382780603275,
     "s2:degraded_msi_data_percentage": 0.0,
     "s2:nodata_pixel_percentage": 79.061437,
@@ -1789,6 +1788,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ]
 }

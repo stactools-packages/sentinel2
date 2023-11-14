@@ -41,8 +41,7 @@
     "s2:datatake_id": "GS2B_20220413T150759_026649_N04.00",
     "s2:datatake_type": "INS-NOBS",
     "s2:datastrip_id": "S2B_OPER_MSI_L2A_DS_ESRI_20220414T082127_S20220413T150756_N04.00",
-    "s2:granule_id": "S2B_OPER_MSI_L2A_TL_ESRI_20220414T082127_A026649_T33XWJ_N04.00",
-    "s2:mgrs_tile": "33XWJ",
+    "s2:tile_id": "S2B_OPER_MSI_L2A_TL_ESRI_20220414T082127_A026649_T33XWJ_N04.00",
     "s2:reflectance_conversion_factor": 0.99707551771009,
     "s2:degraded_msi_data_percentage": 0.0,
     "s2:nodata_pixel_percentage": 98.441625,
@@ -1809,6 +1808,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/view/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ]
 }

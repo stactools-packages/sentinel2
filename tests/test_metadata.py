@@ -36,9 +36,8 @@ class Sentinel2MetadataTest(unittest.TestCase):
             f"{s2_prefix}:datatake_type": "INS-NOBS",
             f"{s2_prefix}:datastrip_id":
                 "S2A_OPER_MSI_L2A_DS_ESRI_20201007T160858_S20190212T192646_N02.12",
-            f"{s2_prefix}:granule_id":
+            f"{s2_prefix}:tile_id":
                 "S2A_OPER_MSI_L2A_TL_ESRI_20201007T160858_A019029_T07HFE_N02.12",
-            f"{s2_prefix}:mgrs_tile": "07HFE",
             f"{s2_prefix}:reflectance_conversion_factor": 1.02763689829235,
             # From granule metadata
             f"{s2_prefix}:degraded_msi_data_percentage": 0.0,

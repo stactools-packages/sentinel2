@@ -116,6 +116,7 @@ class GranuleMetadata:
     @property
     def metadata_dict(self):
         properties: Dict[str, Optional[float]] = {
+            f"{s2_prefix}:tile_id": self.tile_id,
             f"{s2_prefix}:product_type": map_opt(
                 float, self._image_content_node.find_text("PRODUCT_TYPE")
             ),
