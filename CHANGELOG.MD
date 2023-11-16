@@ -24,12 +24,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The convention for naming the STAC Items has changed. ([#131](https://github.com/stactools-packages/sentinel2/pull/131)). A full explanation given in [Issue #130](https://github.com/stactools-packages/sentinel2/issues/130)
 - pystac >= 1.9.0 is now required
+- Names in eo:bands structure are now S2 band names, not common name ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
 
 ### Removed
 
 - Removes `s2:granule_id`
 - Removes `s2:mgrs_tile` field, as this is covered by both the MRGS Extension and Grid Extension fields
 - Drop support for Python 3.9
+- raster:bands.bits_per_pixel ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
+- Band descriptions ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
 
 ## [0.4.2] - 2023-07-03
 
