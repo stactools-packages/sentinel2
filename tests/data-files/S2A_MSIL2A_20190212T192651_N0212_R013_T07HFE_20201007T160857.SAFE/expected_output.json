@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2023-11-16T04:46:36.084740Z",
+    "created": "2023-11-16T05:27:43.950878Z",
     "providers": [
       {
         "name": "ESA",
@@ -537,6 +537,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_SCL_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Scene classification map (SCL)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -571,6 +572,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_AOT_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -607,6 +609,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_WVP_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -665,6 +668,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1200,6 +1204,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_SCL_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Scene classification map (SCL)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1234,6 +1239,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_AOT_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1270,6 +1276,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_WVP_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1328,6 +1335,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1543,6 +1551,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_AOT_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -1579,6 +1588,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R10m/T07HFE_20190212T192651_WVP_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water vapour (WVP)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -1637,6 +1647,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980

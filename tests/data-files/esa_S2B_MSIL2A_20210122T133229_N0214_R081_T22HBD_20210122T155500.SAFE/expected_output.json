@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T22HBD_20210122T133224_L2A",
   "properties": {
-    "created": "2023-11-16T04:46:36.326943Z",
+    "created": "2023-11-16T05:27:44.190214Z",
     "providers": [
       {
         "name": "ESA",
@@ -346,6 +346,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -372,6 +373,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R10m/T22HBD_20210122T133229_AOT_10m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -408,6 +410,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R10m/T22HBD_20210122T133229_WVP_10m.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -887,6 +890,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -913,6 +917,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R20m/T22HBD_20210122T133229_AOT_20m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -949,6 +954,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R20m/T22HBD_20210122T133229_WVP_20m.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -986,6 +992,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R20m/T22HBD_20210122T133229_SCL_20m.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1550,6 +1557,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1576,6 +1584,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R60m/T22HBD_20210122T133229_AOT_60m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1612,6 +1621,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R60m/T22HBD_20210122T133229_WVP_60m.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1649,6 +1659,7 @@
       "href": "./GRANULE/L2A_T22HBD_A020270_20210122T133224/IMG_DATA/R60m/T22HBD_20210122T133229_SCL_60m.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830

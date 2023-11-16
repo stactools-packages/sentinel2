@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2023-11-16T04:46:36.224146Z",
+    "created": "2023-11-16T05:27:44.087812Z",
     "providers": [
       {
         "name": "ESA",
@@ -238,6 +238,7 @@
       "href": "./R10m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -275,6 +276,7 @@
       "href": "./R10m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -332,6 +334,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -779,6 +782,7 @@
       "href": "./R20m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -863,6 +867,7 @@
       "href": "./R20m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -897,6 +902,7 @@
       "href": "./R20m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -954,6 +960,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1442,6 +1449,7 @@
       "href": "./R60m/WVP.jp2",
       "type": "image/jp2",
       "title": "Water vapour (WVP)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1525,6 +1533,7 @@
       "href": "./R60m/SCL.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1559,6 +1568,7 @@
       "href": "./R60m/AOT.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1663,6 +1673,7 @@
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1735,6 +1746,7 @@
       "href": "./qi/CLD_20m.jp2",
       "type": "image/jp2",
       "title": "Cloud Probabilities",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
