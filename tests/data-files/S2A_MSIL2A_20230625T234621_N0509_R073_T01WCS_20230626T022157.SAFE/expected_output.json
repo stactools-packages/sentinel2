@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01WCS_20230625T234624_L2A",
   "properties": {
-    "created": "2023-11-11T00:05:38.924283Z",
+    "created": "2023-11-16T04:46:36.256436Z",
     "providers": [
       {
         "name": "ESA",
@@ -157,14 +157,13 @@
     "blue": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R10m/T01WCS_20230625T234621_B02_10m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 10m",
+      "title": "None - 10m",
       "view:azimuth": 112.355914957351,
       "view:incidence_angle": 9.88663050752815,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -192,7 +191,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -206,14 +204,13 @@
     "green": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R10m/T01WCS_20230625T234621_B03_10m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 10m",
+      "title": "None - 10m",
       "view:azimuth": 112.703706606598,
       "view:incidence_angle": 9.90494814305293,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -241,7 +238,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -260,7 +256,7 @@
       "view:incidence_angle": 9.92908694045995,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
@@ -290,7 +286,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -304,14 +299,13 @@
     "nir": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R10m/T01WCS_20230625T234621_B08_10m.jp2",
       "type": "image/jp2",
-      "title": "NIR 1 (band 8) - 10m",
+      "title": "None - 10m",
       "view:azimuth": 112.52648796018,
       "view:incidence_angle": 9.90282025457465,
       "eo:bands": [
         {
-          "name": "nir",
+          "name": "B08",
           "common_name": "nir",
-          "description": "NIR 1 (band 8)",
           "center_wavelength": 0.842,
           "full_width_half_max": 0.145
         }
@@ -339,7 +333,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -356,23 +349,21 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -425,7 +416,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.001,
           "offset": 0
@@ -462,7 +452,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "unit": "cm",
           "scale": 0.001,
@@ -477,14 +466,13 @@
     "coastal_20m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B01_20m.jp2",
       "type": "image/jp2",
-      "title": "Coastal aerosol (band 1) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.969047118298,
       "view:incidence_angle": 10.0303579563522,
       "eo:bands": [
         {
-          "name": "coastal",
+          "name": "B01",
           "common_name": "coastal",
-          "description": "Coastal aerosol (band 1)",
           "center_wavelength": 0.443,
           "full_width_half_max": 0.027
         }
@@ -511,7 +499,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -525,14 +512,13 @@
     "blue_20m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B02_20m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 112.355914957351,
       "view:incidence_angle": 9.88663050752815,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -559,7 +545,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -573,14 +558,13 @@
     "green_20m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B03_20m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 112.703706606598,
       "view:incidence_angle": 9.90494814305293,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -607,7 +591,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -626,7 +609,7 @@
       "view:incidence_angle": 9.92908694045995,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
@@ -655,7 +638,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -669,14 +651,13 @@
     "rededge1": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B05_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 1 (band 5) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.214434825061,
       "view:incidence_angle": 9.93703598206029,
       "eo:bands": [
         {
-          "name": "rededge1",
+          "name": "B05",
           "common_name": "rededge",
-          "description": "Red edge 1 (band 5)",
           "center_wavelength": 0.704,
           "full_width_half_max": 0.019
         }
@@ -704,7 +685,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -718,14 +698,13 @@
     "rededge2": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B06_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 2 (band 6) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.389111185368,
       "view:incidence_angle": 9.9551048406547,
       "eo:bands": [
         {
-          "name": "rededge2",
+          "name": "B06",
           "common_name": "rededge",
-          "description": "Red edge 2 (band 6)",
           "center_wavelength": 0.74,
           "full_width_half_max": 0.018
         }
@@ -753,7 +732,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -767,14 +745,13 @@
     "rededge3": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B07_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 3 (band 7) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.572468732754,
       "view:incidence_angle": 9.97523213482418,
       "eo:bands": [
         {
-          "name": "rededge3",
+          "name": "B07",
           "common_name": "rededge",
-          "description": "Red edge 3 (band 7)",
           "center_wavelength": 0.783,
           "full_width_half_max": 0.028
         }
@@ -802,7 +779,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -816,14 +792,13 @@
     "nir08": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B8A_20m.jp2",
       "type": "image/jp2",
-      "title": "NIR 2 (band 8A) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.744973666257,
       "view:incidence_angle": 9.99727243999679,
       "eo:bands": [
         {
-          "name": "nir08",
+          "name": "B8A",
           "common_name": "nir08",
-          "description": "NIR 2 (band 8A)",
           "center_wavelength": 0.865,
           "full_width_half_max": 0.033
         }
@@ -851,7 +826,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -865,14 +839,13 @@
     "swir16": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B11_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1 (band 11) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.406341328393,
       "view:incidence_angle": 9.9265606842478,
       "eo:bands": [
         {
-          "name": "swir16",
+          "name": "B11",
           "common_name": "swir16",
-          "description": "SWIR 1 (band 11)",
           "center_wavelength": 1.61,
           "full_width_half_max": 0.143
         }
@@ -900,7 +873,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -914,14 +886,13 @@
     "swir22": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R20m/T01WCS_20230625T234621_B12_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2 (band 12) - 20m",
+      "title": "None - 20m",
       "view:azimuth": 113.829350450225,
       "view:incidence_angle": 9.97712925266542,
       "eo:bands": [
         {
-          "name": "swir22",
+          "name": "B12",
           "common_name": "swir22",
-          "description": "SWIR 2 (band 12)",
           "center_wavelength": 2.19,
           "full_width_half_max": 0.242
         }
@@ -949,7 +920,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -966,23 +936,21 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -1035,7 +1003,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.001,
           "offset": 0
@@ -1072,7 +1039,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "unit": "cm",
           "scale": 0.001,
@@ -1121,14 +1087,13 @@
     "coastal": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B01_60m.jp2",
       "type": "image/jp2",
-      "title": "Coastal aerosol (band 1) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.969047118298,
       "view:incidence_angle": 10.0303579563522,
       "eo:bands": [
         {
-          "name": "coastal",
+          "name": "B01",
           "common_name": "coastal",
-          "description": "Coastal aerosol (band 1)",
           "center_wavelength": 0.443,
           "full_width_half_max": 0.027
         }
@@ -1156,7 +1121,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1170,14 +1134,13 @@
     "blue_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B02_60m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 112.355914957351,
       "view:incidence_angle": 9.88663050752815,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -1204,7 +1167,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1218,14 +1180,13 @@
     "green_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B03_60m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 112.703706606598,
       "view:incidence_angle": 9.90494814305293,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -1252,7 +1213,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1271,7 +1231,7 @@
       "view:incidence_angle": 9.92908694045995,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
@@ -1300,7 +1260,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1314,14 +1273,13 @@
     "rededge1_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B05_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 1 (band 5) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.214434825061,
       "view:incidence_angle": 9.93703598206029,
       "eo:bands": [
         {
-          "name": "rededge1",
+          "name": "B05",
           "common_name": "rededge",
-          "description": "Red edge 1 (band 5)",
           "center_wavelength": 0.704,
           "full_width_half_max": 0.019
         }
@@ -1348,7 +1306,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1362,14 +1319,13 @@
     "rededge2_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B06_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 2 (band 6) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.389111185368,
       "view:incidence_angle": 9.9551048406547,
       "eo:bands": [
         {
-          "name": "rededge2",
+          "name": "B06",
           "common_name": "rededge",
-          "description": "Red edge 2 (band 6)",
           "center_wavelength": 0.74,
           "full_width_half_max": 0.018
         }
@@ -1396,7 +1352,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1410,14 +1365,13 @@
     "rededge3_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B07_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 3 (band 7) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.572468732754,
       "view:incidence_angle": 9.97523213482418,
       "eo:bands": [
         {
-          "name": "rededge3",
+          "name": "B07",
           "common_name": "rededge",
-          "description": "Red edge 3 (band 7)",
           "center_wavelength": 0.783,
           "full_width_half_max": 0.028
         }
@@ -1444,7 +1398,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1458,14 +1411,13 @@
     "nir08_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B8A_60m.jp2",
       "type": "image/jp2",
-      "title": "NIR 2 (band 8A) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.744973666257,
       "view:incidence_angle": 9.99727243999679,
       "eo:bands": [
         {
-          "name": "nir08",
+          "name": "B8A",
           "common_name": "nir08",
-          "description": "NIR 2 (band 8A)",
           "center_wavelength": 0.865,
           "full_width_half_max": 0.033
         }
@@ -1492,7 +1444,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1506,14 +1457,13 @@
     "nir09": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B09_60m.jp2",
       "type": "image/jp2",
-      "title": "NIR 3 (band 9) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 114.145974717886,
       "view:incidence_angle": 10.0570253421352,
       "eo:bands": [
         {
-          "name": "nir09",
+          "name": "B09",
           "common_name": "nir09",
-          "description": "NIR 3 (band 9)",
           "center_wavelength": 0.945,
           "full_width_half_max": 0.026
         }
@@ -1541,7 +1491,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1555,14 +1504,13 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B11_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1 (band 11) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.406341328393,
       "view:incidence_angle": 9.9265606842478,
       "eo:bands": [
         {
-          "name": "swir16",
+          "name": "B11",
           "common_name": "swir16",
-          "description": "SWIR 1 (band 11)",
           "center_wavelength": 1.61,
           "full_width_half_max": 0.143
         }
@@ -1589,7 +1537,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1603,14 +1550,13 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T01WCS_A041826_20230625T234624/IMG_DATA/R60m/T01WCS_20230625T234621_B12_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2 (band 12) - 60m",
+      "title": "None - 60m",
       "view:azimuth": 113.829350450225,
       "view:incidence_angle": 9.97712925266542,
       "eo:bands": [
         {
-          "name": "swir22",
+          "name": "B12",
           "common_name": "swir22",
-          "description": "SWIR 2 (band 12)",
           "center_wavelength": 2.19,
           "full_width_half_max": 0.242
         }
@@ -1637,7 +1583,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1654,23 +1599,21 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
           "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -1723,7 +1666,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.001,
           "offset": 0
@@ -1760,7 +1702,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "unit": "cm",
           "scale": 0.001,
