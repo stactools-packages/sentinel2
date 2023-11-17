@@ -319,11 +319,9 @@ def image_asset_from_href(
         try:
             band_id = band_id_search.group(1)
             asset_res = resolution
-            band = band_from_band_id(band_id)
         except KeyError:
             # Level-1C have different names
             band_id = os.path.splitext(asset_href)[0].split("_")[-1]
-            band = band_from_band_id(band_id)
             asset_res = highest_asset_res(band_id_search.group(1))
 
         # Get the asset resolution from the file name.
@@ -347,7 +345,7 @@ def image_asset_from_href(
         asset = pystac.Asset(
             href=asset_href,
             media_type=asset_media_type,
-            title=f"{band.description} - {asset_res}m",
+            title=f"{asset_id} - {asset_res}m",
             roles=["data", "reflectance"],
         )
         viewing_angle = viewing_angles[band_id]
@@ -417,7 +415,7 @@ def image_asset_from_href(
         asset = pystac.Asset(
             href=asset_href,
             media_type=asset_media_type,
-            title="Water vapour (WVP)",
+            title="Water Vapour (WVP)",
             roles=["data", "reflectance"],
         )
 
