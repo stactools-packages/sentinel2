@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from itertools import chain
 from re import Pattern
+from statistics import mean
 from typing import Any, Final, Optional
 
 import antimeridian
@@ -203,14 +204,16 @@ def create_item(
         )
 
     # View Extension
+    view = ViewExtension.ext(item, add_if_missing=True)
+    view.azimuth = mean([v.azimuth for b, v in metadata.viewing_angles.items()])
+    view.incidence_angle = mean([v.zenith for b, v in metadata.viewing_angles.items()])
+
     # both sun_azimuth and sun_zenith can be NaN, so don't set
     # when that is the case
     if (msa := metadata.sun_azimuth) and not math.isnan(msa):
-        view = ViewExtension.ext(item, add_if_missing=True)
         view.sun_azimuth = msa
 
     if (msz := metadata.sun_zenith) and not math.isnan(msz):
-        view = ViewExtension.ext(item, add_if_missing=True)
         view.sun_elevation = 90 - msz
 
     # Sentinel-2 Extension
@@ -228,7 +231,6 @@ def create_item(
                 proj_bbox=metadata.proj_bbox,
                 media_type=metadata.image_media_type,
                 processing_baseline=metadata.processing_baseline,
-                viewing_angles=metadata.viewing_angles,
                 boa_add_offsets=metadata.boa_add_offsets,
             )
             for image_path in metadata.image_paths
@@ -253,7 +255,6 @@ def image_asset_from_href(
     proj_bbox: list[float],
     media_type: Optional[str],
     processing_baseline: str,
-    viewing_angles: dict[str, ViewingAngle],
     boa_add_offsets: Optional[dict[str, int]] = None,
 ) -> tuple[str, pystac.Asset]:
     logger.debug(f"Creating asset for image {asset_href}")
@@ -349,20 +350,6 @@ def image_asset_from_href(
             title=f"{ASSET_TO_TITLE[asset_id.split('_')[0]]} - {asset_res}m",
             roles=["data", "reflectance"],
         )
-        viewing_angle = viewing_angles[band_id]
-        # We can't use the ViewExtension here until
-        # https://github.com/stac-utils/pystac/issues/793 is fixed
-        if not math.isnan(viewing_angle.azimuth):
-            # View Extension doesn't specify fields in Assets,
-            # but if it does, this should be uncommented
-            # ViewExtension.ext(item, add_if_missing=True)
-            asset.extra_fields["view:azimuth"] = viewing_angle.azimuth
-
-        if not math.isnan(viewing_angle.zenith):
-            # View Extension doesn't specify fields in Assets,
-            # but if it does, this should be uncommented
-            # ViewExtension.ext(item, add_if_missing=True)
-            asset.extra_fields["view:incidence_angle"] = viewing_angle.zenith
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
