@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T33XWJ_20220413T150756_L2A",
   "properties": {
-    "created": "2023-11-16T05:27:44.155207Z",
+    "created": "2023-11-17T02:06:43.486995Z",
     "providers": [
       {
         "name": "ESA",
@@ -103,7 +103,7 @@
     "coastal_20m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B01_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "coastal_20m - 20m",
       "view:azimuth": 6.06419195770833,
       "view:incidence_angle": 11.7620353909695,
       "eo:bands": [
@@ -149,7 +149,7 @@
     "blue_20m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B02_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "blue_20m - 20m",
       "view:azimuth": 190.524652558141,
       "view:incidence_angle": 11.5992075739816,
       "eo:bands": [
@@ -195,7 +195,7 @@
     "green_20m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B03_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "green_20m - 20m",
       "view:azimuth": 43.6918196259253,
       "view:incidence_angle": 11.6214587470268,
       "eo:bands": [
@@ -241,14 +241,13 @@
     "red_20m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B04_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Red (band 4) - 20m",
+      "title": "red_20m - 20m",
       "view:azimuth": 2.63241128145128,
       "view:incidence_angle": 11.6481293133163,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -288,7 +287,7 @@
     "rededge1": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B05_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "rededge1 - 20m",
       "view:azimuth": 3.32772811467303,
       "view:incidence_angle": 11.66492198486,
       "eo:bands": [
@@ -335,7 +334,7 @@
     "rededge2": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B06_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "rededge2 - 20m",
       "view:azimuth": 4.0337910178607,
       "view:incidence_angle": 11.6837550910421,
       "eo:bands": [
@@ -382,7 +381,7 @@
     "rededge3": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B07_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "rededge3 - 20m",
       "view:azimuth": 4.68954745033689,
       "view:incidence_angle": 11.7166729061528,
       "eo:bands": [
@@ -429,7 +428,7 @@
     "nir08": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B8A_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "nir08 - 20m",
       "view:azimuth": 5.38993428501136,
       "view:incidence_angle": 11.7389275451637,
       "eo:bands": [
@@ -476,7 +475,7 @@
     "swir16": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B11_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "swir16 - 20m",
       "view:azimuth": 3.87362664850673,
       "view:incidence_angle": 11.6793252487108,
       "eo:bands": [
@@ -523,7 +522,7 @@
     "swir22": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_B12_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 20m",
+      "title": "swir22 - 20m",
       "view:azimuth": 5.4951676207821,
       "view:incidence_angle": 11.7424271517159,
       "eo:bands": [
@@ -642,7 +641,7 @@
     "wvp": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R20m/T33XWJ_20220413T150759_WVP_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 20,
       "proj:shape": [
         5490,
@@ -685,7 +684,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
@@ -728,7 +726,7 @@
     "coastal": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B01_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "coastal - 60m",
       "view:azimuth": 6.06419195770833,
       "view:incidence_angle": 11.7620353909695,
       "eo:bands": [
@@ -775,7 +773,7 @@
     "blue_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B02_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "blue_60m - 60m",
       "view:azimuth": 190.524652558141,
       "view:incidence_angle": 11.5992075739816,
       "eo:bands": [
@@ -821,7 +819,7 @@
     "green_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B03_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "green_60m - 60m",
       "view:azimuth": 43.6918196259253,
       "view:incidence_angle": 11.6214587470268,
       "eo:bands": [
@@ -867,14 +865,13 @@
     "red_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B04_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Red (band 4) - 60m",
+      "title": "red_60m - 60m",
       "view:azimuth": 2.63241128145128,
       "view:incidence_angle": 11.6481293133163,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -914,7 +911,7 @@
     "rededge1_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B05_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "rededge1_60m - 60m",
       "view:azimuth": 3.32772811467303,
       "view:incidence_angle": 11.66492198486,
       "eo:bands": [
@@ -960,7 +957,7 @@
     "rededge2_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B06_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "rededge2_60m - 60m",
       "view:azimuth": 4.0337910178607,
       "view:incidence_angle": 11.6837550910421,
       "eo:bands": [
@@ -1006,7 +1003,7 @@
     "rededge3_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B07_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "rededge3_60m - 60m",
       "view:azimuth": 4.68954745033689,
       "view:incidence_angle": 11.7166729061528,
       "eo:bands": [
@@ -1052,7 +1049,7 @@
     "nir08_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B8A_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "nir08_60m - 60m",
       "view:azimuth": 5.38993428501136,
       "view:incidence_angle": 11.7389275451637,
       "eo:bands": [
@@ -1098,7 +1095,7 @@
     "nir09": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B09_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "nir09 - 60m",
       "view:azimuth": 6.77720061120476,
       "view:incidence_angle": 11.7883373938612,
       "eo:bands": [
@@ -1145,7 +1142,7 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B11_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "swir16_60m - 60m",
       "view:azimuth": 3.87362664850673,
       "view:incidence_angle": 11.6793252487108,
       "eo:bands": [
@@ -1191,7 +1188,7 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_B12_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 60m",
+      "title": "swir22_60m - 60m",
       "view:azimuth": 5.4951676207821,
       "view:incidence_angle": 11.7424271517159,
       "eo:bands": [
@@ -1309,7 +1306,7 @@
     "wvp_60m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R60m/T33XWJ_20220413T150759_WVP_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 60,
       "proj:shape": [
         1830,
@@ -1352,7 +1349,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
@@ -1395,7 +1391,7 @@
     "blue": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R10m/T33XWJ_20220413T150759_B02_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 10m",
+      "title": "blue - 10m",
       "view:azimuth": 190.524652558141,
       "view:incidence_angle": 11.5992075739816,
       "eo:bands": [
@@ -1442,7 +1438,7 @@
     "green": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R10m/T33XWJ_20220413T150759_B03_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 10m",
+      "title": "green - 10m",
       "view:azimuth": 43.6918196259253,
       "view:incidence_angle": 11.6214587470268,
       "eo:bands": [
@@ -1489,14 +1485,13 @@
     "red": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R10m/T33XWJ_20220413T150759_B04_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Red (band 4) - 10m",
+      "title": "red - 10m",
       "view:azimuth": 2.63241128145128,
       "view:incidence_angle": 11.6481293133163,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -1537,7 +1532,7 @@
     "nir": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R10m/T33XWJ_20220413T150759_B08_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "None - 10m",
+      "title": "nir - 10m",
       "view:azimuth": 127.695293780521,
       "view:incidence_angle": 11.6094519193978,
       "eo:bands": [
@@ -1621,7 +1616,7 @@
     "wvp_10m": {
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/IMG_DATA/R10m/T33XWJ_20220413T150759_WVP_10m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 10,
       "proj:shape": [
         10980,
@@ -1664,7 +1659,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },

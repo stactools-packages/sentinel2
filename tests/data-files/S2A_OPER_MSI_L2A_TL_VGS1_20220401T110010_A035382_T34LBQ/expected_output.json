@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T34LBQ_20220401T090142_L2A",
   "properties": {
-    "created": "2023-11-16T05:27:43.918303Z",
+    "created": "2023-11-17T02:06:43.245740Z",
     "providers": [
       {
         "name": "ESA",
@@ -101,14 +101,13 @@
     "red": {
       "href": "./R10m/B04.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 10m",
+      "title": "red - 10m",
       "view:azimuth": 99.2910718780649,
       "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -149,7 +148,7 @@
     "green": {
       "href": "./R10m/B03.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "green - 10m",
       "view:azimuth": 99.6521307443619,
       "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
@@ -196,7 +195,7 @@
     "blue": {
       "href": "./R10m/B02.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "blue - 10m",
       "view:azimuth": 100.044220671618,
       "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
@@ -243,7 +242,7 @@
     "wvp_10m": {
       "href": "./R10m/WVP.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 10,
       "proj:shape": [
         10980,
@@ -323,7 +322,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
@@ -366,7 +364,7 @@
     "nir": {
       "href": "./R10m/B08.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "nir - 10m",
       "view:azimuth": 99.8481402904334,
       "view:incidence_angle": 9.58866505395536,
       "eo:bands": [
@@ -413,7 +411,7 @@
     "swir22": {
       "href": "./R20m/B12.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "swir22 - 20m",
       "view:azimuth": 98.5099413284717,
       "view:incidence_angle": 9.7169877722973,
       "eo:bands": [
@@ -460,7 +458,7 @@
     "rededge2": {
       "href": "./R20m/B06.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge2 - 20m",
       "view:azimuth": 98.9061010477403,
       "view:incidence_angle": 9.66556944380412,
       "eo:bands": [
@@ -507,7 +505,7 @@
     "rededge3": {
       "href": "./R20m/B07.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge3 - 20m",
       "view:azimuth": 98.7192006210671,
       "view:incidence_angle": 9.68751083533581,
       "eo:bands": [
@@ -554,7 +552,7 @@
     "rededge1": {
       "href": "./R20m/B05.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge1 - 20m",
       "view:azimuth": 99.1038246979466,
       "view:incidence_angle": 9.6456129691341,
       "eo:bands": [
@@ -601,7 +599,7 @@
     "swir16": {
       "href": "./R20m/B11.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "swir16 - 20m",
       "view:azimuth": 98.9657292461706,
       "view:incidence_angle": 9.66207648815742,
       "eo:bands": [
@@ -648,14 +646,13 @@
     "red_20m": {
       "href": "./R20m/B04.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 20m",
+      "title": "red_20m - 20m",
       "view:azimuth": 99.2910718780649,
       "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -695,7 +692,7 @@
     "green_20m": {
       "href": "./R20m/B03.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "green_20m - 20m",
       "view:azimuth": 99.6521307443619,
       "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
@@ -741,7 +738,7 @@
     "blue_20m": {
       "href": "./R20m/B02.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "blue_20m - 20m",
       "view:azimuth": 100.044220671618,
       "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
@@ -787,7 +784,7 @@
     "wvp": {
       "href": "./R20m/WVP.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 20,
       "proj:shape": [
         5490,
@@ -825,7 +822,7 @@
     "nir08": {
       "href": "./R20m/B8A.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "nir08 - 20m",
       "view:azimuth": 98.5245343889886,
       "view:incidence_angle": 9.71155070045094,
       "eo:bands": [
@@ -949,7 +946,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
@@ -992,7 +988,7 @@
     "nir_20m": {
       "href": "./R20m/B08.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "nir_20m - 20m",
       "view:azimuth": 99.8481402904334,
       "view:incidence_angle": 9.58866505395536,
       "eo:bands": [
@@ -1038,7 +1034,7 @@
     "swir22_60m": {
       "href": "./R60m/B12.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "swir22_60m - 60m",
       "view:azimuth": 98.5099413284717,
       "view:incidence_angle": 9.7169877722973,
       "eo:bands": [
@@ -1084,7 +1080,7 @@
     "rededge2_60m": {
       "href": "./R60m/B06.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "rededge2_60m - 60m",
       "view:azimuth": 98.9061010477403,
       "view:incidence_angle": 9.66556944380412,
       "eo:bands": [
@@ -1130,7 +1126,7 @@
     "rededge3_60m": {
       "href": "./R60m/B07.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "rededge3_60m - 60m",
       "view:azimuth": 98.7192006210671,
       "view:incidence_angle": 9.68751083533581,
       "eo:bands": [
@@ -1176,7 +1172,7 @@
     "rededge1_60m": {
       "href": "./R60m/B05.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "rededge1_60m - 60m",
       "view:azimuth": 99.1038246979466,
       "view:incidence_angle": 9.6456129691341,
       "eo:bands": [
@@ -1222,7 +1218,7 @@
     "swir16_60m": {
       "href": "./R60m/B11.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "swir16_60m - 60m",
       "view:azimuth": 98.9657292461706,
       "view:incidence_angle": 9.66207648815742,
       "eo:bands": [
@@ -1268,14 +1264,13 @@
     "red_60m": {
       "href": "./R60m/B04.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 60m",
+      "title": "red_60m - 60m",
       "view:azimuth": 99.2910718780649,
       "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -1315,7 +1310,7 @@
     "coastal": {
       "href": "./R60m/B01.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "coastal - 60m",
       "view:azimuth": 98.3718393108975,
       "view:incidence_angle": 9.73744364267219,
       "eo:bands": [
@@ -1362,7 +1357,7 @@
     "green_60m": {
       "href": "./R60m/B03.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "green_60m - 60m",
       "view:azimuth": 99.6521307443619,
       "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
@@ -1408,7 +1403,7 @@
     "blue_60m": {
       "href": "./R60m/B02.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "blue_60m - 60m",
       "view:azimuth": 100.044220671618,
       "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
@@ -1454,7 +1449,7 @@
     "wvp_60m": {
       "href": "./R60m/WVP.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
       "gsd": 60,
       "proj:shape": [
         1830,
@@ -1492,7 +1487,7 @@
     "nir08_60m": {
       "href": "./R60m/B8A.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "nir08_60m - 60m",
       "view:azimuth": 98.5245343889886,
       "view:incidence_angle": 9.71155070045094,
       "eo:bands": [
@@ -1610,7 +1605,7 @@
     "nir09": {
       "href": "./R60m/B09.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "nir09 - 60m",
       "view:azimuth": 98.1774485141319,
       "view:incidence_angle": 9.76624997643779,
       "eo:bands": [
@@ -1662,7 +1657,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
@@ -1705,7 +1699,7 @@
     "nir_60m": {
       "href": "./R60m/B08.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "nir_60m - 60m",
       "view:azimuth": 99.8481402904334,
       "view:incidence_angle": 9.58866505395536,
       "eo:bands": [

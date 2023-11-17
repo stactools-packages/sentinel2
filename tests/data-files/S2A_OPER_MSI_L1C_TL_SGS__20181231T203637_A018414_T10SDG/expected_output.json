@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
   "properties": {
-    "created": "2023-11-16T05:27:44.258676Z",
+    "created": "2023-11-17T02:06:43.590905Z",
     "providers": [
       {
         "name": "ESA",
@@ -83,7 +83,7 @@
     "coastal": {
       "href": "./B01.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "coastal - 60m",
       "view:azimuth": 105.222653658973,
       "view:incidence_angle": 9.32344350171152,
       "eo:bands": [
@@ -130,7 +130,7 @@
     "blue": {
       "href": "./B02.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "blue - 10m",
       "view:azimuth": 103.534530624244,
       "view:incidence_angle": 9.16046316628897,
       "eo:bands": [
@@ -177,7 +177,7 @@
     "green": {
       "href": "./B03.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "green - 10m",
       "view:azimuth": 103.928753911312,
       "view:incidence_angle": 9.18166424413228,
       "eo:bands": [
@@ -224,14 +224,13 @@
     "red": {
       "href": "./B04.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 10m",
+      "title": "red - 10m",
       "view:azimuth": 104.282145404007,
       "view:incidence_angle": 9.20898720626288,
       "eo:bands": [
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -272,7 +271,7 @@
     "rededge1": {
       "href": "./B05.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge1 - 20m",
       "view:azimuth": 104.481053232259,
       "view:incidence_angle": 9.22703019472298,
       "eo:bands": [
@@ -319,7 +318,7 @@
     "rededge2": {
       "href": "./B06.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge2 - 20m",
       "view:azimuth": 104.639978163478,
       "view:incidence_angle": 9.25101940900086,
       "eo:bands": [
@@ -366,7 +365,7 @@
     "rededge3": {
       "href": "./B07.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "rededge3 - 20m",
       "view:azimuth": 104.830111033463,
       "view:incidence_angle": 9.27342229047768,
       "eo:bands": [
@@ -413,7 +412,7 @@
     "nir": {
       "href": "./B08.jp2",
       "type": "image/jp2",
-      "title": "None - 10m",
+      "title": "nir - 10m",
       "view:azimuth": 103.731973628264,
       "view:incidence_angle": 9.16993618804109,
       "eo:bands": [
@@ -460,7 +459,7 @@
     "nir08": {
       "href": "./B8A.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "nir08 - 20m",
       "view:azimuth": 104.971830884209,
       "view:incidence_angle": 9.30011056604762,
       "eo:bands": [
@@ -507,7 +506,7 @@
     "nir09": {
       "href": "./B09.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "nir09 - 60m",
       "view:azimuth": 105.469406889576,
       "view:incidence_angle": 9.36492818809416,
       "eo:bands": [
@@ -554,7 +553,7 @@
     "cirrus": {
       "href": "./B10.jp2",
       "type": "image/jp2",
-      "title": "None - 60m",
+      "title": "cirrus - 60m",
       "view:azimuth": 104.211804645039,
       "view:incidence_angle": 9.20259833475114,
       "eo:bands": [
@@ -601,7 +600,7 @@
     "swir16": {
       "href": "./B11.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "swir16 - 20m",
       "view:azimuth": 104.635075782653,
       "view:incidence_angle": 9.23831368292313,
       "eo:bands": [
@@ -648,7 +647,7 @@
     "swir22": {
       "href": "./B12.jp2",
       "type": "image/jp2",
-      "title": "None - 20m",
+      "title": "swir22 - 20m",
       "view:azimuth": 105.032044110384,
       "view:incidence_angle": 9.29659647868938,
       "eo:bands": [
@@ -700,7 +699,6 @@
         {
           "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
