@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Antimeridian handling (again) ([#122](https://github.com/stactools-packages/sentinel2/pull/122))
 - Populate `created` property with a valid RFC 3339 datetime ([#125](https://github.com/stactools-packages/sentinel2/pull/125))
 - stactools required version should be >=0.5.2 instead of >= 0.4.8 ([#125](https://github.com/stactools-packages/sentinel2/pull/125))
+- Roles fixed, 'reflectance' removed from auxiliary assets (e.g., wvp, aot)
 
 ### Changed
 

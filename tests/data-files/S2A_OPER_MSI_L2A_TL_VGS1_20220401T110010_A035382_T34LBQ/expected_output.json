@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T34LBQ_20220401T090142_L2A",
   "properties": {
-    "created": "2023-11-17T19:40:04.930644Z",
+    "created": "2023-11-17T21:03:58.316133Z",
     "providers": [
       {
         "name": "ESA",
@@ -269,8 +269,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot_10m": {
@@ -306,8 +305,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "visual": {
@@ -793,8 +791,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir08": {
@@ -873,8 +870,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot": {
@@ -910,8 +906,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "visual_20m": {
@@ -1436,8 +1431,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir08_60m": {
@@ -1515,8 +1509,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "aot_60m": {
@@ -1552,8 +1545,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "nir09": {
@@ -1723,6 +1715,7 @@
         }
       ],
       "roles": [
+        "data",
         "cloud"
       ]
     },
@@ -1756,6 +1749,7 @@
         }
       ],
       "roles": [
+        "data",
         "snow-ice"
       ]
     },
