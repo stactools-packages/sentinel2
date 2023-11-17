@@ -205,7 +205,7 @@ def create_item(
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-    view.azimuth = mean([v.azimuth for b, v in metadata.viewing_angles.items()])
+    view.azimuth = mean([v.azimuth for v in metadata.viewing_angles.values()])
     view.incidence_angle = mean([v.zenith for b, v in metadata.viewing_angles.items()])
 
     # both sun_azimuth and sun_zenith can be NaN, so don't set
