@@ -24,6 +24,7 @@ from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
 from stactools.core.utils.antimeridian import Strategy
 from stactools.sentinel2.constants import (
+    ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
     COORD_ROUNDING,
     DATASTRIP_METADATA_ASSET_KEY,
@@ -345,7 +346,7 @@ def image_asset_from_href(
         asset = pystac.Asset(
             href=asset_href,
             media_type=asset_media_type,
-            title=f"{asset_id} - {asset_res}m",
+            title=f"{ASSET_TO_TITLE[asset_id.split('_')[0]]} - {asset_res}m",
             roles=["data", "reflectance"],
         )
         viewing_angle = viewing_angles[band_id]

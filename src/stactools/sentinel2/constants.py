@@ -154,6 +154,22 @@ BANDS_TO_ASSET_NAME: Final[dict[str, str]] = {
     "B12": "swir22",
 }
 
+ASSET_TO_TITLE: Final[dict[str, str]] = {
+    "coastal": "Coastal",
+    "blue": "Blue",
+    "green": "Green",
+    "red": "Red",
+    "rededge1": "Red Edge 1",
+    "rededge2": "Red Edge 2",
+    "rededge3": "Red Edge 3",
+    "nir": "NIR 1",
+    "nir08": "NIR 2",
+    "nir09": "NIR 3",
+    "cirrus": "Cirrus",
+    "swir16": "SWIR 1.6um",
+    "swir22": "SWIR 2.2um",
+}
+
 L2A_IMAGE_PATHS: Final[list[str]] = [
     "preview.jpg",
     "R10m/B04.jp2",
