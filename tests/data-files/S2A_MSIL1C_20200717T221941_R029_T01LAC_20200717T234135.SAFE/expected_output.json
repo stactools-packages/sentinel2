@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01LAC_20200717T221944_L1C",
   "properties": {
-    "created": "2023-11-17T02:42:27.242769Z",
+    "created": "2023-11-17T19:40:05.470290Z",
     "providers": [
       {
         "name": "ESA",
@@ -614,7 +614,7 @@
     "swir16": {
       "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B11",
@@ -659,7 +659,7 @@
     "swir22": {
       "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/IMG_DATA/T01LAC_20200717T221941_B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B12",

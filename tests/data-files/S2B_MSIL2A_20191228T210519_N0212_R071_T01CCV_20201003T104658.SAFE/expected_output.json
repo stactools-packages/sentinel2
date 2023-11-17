@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T01CCV_20191228T210521_L2A",
   "properties": {
-    "created": "2023-11-17T02:42:27.002113Z",
+    "created": "2023-11-17T19:40:05.039936Z",
     "providers": [
       {
         "name": "ESA",
@@ -445,7 +445,7 @@
     "swir16": {
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B11_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B11",
@@ -490,7 +490,7 @@
     "swir22": {
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R20m/T01CCV_20191228T210519_B12_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B12",
@@ -1090,7 +1090,7 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B11_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 1.6um - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "eo:bands": [
         {
           "name": "B11",
@@ -1134,7 +1134,7 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T01CCV_A014683_20191228T210521/IMG_DATA/R60m/T01CCV_20191228T210519_B12_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 2.2um - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "eo:bands": [
         {
           "name": "B12",

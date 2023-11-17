@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L1C_TL_SGS__20181231T203637_A018414_T10SDG",
   "properties": {
-    "created": "2023-11-17T02:42:27.277588Z",
+    "created": "2023-11-17T19:40:05.518527Z",
     "providers": [
       {
         "name": "ESA",
@@ -580,7 +580,7 @@
     "swir16": {
       "href": "./B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B11",
@@ -625,7 +625,7 @@
     "swir22": {
       "href": "./B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B12",

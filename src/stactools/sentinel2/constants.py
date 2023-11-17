@@ -166,8 +166,8 @@ ASSET_TO_TITLE: Final[dict[str, str]] = {
     "nir08": "NIR 2",
     "nir09": "NIR 3",
     "cirrus": "Cirrus",
-    "swir16": "SWIR 1.6um",
-    "swir22": "SWIR 2.2um",
+    "swir16": "SWIR 1.6μm",
+    "swir22": "SWIR 2.2μm",
 }
 
 L2A_IMAGE_PATHS: Final[list[str]] = [

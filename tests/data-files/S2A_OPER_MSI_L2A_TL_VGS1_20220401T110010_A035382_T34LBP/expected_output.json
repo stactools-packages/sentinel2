@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
-    "created": "2023-11-17T02:42:26.204309Z",
+    "created": "2023-11-17T19:40:03.612582Z",
     "providers": [
       {
         "name": "ESA",
@@ -399,7 +399,7 @@
     "swir22": {
       "href": "./R20m/B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B12",
@@ -579,7 +579,7 @@
     "swir16": {
       "href": "./R20m/B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "eo:bands": [
         {
           "name": "B11",
@@ -1002,7 +1002,7 @@
     "swir22_60m": {
       "href": "./R60m/B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "eo:bands": [
         {
           "name": "B12",
@@ -1178,7 +1178,7 @@
     "swir16_60m": {
       "href": "./R60m/B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "eo:bands": [
         {
           "name": "B11",
