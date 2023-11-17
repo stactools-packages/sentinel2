@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Examples ([#124](https://github.com/stactools-packages/sentinel2/pull/124))
 - `cloud` and `snow` assets ([#129](https://github.com/stactools-packages/sentinel2/pull/129))
 - gsd for ancillary assets (e.g., aot, wvp, etc) ([#139](https://github.com/stactools-packages/sentinel2/pull/139)) 
+- Mean values for sensor azimuth and incidence angle in Item properties ([#137](https://github.com/stactools-packages/sentinel2/pull/141))
 
 ### Fixed
 
@@ -34,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Drop support for Python 3.9
 - raster:bands.bits_per_pixel ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
 - Band descriptions ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
+- Per asset sensor azimuth and incidence angles ([#137](https://github.com/stactools-packages/sentinel2/pull/141))
 
 ## [0.4.2] - 2023-07-03
 
