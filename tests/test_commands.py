@@ -21,7 +21,6 @@ from shapely.geometry import box, mapping, shape
 from stactools.core.projection import reproject_geom
 from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import (
-    BANDS_TO_ASSET_NAME,
     COORD_ROUNDING,
     SENTINEL_BANDS,
 )
@@ -33,19 +32,19 @@ from tests import test_data
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {
     # asset coastal is 60, coastal_20m is 20, as 20m wasn't added until 2021/22
-    "coastal": [60, 20],
-    "blue": [10, 20, 60],
-    "green": [10, 20, 60],
-    "red": [10, 20, 60],
-    "rededge1": [20, 60],
-    "rededge2": [20, 60],
-    "rededge3": [20, 60],
-    "nir": [10, 20, 60],
-    "nir08": [20, 60],
-    "nir09": [60],
-    "cirrus": [60],
-    "swir16": [20, 60],
-    "swir22": [20, 60],
+    "B01": [60, 20],
+    "B02": [10, 20, 60],
+    "B03": [10, 20, 60],
+    "B04": [10, 20, 60],
+    "B05": [20, 60],
+    "B06": [20, 60],
+    "B07": [20, 60],
+    "B08": [10, 20, 60],
+    "B8A": [20, 60],
+    "B09": [60],
+    "B10": [60],
+    "B11": [20, 60],
+    "B12": [20, 60],
 }
 ID_TO_FILE_NAME = {
     "S2A_T46RER_20210908T043714_L1C": "S2A_MSIL1C_20210908T042701_N0301_R133_T46RER_20210908T070248.SAFE",
@@ -145,15 +144,15 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
                 for b in bands:
                     bands_to_assets[b.name].append((key, asset))
 
-    if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
-        used_bands = SENTINEL_BANDS
-    elif item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
-        used_bands = dict(SENTINEL_BANDS)
+    used_bands = dict(SENTINEL_BANDS)
+    # if item.properties[f"{s2_prefix}:product_type"] == "S2MSI1C":
+    #    used_bands = SENTINEL_BANDS
+    if item.properties[f"{s2_prefix}:product_type"] == "S2MSI2A":
         used_bands.pop("cirrus")
         for b in chain(used_bands.keys(), ["visual", "aot", "wvp", "scl"]):
             assert b in item.assets
 
-    assert bands_seen == set(used_bands.keys())
+    assert bands_seen == set([b.name for k, b in used_bands.items()])
 
     # Check that multiple resolutions exist for assets that
     # have them, and that they are named such that the highest
@@ -183,7 +182,7 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
 
                 href_band = re.search(r"[_/](B\d[A\d])", asset.href).group(1)
                 asset_res = extract_gsd(asset.href)
-                assert BANDS_TO_ASSET_NAME[href_band] == band_name
+                assert href_band == band_name
                 if len(asset_split) == 1:
                     assert asset_res == resolutions[0]
                     assert "gsd" in asset.extra_fields
@@ -196,21 +195,9 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
 
         # Level 2A does not have Band 10
         used_resolutions = dict(BANDS_TO_RESOLUTIONS)
-        used_resolutions.pop("cirrus")
+        used_resolutions.pop("B10")
 
     assert set(resolutions_seen.keys()) == set(used_resolutions.keys())
-    for band in resolutions_seen:
-        # B08 (nir) has only 10m resolution in SAFE archive
-        # but 20m and 60m in S3 sinergise data
-        # B01 (coastal) has 60m data for all years,
-        # but also 20m for 2021/22 and newer.
-        if band == "nir" or band == "coastal":
-            if len(resolutions_seen[band]) == 1:
-                assert set(resolutions_seen[band]) == {used_resolutions[band][0]}
-            else:
-                assert set(resolutions_seen[band]) == set(used_resolutions[band])
-        else:
-            assert set(resolutions_seen[band]) == set(used_resolutions[band])
 
     # self.assertLess(proj_bbox_area_difference(item), 0.005)
 

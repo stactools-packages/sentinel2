@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01KAB_20230821T221944_L2A",
   "properties": {
-    "created": "2023-11-11T00:05:38.690250Z",
+    "created": "2023-11-17T18:14:51.306543Z",
     "providers": [
       {
         "name": "ESA",
@@ -129,14 +129,13 @@
     "blue": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_B02_10m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 10m",
+      "title": "Blue - 10m",
       "view:azimuth": 180.801385463451,
       "view:incidence_angle": 2.42096987070158,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -164,7 +163,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -178,14 +176,13 @@
     "green": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_B03_10m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 10m",
+      "title": "Green - 10m",
       "view:azimuth": 178.688042015786,
       "view:incidence_angle": 2.52623933675522,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -213,7 +210,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -227,14 +223,13 @@
     "red": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_B04_10m.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 10m",
+      "title": "Red - 10m",
       "view:azimuth": 177.441154929379,
       "view:incidence_angle": 2.6510058924036,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -262,7 +257,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -276,14 +270,13 @@
     "nir": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_B08_10m.jp2",
       "type": "image/jp2",
-      "title": "NIR 1 (band 8) - 10m",
+      "title": "NIR 1 - 10m",
       "view:azimuth": 179.601562310413,
       "view:incidence_angle": 2.46821874655486,
       "eo:bands": [
         {
-          "name": "nir",
+          "name": "B08",
           "common_name": "nir",
-          "description": "NIR 1 (band 8)",
           "center_wavelength": 0.842,
           "full_width_half_max": 0.145
         }
@@ -311,7 +304,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.0001,
           "offset": -0.1
@@ -328,27 +320,25 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -375,6 +365,7 @@
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_AOT_10m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -397,7 +388,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "scale": 0.001,
           "offset": 0
@@ -411,7 +401,8 @@
     "wvp_10m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R10m/T01KAB_20230821T221941_WVP_10m.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
+      "gsd": 10,
       "proj:shape": [
         10980,
         10980
@@ -434,7 +425,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 10,
           "unit": "cm",
           "scale": 0.001,
@@ -449,14 +439,13 @@
     "coastal_20m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B01_20m.jp2",
       "type": "image/jp2",
-      "title": "Coastal aerosol (band 1) - 20m",
+      "title": "Coastal - 20m",
       "view:azimuth": 176.079282454261,
       "view:incidence_angle": 3.06696094744039,
       "eo:bands": [
         {
-          "name": "coastal",
+          "name": "B01",
           "common_name": "coastal",
-          "description": "Coastal aerosol (band 1)",
           "center_wavelength": 0.443,
           "full_width_half_max": 0.027
         }
@@ -483,7 +472,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -497,14 +485,13 @@
     "blue_20m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B02_20m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 20m",
+      "title": "Blue - 20m",
       "view:azimuth": 180.801385463451,
       "view:incidence_angle": 2.42096987070158,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -531,7 +518,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -545,14 +531,13 @@
     "green_20m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B03_20m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 20m",
+      "title": "Green - 20m",
       "view:azimuth": 178.688042015786,
       "view:incidence_angle": 2.52623933675522,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -579,7 +564,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -593,14 +577,13 @@
     "red_20m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B04_20m.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 20m",
+      "title": "Red - 20m",
       "view:azimuth": 177.441154929379,
       "view:incidence_angle": 2.6510058924036,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -627,7 +610,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -641,14 +623,13 @@
     "rededge1": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B05_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 1 (band 5) - 20m",
+      "title": "Red Edge 1 - 20m",
       "view:azimuth": 177.116778815302,
       "view:incidence_angle": 2.72621232665129,
       "eo:bands": [
         {
-          "name": "rededge1",
+          "name": "B05",
           "common_name": "rededge",
-          "description": "Red edge 1 (band 5)",
           "center_wavelength": 0.704,
           "full_width_half_max": 0.019
         }
@@ -676,7 +657,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -690,14 +670,13 @@
     "rededge2": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B06_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 2 (band 6) - 20m",
+      "title": "Red Edge 2 - 20m",
       "view:azimuth": 176.562010430253,
       "view:incidence_angle": 2.80560632443585,
       "eo:bands": [
         {
-          "name": "rededge2",
+          "name": "B06",
           "common_name": "rededge",
-          "description": "Red edge 2 (band 6)",
           "center_wavelength": 0.74,
           "full_width_half_max": 0.018
         }
@@ -725,7 +704,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -739,14 +717,13 @@
     "rededge3": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B07_20m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 3 (band 7) - 20m",
+      "title": "Red Edge 3 - 20m",
       "view:azimuth": 176.33801089517,
       "view:incidence_angle": 2.88884994188059,
       "eo:bands": [
         {
-          "name": "rededge3",
+          "name": "B07",
           "common_name": "rededge",
-          "description": "Red edge 3 (band 7)",
           "center_wavelength": 0.783,
           "full_width_half_max": 0.028
         }
@@ -774,7 +751,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -788,14 +764,13 @@
     "nir08": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B8A_20m.jp2",
       "type": "image/jp2",
-      "title": "NIR 2 (band 8A) - 20m",
+      "title": "NIR 2 - 20m",
       "view:azimuth": 176.125283627072,
       "view:incidence_angle": 2.97461283804906,
       "eo:bands": [
         {
-          "name": "nir08",
+          "name": "B8A",
           "common_name": "nir08",
-          "description": "NIR 2 (band 8A)",
           "center_wavelength": 0.865,
           "full_width_half_max": 0.033
         }
@@ -823,7 +798,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -837,14 +811,13 @@
     "swir16": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B11_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1 (band 11) - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "view:azimuth": 176.556121290208,
       "view:incidence_angle": 2.78956644753533,
       "eo:bands": [
         {
-          "name": "swir16",
+          "name": "B11",
           "common_name": "swir16",
-          "description": "SWIR 1 (band 11)",
           "center_wavelength": 1.61,
           "full_width_half_max": 0.143
         }
@@ -872,7 +845,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -886,14 +858,13 @@
     "swir22": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B12_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2 (band 12) - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "view:azimuth": 176.042851718276,
       "view:incidence_angle": 2.99091847065712,
       "eo:bands": [
         {
-          "name": "swir22",
+          "name": "B12",
           "common_name": "swir22",
-          "description": "SWIR 2 (band 12)",
           "center_wavelength": 2.19,
           "full_width_half_max": 0.242
         }
@@ -921,7 +892,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.0001,
           "offset": -0.1
@@ -938,27 +908,25 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -985,6 +953,7 @@
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_AOT_20m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1007,7 +976,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "scale": 0.001,
           "offset": 0
@@ -1021,7 +989,8 @@
     "wvp": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_WVP_20m.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1044,7 +1013,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 20,
           "unit": "cm",
           "scale": 0.001,
@@ -1060,6 +1028,7 @@
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_SCL_20m.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 20,
       "proj:shape": [
         5490,
         5490
@@ -1093,14 +1062,13 @@
     "coastal": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B01_60m.jp2",
       "type": "image/jp2",
-      "title": "Coastal aerosol (band 1) - 60m",
+      "title": "Coastal - 60m",
       "view:azimuth": 176.079282454261,
       "view:incidence_angle": 3.06696094744039,
       "eo:bands": [
         {
-          "name": "coastal",
+          "name": "B01",
           "common_name": "coastal",
-          "description": "Coastal aerosol (band 1)",
           "center_wavelength": 0.443,
           "full_width_half_max": 0.027
         }
@@ -1128,7 +1096,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1142,14 +1109,13 @@
     "blue_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B02_60m.jp2",
       "type": "image/jp2",
-      "title": "Blue (band 2) - 60m",
+      "title": "Blue - 60m",
       "view:azimuth": 180.801385463451,
       "view:incidence_angle": 2.42096987070158,
       "eo:bands": [
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
@@ -1176,7 +1142,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1190,14 +1155,13 @@
     "green_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B03_60m.jp2",
       "type": "image/jp2",
-      "title": "Green (band 3) - 60m",
+      "title": "Green - 60m",
       "view:azimuth": 178.688042015786,
       "view:incidence_angle": 2.52623933675522,
       "eo:bands": [
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         }
@@ -1224,7 +1188,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1238,14 +1201,13 @@
     "red_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B04_60m.jp2",
       "type": "image/jp2",
-      "title": "Red (band 4) - 60m",
+      "title": "Red - 60m",
       "view:azimuth": 177.441154929379,
       "view:incidence_angle": 2.6510058924036,
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         }
@@ -1272,7 +1234,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1286,14 +1247,13 @@
     "rededge1_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B05_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 1 (band 5) - 60m",
+      "title": "Red Edge 1 - 60m",
       "view:azimuth": 177.116778815302,
       "view:incidence_angle": 2.72621232665129,
       "eo:bands": [
         {
-          "name": "rededge1",
+          "name": "B05",
           "common_name": "rededge",
-          "description": "Red edge 1 (band 5)",
           "center_wavelength": 0.704,
           "full_width_half_max": 0.019
         }
@@ -1320,7 +1280,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1334,14 +1293,13 @@
     "rededge2_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B06_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 2 (band 6) - 60m",
+      "title": "Red Edge 2 - 60m",
       "view:azimuth": 176.562010430253,
       "view:incidence_angle": 2.80560632443585,
       "eo:bands": [
         {
-          "name": "rededge2",
+          "name": "B06",
           "common_name": "rededge",
-          "description": "Red edge 2 (band 6)",
           "center_wavelength": 0.74,
           "full_width_half_max": 0.018
         }
@@ -1368,7 +1326,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1382,14 +1339,13 @@
     "rededge3_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B07_60m.jp2",
       "type": "image/jp2",
-      "title": "Red edge 3 (band 7) - 60m",
+      "title": "Red Edge 3 - 60m",
       "view:azimuth": 176.33801089517,
       "view:incidence_angle": 2.88884994188059,
       "eo:bands": [
         {
-          "name": "rededge3",
+          "name": "B07",
           "common_name": "rededge",
-          "description": "Red edge 3 (band 7)",
           "center_wavelength": 0.783,
           "full_width_half_max": 0.028
         }
@@ -1416,7 +1372,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1430,14 +1385,13 @@
     "nir08_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B8A_60m.jp2",
       "type": "image/jp2",
-      "title": "NIR 2 (band 8A) - 60m",
+      "title": "NIR 2 - 60m",
       "view:azimuth": 176.125283627072,
       "view:incidence_angle": 2.97461283804906,
       "eo:bands": [
         {
-          "name": "nir08",
+          "name": "B8A",
           "common_name": "nir08",
-          "description": "NIR 2 (band 8A)",
           "center_wavelength": 0.865,
           "full_width_half_max": 0.033
         }
@@ -1464,7 +1418,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1478,14 +1431,13 @@
     "nir09": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B09_60m.jp2",
       "type": "image/jp2",
-      "title": "NIR 3 (band 9) - 60m",
+      "title": "NIR 3 - 60m",
       "view:azimuth": 176.016466952076,
       "view:incidence_angle": 3.16298987051842,
       "eo:bands": [
         {
-          "name": "nir09",
+          "name": "B09",
           "common_name": "nir09",
-          "description": "NIR 3 (band 9)",
           "center_wavelength": 0.945,
           "full_width_half_max": 0.026
         }
@@ -1513,7 +1465,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1527,14 +1478,13 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B11_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1 (band 11) - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "view:azimuth": 176.556121290208,
       "view:incidence_angle": 2.78956644753533,
       "eo:bands": [
         {
-          "name": "swir16",
+          "name": "B11",
           "common_name": "swir16",
-          "description": "SWIR 1 (band 11)",
           "center_wavelength": 1.61,
           "full_width_half_max": 0.143
         }
@@ -1561,7 +1511,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1575,14 +1524,13 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B12_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2 (band 12) - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "view:azimuth": 176.042851718276,
       "view:incidence_angle": 2.99091847065712,
       "eo:bands": [
         {
-          "name": "swir22",
+          "name": "B12",
           "common_name": "swir22",
-          "description": "SWIR 2 (band 12)",
           "center_wavelength": 2.19,
           "full_width_half_max": 0.242
         }
@@ -1609,7 +1557,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.0001,
           "offset": -0.1
@@ -1626,27 +1573,25 @@
       "title": "True color image",
       "eo:bands": [
         {
-          "name": "red",
+          "name": "B04",
           "common_name": "red",
-          "description": "Red (band 4)",
           "center_wavelength": 0.665,
           "full_width_half_max": 0.038
         },
         {
-          "name": "green",
+          "name": "B03",
           "common_name": "green",
-          "description": "Green (band 3)",
           "center_wavelength": 0.56,
           "full_width_half_max": 0.045
         },
         {
-          "name": "blue",
+          "name": "B02",
           "common_name": "blue",
-          "description": "Blue (band 2)",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
         }
       ],
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1673,6 +1618,7 @@
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_AOT_60m.jp2",
       "type": "image/jp2",
       "title": "Aerosol optical thickness (AOT)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1695,7 +1641,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "scale": 0.001,
           "offset": 0
@@ -1709,7 +1654,8 @@
     "wvp_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_WVP_60m.jp2",
       "type": "image/jp2",
-      "title": "Water vapour (WVP)",
+      "title": "Water Vapour (WVP)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830
@@ -1732,7 +1678,6 @@
         {
           "nodata": 0,
           "data_type": "uint16",
-          "bits_per_sample": 15,
           "spatial_resolution": 60,
           "unit": "cm",
           "scale": 0.001,
@@ -1748,6 +1693,7 @@
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_SCL_60m.jp2",
       "type": "image/jp2",
       "title": "Scene classification map (SCL)",
+      "gsd": 60,
       "proj:shape": [
         1830,
         1830

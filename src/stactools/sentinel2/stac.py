@@ -24,6 +24,7 @@ from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
 from stactools.core.utils.antimeridian import Strategy
 from stactools.sentinel2.constants import (
+    ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
     COORD_ROUNDING,
     DATASTRIP_METADATA_ASSET_KEY,
@@ -319,11 +320,9 @@ def image_asset_from_href(
         try:
             band_id = band_id_search.group(1)
             asset_res = resolution
-            band = band_from_band_id(band_id)
         except KeyError:
             # Level-1C have different names
             band_id = os.path.splitext(asset_href)[0].split("_")[-1]
-            band = band_from_band_id(band_id)
             asset_res = highest_asset_res(band_id_search.group(1))
 
         # Get the asset resolution from the file name.
@@ -347,7 +346,7 @@ def image_asset_from_href(
         asset = pystac.Asset(
             href=asset_href,
             media_type=asset_media_type,
-            title=f"{band.description} - {asset_res}m",
+            title=f"{ASSET_TO_TITLE[asset_id.split('_')[0]]} - {asset_res}m",
             roles=["data", "reflectance"],
         )
         viewing_angle = viewing_angles[band_id]
@@ -384,10 +383,10 @@ def image_asset_from_href(
         )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
-        set_asset_properties(asset)
 
         maybe_res = extract_gsd(asset_href)
         asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
+        set_asset_properties(asset, maybe_res)
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
         asset = pystac.Asset(
@@ -396,45 +395,47 @@ def image_asset_from_href(
             title="Aerosol optical thickness (AOT)",
             roles=["data", "reflectance"],
         )
-        set_asset_properties(asset)
+
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "aot")
+
+        set_asset_properties(asset, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
                 data_type=DataType.UINT16,
-                bits_per_sample=15,
                 scale=0.001,
                 offset=0,
             )
         ]
 
-        maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "aot")
     elif WVP_PATTERN.search(asset_href):
         # Water vapor
         asset = pystac.Asset(
             href=asset_href,
             media_type=asset_media_type,
-            title="Water vapour (WVP)",
+            title="Water Vapour (WVP)",
             roles=["data", "reflectance"],
         )
-        set_asset_properties(asset)
+
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "wvp")
+
+        set_asset_properties(asset, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
                 nodata=0,
                 spatial_resolution=resolution,
                 data_type=DataType.UINT16,
-                bits_per_sample=15,
                 unit="cm",
                 scale=0.001,
                 offset=0,
             )
         ]
 
-        maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "wvp")
     elif SCL_PATTERN.search(asset_href):
         # Classification map
         asset = pystac.Asset(
@@ -443,7 +444,10 @@ def image_asset_from_href(
             title="Scene classification map (SCL)",
             roles=["data", "reflectance"],
         )
-        set_asset_properties(asset)
+
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "scl")
+        set_asset_properties(asset, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -453,8 +457,6 @@ def image_asset_from_href(
             )
         ]
 
-        maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "scl")
     elif CLD_PATTERN.search(asset_href):
         # cloud probabibilities
         asset = pystac.Asset(
@@ -463,7 +465,9 @@ def image_asset_from_href(
             title="Cloud Probabilities",
             roles=["cloud"],
         )
-        set_asset_properties(asset)
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "cloud")
+        set_asset_properties(asset, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -473,8 +477,6 @@ def image_asset_from_href(
             )
         ]
 
-        maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "cloud")
     elif SNW_PATTERN.search(asset_href):
         # snow probabilities
         asset = pystac.Asset(
@@ -483,6 +485,8 @@ def image_asset_from_href(
             title="Snow Probabilities",
             roles=["snow-ice"],
         )
+        maybe_res = extract_gsd(asset_href)
+        asset_id = mk_asset_id(maybe_res, "snow")
         set_asset_properties(asset)
 
         RasterExtension.ext(asset).bands = [
@@ -493,8 +497,6 @@ def image_asset_from_href(
             )
         ]
 
-        maybe_res = extract_gsd(asset_href)
-        asset_id = mk_asset_id(maybe_res, "snow")
     else:
         raise ValueError(f"Unexpected asset: {asset_href}")
 
@@ -685,7 +687,6 @@ def raster_bands(
             nodata=0,
             spatial_resolution=resolution,
             data_type=DataType.UINT16,
-            bits_per_sample=15,
             scale=DEFAULT_SCALE,
             offset=offset,
         )
