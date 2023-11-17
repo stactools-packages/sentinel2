@@ -57,7 +57,6 @@ SENTINEL_BANDS: Final[dict[str, Band]] = {
     "red": Band.create(
         name="B04",
         common_name="red",
-        description="Red (band 4)",
         center_wavelength=0.665,
         full_width_half_max=0.038,
     ),
