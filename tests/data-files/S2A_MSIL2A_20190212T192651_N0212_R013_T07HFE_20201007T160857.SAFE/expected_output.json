@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2023-11-17T02:15:42.230596Z",
+    "created": "2023-11-17T18:14:51.419818Z",
     "providers": [
       {
         "name": "ESA",
@@ -441,7 +441,7 @@
     "swir16": {
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B11_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "view:azimuth": 289.168163140243,
       "view:incidence_angle": 10.8148807894454,
       "eo:bands": [
@@ -488,7 +488,7 @@
     "swir22": {
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R20m/T07HFE_20190212T192651_B12_20m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "view:azimuth": 290.159788183946,
       "view:incidence_angle": 10.8717150734,
       "eo:bands": [
@@ -1108,7 +1108,7 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B11_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 1.6um - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "view:azimuth": 289.168163140243,
       "view:incidence_angle": 10.8148807894454,
       "eo:bands": [
@@ -1154,7 +1154,7 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/IMG_DATA/R60m/T07HFE_20190212T192651_B12_60m.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "SWIR 2.2um - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "view:azimuth": 290.159788183946,
       "view:incidence_angle": 10.8717150734,
       "eo:bands": [

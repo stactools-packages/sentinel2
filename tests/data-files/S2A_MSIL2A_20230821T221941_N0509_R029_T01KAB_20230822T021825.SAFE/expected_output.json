@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01KAB_20230821T221944_L2A",
   "properties": {
-    "created": "2023-11-17T02:15:42.159055Z",
+    "created": "2023-11-17T18:14:51.306543Z",
     "providers": [
       {
         "name": "ESA",
@@ -811,7 +811,7 @@
     "swir16": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B11_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "view:azimuth": 176.556121290208,
       "view:incidence_angle": 2.78956644753533,
       "eo:bands": [
@@ -858,7 +858,7 @@
     "swir22": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R20m/T01KAB_20230821T221941_B12_20m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "view:azimuth": 176.042851718276,
       "view:incidence_angle": 2.99091847065712,
       "eo:bands": [
@@ -1478,7 +1478,7 @@
     "swir16_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B11_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "view:azimuth": 176.556121290208,
       "view:incidence_angle": 2.78956644753533,
       "eo:bands": [
@@ -1524,7 +1524,7 @@
     "swir22_60m": {
       "href": "./GRANULE/L2A_T01KAB_A042640_20230821T221944/IMG_DATA/R60m/T01KAB_20230821T221941_B12_60m.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "view:azimuth": 176.042851718276,
       "view:incidence_angle": 2.99091847065712,
       "eo:bands": [

@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2023-11-17T02:15:42.369782Z",
+    "created": "2023-11-17T18:14:51.627757Z",
     "providers": [
       {
         "name": "ESA",
@@ -405,7 +405,7 @@
     "swir22": {
       "href": "./R20m/B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 20m",
+      "title": "SWIR 2.2\u03bcm - 20m",
       "view:azimuth": 105.032044110384,
       "view:incidence_angle": 9.29659647868938,
       "eo:bands": [
@@ -593,7 +593,7 @@
     "swir16": {
       "href": "./R20m/B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 20m",
+      "title": "SWIR 1.6\u03bcm - 20m",
       "view:azimuth": 104.635075782653,
       "view:incidence_angle": 9.23831368292313,
       "eo:bands": [
@@ -1028,7 +1028,7 @@
     "swir22_60m": {
       "href": "./R60m/B12.jp2",
       "type": "image/jp2",
-      "title": "SWIR 2.2um - 60m",
+      "title": "SWIR 2.2\u03bcm - 60m",
       "view:azimuth": 105.032044110384,
       "view:incidence_angle": 9.29659647868938,
       "eo:bands": [
@@ -1212,7 +1212,7 @@
     "swir16_60m": {
       "href": "./R60m/B11.jp2",
       "type": "image/jp2",
-      "title": "SWIR 1.6um - 60m",
+      "title": "SWIR 1.6\u03bcm - 60m",
       "view:azimuth": 104.635075782653,
       "view:incidence_angle": 9.23831368292313,
       "eo:bands": [
