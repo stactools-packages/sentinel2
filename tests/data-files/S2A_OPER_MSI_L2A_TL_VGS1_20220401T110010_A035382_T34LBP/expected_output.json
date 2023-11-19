@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
-    "created": "2023-11-17T18:14:50.708135Z",
+    "created": "2023-11-17T19:40:03.612582Z",
     "providers": [
       {
         "name": "ESA",
@@ -30,6 +30,8 @@
     "mgrs:latitude_band": "L",
     "mgrs:grid_square": "BP",
     "grid:code": "MGRS-34LBP",
+    "view:azimuth": 99.04269285441343,
+    "view:incidence_angle": 9.662129915241508,
     "view:sun_azimuth": 61.4514369440134,
     "view:sun_elevation": 59.757571576334996,
     "s2:tile_id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP_N04.00",
@@ -96,8 +98,6 @@
       "href": "./R10m/B04.jp2",
       "type": "image/jp2",
       "title": "Red - 10m",
-      "view:azimuth": 99.2910718780649,
-      "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
@@ -143,8 +143,6 @@
       "href": "./R10m/B03.jp2",
       "type": "image/jp2",
       "title": "Green - 10m",
-      "view:azimuth": 99.6521307443619,
-      "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
         {
           "name": "B03",
@@ -190,8 +188,6 @@
       "href": "./R10m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue - 10m",
-      "view:azimuth": 100.044220671618,
-      "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
         {
           "name": "B02",
@@ -359,8 +355,6 @@
       "href": "./R10m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 - 10m",
-      "view:azimuth": 99.8481402904334,
-      "view:incidence_angle": 9.58866505395536,
       "eo:bands": [
         {
           "name": "B08",
@@ -406,8 +400,6 @@
       "href": "./R20m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2.2\u03bcm - 20m",
-      "view:azimuth": 98.5099413284717,
-      "view:incidence_angle": 9.7169877722973,
       "eo:bands": [
         {
           "name": "B12",
@@ -453,8 +445,6 @@
       "href": "./R20m/B06.jp2",
       "type": "image/jp2",
       "title": "Red Edge 2 - 20m",
-      "view:azimuth": 98.9061010477403,
-      "view:incidence_angle": 9.66556944380412,
       "eo:bands": [
         {
           "name": "B06",
@@ -500,8 +490,6 @@
       "href": "./R20m/B07.jp2",
       "type": "image/jp2",
       "title": "Red Edge 3 - 20m",
-      "view:azimuth": 98.7192006210671,
-      "view:incidence_angle": 9.68751083533581,
       "eo:bands": [
         {
           "name": "B07",
@@ -547,8 +535,6 @@
       "href": "./R20m/B05.jp2",
       "type": "image/jp2",
       "title": "Red Edge 1 - 20m",
-      "view:azimuth": 99.1038246979466,
-      "view:incidence_angle": 9.6456129691341,
       "eo:bands": [
         {
           "name": "B05",
@@ -594,8 +580,6 @@
       "href": "./R20m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1.6\u03bcm - 20m",
-      "view:azimuth": 98.9657292461706,
-      "view:incidence_angle": 9.66207648815742,
       "eo:bands": [
         {
           "name": "B11",
@@ -641,8 +625,6 @@
       "href": "./R20m/B04.jp2",
       "type": "image/jp2",
       "title": "Red - 20m",
-      "view:azimuth": 99.2910718780649,
-      "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
@@ -687,8 +669,6 @@
       "href": "./R20m/B03.jp2",
       "type": "image/jp2",
       "title": "Green - 20m",
-      "view:azimuth": 99.6521307443619,
-      "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
         {
           "name": "B03",
@@ -733,8 +713,6 @@
       "href": "./R20m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue - 20m",
-      "view:azimuth": 100.044220671618,
-      "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
         {
           "name": "B02",
@@ -817,8 +795,6 @@
       "href": "./R20m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 - 20m",
-      "view:azimuth": 98.5245343889886,
-      "view:incidence_angle": 9.71155070045094,
       "eo:bands": [
         {
           "name": "B8A",
@@ -983,8 +959,6 @@
       "href": "./R20m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 - 20m",
-      "view:azimuth": 99.8481402904334,
-      "view:incidence_angle": 9.58866505395536,
       "eo:bands": [
         {
           "name": "B08",
@@ -1029,8 +1003,6 @@
       "href": "./R60m/B12.jp2",
       "type": "image/jp2",
       "title": "SWIR 2.2\u03bcm - 60m",
-      "view:azimuth": 98.5099413284717,
-      "view:incidence_angle": 9.7169877722973,
       "eo:bands": [
         {
           "name": "B12",
@@ -1075,8 +1047,6 @@
       "href": "./R60m/B06.jp2",
       "type": "image/jp2",
       "title": "Red Edge 2 - 60m",
-      "view:azimuth": 98.9061010477403,
-      "view:incidence_angle": 9.66556944380412,
       "eo:bands": [
         {
           "name": "B06",
@@ -1121,8 +1091,6 @@
       "href": "./R60m/B07.jp2",
       "type": "image/jp2",
       "title": "Red Edge 3 - 60m",
-      "view:azimuth": 98.7192006210671,
-      "view:incidence_angle": 9.68751083533581,
       "eo:bands": [
         {
           "name": "B07",
@@ -1167,8 +1135,6 @@
       "href": "./R60m/B05.jp2",
       "type": "image/jp2",
       "title": "Red Edge 1 - 60m",
-      "view:azimuth": 99.1038246979466,
-      "view:incidence_angle": 9.6456129691341,
       "eo:bands": [
         {
           "name": "B05",
@@ -1213,8 +1179,6 @@
       "href": "./R60m/B11.jp2",
       "type": "image/jp2",
       "title": "SWIR 1.6\u03bcm - 60m",
-      "view:azimuth": 98.9657292461706,
-      "view:incidence_angle": 9.66207648815742,
       "eo:bands": [
         {
           "name": "B11",
@@ -1259,8 +1223,6 @@
       "href": "./R60m/B04.jp2",
       "type": "image/jp2",
       "title": "Red - 60m",
-      "view:azimuth": 99.2910718780649,
-      "view:incidence_angle": 9.62786291597961,
       "eo:bands": [
         {
           "name": "B04",
@@ -1305,8 +1267,6 @@
       "href": "./R60m/B01.jp2",
       "type": "image/jp2",
       "title": "Coastal - 60m",
-      "view:azimuth": 98.3718393108975,
-      "view:incidence_angle": 9.73744364267219,
       "eo:bands": [
         {
           "name": "B01",
@@ -1352,8 +1312,6 @@
       "href": "./R60m/B03.jp2",
       "type": "image/jp2",
       "title": "Green - 60m",
-      "view:azimuth": 99.6521307443619,
-      "view:incidence_angle": 9.60054008287678,
       "eo:bands": [
         {
           "name": "B03",
@@ -1398,8 +1356,6 @@
       "href": "./R60m/B02.jp2",
       "type": "image/jp2",
       "title": "Blue - 60m",
-      "view:azimuth": 100.044220671618,
-      "view:incidence_angle": 9.57891073556407,
       "eo:bands": [
         {
           "name": "B02",
@@ -1482,8 +1438,6 @@
       "href": "./R60m/B8A.jp2",
       "type": "image/jp2",
       "title": "NIR 2 - 60m",
-      "view:azimuth": 98.5245343889886,
-      "view:incidence_angle": 9.71155070045094,
       "eo:bands": [
         {
           "name": "B8A",
@@ -1600,8 +1554,6 @@
       "href": "./R60m/B09.jp2",
       "type": "image/jp2",
       "title": "NIR 3 - 60m",
-      "view:azimuth": 98.1774485141319,
-      "view:incidence_angle": 9.76624997643779,
       "eo:bands": [
         {
           "name": "B09",
@@ -1694,8 +1646,6 @@
       "href": "./R60m/B08.jp2",
       "type": "image/jp2",
       "title": "NIR 1 - 60m",
-      "view:azimuth": 99.8481402904334,
-      "view:incidence_angle": 9.58866505395536,
       "eo:bands": [
         {
           "name": "B08",
