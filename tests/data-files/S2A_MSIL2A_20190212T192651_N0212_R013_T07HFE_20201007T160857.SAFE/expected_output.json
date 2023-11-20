@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2023-11-17T21:03:58.387630Z",
+    "created": "2023-11-20T17:22:06.896013Z",
     "providers": [
       {
         "name": "ESA",
@@ -1649,7 +1649,7 @@
       "href": "./GRANULE/L2A_T07HFE_A019029_20190212T192646/QI_DATA/T07HFE_20190212T192651_PVI.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
-        "thumbnail"
+        "overview"
       ]
     }
   },

@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2023-11-17T21:03:58.658480Z",
+    "created": "2023-11-20T17:22:07.092086Z",
     "providers": [
       {
         "name": "ESA",
@@ -1772,7 +1772,7 @@
         }
       ],
       "roles": [
-        "visual"
+        "overview"
       ]
     },
     "granule_metadata": {

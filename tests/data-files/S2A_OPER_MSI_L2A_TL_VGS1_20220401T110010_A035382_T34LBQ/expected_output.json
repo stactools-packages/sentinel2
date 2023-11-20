@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T34LBQ_20220401T090142_L2A",
   "properties": {
-    "created": "2023-11-17T21:03:58.316133Z",
+    "created": "2023-11-20T17:22:06.849436Z",
     "providers": [
       {
         "name": "ESA",
@@ -1778,7 +1778,7 @@
         }
       ],
       "roles": [
-        "visual"
+        "overview"
       ]
     },
     "granule_metadata": {
