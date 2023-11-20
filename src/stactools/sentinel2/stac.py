@@ -277,11 +277,12 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="True color preview",
-            roles=["visual"],
+            roles=["overview"],
         )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
         return "preview", asset
+
     elif THUMBNAIL_PATTERN.search(asset_href):
         # thumbnail image
         asset = pystac.Asset(
@@ -541,7 +542,7 @@ def metadata_from_safe_manifest(
         extra_assets["preview"] = pystac.Asset(
             href=os.path.join(granule_href, granule_metadata.pvi_filename),
             media_type=product_metadata.image_media_type,
-            roles=["thumbnail"],
+            roles=["overview"],
         )
 
     return Metadata(

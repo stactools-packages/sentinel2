@@ -1770,7 +1770,7 @@
       "href": "../../../tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/QI_DATA/T07HFE_20190212T192651_PVI.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
-        "thumbnail"
+        "overview"
       ]
     }
   },

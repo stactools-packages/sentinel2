@@ -211,6 +211,7 @@ L2A_IMAGE_PATHS: Final[list[str]] = [
     "R60m/B08.jp2",
     "qi/CLD_20m.jp2",
     "qi/SNW_20m.jp2",
+    "qi/L2A_PVI.jp2",
 ]
 
 L1C_IMAGE_PATHS: Final[list[str]] = [

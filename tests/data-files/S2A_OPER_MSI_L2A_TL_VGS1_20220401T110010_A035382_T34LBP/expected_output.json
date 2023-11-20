@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
-    "created": "2023-11-17T21:03:57.104625Z",
+    "created": "2023-11-20T17:22:06.388489Z",
     "providers": [
       {
         "name": "ESA",
@@ -1745,6 +1745,34 @@
       "roles": [
         "data",
         "snow-ice"
+      ]
+    },
+    "preview": {
+      "href": "./qi/L2A_PVI.jp2",
+      "type": "image/jp2",
+      "title": "True color preview",
+      "eo:bands": [
+        {
+          "name": "B04",
+          "common_name": "red",
+          "center_wavelength": 0.665,
+          "full_width_half_max": 0.038
+        },
+        {
+          "name": "B03",
+          "common_name": "green",
+          "center_wavelength": 0.56,
+          "full_width_half_max": 0.045
+        },
+        {
+          "name": "B02",
+          "common_name": "blue",
+          "center_wavelength": 0.49,
+          "full_width_half_max": 0.098
+        }
+      ],
+      "roles": [
+        "overview"
       ]
     },
     "granule_metadata": {

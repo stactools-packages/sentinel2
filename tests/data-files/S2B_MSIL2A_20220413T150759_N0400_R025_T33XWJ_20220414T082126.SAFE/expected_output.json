@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T33XWJ_20220413T150756_L2A",
   "properties": {
-    "created": "2023-11-17T21:03:58.790610Z",
+    "created": "2023-11-20T17:22:07.188249Z",
     "providers": [
       {
         "name": "ESA",
@@ -1681,7 +1681,7 @@
       "href": "./GRANULE/L2A_T33XWJ_A026649_20220413T150756/QI_DATA/T33XWJ_20220413T150759_PVI.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
-        "thumbnail"
+        "overview"
       ]
     }
   },

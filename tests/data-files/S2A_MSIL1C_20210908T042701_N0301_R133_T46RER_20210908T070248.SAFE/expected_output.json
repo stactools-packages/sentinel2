@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T46RER_20210908T043714_L1C",
   "properties": {
-    "created": "2023-11-17T21:03:58.526452Z",
+    "created": "2023-11-20T17:22:06.991764Z",
     "providers": [
       {
         "name": "ESA",
@@ -776,7 +776,7 @@
       "href": "./GRANULE/L1C_T46RER_A032448_20210908T043714/QI_DATA/T46RER_20210908T042701_PVI.jp2",
       "type": "image/jp2",
       "roles": [
-        "thumbnail"
+        "overview"
       ]
     }
   },
