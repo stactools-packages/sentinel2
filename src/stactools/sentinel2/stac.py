@@ -277,7 +277,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="True color preview",
-            roles=["data", "reflectance"],
+            roles=["visual"],
         )
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
@@ -380,7 +380,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Aerosol optical thickness (AOT)",
-            roles=["data", "reflectance"],
+            roles=["data"],
         )
 
         maybe_res = extract_gsd(asset_href)
@@ -404,7 +404,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Water Vapour (WVP)",
-            roles=["data", "reflectance"],
+            roles=["data"],
         )
 
         maybe_res = extract_gsd(asset_href)
@@ -429,7 +429,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Scene classification map (SCL)",
-            roles=["data", "reflectance"],
+            roles=["data"],
         )
 
         maybe_res = extract_gsd(asset_href)
@@ -450,7 +450,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Cloud Probabilities",
-            roles=["cloud"],
+            roles=["data", "cloud"],
         )
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "cloud")
@@ -470,7 +470,7 @@ def image_asset_from_href(
             href=asset_href,
             media_type=asset_media_type,
             title="Snow Probabilities",
-            roles=["snow-ice"],
+            roles=["data", "snow-ice"],
         )
         maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "snow")

@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01KAB_20230821T221944_L2A",
   "properties": {
-    "created": "2023-11-17T19:40:04.867990Z",
+    "created": "2023-11-17T21:03:58.248543Z",
     "providers": [
       {
         "name": "ESA",
@@ -388,8 +388,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp_10m": {
@@ -426,8 +425,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "coastal_20m": {
@@ -956,8 +954,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp": {
@@ -994,8 +991,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "scl": {
@@ -1029,8 +1025,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "coastal": {
@@ -1599,8 +1594,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "wvp_60m": {
@@ -1637,8 +1631,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "scl_60m": {
@@ -1672,8 +1665,7 @@
         }
       ],
       "roles": [
-        "data",
-        "reflectance"
+        "data"
       ]
     },
     "safe_manifest": {
