@@ -282,7 +282,8 @@ def image_asset_from_href(
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
         return "preview", asset
-    elif THUMBNAIL_PATTERN.search(asset_href):
+
+    if THUMBNAIL_PATTERN.search(asset_href):
         # thumbnail image
         asset = pystac.Asset(
             href=asset_href,
