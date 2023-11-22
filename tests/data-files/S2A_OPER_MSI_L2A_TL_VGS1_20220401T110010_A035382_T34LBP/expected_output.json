@@ -86,14 +86,6 @@
     }
   ],
   "assets": {
-    "thumbnail": {
-      "href": "./preview.jpg",
-      "type": "image/jpeg",
-      "title": "Thumbnail image",
-      "roles": [
-        "thumbnail"
-      ]
-    },
     "red": {
       "href": "./R10m/B04.jp2",
       "type": "image/jp2",

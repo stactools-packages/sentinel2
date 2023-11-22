@@ -74,14 +74,6 @@
     }
   ],
   "assets": {
-    "thumbnail": {
-      "href": "./preview.jpg",
-      "type": "image/jpeg",
-      "title": "Thumbnail image",
-      "roles": [
-        "thumbnail"
-      ]
-    },
     "coastal": {
       "href": "./B01.jp2",
       "type": "image/jp2",

@@ -61,7 +61,6 @@ WVP_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]WVP[_.]")
 SCL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SCL[_.]")
 CLD_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]CLD[_.]")
 SNW_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SNW[_.]")
-THUMBNAIL_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]preview[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
@@ -271,7 +270,6 @@ def image_asset_from_href(
             raise Exception(f"Must supply a media type for asset : {asset_href}")
 
     # Handle preview image
-
     if "_PVI" in asset_href:
         asset = pystac.Asset(
             href=asset_href,
@@ -282,16 +280,6 @@ def image_asset_from_href(
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
         return "preview", asset
-
-    elif THUMBNAIL_PATTERN.search(asset_href):
-        # thumbnail image
-        asset = pystac.Asset(
-            href=asset_href,
-            media_type=pystac.MediaType.JPEG,
-            title="Thumbnail image",
-            roles=["thumbnail"],
-        )
-        return "thumbnail", asset
 
     # Extract gsd and proj info
     resolution = extract_gsd(asset_href)
