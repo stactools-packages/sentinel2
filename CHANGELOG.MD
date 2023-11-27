@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - pystac >= 1.9.0 is now required
 - Names in eo:bands structure are now S2 band names, not common name ([#139](https://github.com/stactools-packages/sentinel2/pull/139))
 - PVI asset role changed from "thumbnail" or "visual" to "overview" ([#143](https://github.com/stactools-packages/sentinel2/pull/143))
+- Removed asset "thumbnail" pointing to preview.jpg asset, as this file frequently
+  does not exit. ([#144](https://github.com/stactools-packages/sentinel2/pull/144))
 
 ### Removed
 
