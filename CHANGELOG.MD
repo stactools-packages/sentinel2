@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Antimeridian-crossing scene bboxes
 
+## Removed
+
+- `create_item` method parameter `create_item` removed, as it was no longer used
+
 ## [0.5.0] - 2023-12-01
 
 ### Added

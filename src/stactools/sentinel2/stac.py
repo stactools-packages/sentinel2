@@ -23,7 +23,6 @@ from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
-from stactools.core.utils.antimeridian import Strategy
 from stactools.sentinel2.constants import (
     ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
@@ -105,7 +104,6 @@ def create_item(
     additional_providers: Optional[list[pystac.Provider]] = None,
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
-    antimeridian_strategy: Strategy = Strategy.SPLIT,
 ) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
@@ -119,9 +117,6 @@ def create_item(
             This can be used to modify a HREF to make it readable, e.g. appending
             an Azure SAS token or creating a signed URL.
         asset_href_prefix: The URL prefix to apply to the asset hrefs
-        antimeridian_strategy (Antimeridian): Either split on -180 or
-            normalize geometries so all longitudes are either positive or
-            negative.
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
