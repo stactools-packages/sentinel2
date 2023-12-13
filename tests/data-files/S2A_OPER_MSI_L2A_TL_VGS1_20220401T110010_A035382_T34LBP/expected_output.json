@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBP",
   "properties": {
-    "created": "2023-11-20T17:22:06.388489Z",
+    "created": "2023-12-13T15:10:34.067362Z",
     "providers": [
       {
         "name": "ESA",
@@ -1783,10 +1783,10 @@
     }
   },
   "bbox": [
-    18.837533655044183,
-    -10.048676709777588,
-    19.26487070909741,
-    -9.943916470908118
+    18.837534,
+    -10.048677,
+    19.264871,
+    -9.943916
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.1.0/schema.json",

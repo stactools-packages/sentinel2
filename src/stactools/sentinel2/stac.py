@@ -23,7 +23,6 @@ from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_geom, transform_from_bbox
-from stactools.core.utils.antimeridian import Strategy
 from stactools.sentinel2.constants import (
     ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
@@ -82,7 +81,6 @@ class Metadata:
     cloudiness_percentage: Optional[float]
     extra_assets: dict[str, pystac.Asset]
     geometry: dict[str, Any]
-    bbox: list[float]
     datetime: datetime
     platform: str
     metadata_dict: dict[str, Any]
@@ -106,7 +104,6 @@ def create_item(
     additional_providers: Optional[list[pystac.Provider]] = None,
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
-    antimeridian_strategy: Strategy = Strategy.SPLIT,
 ) -> pystac.Item:
     """Create a STC Item from a Sentinel 2 granule.
 
@@ -120,9 +117,6 @@ def create_item(
             This can be used to modify a HREF to make it readable, e.g. appending
             an Azure SAS token or creating a signed URL.
         asset_href_prefix: The URL prefix to apply to the asset hrefs
-        antimeridian_strategy (Antimeridian): Either split on -180 or
-            normalize geometries so all longitudes are either positive or
-            negative.
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
@@ -138,14 +132,14 @@ def create_item(
     created = now_to_rfc3339_str()
 
     # ensure that we have a valid geometry, fixing any antimeridian issues
-    geometry = shapely_mapping(
-        make_valid(shapely_shape(antimeridian.fix_shape(metadata.geometry)))
-    )
+    shapely_geometry = shapely_shape(antimeridian.fix_shape(metadata.geometry))
+    geometry = shapely_mapping(make_valid(shapely_geometry))
+    bbox = [round(v, COORD_ROUNDING) for v in antimeridian.bbox(geometry)]
 
     item = pystac.Item(
         id=metadata.scene_id,
         geometry=geometry,
-        bbox=metadata.bbox,
+        bbox=bbox,
         datetime=metadata.datetime,
         properties={"created": created},
     )
@@ -537,7 +531,6 @@ def metadata_from_safe_manifest(
         scene_id=product_metadata.scene_id,
         extra_assets=extra_assets,
         geometry=product_metadata.geometry,
-        bbox=[round(v, COORD_ROUNDING) for v in product_metadata.bbox],
         datetime=product_metadata.datetime,
         platform=product_metadata.platform,
         orbit_state=product_metadata.orbit_state,
@@ -624,7 +617,6 @@ def metadata_from_granule_metadata(
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
         geometry=shapely_mapping(geometry),
-        bbox=geometry.bounds,
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
