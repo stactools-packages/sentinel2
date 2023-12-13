@@ -82,7 +82,6 @@ class Metadata:
     cloudiness_percentage: Optional[float]
     extra_assets: dict[str, pystac.Asset]
     geometry: dict[str, Any]
-    bbox: list[float]
     datetime: datetime
     platform: str
     metadata_dict: dict[str, Any]
@@ -537,7 +536,6 @@ def metadata_from_safe_manifest(
         scene_id=product_metadata.scene_id,
         extra_assets=extra_assets,
         geometry=product_metadata.geometry,
-        bbox=[round(v, COORD_ROUNDING) for v in product_metadata.bbox],
         datetime=product_metadata.datetime,
         platform=product_metadata.platform,
         orbit_state=product_metadata.orbit_state,
@@ -624,7 +622,6 @@ def metadata_from_granule_metadata(
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
         geometry=shapely_mapping(geometry),
-        bbox=geometry.bounds,
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
