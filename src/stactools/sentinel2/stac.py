@@ -138,14 +138,14 @@ def create_item(
     created = now_to_rfc3339_str()
 
     # ensure that we have a valid geometry, fixing any antimeridian issues
-    geometry = shapely_mapping(
-        make_valid(shapely_shape(antimeridian.fix_shape(metadata.geometry)))
-    )
+    shapely_geometry = shapely_shape(antimeridian.fix_shape(metadata.geometry))
+    geometry = shapely_mapping(make_valid(shapely_geometry))
+    bbox = [round(v, COORD_ROUNDING) for v in antimeridian.bbox(geometry)]
 
     item = pystac.Item(
         id=metadata.scene_id,
         geometry=geometry,
-        bbox=metadata.bbox,
+        bbox=bbox,
         datetime=metadata.datetime,
         properties={"created": created},
     )
