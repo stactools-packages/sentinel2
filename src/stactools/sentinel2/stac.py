@@ -22,7 +22,7 @@ from shapely.geometry import mapping as shapely_mapping
 from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
 from stactools.core.io import ReadHrefModifier
-from stactools.core.projection import reproject_geom, transform_from_bbox
+from stactools.core.projection import reproject_shape, transform_from_bbox
 from stactools.sentinel2.constants import (
     ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
@@ -578,10 +578,8 @@ def metadata_from_granule_metadata(
         )
         product_metadata = ProductMetadata(f, read_href_modifier)
 
-    geometry = shapely_shape(
-        reproject_geom(
-            f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
-        )
+    geometry = reproject_shape(
+        f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
     ).simplify(tolerance)
 
     extra_assets = dict(

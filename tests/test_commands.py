@@ -18,7 +18,7 @@ from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.view import ViewExtension
 from pystac.utils import is_absolute_href
 from shapely.geometry import box, mapping, shape
-from stactools.core.projection import reproject_geom
+from stactools.core.projection import reproject_shape
 from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import (
     COORD_ROUNDING,
@@ -72,7 +72,7 @@ def proj_bbox_area_difference(item):
     visual_asset = item.assets.get("visual_10m") or item.assets.get("visual")
     asset_projection = ProjectionExtension.ext(visual_asset)
     pb = mapping(box(*asset_projection.bbox))
-    proj_geom = shape(reproject_geom(f"epsg:{projection.epsg}", "epsg:4326", pb))
+    proj_geom = reproject_shape(f"epsg:{projection.epsg}", "epsg:4326", pb)
 
     item_geom = shape(item.geometry)
 
