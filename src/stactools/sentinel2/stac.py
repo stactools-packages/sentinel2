@@ -105,7 +105,7 @@ def create_item(
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
 ) -> pystac.Item:
-    """Create a STC Item from a Sentinel 2 granule.
+    """Create a STAC Item from a Sentinel 2 granule.
 
     Arguments:
         granule_href: The HREF to the granule. This is expected to be a path

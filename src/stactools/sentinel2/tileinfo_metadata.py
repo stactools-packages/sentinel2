@@ -14,13 +14,21 @@ class TileInfoMetadataError(Exception):
     pass
 
 
+class MissingTileDataGeometryError(TileInfoMetadataError):
+    pass
+
+
 class TileInfoMetadata:
     def __init__(self, href, read_href_modifier: Optional[ReadHrefModifier] = None):
         self.href = href
         self.tileinfo = json.loads(read_text(self.href, read_href_modifier))
 
         self._datetime = str_to_datetime(self.tileinfo["timestamp"])
-        self._geometry = self.tileinfo["tileDataGeometry"]
+        self._geometry = self.tileinfo.get("tileDataGeometry")
+        if not self._geometry:
+            raise MissingTileDataGeometryError(
+                f"TileInfo Metadata field 'tileDataGeometry' for {href} does not exist."
+            )
         self._bbox = shape(self._geometry).bounds
         self._product_path = self.tileinfo["productPath"]
 
