@@ -105,7 +105,7 @@ def create_item(
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
 ) -> pystac.Item:
-    """Create a STC Item from a Sentinel 2 granule.
+    """Create a STAC Item from a Sentinel 2 granule.
 
     Arguments:
         granule_href: The HREF to the granule. This is expected to be a path
@@ -129,8 +129,6 @@ def create_item(
             granule_href, read_href_modifier, tolerance
         )
 
-    created = now_to_rfc3339_str()
-
     # ensure that we have a valid geometry, fixing any antimeridian issues
     shapely_geometry = shapely_shape(antimeridian.fix_shape(metadata.geometry))
     geometry = shapely_mapping(make_valid(shapely_geometry))
@@ -141,7 +139,7 @@ def create_item(
         geometry=geometry,
         bbox=bbox,
         datetime=metadata.datetime,
-        properties={"created": created},
+        properties={"created": now_to_rfc3339_str()},
     )
 
     # --Common metadata--
@@ -577,6 +575,12 @@ def metadata_from_granule_metadata(
             + "/metadata.xml"
         )
         product_metadata = ProductMetadata(f, read_href_modifier)
+
+    if not tileinfo_metadata.geometry:
+        raise ValueError(
+            f"Metadata does not contain geometry for {granule_metadata_href}. "
+            "Perhaps there is no data in the scene?"
+        )
 
     geometry = reproject_shape(
         f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
