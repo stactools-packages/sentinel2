@@ -2,7 +2,6 @@ import pytest
 import shapely.geometry
 from antimeridian import FixWindingWarning
 from stactools.sentinel2 import stac
-from stactools.sentinel2.tileinfo_metadata import MissingTileDataGeometryError
 
 from . import test_data
 
@@ -20,7 +19,7 @@ def test_raises_for_missing_tileDataGeometry() -> None:
         "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ-no-tileDataGeometry"
     )
     path = test_data.get_path(f"data-files/{file_name}")
-    with pytest.raises(MissingTileDataGeometryError):
+    with pytest.raises(ValueError):
         with pytest.warns(FixWindingWarning):
             stac.create_item(path)
 

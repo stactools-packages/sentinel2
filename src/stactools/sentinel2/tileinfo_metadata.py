@@ -10,14 +10,6 @@ from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import TILEINFO_METADATA_ASSET_KEY
 
 
-class TileInfoMetadataError(Exception):
-    pass
-
-
-class MissingTileDataGeometryError(TileInfoMetadataError):
-    pass
-
-
 class TileInfoMetadata:
     def __init__(self, href, read_href_modifier: Optional[ReadHrefModifier] = None):
         self.href = href
@@ -25,11 +17,7 @@ class TileInfoMetadata:
 
         self._datetime = str_to_datetime(self.tileinfo["timestamp"])
         self._geometry = self.tileinfo.get("tileDataGeometry")
-        if not self._geometry:
-            raise MissingTileDataGeometryError(
-                f"TileInfo Metadata field 'tileDataGeometry' for {href} does not exist."
-            )
-        self._bbox = shape(self._geometry).bounds
+        self._bbox = shape(self._geometry).bounds if self._geometry else None
         self._product_path = self.tileinfo["productPath"]
 
     @property
