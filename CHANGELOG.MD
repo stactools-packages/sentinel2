@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased] - TBD
 
+### Fixed
+
+- if tileinfo metadata is missing tileDataGeometry field, throw a ValueError with a meaningful
+  message instead of an unintentional KeyError
+
 ### Changed
 
 - use reproject_shape instead of reproject_geom (deprecated)
