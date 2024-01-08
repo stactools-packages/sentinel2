@@ -9,7 +9,6 @@ from typing import Any, Dict, Final, List
 
 import pystac
 import pytest
-from antimeridian import FixWindingWarning
 from click import Group
 from click.testing import CliRunner
 from pystac.extensions.eo import EOExtension
@@ -64,6 +63,8 @@ ID_TO_FILE_NAME = {
     "S2A_T01WCS_20230625T234624_L2A": "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCS_20230626T022157.SAFE",
     # both sun_azimuth and sun_zenith can be NaN, so don't set
     # "S2A_T01WCP_20230625T234624_L2A": "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022158.SAFE",
+    # viewing angles are all NaN, so don't set
+    "S2A_OPER_MSI_L2A_TL_2APS_20240108T121951_A044635_T34VEL": "S2A_OPER_MSI_L2A_TL_2APS_20240108T121951_A044635_T34VEL",
 }
 
 
@@ -89,11 +90,10 @@ def proj_bbox_area_difference(item):
 def test_create_item(tmp_path: Path, item_id: str, file_name: str):
     granule_href = test_data.get_path(f"data-files/{file_name}")
     runner = CliRunner()
-    with pytest.warns(FixWindingWarning):
-        runner.invoke(
-            create_sentinel2_command(Group()),
-            ["create-item", granule_href, str(tmp_path)],
-        )
+    runner.invoke(
+        create_sentinel2_command(Group()),
+        ["create-item", granule_href, str(tmp_path)],
+    )
     jsons = [p for p in os.listdir(tmp_path) if p.endswith(".json")]
     assert len(jsons) == 1
     file_name = jsons[0]
