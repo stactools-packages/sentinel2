@@ -16,7 +16,6 @@ from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension
 from pystac.extensions.sat import OrbitState, SatExtension
-from pystac.extensions.view import SCHEMA_URI as VIEW_EXT_URI
 from pystac.extensions.view import ViewExtension
 from pystac.utils import now_to_rfc3339_str
 from shapely.geometry import mapping as shapely_mapping
@@ -197,14 +196,8 @@ def create_item(
 
     # View Extension
     view = ViewExtension.ext(item, add_if_missing=True)
-
-    if all(not math.isnan(v.azimuth) for v in metadata.viewing_angles.values()):
-        view.azimuth = mean([v.azimuth for v in metadata.viewing_angles.values()])
-
-    if all(not math.isnan(v.zenith) for v in metadata.viewing_angles.values()):
-        view.incidence_angle = mean(
-            [v.zenith for v in metadata.viewing_angles.values()]
-        )
+    view.azimuth = mean([v.azimuth for v in metadata.viewing_angles.values()])
+    view.incidence_angle = mean([v.zenith for v in metadata.viewing_angles.values()])
 
     # both sun_azimuth and sun_zenith can be NaN, so don't set
     # when that is the case
@@ -213,17 +206,6 @@ def create_item(
 
     if (msz := metadata.sun_zenith) and not math.isnan(msz):
         view.sun_elevation = 90 - msz
-
-    if all(
-        x is None
-        for x in [
-            view.azimuth,
-            view.incidence_angle,
-            view.sun_azimuth,
-            view.sun_elevation,
-        ]
-    ):
-        item.stac_extensions.remove(VIEW_EXT_URI)
 
     # Sentinel-2 Extension
     item.stac_extensions.append(SENTINEL2_EXTENSION_SCHEMA)

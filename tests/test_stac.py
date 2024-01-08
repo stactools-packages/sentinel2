@@ -1,5 +1,6 @@
 import pytest
 import shapely.geometry
+from antimeridian import FixWindingWarning
 from stactools.sentinel2 import stac
 
 from . import test_data
@@ -8,7 +9,8 @@ from . import test_data
 def test_product_metadata_asset() -> None:
     file_name = "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ"
     path = test_data.get_path(f"data-files/{file_name}")
-    item = stac.create_item(path)
+    with pytest.warns(FixWindingWarning):
+        item = stac.create_item(path)
     assert "product_metadata" in item.assets
 
 
@@ -18,14 +20,16 @@ def test_raises_for_missing_tileDataGeometry() -> None:
     )
     path = test_data.get_path(f"data-files/{file_name}")
     with pytest.raises(ValueError):
-        stac.create_item(path)
+        with pytest.warns(FixWindingWarning):
+            stac.create_item(path)
 
 
 def test_antimeridian() -> None:
     path = test_data.get_path(
         "data-files/S2A_MSIL2A_20230821T221941_N0509_R029_T01KAB_20230822T021825.SAFE"
     )
-    item = stac.create_item(path)
+    with pytest.warns(FixWindingWarning):
+        item = stac.create_item(path)
     expected = {
         "type": "MultiPolygon",
         "coordinates": [
