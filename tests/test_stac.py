@@ -1,3 +1,5 @@
+import platform
+
 import pytest
 import shapely.geometry
 from stactools.sentinel2 import stac
@@ -19,6 +21,22 @@ def test_raises_for_missing_tileDataGeometry() -> None:
     path = test_data.get_path(f"data-files/{file_name}")
     with pytest.raises(ValueError):
         stac.create_item(path)
+
+
+# this scene produces a correct geometry when running on arm64, but incorrect when
+# running on amd64. This tests a check that the area of the geometry is larger than
+# a correct one should be, that the creation of it fails, which is seen as better than
+# outputting a bad geometry. Hopefully, we'll be able to figure out the underlying cause
+# of this in the future
+def test_raises_for_invalid_geometry_after_reprojection() -> None:
+    file_name = "S2A_T60CWS_20240109T203651_L2A-pole-and-antimeridian-bad-geometry-after-reprojection"  # noqa
+    path = test_data.get_path(f"data-files/{file_name}")
+    if platform.architecture() == "arm64":
+        stac.create_item(path)
+    else:
+        with pytest.raises(Exception) as e:
+            stac.create_item(path)
+        assert "Area of geometry is " in str(e)
 
 
 def test_antimeridian() -> None:
