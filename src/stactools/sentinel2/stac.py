@@ -611,6 +611,12 @@ def metadata_from_granule_metadata(
             "Perhaps there is no data in the scene?"
         )
 
+    if not (cs := tileinfo_metadata.geometry.get("coordinates")) or not (all(cs)):
+        raise ValueError(
+            f"Metadata contains a geometry for {granule_metadata_href} with no "
+            "coordinates. Perhaps there is no data in the scene?"
+        )
+
     geometry = reproject_shape(
         f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
     ).simplify(tolerance)
