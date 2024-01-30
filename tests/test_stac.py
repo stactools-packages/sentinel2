@@ -41,7 +41,7 @@ def test_raises_for_invalid_geometry_after_reprojection() -> None:
         pytest.fail(f"unknown platform.machine '{platform.machine()}'")
 
 
-def test_raises_for_x() -> None:
+def test_raises_for_empty_geometry_coordinates() -> None:
     file_name = (
         "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
     )
