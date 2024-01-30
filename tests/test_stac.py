@@ -41,6 +41,15 @@ def test_raises_for_invalid_geometry_after_reprojection() -> None:
         pytest.fail(f"unknown platform.machine '{platform.machine()}'")
 
 
+# this scene creates a geometry that's globe-spanning, so it should throw an exception
+def test_raises_for_invalid_geometry() -> None:
+    file_name = "S2A_OPER_MSI_L2A_DS_2APS_20230105T201055_S20230105T163809"  # noqa
+    path = test_data.get_path(f"data-files/{file_name}")
+    with pytest.raises(Exception) as e:
+        stac.create_item(path)
+    assert "Area of geometry is " in str(e)
+
+
 def test_raises_for_empty_geometry_coordinates() -> None:
     file_name = (
         "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
