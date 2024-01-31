@@ -23,6 +23,16 @@ def test_raises_for_missing_tileDataGeometry() -> None:
         stac.create_item(path)
 
 
+def test_raises_for_empty_geometry_coordinates() -> None:
+    file_name = (
+        "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
+    )
+    path = test_data.get_path(f"data-files/{file_name}")
+    with pytest.raises(Exception) as e:
+        stac.create_item(path)
+    assert "with no coordinates" in str(e)
+
+
 # this scene produces a correct geometry when running on arm64, but incorrect when
 # running on amd64. This tests a check that the area of the geometry is larger than
 # a correct one should be, that the creation of it fails, which is seen as better than
@@ -53,16 +63,6 @@ def test_raises_for_invalid_geometry() -> None:
         stac.create_item(path)
     else:
         pytest.fail(f"unknown platform.machine '{platform.machine()}'")
-
-
-def test_raises_for_empty_geometry_coordinates() -> None:
-    file_name = (
-        "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
-    )
-    path = test_data.get_path(f"data-files/{file_name}")
-    with pytest.raises(Exception) as e:
-        stac.create_item(path)
-    assert "with no coordinates" in str(e)
 
 
 def test_antimeridian() -> None:
