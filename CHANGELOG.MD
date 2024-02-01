@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
+## [Unreleased] - TBD
+
+### Changed
+
+- Scenes that produce a geometry that has an unreasonably large area now raise and exception
+  rather than producing an item with that incorrect geometry.
+
 ## [0.6.2] - 2024-01-08
 
 ### Fixed
@@ -124,7 +131,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Modified Item IDs to include product discriminator ([#7](https://github.com/stactools-packages/sentinel2/pull/7))
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
 
-<!-- [Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.4.2..main> -->
+[Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.4.2..main>
 [0.6.2]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.1..v0.6.2>
 [0.6.1]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.0..v0.6.1>
 [0.6.0]: <https://github.com/stactools-packages/sentinel2/compare/v0.5.0..v0.6.0>

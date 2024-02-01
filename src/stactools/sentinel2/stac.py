@@ -132,12 +132,23 @@ def create_item(
 
     # ensure that we have a valid geometry, fixing any antimeridian issues
     shapely_geometry = shapely_shape(antimeridian.fix_shape(metadata.geometry))
-    geometry = shapely_mapping(make_valid(shapely_geometry))
+    geometry = make_valid(shapely_geometry)
+
+    # sometimes, antimeridian and/or polar crossing scenes on some platforms end up
+    # with geometries that cover the inverse area that they should, so nearly the
+    # entire globe. This has been seen to have different behaviors on different
+    # architectures and dependent library versions. To prevent these errors from
+    # resulting in a wildly-incorrect geometry, we fail here if the geometry
+    # is unreasonably large. Typical areas will no greater than 3, whereas an
+    # incorrect globe-covering geometry will have an area for 61110.
+    if (ga := geometry.area) > 100:
+        raise Exception(f"Area of geometry is {ga}, which is too large to be correct.")
+
     bbox = [round(v, COORD_ROUNDING) for v in antimeridian.bbox(geometry)]
 
     item = pystac.Item(
         id=metadata.scene_id,
-        geometry=geometry,
+        geometry=shapely_mapping(geometry),
         bbox=bbox,
         datetime=metadata.datetime,
         properties={"created": now_to_rfc3339_str()},
@@ -598,6 +609,12 @@ def metadata_from_granule_metadata(
         raise ValueError(
             f"Metadata does not contain geometry for {granule_metadata_href}. "
             "Perhaps there is no data in the scene?"
+        )
+
+    if not (cs := tileinfo_metadata.geometry.get("coordinates")) or not (all(cs)):
+        raise ValueError(
+            f"Metadata contains a geometry for {granule_metadata_href} with no "
+            "coordinates. Perhaps there is no data in the scene?"
         )
 
     geometry = reproject_shape(
