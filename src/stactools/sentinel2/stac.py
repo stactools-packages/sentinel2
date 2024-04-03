@@ -378,12 +378,31 @@ def image_asset_from_href(
             title="True color image",
             roles=["visual"],
         )
-        asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = RGB_BANDS
+
+        EOExtension.ext(asset).bands = RGB_BANDS
+
+        RasterExtension.ext(asset).bands = [
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+            ),
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+            ),
+            RasterBand.create(
+                nodata=0,
+                spatial_resolution=resolution,
+                data_type=DataType.UINT8,
+            ),
+        ]
 
         maybe_res = extract_gsd(asset_href)
         asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
         set_asset_properties(asset, maybe_res)
+
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
         asset = pystac.Asset(

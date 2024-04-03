@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T33XWJ_20220413T150756_L2A",
   "properties": {
-    "created": "2023-11-20T17:22:07.188249Z",
+    "created": "2024-04-03T15:21:16.016631Z",
     "providers": [
       {
         "name": "ESA",
@@ -679,6 +679,23 @@
           "full_width_half_max": 0.098
         }
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 20
+        }
+      ],
       "gsd": 20,
       "proj:shape": [
         5490,
@@ -1319,6 +1336,23 @@
           "full_width_half_max": 0.098
         }
       ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 60
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 60
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 60
+        }
+      ],
       "gsd": 60,
       "proj:shape": [
         1830,
@@ -1617,6 +1651,23 @@
           "common_name": "blue",
           "center_wavelength": 0.49,
           "full_width_half_max": 0.098
+        }
+      ],
+      "raster:bands": [
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 10
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 10
+        },
+        {
+          "nodata": 0,
+          "data_type": "uint8",
+          "spatial_resolution": 10
         }
       ],
       "gsd": 10,
