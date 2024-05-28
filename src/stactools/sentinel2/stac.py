@@ -11,6 +11,7 @@ from typing import Any, Final, Optional
 
 import antimeridian
 import pystac
+from pystac.extensions.classification import Classification, ClassificationExtension
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -465,12 +466,26 @@ def image_asset_from_href(
         asset_id = mk_asset_id(maybe_res, "scl")
         set_asset_properties(asset, maybe_res)
 
-        RasterExtension.ext(asset).bands = [
-            RasterBand.create(
-                nodata=0,
-                spatial_resolution=resolution,
-                data_type=DataType.UINT8,
-            )
+        band = RasterBand.create(
+            nodata=0,
+            spatial_resolution=resolution,
+            data_type=DataType.UINT8,
+        )
+        RasterExtension.ext(asset).bands = [band]
+
+        ClassificationExtension.ext(band).classes = [
+            Classification.create(0, "no_data"),
+            Classification.create(1, "saturated_or_defective"),
+            Classification.create(2, "dark_area_pixels"),
+            Classification.create(3, "cloud_shadows"),
+            Classification.create(4, "vegetation"),
+            Classification.create(5, "not_vegetated"),
+            Classification.create(6, "water"),
+            Classification.create(7, "unclassified"),
+            Classification.create(8, "cloud_medium_probability"),
+            Classification.create(9, "cloud_high_probability"),
+            Classification.create(10, "thin_cirrus"),
+            Classification.create(11, "snow"),
         ]
 
     elif CLD_PATTERN.search(asset_href):
