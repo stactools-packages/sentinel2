@@ -101,6 +101,13 @@ class GranuleMetadata:
         )
 
     @property
+    def snow_ice_percentage(self) -> float | None:
+        return map_opt(
+            float,
+            self._image_content_node.find_text("SNOW_ICE_PERCENTAGE"),
+        )
+
+    @property
     def mean_solar_zenith(self) -> float | None:
         return map_opt(
             float,

@@ -80,6 +80,7 @@ DEFAULT_SCALE = 0.0001
 class Metadata:
     scene_id: str
     cloudiness_percentage: Optional[float]
+    snow_ice_percentage: Optional[float]
     extra_assets: dict[str, pystac.Asset]
     geometry: dict[str, Any]
     datetime: datetime
@@ -170,6 +171,7 @@ def create_item(
     # Electro-Optical Extension
     eo = EOExtension.ext(item, add_if_missing=True)
     eo.cloud_cover = metadata.cloudiness_percentage
+    eo.snow_cover = metadata.snow_ice_percentage
     RasterExtension.add_to(item)
 
     # Satellite Extension
@@ -588,6 +590,7 @@ def metadata_from_safe_manifest(
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
+        snow_ice_percentage=granule_metadata.cloudiness_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=[round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox],
         resolution_to_shape=granule_metadata.resolution_to_shape,
@@ -669,6 +672,7 @@ def metadata_from_granule_metadata(
         extra_assets=extra_assets,
         metadata_dict=metadata_dict,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
+        snow_ice_percentage=granule_metadata.snow_ice_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,

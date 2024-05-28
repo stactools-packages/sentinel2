@@ -61,6 +61,7 @@ class Sentinel2MetadataTest(unittest.TestCase):
             self.assertEqual(s2_props[k], v)
 
         self.assertEqual(granule_metadata.cloudiness_percentage, 51.580326)
+        self.assertEqual(granule_metadata.snow_ice_percentage, 0.0)
         self.assertEqual(
             granule_metadata.processing_baseline,
             s2_props[f"{s2_prefix}:processing_baseline"],
