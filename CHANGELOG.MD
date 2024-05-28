@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add `eo:snow_cover` for L2A
+- Added a `classification:classes` field to the `scl` asset (SCL).
 
 ## [0.7.1] - 2025-06-03
 
