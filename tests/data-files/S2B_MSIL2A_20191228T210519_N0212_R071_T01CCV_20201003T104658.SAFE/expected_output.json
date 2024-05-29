@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2B_T01CCV_20191228T210521_L2A",
   "properties": {
-    "created": "2024-04-03T15:21:15.804425Z",
+    "created": "2024-05-29T10:51:52.323222Z",
     "providers": [
       {
         "name": "ESA",
@@ -559,7 +559,57 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 20
+          "spatial_resolution": 20,
+          "classification:classes": [
+            {
+              "value": 0,
+              "description": "no_data"
+            },
+            {
+              "value": 1,
+              "description": "saturated_or_defective"
+            },
+            {
+              "value": 2,
+              "description": "dark_area_pixels"
+            },
+            {
+              "value": 3,
+              "description": "cloud_shadows"
+            },
+            {
+              "value": 4,
+              "description": "vegetation"
+            },
+            {
+              "value": 5,
+              "description": "not_vegetated"
+            },
+            {
+              "value": 6,
+              "description": "water"
+            },
+            {
+              "value": 7,
+              "description": "unclassified"
+            },
+            {
+              "value": 8,
+              "description": "cloud_medium_probability"
+            },
+            {
+              "value": 9,
+              "description": "cloud_high_probability"
+            },
+            {
+              "value": 10,
+              "description": "thin_cirrus"
+            },
+            {
+              "value": 11,
+              "description": "snow"
+            }
+          ]
         }
       ],
       "roles": [
@@ -1216,7 +1266,57 @@
         {
           "nodata": 0,
           "data_type": "uint8",
-          "spatial_resolution": 60
+          "spatial_resolution": 60,
+          "classification:classes": [
+            {
+              "value": 0,
+              "description": "no_data"
+            },
+            {
+              "value": 1,
+              "description": "saturated_or_defective"
+            },
+            {
+              "value": 2,
+              "description": "dark_area_pixels"
+            },
+            {
+              "value": 3,
+              "description": "cloud_shadows"
+            },
+            {
+              "value": 4,
+              "description": "vegetation"
+            },
+            {
+              "value": 5,
+              "description": "not_vegetated"
+            },
+            {
+              "value": 6,
+              "description": "water"
+            },
+            {
+              "value": 7,
+              "description": "unclassified"
+            },
+            {
+              "value": 8,
+              "description": "cloud_medium_probability"
+            },
+            {
+              "value": 9,
+              "description": "cloud_high_probability"
+            },
+            {
+              "value": 10,
+              "description": "thin_cirrus"
+            },
+            {
+              "value": 11,
+              "description": "snow"
+            }
+          ]
         }
       ],
       "roles": [
