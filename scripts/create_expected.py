@@ -21,14 +21,23 @@ EXCLUDE = [
 root = Path(__file__).parents[1]
 data_files = root / "tests" / "data-files"
 
+errored = False
 for path in data_files.iterdir():
     if path.name in EXCLUDE or path.name.startswith("."):
         continue
     print(path)
-    item = stac.create_item(str(path))
-    output_path = data_files / path.name / "expected_output.json"
-    item.set_self_href(str(output_path))
-    item.make_asset_hrefs_relative()
-    item.validate()
-    d = item.to_dict(transform_hrefs=False, include_self_link=False)
-    output_path.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
+    try:
+        item = stac.create_item(str(path))
+        output_path = data_files / path.name / "expected_output.json"
+        item.set_self_href(str(output_path))
+        item.make_asset_hrefs_relative()
+        item.validate()
+        d = item.to_dict(transform_hrefs=False, include_self_link=False)
+        output_path.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
+    except Exception as e:
+        print(e)
+        errored = True
+
+if errored:
+    print("At least one error occurred")
+    exit(1)
