@@ -312,6 +312,8 @@ def image_asset_from_href(
             resolution = highest_asset_res(band_id_search.group(1))
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
+        else:
+            raise ValueError(f"Could not determine resolution for {asset_href}")
 
     shape = list(resolution_to_shape[int(resolution)])
     transform = transform_from_bbox(proj_bbox, shape)

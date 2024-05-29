@@ -19,12 +19,22 @@ EXCLUDE = [
 root = Path(__file__).parents[1]
 data_files = root / "tests" / "data-files"
 
+errored = False
 for path in data_files.iterdir():
     if path.name in EXCLUDE or path.name.startswith("."):
         continue
     print(path)
-    item = stac.create_item(str(path))
-    item.set_self_href(str(data_files / path.name / "expected_output.json"))
-    item.make_asset_hrefs_relative()
-    item.validate()
-    item.save_object(include_self_link=False)
+    try:
+        item = stac.create_item(str(path))
+        item.set_self_href(str(data_files / path.name / "expected_output.json"))
+        item.make_asset_hrefs_relative()
+        item.validate()
+        item.save_object(include_self_link=False)
+
+    except Exception as e:
+        print(e)
+        errored = True
+
+if errored:
+    print("At least one error occurred")
+    exit(1)
