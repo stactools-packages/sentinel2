@@ -31,7 +31,7 @@ class TileInfoMetadata:
 
     @property
     def bbox(self) -> tuple[float, float, float, float]:
-        return self._bbox
+        return self._bbox  # type: ignore
 
     @property
     def datetime(self) -> datetime:
