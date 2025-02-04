@@ -215,6 +215,10 @@ class GranuleMetadata:
             return "sentinel-2a"
         elif self.tile_id.startswith("S2B"):
             return "sentinel-2b"
+        elif self.tile_id.startswith("S2C"):
+            return "sentinel-2c"
+        elif self.tile_id.startswith("S2D"):
+            return "sentinel-2d"
         else:
             return None
 
