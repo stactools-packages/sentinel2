@@ -17,6 +17,7 @@ from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.view import ViewExtension
 from pystac.utils import is_absolute_href
 from shapely.geometry import box, mapping, shape
+
 from stactools.core.projection import reproject_shape
 from stactools.sentinel2.commands import create_sentinel2_command
 from stactools.sentinel2.constants import (
@@ -26,7 +27,6 @@ from stactools.sentinel2.constants import (
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.mgrs import MgrsExtension
 from stactools.sentinel2.utils import extract_gsd
-
 from tests import test_data
 
 BANDS_TO_RESOLUTIONS: Final[Dict[str, List[int]]] = {

@@ -4,6 +4,7 @@ from typing import Any, Optional
 import pystac
 from pystac.utils import map_opt, str_to_datetime
 from shapely.geometry import Polygon, mapping
+
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.sentinel2.constants import COORD_ROUNDING, PRODUCT_METADATA_ASSET_KEY
@@ -138,7 +139,7 @@ class ProductMetadata:
         result = self.product_info_node.find_text("PRODUCT_URI")
         if result is None:
             raise ValueError(
-                "Cannot determine product ID using product metadata " f"at {self.href}"
+                f"Cannot determine product ID using product metadata at {self.href}"
             )
         else:
             return result

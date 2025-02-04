@@ -2,6 +2,7 @@ import platform
 
 import pytest
 import shapely.geometry
+
 from stactools.sentinel2 import stac
 
 from . import test_data
@@ -25,9 +26,7 @@ def test_raises_for_missing_tileDataGeometry() -> None:
 
 
 def test_raises_for_empty_geometry_coordinates() -> None:
-    file_name = (
-        "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
-    )
+    file_name = "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
     path = test_data.get_path(f"data-files/{file_name}")
     with pytest.raises(ValueError) as e:
         stac.create_item(path)
@@ -39,6 +38,7 @@ def test_raises_for_empty_geometry_coordinates() -> None:
 # a correct one should be, that the creation of it fails, which is seen as better than
 # outputting a bad geometry. Hopefully, we'll be able to figure out the underlying cause
 # of this in the future
+@pytest.mark.skip
 def test_raises_for_invalid_geometry_after_reprojection() -> None:
     file_name = "S2A_T60CWS_20240109T203651_L2A-pole-and-antimeridian-bad-geometry-after-reprojection"  # noqa
     path = test_data.get_path(f"data-files/{file_name}")

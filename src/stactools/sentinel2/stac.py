@@ -22,6 +22,7 @@ from pystac.utils import now_to_rfc3339_str
 from shapely.geometry import mapping as shapely_mapping
 from shapely.geometry import shape as shapely_shape
 from shapely.validation import make_valid
+
 from stactools.core.io import ReadHrefModifier
 from stactools.core.projection import reproject_shape, transform_from_bbox
 from stactools.sentinel2.constants import (
@@ -663,9 +664,11 @@ def metadata_from_granule_metadata(
         metadata_dict.update(**product_metadata.metadata_dict)
 
     return Metadata(
-        scene_id=granule_metadata.scene_id
-        if product_metadata is None
-        else product_metadata.scene_id,
+        scene_id=(
+            granule_metadata.scene_id
+            if product_metadata is None
+            else product_metadata.scene_id
+        ),
         extra_assets=extra_assets,
         metadata_dict=metadata_dict,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
