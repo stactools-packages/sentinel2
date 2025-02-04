@@ -1,12 +1,12 @@
 import unittest
 
 from shapely.geometry import box, mapping, shape
+
 from stactools.core.projection import reproject_shape
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.granule_metadata import GranuleMetadata
 from stactools.sentinel2.product_metadata import ProductMetadata
 from stactools.sentinel2.safe_manifest import SafeManifest
-
 from tests import test_data
 
 

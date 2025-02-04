@@ -4,11 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [tool.ruff]
 line-length = 88
+
+[tool.ruff.lint]
 select = ["E", "F", "I"]
 
 # pyproject.toml
 [tool.pytest.ini_options]
-filterwarnings = [
-    "error",
-    "ignore::antimeridian.FixWindingWarning",
-]
+filterwarnings = ["error", "ignore::antimeridian.FixWindingWarning"]

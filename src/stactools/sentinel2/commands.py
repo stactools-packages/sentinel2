@@ -4,6 +4,7 @@ import os
 from typing import Optional
 
 import click
+
 from stactools.sentinel2.constants import DEFAULT_TOLERANCE
 from stactools.sentinel2.stac import create_item
 
