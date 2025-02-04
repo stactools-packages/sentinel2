@@ -5,6 +5,7 @@ from typing import Final, Optional
 import shapely
 from pystac import Item
 from shapely.geometry import MultiPolygon, Polygon, shape
+
 from stactools.core.utils import antimeridian
 from stactools.core.utils.antimeridian import Strategy
 

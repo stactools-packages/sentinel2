@@ -5,6 +5,7 @@ from typing import Any, Optional
 import pystac
 from pystac.utils import str_to_datetime
 from shapely.geometry import shape
+
 from stactools.core.io import ReadHrefModifier, read_text
 from stactools.sentinel2.constants import SENTINEL2_PROPERTY_PREFIX as s2_prefix
 from stactools.sentinel2.constants import TILEINFO_METADATA_ASSET_KEY

@@ -5,6 +5,7 @@ from tempfile import TemporaryDirectory
 
 import pystac
 from pystac.utils import make_absolute_href
+
 from stactools.core.utils.convert import cogify
 from stactools.core.utils.subprocess import call
 

@@ -2,6 +2,7 @@ import os
 from typing import Optional
 
 import pystac
+
 from stactools.core.io import ReadHrefModifier
 from stactools.core.io.xml import XmlElement
 from stactools.sentinel2.constants import SAFE_MANIFEST_ASSET_KEY

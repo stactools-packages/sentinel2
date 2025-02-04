@@ -14,6 +14,7 @@ from pystac import (
     SpatialExtent,
     TemporalExtent,
 )
+
 from stactools.sentinel2.stac import create_item
 
 DEFAULT_EXTENT = Extent(
