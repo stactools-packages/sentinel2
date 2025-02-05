@@ -145,7 +145,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
 
 <!-- [Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.3..main> -->
-[0.6.4]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.4..v0.6.5>
+[0.6.5]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.4..v0.6.5>
 [0.6.4]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.3..v0.6.4>
 [0.6.3]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.2..v0.6.3>
 [0.6.2]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.1..v0.6.2>
