@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
+## [0.6.5]
+
+### Fix
+
+- Update extraction of `platform` property to add support for both Sentinel-2C
+  and Sentinel-2D.
+
 ## [0.6.4] - 2024-04-04
 
 ### Added
@@ -138,6 +145,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
 
 <!-- [Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.3..main> -->
+[0.6.4]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.4..v0.6.5>
 [0.6.4]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.3..v0.6.4>
 [0.6.3]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.2..v0.6.3>
 [0.6.2]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.1..v0.6.2>
