@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated project configuration to use only `pyproject.toml`
 - Updated `grid.code` to include leading zeros on UTM zones less than 10.
   ([#188](https://github.com/stactools-packages/sentinel2/issues/188))
+- Use shapely `transform` instead of `reproject_shape` reproject to EPSG:4326
 
 ## [0.6.5] - 2025-02-05
 
