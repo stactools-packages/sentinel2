@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01KAB_20230821T221944_L2A",
   "properties": {
-    "created": "2024-04-03T15:21:15.669125Z",
+    "created": "2025-05-20T23:07:26.796902Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "K",
     "mgrs:grid_square": "AB",
-    "grid:code": "MGRS-1KAB",
+    "grid:code": "MGRS-01KAB",
     "view:azimuth": 177.2921391668143,
     "view:incidence_angle": 2.7752190171935607,
     "view:sun_azimuth": 43.3009058473725,

@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01WCP_20230625T234624_L2A",
   "properties": {
-    "created": "2024-04-03T15:21:15.881344Z",
+    "created": "2025-05-20T23:07:27.047573Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "W",
     "mgrs:grid_square": "CP",
-    "grid:code": "MGRS-1WCP",
+    "grid:code": "MGRS-01WCP",
     "s2:product_uri": "S2A_MSIL2A_20230625T234621_N0509_R073_T01WCP_20230626T022158.SAFE",
     "s2:generation_time": "2023-06-26T02:21:57.000000Z",
     "s2:processing_baseline": "05.09",

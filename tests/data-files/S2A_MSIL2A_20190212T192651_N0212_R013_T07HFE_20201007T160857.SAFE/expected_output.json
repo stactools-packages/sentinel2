@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2024-04-03T15:21:15.758770Z",
+    "created": "2025-05-20T23:07:26.905893Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 7,
     "mgrs:latitude_band": "H",
     "mgrs:grid_square": "FE",
-    "grid:code": "MGRS-7HFE",
+    "grid:code": "MGRS-07HFE",
     "view:azimuth": 288.9954893614781,
     "view:incidence_angle": 10.813814451500992,
     "view:sun_azimuth": 62.3286549448294,
