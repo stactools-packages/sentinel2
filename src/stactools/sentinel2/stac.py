@@ -200,7 +200,7 @@ def create_item(
         mgrs.latitude_band = mgrs_groups[1]
         mgrs.grid_square = mgrs_groups[2]
         grid = GridExtension.ext(item, add_if_missing=True)
-        grid.code = f"MGRS-{mgrs.utm_zone}{mgrs.latitude_band}{mgrs.grid_square}"
+        grid.code = f"MGRS-{mgrs.utm_zone:02}{mgrs.latitude_band}{mgrs.grid_square}"
     else:
         logger.error(
             "Error populating MGRS and Grid Extensions fields from ID: "
