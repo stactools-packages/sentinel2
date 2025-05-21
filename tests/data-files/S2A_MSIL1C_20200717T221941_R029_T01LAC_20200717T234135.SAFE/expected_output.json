@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01LAC_20200717T221944_L1C",
   "properties": {
-    "created": "2024-04-03T15:21:16.153763Z",
+    "created": "2025-05-20T23:07:27.326040Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "L",
     "mgrs:grid_square": "AC",
-    "grid:code": "MGRS-1LAC",
+    "grid:code": "MGRS-01LAC",
     "view:azimuth": 139.42540278202193,
     "view:incidence_angle": 3.084630341560113,
     "view:sun_azimuth": 36.1960474596642,

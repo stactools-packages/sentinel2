@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01WCS_20230625T234624_L2A",
   "properties": {
-    "created": "2024-04-03T15:21:15.971291Z",
+    "created": "2025-05-20T23:07:27.155310Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 1,
     "mgrs:latitude_band": "W",
     "mgrs:grid_square": "CS",
-    "grid:code": "MGRS-1WCS",
+    "grid:code": "MGRS-01WCS",
     "view:azimuth": 113.29970788068462,
     "view:incidence_angle": 9.951904050235576,
     "view:sun_azimuth": 174.235064324747,
