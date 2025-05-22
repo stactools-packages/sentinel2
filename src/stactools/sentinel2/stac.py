@@ -11,6 +11,7 @@ from typing import Any, Final, Optional
 
 import antimeridian
 import pystac
+from pyproj import Transformer
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -19,12 +20,14 @@ from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import SCHEMA_URI as VIEW_EXT_URI
 from pystac.extensions.view import ViewExtension
 from pystac.utils import now_to_rfc3339_str
+from shapely.geometry import MultiPolygon, Polygon
 from shapely.geometry import mapping as shapely_mapping
 from shapely.geometry import shape as shapely_shape
+from shapely.ops import transform as shapely_transform
 from shapely.validation import make_valid
 
 from stactools.core.io import ReadHrefModifier
-from stactools.core.projection import reproject_shape, transform_from_bbox
+from stactools.core.projection import transform_from_bbox
 from stactools.sentinel2.constants import (
     ASSET_TO_TITLE,
     BANDS_TO_ASSET_NAME,
@@ -131,19 +134,7 @@ def create_item(
             granule_href, read_href_modifier, tolerance
         )
 
-    # ensure that we have a valid geometry, fixing any antimeridian issues
-    shapely_geometry = shapely_shape(antimeridian.fix_shape(metadata.geometry))
-    geometry = make_valid(shapely_geometry)
-
-    # sometimes, antimeridian and/or polar crossing scenes on some platforms end up
-    # with geometries that cover the inverse area that they should, so nearly the
-    # entire globe. This has been seen to have different behaviors on different
-    # architectures and dependent library versions. To prevent these errors from
-    # resulting in a wildly-incorrect geometry, we fail here if the geometry
-    # is unreasonably large. Typical areas will no greater than 3, whereas an
-    # incorrect globe-covering geometry will have an area for 61110.
-    if (ga := geometry.area) > 100:
-        raise Exception(f"Area of geometry is {ga}, which is too large to be correct.")
+    geometry = make_valid_geometry(metadata.geometry)
 
     bbox = [round(v, COORD_ROUNDING) for v in antimeridian.bbox(geometry)]
 
@@ -637,8 +628,15 @@ def metadata_from_granule_metadata(
             "coordinates. Perhaps there is no data in the scene?"
         )
 
-    geometry = reproject_shape(
-        f"epsg:{granule_metadata.epsg}", "epsg:4326", tileinfo_metadata.geometry
+    # force_over to force latitude to not wrap around the antimeridian.
+    # this is common with vertices where the latitude is within the
+    # tolerance to be considered "on the antimeridian"
+    # (introduced in pyproj 3.4.0+, but only worked with 3.5.0+)
+    transformer = Transformer.from_crs(
+        granule_metadata.epsg, 4326, force_over=True, always_xy=True
+    )
+    geometry = shapely_transform(
+        transformer.transform, shapely_shape(tileinfo_metadata.geometry)
     ).simplify(tolerance)
 
     extra_assets = dict(
@@ -718,3 +716,28 @@ def raster_bands(
             offset=offset,
         )
     ]
+
+
+def make_valid_geometry(input_geometry: dict[str, Any]) -> Polygon | MultiPolygon:
+    # ensure that we have a valid geometry, fixing any antimeridian issues
+    shapely_geometry = shapely_shape(antimeridian.fix_shape(input_geometry))
+    geometry = make_valid(shapely_geometry)
+
+    # make_valid can result in linestrings being created, if GeometeryCollection,
+    # filter to polygon or multipolygon (expected to have one post-antimeridian fix)
+    if geometry.geom_type == "GeometryCollection":
+        geometry = next(
+            filter(lambda x: x.geom_type in ["Polygon", "MultiPolygon"], geometry.geoms)
+        )
+
+    # sometimes, antimeridian and/or polar crossing scenes on some platforms end up
+    # with geometries that cover the inverse area that they should, so nearly the
+    # entire globe. This has been seen to have different behaviors on different
+    # architectures and dependent library versions. To prevent these errors from
+    # resulting in a wildly-incorrect geometry, we fail here if the geometry
+    # is unreasonably large. Typical areas will no greater than 3, whereas an
+    # incorrect globe-covering geometry will have an area for 61110.
+    if (ga := geometry.area) > 100:
+        raise Exception(f"Area of geometry is {ga}, which is too large to be correct.")
+
+    return geometry

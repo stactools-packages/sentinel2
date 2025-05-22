@@ -1,5 +1,3 @@
-import platform
-
 import pytest
 import shapely.geometry
 
@@ -33,39 +31,28 @@ def test_raises_for_empty_geometry_coordinates() -> None:
     assert "with no coordinates" in str(e)
 
 
-# this scene produces a correct geometry when running on arm64, but incorrect when
-# running on amd64. This tests a check that the area of the geometry is larger than
-# a correct one should be, that the creation of it fails, which is seen as better than
-# outputting a bad geometry. Hopefully, we'll be able to figure out the underlying cause
-# of this in the future
-@pytest.mark.skip
-def test_raises_for_invalid_geometry_after_reprojection() -> None:
-    file_name = "S2A_T60CWS_20240109T203651_L2A-pole-and-antimeridian-bad-geometry-after-reprojection"  # noqa
+# this scene has one vertex that just crosses the antimeridian
+# but is snapped to the antimeridian line
+def test_one_vertex_just_crossing() -> None:
+    file_name = "S2B_MSIL2A_20200914T231559_N0500_R087_T01VCG_20230315T224658"  # noqa
     path = test_data.get_path(f"data-files/{file_name}")
-    if platform.machine() == "arm64":
-        stac.create_item(path)
-    elif platform.machine() == "x86_64":
-        with pytest.raises(Exception) as e:
-            stac.create_item(path)
-        assert "Area of geometry is " in str(e)
-    else:
-        pytest.fail(f"unknown platform.machine '{platform.machine()}'")
+    stac.create_item(path)
 
 
-# this scene creates a geometry that's globe-spanning, so it should throw an exception
-def test_raises_for_invalid_geometry() -> None:
+# this scene previously produced a correct geometry when running on arm64, but incorrect
+# large globe-spanning geometry on amd64. This checks for regression.
+def test_polar_antimeridian_crossing() -> None:
+    file_name = "S2A_T60CWS_20240109T203651_L2A"  # noqa
+    path = test_data.get_path(f"data-files/{file_name}")
+    stac.create_item(path)
+
+
+# this scene previously created a geometry that's globe-spanning
+# checks for regression
+def test_antimeridian_crossing() -> None:
     file_name = "S2A_OPER_MSI_L2A_DS_2APS_20230105T201055_S20230105T163809"  # noqa
     path = test_data.get_path(f"data-files/{file_name}")
-    if platform.machine() == "arm64":
-        with pytest.raises(Exception) as e:
-            stac.create_item(path)
-        assert "Area of geometry is " in str(e)
-    elif platform.machine() == "x86_64":
-        # fails in antimeridian on "assert not interiors"
-        with pytest.raises(AssertionError) as e:
-            stac.create_item(path)
-    else:
-        pytest.fail(f"unknown platform.machine '{platform.machine()}'")
+    stac.create_item(path)
 
 
 def test_antimeridian() -> None:
@@ -102,4 +89,34 @@ def test_antimeridian() -> None:
         shapely.geometry.shape(expected)
         .normalize()
         .equals_exact(shapely.geometry.shape(item.geometry).normalize(), tolerance=5)
+    )
+
+
+def test_make_geometry_collection_filter():
+    input_geometry = {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [-70, 6],
+                [-74, 6],
+                [-74, 6.5],  #
+                [-72, 6.5],  # will result in a linestring
+                [-74, 6.5],  #
+                [-74, 7],
+                [-70, 7],
+                [-70, 6],
+            ]
+        ],
+    }
+
+    expected = {
+        "type": "Polygon",
+        "coordinates": [[[-74, 7], [-70, 7], [-70, 6], [-74, 6], [-74, 6.5], [-74, 7]]],
+    }
+    valid_geometry = stac.make_valid_geometry(input_geometry)
+
+    assert (
+        shapely.geometry.shape(expected)
+        .normalize()
+        .equals_exact(valid_geometry.normalize(), tolerance=5)
     )
