@@ -13,24 +13,6 @@ def test_product_metadata_asset() -> None:
     assert "product_metadata" in item.assets
 
 
-def test_raises_for_missing_tileDataGeometry() -> None:
-    file_name = (
-        "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ-no-tileDataGeometry"
-    )
-    path = test_data.get_path(f"data-files/{file_name}")
-    with pytest.raises(ValueError) as e:
-        stac.create_item(path)
-    assert "Metadata does not contain geometry" in str(e)
-
-
-def test_raises_for_empty_geometry_coordinates() -> None:
-    file_name = "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data"  # noqa
-    path = test_data.get_path(f"data-files/{file_name}")
-    with pytest.raises(ValueError) as e:
-        stac.create_item(path)
-    assert "with no coordinates" in str(e)
-
-
 # this scene has one vertex that just crosses the antimeridian
 # but is snapped to the antimeridian line
 def test_one_vertex_just_crossing() -> None:
@@ -120,3 +102,35 @@ def test_make_geometry_collection_filter():
         .normalize()
         .equals_exact(valid_geometry.normalize(), tolerance=5)
     )
+
+
+def test_fallback_geometry():
+    file_name = (
+        "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ-no-tileDataGeometry"  # noqa
+    )
+    path = test_data.get_path(f"data-files/{file_name}")
+    stac.create_item(path)
+
+
+@pytest.mark.parametrize(
+    ("file_name", "allow_fallback_geometry"),
+    [
+        [
+            "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ-no-tileDataGeometry",
+            False,
+        ],  # Raise if no tileDataGeometry and not allowed to fallback
+        [
+            "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data",
+            False,
+        ],  # Raise if no coords in tileDataGeometry and not allowed to fallback
+        [
+            "S2A_OPER_MSI_L2A_TL_VGS1_20220401T110010_A035382_T34LBQ-no-tileDataGeometry-no-product-metadata",
+            True,
+        ],  # Raise if no tileDataGeometry and no product metadata
+    ],
+)
+def test_fallback_geometry_raises(file_name, allow_fallback_geometry):
+    path = test_data.get_path(f"data-files/{file_name}")
+    with pytest.raises(ValueError) as e:
+        stac.create_item(path, allow_fallback_geometry=allow_fallback_geometry)
+    assert "Metadata does not contain geometry" in str(e)

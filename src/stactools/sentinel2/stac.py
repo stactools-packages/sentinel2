@@ -109,6 +109,7 @@ def create_item(
     additional_providers: Optional[list[pystac.Provider]] = None,
     read_href_modifier: Optional[ReadHrefModifier] = None,
     asset_href_prefix: Optional[str] = None,
+    allow_fallback_geometry: bool = True,
 ) -> pystac.Item:
     """Create a STAC Item from a Sentinel 2 granule.
 
@@ -122,6 +123,8 @@ def create_item(
             This can be used to modify a HREF to make it readable, e.g. appending
             an Azure SAS token or creating a signed URL.
         asset_href_prefix: The URL prefix to apply to the asset hrefs
+        allow_fallback_geometry: If reading from granule href, allow usage of the product metadata geometry
+            if tileInfo file does not have a data footprint. Defaults to True.
 
     Returns:
         pystac.Item: An item representing the Sentinel 2 scene
@@ -131,7 +134,7 @@ def create_item(
         metadata = metadata_from_safe_manifest(granule_href, read_href_modifier)
     else:
         metadata = metadata_from_granule_metadata(
-            granule_href, read_href_modifier, tolerance
+            granule_href, read_href_modifier, tolerance, allow_fallback_geometry
         )
 
     geometry = make_valid_geometry(metadata.geometry)
@@ -597,6 +600,7 @@ def metadata_from_granule_metadata(
     granule_metadata_href: str,
     read_href_modifier: Optional[ReadHrefModifier],
     tolerance: float,
+    allow_fallback_geometry: bool = True,
 ) -> Metadata:
     granule_metadata = GranuleMetadata(
         os.path.join(granule_metadata_href, "metadata.xml"), read_href_modifier
@@ -616,28 +620,30 @@ def metadata_from_granule_metadata(
         )
         product_metadata = ProductMetadata(f, read_href_modifier)
 
-    if not tileinfo_metadata.geometry:
+    # check if tile info has geometry, and non-empty coordinates
+    if tileinfo_metadata.geometry and (
+        (cs := tileinfo_metadata.geometry.get("coordinates")) and (all(cs))
+    ):
+        # force_over to force latitude to not wrap around the antimeridian.
+        # this is common with vertices where the latitude is within the
+        # tolerance to be considered "on the antimeridian"
+        # (introduced in pyproj 3.4.0+, but only worked with 3.5.0+)
+        transformer = Transformer.from_crs(
+            granule_metadata.epsg, 4326, force_over=True, always_xy=True
+        )
+        geometry = shapely_mapping(
+            shapely_transform(
+                transformer.transform, shapely_shape(tileinfo_metadata.geometry)
+            ).simplify(tolerance)
+        )
+    # if allowed to fallback, and product metadata is available
+    elif allow_fallback_geometry and product_metadata:
+        geometry = product_metadata.geometry
+    else:
         raise ValueError(
             f"Metadata does not contain geometry for {granule_metadata_href}. "
             "Perhaps there is no data in the scene?"
         )
-
-    if not (cs := tileinfo_metadata.geometry.get("coordinates")) or not (all(cs)):
-        raise ValueError(
-            f"Metadata contains a geometry for {granule_metadata_href} with no "
-            "coordinates. Perhaps there is no data in the scene?"
-        )
-
-    # force_over to force latitude to not wrap around the antimeridian.
-    # this is common with vertices where the latitude is within the
-    # tolerance to be considered "on the antimeridian"
-    # (introduced in pyproj 3.4.0+, but only worked with 3.5.0+)
-    transformer = Transformer.from_crs(
-        granule_metadata.epsg, 4326, force_over=True, always_xy=True
-    )
-    geometry = shapely_transform(
-        transformer.transform, shapely_shape(tileinfo_metadata.geometry)
-    ).simplify(tolerance)
 
     extra_assets = dict(
         [
@@ -673,7 +679,7 @@ def metadata_from_granule_metadata(
         epsg=granule_metadata.epsg,
         proj_bbox=granule_metadata.proj_bbox,
         resolution_to_shape=granule_metadata.resolution_to_shape,
-        geometry=shapely_mapping(geometry),
+        geometry=geometry,
         datetime=tileinfo_metadata.datetime,
         platform=granule_metadata.platform,
         image_media_type=pystac.MediaType.JPEG2000,
