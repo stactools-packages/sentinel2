@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `allow_fallback_geometry` option to create stac, that allows usage of product
+  metadata geometry if data is not found in AWS tileInfo metadata
+
 ### Changed
 
 - Updated project configuration to use only `pyproject.toml`
