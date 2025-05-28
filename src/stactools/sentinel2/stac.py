@@ -68,6 +68,7 @@ SNW_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SNW[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
+IS_PVI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]_PVI")
 BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
 
@@ -285,18 +286,6 @@ def image_asset_from_href(
         else:
             raise Exception(f"Must supply a media type for asset : {asset_href}")
 
-    # Handle preview image
-    if "_PVI" in asset_href:
-        asset = pystac.Asset(
-            href=asset_href,
-            media_type=asset_media_type,
-            title="True color preview",
-            roles=["overview"],
-        )
-        asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = RGB_BANDS
-        return "preview", asset
-
     # Extract gsd and proj info
     resolution = extract_gsd(asset_href)
     if resolution is None:
@@ -307,8 +296,15 @@ def image_asset_from_href(
             resolution = highest_asset_res(band_id_search.group(1))
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
+        elif IS_PVI_PATTERN.search(asset_href):
+            resolution = 320
 
-    shape = list(resolution_to_shape[int(resolution)])
+    if resolution != 320:
+        shape = list(resolution_to_shape[int(resolution)])
+    else:
+        # infer from 10m shape of RGB bands
+        shape = [int(x / 32) for x in resolution_to_shape[10]]
+
     transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(_asset: pystac.Asset, _band_gsd: Optional[int] = None):
@@ -318,6 +314,19 @@ def image_asset_from_href(
         asset_projection.shape = shape
         asset_projection.bbox = proj_bbox
         asset_projection.transform = transform
+
+    # Handle preview image
+    if "_PVI" in asset_href:
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="True color preview",
+            roles=["overview"],
+        )
+        set_asset_properties(asset, resolution)
+        asset_eo = EOExtension.ext(asset)
+        asset_eo.bands = RGB_BANDS
+        return "preview", asset
 
     # Handle band image
 
