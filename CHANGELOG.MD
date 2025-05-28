@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
-## [Unreleased]
+## [0.6.6] - 2025-05-28
 
 ### Changed
 
@@ -153,7 +153,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Modified Item IDs to include product discriminator ([#7](https://github.com/stactools-packages/sentinel2/pull/7))
 - Upgrade to stactools 0.2.1.a2 (supporting PySTAC 1.0.0)
 
-[Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.5..main>
+[Unreleased]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.6..main>
+[0.6.6]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.5..v0.6.6>
 [0.6.5]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.4..v0.6.5>
 [0.6.4]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.3..v0.6.4>
 [0.6.3]: <https://github.com/stactools-packages/sentinel2/compare/v0.6.2..v0.6.3>
