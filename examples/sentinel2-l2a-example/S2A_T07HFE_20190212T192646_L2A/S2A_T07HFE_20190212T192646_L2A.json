@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2024-04-03T15:18:36.783754Z",
+    "created": "2025-06-02T16:57:01.943193Z",
     "providers": [
       {
         "name": "ESA",
@@ -31,7 +31,7 @@
     "mgrs:utm_zone": 7,
     "mgrs:latitude_band": "H",
     "mgrs:grid_square": "FE",
-    "grid:code": "MGRS-7HFE",
+    "grid:code": "MGRS-07HFE",
     "view:azimuth": 288.9954893614781,
     "view:incidence_angle": 10.813814451500992,
     "view:sun_azimuth": 62.3286549448294,
@@ -1714,6 +1714,26 @@
     "preview": {
       "href": "../../../tests/data-files/S2A_MSIL2A_20190212T192651_N0212_R013_T07HFE_20201007T160857.SAFE/GRANULE/L2A_T07HFE_A019029_20190212T192646/QI_DATA/T07HFE_20190212T192651_PVI.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "True color preview",
+      "gsd": 320,
+      "proj:shape": [
+        343,
+        343
+      ],
+      "proj:bbox": [
+        600000.0,
+        6390220.0,
+        709800.0,
+        6500020.0
+      ],
+      "proj:transform": [
+        320.11661807580174,
+        0.0,
+        600000.0,
+        0.0,
+        -320.11661807580174,
+        6500020.0
+      ],
       "roles": [
         "overview"
       ]
