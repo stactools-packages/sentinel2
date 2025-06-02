@@ -30,7 +30,7 @@ Sentinel Hub metadata:
 ```shell
 stac sentinel2 create-item --asset-href-prefix s3://sentinel-s2-l2a/tiles/34/L/BP/2022/4/1/0/ \
       https://roda.sentinel-hub.com/sentinel-s2-l2a/tiles/34/L/BP/2022/4/1/0/ output
-````
+```
 
 **Note:** this does not currently work with S3 buckets using requester-pays.
 
