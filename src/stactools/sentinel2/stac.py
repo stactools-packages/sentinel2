@@ -68,7 +68,7 @@ SNW_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SNW[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
-IS_PVI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]_PVI")
+IS_PVI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]PVI")
 BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
 
@@ -302,8 +302,9 @@ def image_asset_from_href(
     if resolution != 320:
         shape = list(resolution_to_shape[int(resolution)])
     else:
-        # infer from 10m shape of RGB bands
-        shape = [int(x / 32) for x in resolution_to_shape[10]]
+        # infer from 10m shape of RGB bands; as resolution_to_shape is
+        # not populated in the xml metadata files
+        shape = [int(x / (resolution / 10)) for x in resolution_to_shape[10]]
 
     transform = transform_from_bbox(proj_bbox, shape)
 
@@ -571,11 +572,26 @@ def metadata_from_safe_manifest(
     )
 
     if granule_metadata.pvi_filename is not None:
-        extra_assets["preview"] = pystac.Asset(
+        pvi_asset = pystac.Asset(
             href=os.path.join(granule_href, granule_metadata.pvi_filename),
             media_type=product_metadata.image_media_type,
+            title="True color preview",
             roles=["overview"],
         )
+        resolution = 320
+        pystac.CommonMetadata(pvi_asset).gsd = resolution
+        asset_projection = ProjectionExtension.ext(pvi_asset)
+        # infer from 10m shape of RGB bands
+        asset_projection.shape = [
+            int(x / (resolution / 10)) for x in granule_metadata.resolution_to_shape[10]
+        ]
+        asset_projection.bbox = [
+            round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox
+        ]
+        asset_projection.transform = transform_from_bbox(
+            asset_projection.bbox, asset_projection.shape
+        )
+        extra_assets["preview"] = pvi_asset
 
     return Metadata(
         scene_id=product_metadata.scene_id,
