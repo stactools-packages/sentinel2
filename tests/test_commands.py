@@ -124,8 +124,14 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
 
     assert item.common_metadata.created is not None
 
-    assert mk_comparable(item) == mk_comparable(
-        pystac.Item.from_file(f"{granule_href}/expected_output.json")
+    expected = Path(f"{granule_href}/expected_output.json")
+    if not expected.exists():
+        item.set_self_href(str(expected))
+        item.make_asset_hrefs_relative()
+        item.save_object(include_self_link=False, dest_href=expected)
+
+    assert mk_comparable(item) == mk_comparable(pystac.Item.from_file(expected)), (
+        f"Doesn't match expectation: {str(expected)}"
     )
 
     bands_seen = set()
