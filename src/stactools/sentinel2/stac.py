@@ -306,6 +306,7 @@ def image_asset_from_href(
         # not populated in the xml metadata files
         shape = [int(x / (resolution / 10)) for x in resolution_to_shape[10]]
 
+    # proj_bbox assumes 10m raster extent
     transform = transform_from_bbox(proj_bbox, shape)
 
     def set_asset_properties(_asset: pystac.Asset, _band_gsd: Optional[int] = None):
@@ -313,8 +314,13 @@ def image_asset_from_href(
             pystac.CommonMetadata(_asset).gsd = _band_gsd
         asset_projection = ProjectionExtension.ext(_asset)
         asset_projection.shape = shape
-        asset_projection.bbox = proj_bbox
         asset_projection.transform = transform
+        asset_projection.bbox = [
+            proj_bbox[0],
+            proj_bbox[3] - resolution * shape[1],
+            proj_bbox[0] + resolution * shape[0],
+            proj_bbox[3],
+        ]
 
     # Handle preview image
     if "_PVI" in asset_href:
@@ -585,8 +591,13 @@ def metadata_from_safe_manifest(
         asset_projection.shape = [
             int(x / (resolution / 10)) for x in granule_metadata.resolution_to_shape[10]
         ]
+        gran_bbox = [round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox]
+        # compute bbox from upper left
         asset_projection.bbox = [
-            round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox
+            gran_bbox[0],
+            gran_bbox[3] - resolution * asset_projection.shape[1],
+            gran_bbox[0] + resolution * asset_projection.shape[0],
+            gran_bbox[3],
         ]
         asset_projection.transform = transform_from_bbox(
             asset_projection.bbox, asset_projection.shape
