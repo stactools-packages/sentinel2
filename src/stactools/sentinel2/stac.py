@@ -264,6 +264,27 @@ def create_item(
     return item
 
 
+def set_asset_properties(
+    asset: pystac.Asset,
+    resolution: int,
+    shape: tuple[int, int],
+    proj_bbox_10m: list[float],
+    gsd: Optional[int] = None,
+) -> pystac.Asset:
+    if gsd:
+        pystac.CommonMetadata(asset).gsd = gsd
+    asset_projection = ProjectionExtension.ext(asset)
+    asset_projection.shape = list(shape)
+    asset_projection.bbox = [
+        proj_bbox_10m[0],
+        proj_bbox_10m[3] - resolution * shape[1],
+        proj_bbox_10m[0] + resolution * shape[0],
+        proj_bbox_10m[3],
+    ]
+    asset_projection.transform = transform_from_bbox(asset_projection.bbox, shape)
+    return asset
+
+
 def image_asset_from_href(
     item: pystac.Item,
     asset_href: str,
@@ -287,7 +308,8 @@ def image_asset_from_href(
             raise Exception(f"Must supply a media type for asset : {asset_href}")
 
     # Extract gsd and proj info
-    resolution = extract_gsd(asset_href)
+    maybe_res = extract_gsd(asset_href)
+    resolution = maybe_res
     if resolution is None:
         # in Level-1C we can deduct the spatial resolution from the band ID or
         # asset name
@@ -299,28 +321,7 @@ def image_asset_from_href(
         elif IS_PVI_PATTERN.search(asset_href):
             resolution = 320
 
-    if resolution != 320:
-        shape = list(resolution_to_shape[int(resolution)])
-    else:
-        # infer from 10m shape of RGB bands; as resolution_to_shape is
-        # not populated in the xml metadata files
-        shape = [int(x / (resolution / 10)) for x in resolution_to_shape[10]]
-
-    # proj_bbox assumes 10m raster extent
-    transform = transform_from_bbox(proj_bbox, shape)
-
-    def set_asset_properties(_asset: pystac.Asset, _band_gsd: Optional[int] = None):
-        if _band_gsd:
-            pystac.CommonMetadata(_asset).gsd = _band_gsd
-        asset_projection = ProjectionExtension.ext(_asset)
-        asset_projection.shape = shape
-        asset_projection.transform = transform
-        asset_projection.bbox = [
-            proj_bbox[0],
-            proj_bbox[3] - resolution * shape[1],
-            proj_bbox[0] + resolution * shape[0],
-            proj_bbox[3],
-        ]
+    shape = resolution_to_shape[int(resolution)]
 
     # Handle preview image
     if "_PVI" in asset_href:
@@ -330,7 +331,7 @@ def image_asset_from_href(
             title="True color preview",
             roles=["overview"],
         )
-        set_asset_properties(asset, resolution)
+        set_asset_properties(asset, resolution, shape, proj_bbox, resolution)
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = RGB_BANDS
         return "preview", asset
@@ -374,7 +375,7 @@ def image_asset_from_href(
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
-        set_asset_properties(asset, band_gsd)
+        set_asset_properties(asset, resolution, shape, proj_bbox, band_gsd)
 
         RasterExtension.ext(asset).bands = raster_bands(
             boa_add_offsets, processing_baseline, band_id, resolution
@@ -410,9 +411,8 @@ def image_asset_from_href(
             ),
         ]
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
@@ -423,10 +423,8 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "aot")
-
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -447,10 +445,9 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "wvp")
 
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -472,9 +469,8 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "scl")
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -492,9 +488,8 @@ def image_asset_from_href(
             title="Cloud Probabilities",
             roles=["data", "cloud"],
         )
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "cloud")
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -512,9 +507,8 @@ def image_asset_from_href(
             title="Snow Probabilities",
             roles=["data", "snow-ice"],
         )
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "snow")
-        set_asset_properties(asset)
+        set_asset_properties(asset, resolution, shape, proj_bbox)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -585,22 +579,9 @@ def metadata_from_safe_manifest(
             roles=["overview"],
         )
         resolution = 320
-        pystac.CommonMetadata(pvi_asset).gsd = resolution
-        asset_projection = ProjectionExtension.ext(pvi_asset)
-        # infer from 10m shape of RGB bands
-        asset_projection.shape = [
-            int(x / (resolution / 10)) for x in granule_metadata.resolution_to_shape[10]
-        ]
-        gran_bbox = [round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox]
-        # compute bbox from upper left
-        asset_projection.bbox = [
-            gran_bbox[0],
-            gran_bbox[3] - resolution * asset_projection.shape[1],
-            gran_bbox[0] + resolution * asset_projection.shape[0],
-            gran_bbox[3],
-        ]
-        asset_projection.transform = transform_from_bbox(
-            asset_projection.bbox, asset_projection.shape
+        shape = granule_metadata.resolution_to_shape[resolution]
+        set_asset_properties(
+            pvi_asset, resolution, shape, granule_metadata.proj_bbox, resolution
         )
         extra_assets["preview"] = pvi_asset
 

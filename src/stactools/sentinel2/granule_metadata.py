@@ -70,6 +70,13 @@ class GranuleMetadata:
                 )
             self.resolution_to_shape[int(res)] = (nrows, ncols)
 
+        # calculate the 320 m array shape, as it is not included in the metadata,
+        # by approximation from the 10 m array shape.
+        self.resolution_to_shape[320] = (
+            int(self.resolution_to_shape[10][0] * 10 / 320),
+            int(self.resolution_to_shape[10][1] * 10 / 320),
+        )
+
     @property
     def epsg(self) -> int | None:
         epsg_str = self._geocoding_node.find_text("HORIZONTAL_CS_CODE")
