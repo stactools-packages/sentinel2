@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2025-05-20T23:07:27.100187Z",
+    "created": "2025-06-03T16:40:10.405229Z",
     "providers": [
       {
         "name": "ESA",
@@ -1794,6 +1794,25 @@
       "href": "./qi/L2A_PVI.jp2",
       "type": "image/jp2",
       "title": "True color preview",
+      "gsd": 320,
+      "proj:shape": [
+        343,
+        343
+      ],
+      "proj:bbox": [
+        399960.0,
+        4090240.0,
+        509720.0,
+        4200000.0
+      ],
+      "proj:transform": [
+        320.0,
+        0.0,
+        399960.0,
+        0.0,
+        -320.0,
+        4200000.0
+      ],
       "eo:bands": [
         {
           "name": "B04",

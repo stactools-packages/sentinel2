@@ -68,6 +68,7 @@ SNW_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]SNW[_.]")
 
 BAND_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\w{2})")
 IS_TCI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]TCI")
+IS_PVI_PATTERN: Final[Pattern[str]] = re.compile(r"[_/]PVI")
 BAND_ID_PATTERN: Final[Pattern[str]] = re.compile(r"[_/](B\d[A\d])")
 RESOLUTION_PATTERN: Final[Pattern[str]] = re.compile(r"(\w{2}m)")
 
@@ -263,6 +264,27 @@ def create_item(
     return item
 
 
+def set_asset_properties(
+    asset: pystac.Asset,
+    resolution: int,
+    shape: tuple[int, int],
+    proj_bbox_10m: list[float],
+    gsd: Optional[int] = None,
+) -> pystac.Asset:
+    if gsd:
+        pystac.CommonMetadata(asset).gsd = gsd
+    asset_projection = ProjectionExtension.ext(asset)
+    asset_projection.shape = list(shape)
+    asset_projection.bbox = [
+        proj_bbox_10m[0],
+        proj_bbox_10m[3] - resolution * shape[1],
+        proj_bbox_10m[0] + resolution * shape[0],
+        proj_bbox_10m[3],
+    ]
+    asset_projection.transform = transform_from_bbox(asset_projection.bbox, shape)
+    return asset
+
+
 def image_asset_from_href(
     item: pystac.Item,
     asset_href: str,
@@ -285,20 +307,9 @@ def image_asset_from_href(
         else:
             raise Exception(f"Must supply a media type for asset : {asset_href}")
 
-    # Handle preview image
-    if "_PVI" in asset_href:
-        asset = pystac.Asset(
-            href=asset_href,
-            media_type=asset_media_type,
-            title="True color preview",
-            roles=["overview"],
-        )
-        asset_eo = EOExtension.ext(asset)
-        asset_eo.bands = RGB_BANDS
-        return "preview", asset
-
     # Extract gsd and proj info
-    resolution = extract_gsd(asset_href)
+    maybe_res = extract_gsd(asset_href)
+    resolution = maybe_res
     if resolution is None:
         # in Level-1C we can deduct the spatial resolution from the band ID or
         # asset name
@@ -307,17 +318,23 @@ def image_asset_from_href(
             resolution = highest_asset_res(band_id_search.group(1))
         elif IS_TCI_PATTERN.search(asset_href):
             resolution = 10
+        elif IS_PVI_PATTERN.search(asset_href):
+            resolution = 320
 
-    shape = list(resolution_to_shape[int(resolution)])
-    transform = transform_from_bbox(proj_bbox, shape)
+    shape = resolution_to_shape[int(resolution)]
 
-    def set_asset_properties(_asset: pystac.Asset, _band_gsd: Optional[int] = None):
-        if _band_gsd:
-            pystac.CommonMetadata(_asset).gsd = _band_gsd
-        asset_projection = ProjectionExtension.ext(_asset)
-        asset_projection.shape = shape
-        asset_projection.bbox = proj_bbox
-        asset_projection.transform = transform
+    # Handle preview image
+    if "_PVI" in asset_href:
+        asset = pystac.Asset(
+            href=asset_href,
+            media_type=asset_media_type,
+            title="True color preview",
+            roles=["overview"],
+        )
+        set_asset_properties(asset, resolution, shape, proj_bbox, resolution)
+        asset_eo = EOExtension.ext(asset)
+        asset_eo.bands = RGB_BANDS
+        return "preview", asset
 
     # Handle band image
 
@@ -358,7 +375,7 @@ def image_asset_from_href(
 
         asset_eo = EOExtension.ext(asset)
         asset_eo.bands = [band_from_band_id(band_id)]
-        set_asset_properties(asset, band_gsd)
+        set_asset_properties(asset, resolution, shape, proj_bbox, band_gsd)
 
         RasterExtension.ext(asset).bands = raster_bands(
             boa_add_offsets, processing_baseline, band_id, resolution
@@ -394,9 +411,8 @@ def image_asset_from_href(
             ),
         ]
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = f"visual_{maybe_res}m" if maybe_res and maybe_res != 10 else "visual"
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
     elif AOT_PATTERN.search(asset_href):
         # Aerosol
@@ -407,10 +423,8 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "aot")
-
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -431,10 +445,9 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "wvp")
 
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -456,9 +469,8 @@ def image_asset_from_href(
             roles=["data"],
         )
 
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "scl")
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -476,9 +488,8 @@ def image_asset_from_href(
             title="Cloud Probabilities",
             roles=["data", "cloud"],
         )
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "cloud")
-        set_asset_properties(asset, maybe_res)
+        set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -496,9 +507,8 @@ def image_asset_from_href(
             title="Snow Probabilities",
             roles=["data", "snow-ice"],
         )
-        maybe_res = extract_gsd(asset_href)
         asset_id = mk_asset_id(maybe_res, "snow")
-        set_asset_properties(asset)
+        set_asset_properties(asset, resolution, shape, proj_bbox)
 
         RasterExtension.ext(asset).bands = [
             RasterBand.create(
@@ -562,11 +572,18 @@ def metadata_from_safe_manifest(
     )
 
     if granule_metadata.pvi_filename is not None:
-        extra_assets["preview"] = pystac.Asset(
+        pvi_asset = pystac.Asset(
             href=os.path.join(granule_href, granule_metadata.pvi_filename),
             media_type=product_metadata.image_media_type,
+            title="True color preview",
             roles=["overview"],
         )
+        resolution = 320
+        shape = granule_metadata.resolution_to_shape[resolution]
+        set_asset_properties(
+            pvi_asset, resolution, shape, granule_metadata.proj_bbox, resolution
+        )
+        extra_assets["preview"] = pvi_asset
 
     return Metadata(
         scene_id=product_metadata.scene_id,

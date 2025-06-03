@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T01LAC_20200717T221944_L1C",
   "properties": {
-    "created": "2025-05-20T23:07:27.326040Z",
+    "created": "2025-06-02T20:34:07.260558Z",
     "providers": [
       {
         "name": "ESA",
@@ -802,6 +802,26 @@
     "preview": {
       "href": "./GRANULE/L1C_T01LAC_A026481_20200717T221944/QI_DATA/T01LAC_20200717T221941_PVI.jp2",
       "type": "image/jp2",
+      "title": "True color preview",
+      "gsd": 320,
+      "proj:shape": [
+        343,
+        343
+      ],
+      "proj:bbox": [
+        99960.0,
+        8190260.0,
+        209720.0,
+        8300020.0
+      ],
+      "proj:transform": [
+        320.0,
+        0.0,
+        99960.0,
+        0.0,
+        -320.0,
+        8300020.0
+      ],
       "roles": [
         "overview"
       ]

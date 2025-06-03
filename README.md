@@ -30,7 +30,7 @@ Sentinel Hub metadata:
 ```shell
 stac sentinel2 create-item --asset-href-prefix s3://sentinel-s2-l2a/tiles/34/L/BP/2022/4/1/0/ \
       https://roda.sentinel-hub.com/sentinel-s2-l2a/tiles/34/L/BP/2022/4/1/0/ output
-````
+```
 
 **Note:** this does not currently work with S3 buckets using requester-pays.
 
@@ -62,6 +62,13 @@ Run the tests with:
 ```commandline
 pytest -vvv
 ```
+
+Many tests use an expected output fixture (named `"expected_output.json"`).  If
+your changes require updating these, simply:
+
+1. remove the `expected_output.json` fixture for the test you are working on
+2. then re-run the test via `pytest`, which recreates the expected output
+3. confirm the changes are as you expected via `git diff`.
 
 If you change the STAC metadata output, you will need to re-create the test files with the following command:
 
