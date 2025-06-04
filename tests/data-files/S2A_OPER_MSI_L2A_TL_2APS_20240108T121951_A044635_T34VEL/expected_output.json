@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_2APS_20240108T121951_A044635_T34VEL",
   "properties": {
-    "created": "2025-06-03T16:40:11.031352Z",
+    "created": "2025-06-04T00:16:09.932423Z",
     "providers": [
       {
         "name": "ESA",
@@ -21,6 +21,7 @@
       "msi"
     ],
     "eo:cloud_cover": 74.49823,
+    "eo:snow_cover": 0.0,
     "proj:epsg": 32634,
     "proj:centroid": {
       "lat": 58.84466,

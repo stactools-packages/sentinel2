@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_OPER_MSI_L2A_TL_SGS__20181231T210250_A018414_T10SDG",
   "properties": {
-    "created": "2025-06-03T16:40:10.405229Z",
+    "created": "2025-06-04T00:16:09.519740Z",
     "providers": [
       {
         "name": "ESA",
@@ -21,6 +21,7 @@
       "msi"
     ],
     "eo:cloud_cover": 2.779036,
+    "eo:snow_cover": 0.0,
     "proj:epsg": 32610,
     "proj:centroid": {
       "lat": 37.42015,
