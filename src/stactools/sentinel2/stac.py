@@ -482,19 +482,38 @@ def image_asset_from_href(
         )
         RasterExtension.ext(asset).bands = [band]
 
+        ClassificationExtension.ext(item, add_if_missing=True)
         ClassificationExtension.ext(band).classes = [
-            Classification.create(0, "no_data"),
-            Classification.create(1, "saturated_or_defective"),
-            Classification.create(2, "dark_area_pixels"),
-            Classification.create(3, "cloud_shadows"),
-            Classification.create(4, "vegetation"),
-            Classification.create(5, "not_vegetated"),
-            Classification.create(6, "water"),
-            Classification.create(7, "unclassified"),
-            Classification.create(8, "cloud_medium_probability"),
-            Classification.create(9, "cloud_high_probability"),
-            Classification.create(10, "thin_cirrus"),
-            Classification.create(11, "snow"),
+            Classification.create(
+                0, description="No Data (Missing data)", name="no_data"
+            ),
+            Classification.create(
+                1,
+                description="Saturated or defective pixel",
+                name="saturated_or_defective",
+            ),
+            Classification.create(
+                2,
+                description=(
+                    "Topographic casted shadows (formerly 'Dark features/Shadows')"
+                ),
+                name="dark_area_pixels",
+            ),
+            Classification.create(3, description="Cloud shadows", name="cloud_shadows"),
+            Classification.create(4, description="Vegitation", name="vegetation"),
+            Classification.create(5, description="Not-vegetated", name="not_vegetated"),
+            Classification.create(6, description="Water", name="water"),
+            Classification.create(7, description="Unclassified", name="unclassified"),
+            Classification.create(
+                8,
+                description="Cloud - medium probability",
+                name="cloud_medium_probability",
+            ),
+            Classification.create(
+                9, description="Cloud - high probability", name="cloud_high_probability"
+            ),
+            Classification.create(10, description="Thin cirrus", name="thin_cirrus"),
+            Classification.create(11, description="Snow or ice", name="snow"),
         ]
 
     elif CLD_PATTERN.search(asset_href):

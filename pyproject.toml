@@ -32,7 +32,7 @@ dev = [
   "pytest",
   "pytest-cov",
   "requests",
-  "pystac<1.12", # until testing moves to STAC 1.1
+  "pystac<1.11", # until testing moves to STAC 1.1 and Classification Extension 2.0
 ]
 
 [project.urls]

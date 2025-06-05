@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T34LBQ_20220401T090142_L2A",
   "properties": {
-    "created": "2025-06-04T00:16:09.684738Z",
+    "created": "2025-06-05T15:18:27.848907Z",
     "providers": [
       {
         "name": "ESA",
@@ -880,51 +880,63 @@
           "classification:classes": [
             {
               "value": 0,
-              "description": "no_data"
+              "name": "no_data",
+              "description": "No Data (Missing data)"
             },
             {
               "value": 1,
-              "description": "saturated_or_defective"
+              "name": "saturated_or_defective",
+              "description": "Saturated or defective pixel"
             },
             {
               "value": 2,
-              "description": "dark_area_pixels"
+              "name": "dark_area_pixels",
+              "description": "Topographic casted shadows (formerly 'Dark features/Shadows')"
             },
             {
               "value": 3,
-              "description": "cloud_shadows"
+              "name": "cloud_shadows",
+              "description": "Cloud shadows"
             },
             {
               "value": 4,
-              "description": "vegetation"
+              "name": "vegetation",
+              "description": "Vegitation"
             },
             {
               "value": 5,
-              "description": "not_vegetated"
+              "name": "not_vegetated",
+              "description": "Not-vegetated"
             },
             {
               "value": 6,
-              "description": "water"
+              "name": "water",
+              "description": "Water"
             },
             {
               "value": 7,
-              "description": "unclassified"
+              "name": "unclassified",
+              "description": "Unclassified"
             },
             {
               "value": 8,
-              "description": "cloud_medium_probability"
+              "name": "cloud_medium_probability",
+              "description": "Cloud - medium probability"
             },
             {
               "value": 9,
-              "description": "cloud_high_probability"
+              "name": "cloud_high_probability",
+              "description": "Cloud - high probability"
             },
             {
               "value": 10,
-              "description": "thin_cirrus"
+              "name": "thin_cirrus",
+              "description": "Thin cirrus"
             },
             {
               "value": 11,
-              "description": "snow"
+              "name": "snow",
+              "description": "Snow or ice"
             }
           ]
         }
@@ -1586,51 +1598,63 @@
           "classification:classes": [
             {
               "value": 0,
-              "description": "no_data"
+              "name": "no_data",
+              "description": "No Data (Missing data)"
             },
             {
               "value": 1,
-              "description": "saturated_or_defective"
+              "name": "saturated_or_defective",
+              "description": "Saturated or defective pixel"
             },
             {
               "value": 2,
-              "description": "dark_area_pixels"
+              "name": "dark_area_pixels",
+              "description": "Topographic casted shadows (formerly 'Dark features/Shadows')"
             },
             {
               "value": 3,
-              "description": "cloud_shadows"
+              "name": "cloud_shadows",
+              "description": "Cloud shadows"
             },
             {
               "value": 4,
-              "description": "vegetation"
+              "name": "vegetation",
+              "description": "Vegitation"
             },
             {
               "value": 5,
-              "description": "not_vegetated"
+              "name": "not_vegetated",
+              "description": "Not-vegetated"
             },
             {
               "value": 6,
-              "description": "water"
+              "name": "water",
+              "description": "Water"
             },
             {
               "value": 7,
-              "description": "unclassified"
+              "name": "unclassified",
+              "description": "Unclassified"
             },
             {
               "value": 8,
-              "description": "cloud_medium_probability"
+              "name": "cloud_medium_probability",
+              "description": "Cloud - medium probability"
             },
             {
               "value": 9,
-              "description": "cloud_high_probability"
+              "name": "cloud_high_probability",
+              "description": "Cloud - high probability"
             },
             {
               "value": 10,
-              "description": "thin_cirrus"
+              "name": "thin_cirrus",
+              "description": "Thin cirrus"
             },
             {
               "value": 11,
-              "description": "snow"
+              "name": "snow",
+              "description": "Snow or ice"
             }
           ]
         }
@@ -1979,6 +2003,7 @@
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
     "https://stac-extensions.github.io/view/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
   ]
 }
