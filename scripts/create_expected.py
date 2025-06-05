@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 from pathlib import Path
 
 from stactools.sentinel2 import stac
@@ -25,7 +26,9 @@ for path in data_files.iterdir():
         continue
     print(path)
     item = stac.create_item(str(path))
-    item.set_self_href(str(data_files / path.name / "expected_output.json"))
+    output_path = data_files / path.name / "expected_output.json"
+    item.set_self_href(str(output_path))
     item.make_asset_hrefs_relative()
     item.validate()
-    item.save_object(include_self_link=False)
+    d = item.to_dict(transform_hrefs=False, include_self_link=False)
+    output_path.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
