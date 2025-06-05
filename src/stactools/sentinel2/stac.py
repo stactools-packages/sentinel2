@@ -636,7 +636,7 @@ def metadata_from_safe_manifest(
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
-        snow_ice_percentage=granule_metadata.cloudiness_percentage,
+        snow_ice_percentage=granule_metadata.snow_ice_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=[round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox],
         resolution_to_shape=granule_metadata.resolution_to_shape,
