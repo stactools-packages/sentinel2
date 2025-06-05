@@ -787,7 +787,7 @@
   ],
   "properties": {
     "constellation": "sentinel-2",
-    "created": "2025-06-05T17:40:02.543717Z",
+    "created": "2025-06-05T18:05:06.175473Z",
     "datetime": "2020-07-17T22:19:41.024000Z",
     "eo:cloud_cover": 5.4828,
     "grid:code": "MGRS-01LAC",
@@ -802,7 +802,7 @@
       "lat": -15.84874,
       "lon": 179.77808
     },
-    "proj:epsg": 32701,
+    "proj:code": "EPSG:32701",
     "providers": [
       {
         "name": "ESA",
@@ -835,12 +835,12 @@
     "https://stac-extensions.github.io/eo/v1.1.0/schema.json",
     "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
     "https://stac-extensions.github.io/view/v1.0.0/schema.json",
     "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json"
   ],
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "type": "Feature"
 }

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated development and testing to use pystac 1.12 or greater.
+
 ### Added
 
 - Add `eo:snow_cover` for L2A

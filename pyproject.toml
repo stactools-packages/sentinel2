@@ -32,7 +32,7 @@ dev = [
   "pytest",
   "pytest-cov",
   "requests",
-  "pystac==1.10.1", # for keeping test fixtures stable
+  "pystac>1.12",
 ]
 
 [project.urls]

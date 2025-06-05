@@ -1812,7 +1812,7 @@
   ],
   "properties": {
     "constellation": "sentinel-2",
-    "created": "2025-06-05T17:40:02.045807Z",
+    "created": "2025-06-05T18:05:05.668527Z",
     "datetime": "2019-12-28T21:05:19.024000Z",
     "eo:cloud_cover": 99.99889,
     "eo:snow_cover": 0.0,
@@ -1828,7 +1828,7 @@
       "lat": -72.36767,
       "lon": 177.50607
     },
-    "proj:epsg": 32701,
+    "proj:code": "EPSG:32701",
     "providers": [
       {
         "name": "ESA",
@@ -1873,13 +1873,13 @@
     "https://stac-extensions.github.io/eo/v1.1.0/schema.json",
     "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
     "https://stac-extensions.github.io/mgrs/v1.0.0/schema.json",
     "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
     "https://stac-extensions.github.io/view/v1.0.0/schema.json",
     "https://stac-extensions.github.io/sentinel-2/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
   ],
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "type": "Feature"
 }
