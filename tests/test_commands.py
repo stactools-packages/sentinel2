@@ -1,5 +1,6 @@
 # ruff: noqa: E501
 
+import json
 import os
 import re
 from collections import defaultdict
@@ -87,7 +88,7 @@ def proj_bbox_area_difference(item):
 
 
 @pytest.mark.parametrize("item_id,file_name", ID_TO_FILE_NAME.items())
-def test_create_item(tmp_path: Path, item_id: str, file_name: str):
+def test_create_item(tmp_path: Path, item_id: str, file_name: str, update_expectations):
     granule_href = test_data.get_path(f"data-files/{file_name}")
     runner = CliRunner()
     runner.invoke(
@@ -125,10 +126,12 @@ def test_create_item(tmp_path: Path, item_id: str, file_name: str):
     assert item.common_metadata.created is not None
 
     expected = Path(f"{granule_href}/expected_output.json")
-    if not expected.exists():
+    if update_expectations or not expected.exists():
         item.set_self_href(str(expected))
         item.make_asset_hrefs_relative()
-        item.save_object(include_self_link=False, dest_href=expected)
+        d = item.to_dict(transform_hrefs=False, include_self_link=False)
+        expected.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
+        assert False, f"Test fixture updated {expected}"
 
     assert mk_comparable(item) == mk_comparable(pystac.Item.from_file(expected)), (
         f"Doesn't match expectation: {str(expected)}"

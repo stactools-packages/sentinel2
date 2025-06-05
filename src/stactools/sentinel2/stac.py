@@ -12,6 +12,7 @@ from typing import Any, Final, Optional
 import antimeridian
 import pystac
 from pyproj import Transformer
+from pystac.extensions.classification import Classification, ClassificationExtension
 from pystac.extensions.eo import Band, EOExtension
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -474,12 +475,45 @@ def image_asset_from_href(
         asset_id = mk_asset_id(maybe_res, "scl")
         set_asset_properties(asset, resolution, shape, proj_bbox, maybe_res)
 
-        RasterExtension.ext(asset).bands = [
-            RasterBand.create(
-                nodata=0,
-                spatial_resolution=resolution,
-                data_type=DataType.UINT8,
-            )
+        band = RasterBand.create(
+            nodata=0,
+            spatial_resolution=resolution,
+            data_type=DataType.UINT8,
+        )
+        RasterExtension.ext(asset).bands = [band]
+
+        ClassificationExtension.ext(item, add_if_missing=True)
+        ClassificationExtension.ext(band).classes = [
+            Classification.create(
+                0, description="No Data (Missing data)", name="no_data"
+            ),
+            Classification.create(
+                1,
+                description="Saturated or defective pixel",
+                name="saturated_or_defective",
+            ),
+            Classification.create(
+                2,
+                description=(
+                    "Topographic casted shadows (formerly 'Dark features/Shadows')"
+                ),
+                name="dark_area_pixels",
+            ),
+            Classification.create(3, description="Cloud shadows", name="cloud_shadows"),
+            Classification.create(4, description="Vegitation", name="vegetation"),
+            Classification.create(5, description="Not-vegetated", name="not_vegetated"),
+            Classification.create(6, description="Water", name="water"),
+            Classification.create(7, description="Unclassified", name="unclassified"),
+            Classification.create(
+                8,
+                description="Cloud - medium probability",
+                name="cloud_medium_probability",
+            ),
+            Classification.create(
+                9, description="Cloud - high probability", name="cloud_high_probability"
+            ),
+            Classification.create(10, description="Thin cirrus", name="thin_cirrus"),
+            Classification.create(11, description="Snow or ice", name="snow"),
         ]
 
     elif CLD_PATTERN.search(asset_href):
@@ -602,7 +636,7 @@ def metadata_from_safe_manifest(
         image_media_type=product_metadata.image_media_type,
         image_paths=product_metadata.image_paths,
         cloudiness_percentage=granule_metadata.cloudiness_percentage,
-        snow_ice_percentage=granule_metadata.cloudiness_percentage,
+        snow_ice_percentage=granule_metadata.snow_ice_percentage,
         epsg=granule_metadata.epsg,
         proj_bbox=[round(v, COORD_ROUNDING) for v in granule_metadata.proj_bbox],
         resolution_to_shape=granule_metadata.resolution_to_shape,

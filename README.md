@@ -11,7 +11,7 @@ stactools package for Sentinel-2 data.
 
 ```shell
 pip install stactools-sentinel2
-````
+```
 
 SAFE archive:
 
@@ -54,8 +54,10 @@ pre-commit run --all-files
 Install the code in the local python env so your IDE can see it:
 
 ```commandline
-pip install -e .
+pip install -e ".[dev]"
 ```
+
+### Testing
 
 Run the tests with:
 
@@ -63,14 +65,18 @@ Run the tests with:
 pytest -vvv
 ```
 
-Many tests use an expected output fixture (named `"expected_output.json"`).  If
-your changes require updating these, simply:
 
-1. remove the `expected_output.json` fixture for the test you are working on
-2. then re-run the test via `pytest`, which recreates the expected output
-3. confirm the changes are as you expected via `git diff`.
+Most tests fixture expectations can be updated by running:
 
-If you change the STAC metadata output, you will need to re-create the test files with the following command:
+```shell
+pytest --update-expectations
+```
+
+If the expectation file is missing for any test in `test_commands` it will be
+generated, and the test will fail.  This failure is to ensure fixture updates
+don't happen silently.
+
+Alternatively, tests can be updated by using the following command:
 
 ```shell
 python scripts/create_expected.py
