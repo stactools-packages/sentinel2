@@ -67,10 +67,13 @@ Many tests use an expected output fixture (named `"expected_output.json"`).  If
 your changes require updating these, simply:
 
 1. remove the `expected_output.json` fixture for the test you are working on
-2. then re-run the test via `pytest`, which recreates the expected output
-3. confirm the changes are as you expected via `git diff`.
+2. then run the test via `pytest`, which recreates the expected output --
+   the tests will fail, so updates won't happen by accident w/o announcement
+3. confirm the changes are as you expected via `git diff`
+4. confirm the tests now pass by re-running `pytest`
 
-If you change the STAC metadata output, you will need to re-create the test files with the following command:
+
+If you change all the output fixtures, you update all the expectations with the following script:
 
 ```shell
 python scripts/create_expected.py
