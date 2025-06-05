@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T34LBQ_20220401T090142_L2A",
   "properties": {
-    "created": "2025-06-03T16:40:10.689578Z",
+    "created": "2025-06-04T00:16:09.684738Z",
     "providers": [
       {
         "name": "ESA",
@@ -21,6 +21,7 @@
       "msi"
     ],
     "eo:cloud_cover": 92.696983,
+    "eo:snow_cover": 0.0,
     "proj:epsg": 32734,
     "proj:centroid": {
       "lat": -9.98196,

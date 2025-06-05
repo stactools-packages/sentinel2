@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "S2A_T07HFE_20190212T192646_L2A",
   "properties": {
-    "created": "2025-06-02T20:34:06.738936Z",
+    "created": "2025-06-04T00:16:09.244769Z",
     "providers": [
       {
         "name": "ESA",
@@ -21,6 +21,7 @@
       "msi"
     ],
     "eo:cloud_cover": 51.580326,
+    "eo:snow_cover": 51.580326,
     "sat:orbit_state": "descending",
     "sat:relative_orbit": 13,
     "proj:epsg": 32707,

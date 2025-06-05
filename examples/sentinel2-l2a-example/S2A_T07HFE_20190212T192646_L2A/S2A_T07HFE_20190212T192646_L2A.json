@@ -21,6 +21,7 @@
       "msi"
     ],
     "eo:cloud_cover": 51.580326,
+    "eo:snow_cover": 0.0,
     "sat:orbit_state": "descending",
     "sat:relative_orbit": 13,
     "proj:epsg": 32707,
