@@ -5,6 +5,7 @@ from pathlib import Path
 
 from stactools.sentinel2 import stac
 
+# excluded as they don't successfully create outputs
 EXCLUDE = [
     "S2A_T60CWS_20240109T203651_L2A-pole-and-antimeridian-bad-geometry-after-reprojection",
     "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data",

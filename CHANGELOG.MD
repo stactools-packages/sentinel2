@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Updated development and testing to use pystac 1.12 or greater.
+- Better error case reporting (originally [PR179](https://github.com/stactools-packages/sentinel2/pull/179))
 
 ### Added
 
