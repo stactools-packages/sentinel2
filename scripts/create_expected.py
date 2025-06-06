@@ -5,6 +5,7 @@ from pathlib import Path
 
 from stactools.sentinel2 import stac
 
+# excluded as they don't successfully create outputs
 EXCLUDE = [
     "S2A_T60CWS_20240109T203651_L2A-pole-and-antimeridian-bad-geometry-after-reprojection",
     "S2B_OPER_MSI_L2A_DS_VGS1_20201101T095401_S20201101T074429-no-data",
@@ -21,14 +22,23 @@ EXCLUDE = [
 root = Path(__file__).parents[1]
 data_files = root / "tests" / "data-files"
 
+errored = False
 for path in data_files.iterdir():
     if path.name in EXCLUDE or path.name.startswith("."):
         continue
     print(path)
-    item = stac.create_item(str(path))
-    output_path = data_files / path.name / "expected_output.json"
-    item.set_self_href(str(output_path))
-    item.make_asset_hrefs_relative()
-    item.validate()
-    d = item.to_dict(transform_hrefs=False, include_self_link=False)
-    output_path.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
+    try:
+        item = stac.create_item(str(path))
+        output_path = data_files / path.name / "expected_output.json"
+        item.set_self_href(str(output_path))
+        item.make_asset_hrefs_relative()
+        item.validate()
+        d = item.to_dict(transform_hrefs=False, include_self_link=False)
+        output_path.write_text(json.dumps(d, indent=2, sort_keys=True) + "\n")
+    except Exception as e:
+        print(e)
+        errored = True
+
+if errored:
+    print("At least one error occurred")
+    exit(1)

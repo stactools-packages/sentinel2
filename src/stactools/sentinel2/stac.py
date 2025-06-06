@@ -323,6 +323,8 @@ def image_asset_from_href(
             resolution = 10
         elif IS_PVI_PATTERN.search(asset_href):
             resolution = 320
+        else:
+            raise ValueError(f"Could not determine resolution for {asset_href}")
 
     shape = resolution_to_shape[int(resolution)]
 
