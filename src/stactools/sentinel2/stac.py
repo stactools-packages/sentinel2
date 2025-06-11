@@ -21,6 +21,7 @@ from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.extensions.view import SCHEMA_URI as VIEW_EXT_URI
 from pystac.extensions.view import ViewExtension
 from pystac.utils import now_to_rfc3339_str
+from shapely import remove_repeated_points
 from shapely.geometry import MultiPolygon, Polygon
 from shapely.geometry import mapping as shapely_mapping
 from shapely.geometry import shape as shapely_shape
@@ -792,6 +793,9 @@ def make_valid_geometry(input_geometry: dict[str, Any]) -> Polygon | MultiPolygo
         geometry = next(
             filter(lambda x: x.geom_type in ["Polygon", "MultiPolygon"], geometry.geoms)
         )
+
+    # Deduplicate repeating points in geometry
+    geometry = remove_repeated_points(geometry)
 
     # sometimes, antimeridian and/or polar crossing scenes on some platforms end up
     # with geometries that cover the inverse area that they should, so nearly the

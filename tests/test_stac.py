@@ -48,10 +48,8 @@ def test_antimeridian() -> None:
             [
                 [
                     [180.0, -16.259071],
-                    [180.0, -16.259071],
                     [179.258625, -16.247763],
                     [179.23921, -17.238192],
-                    [180.0, -17.250482],
                     [180.0, -17.250482],
                     [180.0, -16.259071],
                 ]
@@ -84,6 +82,35 @@ def test_make_geometry_collection_filter():
                 [-74, 6.5],  #
                 [-72, 6.5],  # will result in a linestring
                 [-74, 6.5],  #
+                [-74, 7],
+                [-70, 7],
+                [-70, 6],
+            ]
+        ],
+    }
+
+    expected = {
+        "type": "Polygon",
+        "coordinates": [[[-74, 7], [-70, 7], [-70, 6], [-74, 6], [-74, 6.5], [-74, 7]]],
+    }
+    valid_geometry = stac.make_valid_geometry(input_geometry)
+
+    assert (
+        shapely.geometry.shape(expected)
+        .normalize()
+        .equals_exact(valid_geometry.normalize(), tolerance=5)
+    )
+
+
+def test_deduplicate_points():
+    input_geometry = {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [-70, 6],
+                [-74, 6],
+                [-74, 6.5],
+                [-74, 6.5],  # Duplicated
                 [-74, 7],
                 [-70, 7],
                 [-70, 6],
