@@ -113,7 +113,7 @@
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -158,7 +158,7 @@
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -202,7 +202,7 @@
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -281,7 +281,7 @@
         {
           "center_wavelength": 0.443,
           "common_name": "coastal",
-          "full_width_half_max": 0.027,
+          "full_width_half_max": 0.02,
           "name": "B01"
         }
       ],
@@ -333,7 +333,7 @@
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         }
       ],
@@ -378,7 +378,7 @@
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         }
       ],
@@ -422,7 +422,7 @@
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         }
       ],
@@ -466,7 +466,7 @@
         {
           "center_wavelength": 0.842,
           "common_name": "nir",
-          "full_width_half_max": 0.145,
+          "full_width_half_max": 0.116,
           "name": "B08"
         }
       ],
@@ -511,7 +511,7 @@
         {
           "center_wavelength": 0.865,
           "common_name": "nir08",
-          "full_width_half_max": 0.033,
+          "full_width_half_max": 0.02,
           "name": "B8A"
         }
       ],
@@ -556,7 +556,7 @@
         {
           "center_wavelength": 0.865,
           "common_name": "nir08",
-          "full_width_half_max": 0.033,
+          "full_width_half_max": 0.02,
           "name": "B8A"
         }
       ],
@@ -600,7 +600,7 @@
         {
           "center_wavelength": 0.945,
           "common_name": "nir09",
-          "full_width_half_max": 0.026,
+          "full_width_half_max": 0.02,
           "name": "B09"
         }
       ],
@@ -645,7 +645,7 @@
         {
           "center_wavelength": 0.842,
           "common_name": "nir",
-          "full_width_half_max": 0.145,
+          "full_width_half_max": 0.116,
           "name": "B08"
         }
       ],
@@ -689,7 +689,7 @@
         {
           "center_wavelength": 0.842,
           "common_name": "nir",
-          "full_width_half_max": 0.145,
+          "full_width_half_max": 0.116,
           "name": "B08"
         }
       ],
@@ -733,19 +733,19 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         },
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         },
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -787,7 +787,7 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         }
       ],
@@ -832,7 +832,7 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         }
       ],
@@ -876,7 +876,7 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         }
       ],
@@ -920,7 +920,7 @@
         {
           "center_wavelength": 0.704,
           "common_name": "rededge",
-          "full_width_half_max": 0.019,
+          "full_width_half_max": 0.015,
           "name": "B05"
         }
       ],
@@ -965,7 +965,7 @@
         {
           "center_wavelength": 0.704,
           "common_name": "rededge",
-          "full_width_half_max": 0.019,
+          "full_width_half_max": 0.015,
           "name": "B05"
         }
       ],
@@ -1009,7 +1009,7 @@
         {
           "center_wavelength": 0.74,
           "common_name": "rededge",
-          "full_width_half_max": 0.018,
+          "full_width_half_max": 0.014,
           "name": "B06"
         }
       ],
@@ -1054,7 +1054,7 @@
         {
           "center_wavelength": 0.74,
           "common_name": "rededge",
-          "full_width_half_max": 0.018,
+          "full_width_half_max": 0.014,
           "name": "B06"
         }
       ],
@@ -1098,7 +1098,7 @@
         {
           "center_wavelength": 0.783,
           "common_name": "rededge",
-          "full_width_half_max": 0.028,
+          "full_width_half_max": 0.02,
           "name": "B07"
         }
       ],
@@ -1143,7 +1143,7 @@
         {
           "center_wavelength": 0.783,
           "common_name": "rededge",
-          "full_width_half_max": 0.028,
+          "full_width_half_max": 0.02,
           "name": "B07"
         }
       ],
@@ -1413,7 +1413,7 @@
         {
           "center_wavelength": 1.61,
           "common_name": "swir16",
-          "full_width_half_max": 0.143,
+          "full_width_half_max": 0.091,
           "name": "B11"
         }
       ],
@@ -1458,7 +1458,7 @@
         {
           "center_wavelength": 1.61,
           "common_name": "swir16",
-          "full_width_half_max": 0.143,
+          "full_width_half_max": 0.091,
           "name": "B11"
         }
       ],
@@ -1502,7 +1502,7 @@
         {
           "center_wavelength": 2.19,
           "common_name": "swir22",
-          "full_width_half_max": 0.242,
+          "full_width_half_max": 0.181,
           "name": "B12"
         }
       ],
@@ -1547,7 +1547,7 @@
         {
           "center_wavelength": 2.19,
           "common_name": "swir22",
-          "full_width_half_max": 0.242,
+          "full_width_half_max": 0.181,
           "name": "B12"
         }
       ],
@@ -1598,19 +1598,19 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         },
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         },
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -1662,19 +1662,19 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         },
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         },
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
@@ -1726,19 +1726,19 @@
         {
           "center_wavelength": 0.665,
           "common_name": "red",
-          "full_width_half_max": 0.038,
+          "full_width_half_max": 0.031,
           "name": "B04"
         },
         {
           "center_wavelength": 0.56,
           "common_name": "green",
-          "full_width_half_max": 0.045,
+          "full_width_half_max": 0.035,
           "name": "B03"
         },
         {
           "center_wavelength": 0.49,
           "common_name": "blue",
-          "full_width_half_max": 0.098,
+          "full_width_half_max": 0.065,
           "name": "B02"
         }
       ],
