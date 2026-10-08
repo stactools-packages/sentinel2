@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
+## [Unreleased]
+
+### Fixed
+
+- Corrected the `full_width_half_max` of all bands. They were too large and are now the bandwidths
+  from ESA's spectral response functions (mean of Sentinel-2A, 2B and 2C).
+
 ## [v0.8.0]
 
 ### Changed

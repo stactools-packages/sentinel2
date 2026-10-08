@@ -132,7 +132,7 @@
           "name": "B01",
           "common_name": "coastal",
           "center_wavelength": 0.443,
-          "full_width_half_max": 0.027
+          "full_width_half_max": 0.02
         }
       ],
       "gsd": 60,
@@ -177,7 +177,7 @@
           "name": "B02",
           "common_name": "blue",
           "center_wavelength": 0.49,
-          "full_width_half_max": 0.098
+          "full_width_half_max": 0.065
         }
       ],
       "gsd": 10,
@@ -222,7 +222,7 @@
           "name": "B03",
           "common_name": "green",
           "center_wavelength": 0.56,
-          "full_width_half_max": 0.045
+          "full_width_half_max": 0.035
         }
       ],
       "gsd": 10,
@@ -267,7 +267,7 @@
           "name": "B04",
           "common_name": "red",
           "center_wavelength": 0.665,
-          "full_width_half_max": 0.038
+          "full_width_half_max": 0.031
         }
       ],
       "gsd": 10,
@@ -312,7 +312,7 @@
           "name": "B05",
           "common_name": "rededge",
           "center_wavelength": 0.704,
-          "full_width_half_max": 0.019
+          "full_width_half_max": 0.015
         }
       ],
       "gsd": 20,
@@ -357,7 +357,7 @@
           "name": "B06",
           "common_name": "rededge",
           "center_wavelength": 0.74,
-          "full_width_half_max": 0.018
+          "full_width_half_max": 0.014
         }
       ],
       "gsd": 20,
@@ -402,7 +402,7 @@
           "name": "B07",
           "common_name": "rededge",
           "center_wavelength": 0.783,
-          "full_width_half_max": 0.028
+          "full_width_half_max": 0.02
         }
       ],
       "gsd": 20,
@@ -447,7 +447,7 @@
           "name": "B08",
           "common_name": "nir",
           "center_wavelength": 0.842,
-          "full_width_half_max": 0.145
+          "full_width_half_max": 0.116
         }
       ],
       "gsd": 10,
@@ -492,7 +492,7 @@
           "name": "B8A",
           "common_name": "nir08",
           "center_wavelength": 0.865,
-          "full_width_half_max": 0.033
+          "full_width_half_max": 0.02
         }
       ],
       "gsd": 20,
@@ -537,7 +537,7 @@
           "name": "B09",
           "common_name": "nir09",
           "center_wavelength": 0.945,
-          "full_width_half_max": 0.026
+          "full_width_half_max": 0.02
         }
       ],
       "gsd": 60,
@@ -582,7 +582,7 @@
           "name": "B10",
           "common_name": "cirrus",
           "center_wavelength": 1.3735,
-          "full_width_half_max": 0.075
+          "full_width_half_max": 0.03
         }
       ],
       "gsd": 60,
@@ -627,7 +627,7 @@
           "name": "B11",
           "common_name": "swir16",
           "center_wavelength": 1.61,
-          "full_width_half_max": 0.143
+          "full_width_half_max": 0.091
         }
       ],
       "gsd": 20,
@@ -672,7 +672,7 @@
           "name": "B12",
           "common_name": "swir22",
           "center_wavelength": 2.19,
-          "full_width_half_max": 0.242
+          "full_width_half_max": 0.181
         }
       ],
       "gsd": 20,
@@ -717,19 +717,19 @@
           "name": "B04",
           "common_name": "red",
           "center_wavelength": 0.665,
-          "full_width_half_max": 0.038
+          "full_width_half_max": 0.031
         },
         {
           "name": "B03",
           "common_name": "green",
           "center_wavelength": 0.56,
-          "full_width_half_max": 0.045
+          "full_width_half_max": 0.035
         },
         {
           "name": "B02",
           "common_name": "blue",
           "center_wavelength": 0.49,
-          "full_width_half_max": 0.098
+          "full_width_half_max": 0.065
         }
       ],
       "raster:bands": [
